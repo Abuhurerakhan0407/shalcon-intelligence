@@ -51,10 +51,19 @@ body {
   color: #fff;
   font-family: "IBM Plex Mono", monospace;
   overflow-x: hidden;
+  /* Phase 7 (Req 4) — long unbreakable tokens (URLs, emails, long words) break
+     onto the next line instead of forcing horizontal overflow. Only kicks in
+     when a token can't fit; normal text still wraps at spaces. Inherits down. */
+  overflow-wrap: break-word;
 }
 #root {
   overflow-x: hidden;
   max-width: 100%;
+}
+/* Phase 7 (Req 1) — media can never exceed its container and push a scrollbar. */
+img {
+  max-width: 100%;
+  height: auto;
 }
 ::-webkit-scrollbar {
   width: 3px;
@@ -628,6 +637,12 @@ body {
 @media (max-width: 560px) {
   .grid-cards-3,
   .grid-cards-2 {
+    grid-template-columns: 1fr;
+  }
+  /* Phase 7 (Req 3) — the 4-up grids (HowItWorks timeline + footer columns)
+     stack to a single column on phones so headings/text never clip in a
+     ~130px cell. Above 560px they stay 2-up (set at 768px). */
+  .grid-cards-4 {
     grid-template-columns: 1fr;
   }
 }

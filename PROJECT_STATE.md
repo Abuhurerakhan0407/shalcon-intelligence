@@ -72,8 +72,14 @@ Authoritative spec: `docs/CLAUDE_CODE_BUILD_BRIEF.md`. Source references (do not
 
 ## Remaining phases
 
-### Phase 7 — Responsive optimization + fallbacks (NEXT)
-- Mobile hero (reduce shard count ~20, disable cursor light-sync), tablet/mobile layouts, `.grid-mobile-*` audits, touch behavior for magnetic/cursor (already guarded).
+### Phase 7 — Responsive optimization + fallbacks (DONE)
+Most of Phase 7 was already implemented in a prior session (not recorded here): global overflow guards (`html/body/#root overflow-x:hidden`), hero readability scrim + `hide-m` desktop-only stats widget, `.grid-split/-cards-3/-cards-4/-cards-2` collapse helpers, `.no-scrollbar` niche strip, full-screen mobile ROI modal, cursor light gated on `(hover:hover)` + `hide-m`. 3D hero already light (9 shards, WebGL-gated on low-power) — left untouched per hard rule.
+
+Gaps closed this session (CSS-only, `src/index.css`):
+- `.grid-cards-4` now collapses to 1 column ≤560px → HowItWorks timeline stacks vertically + footer stacks cleanly (was stuck 2-up to 320px).
+- `body { overflow-wrap: break-word }` + `img { max-width:100%; height:auto }` — long-token / media overflow safety.
+
+Verified (headless chromium, `/tmp/overflow-check.mjs`): **zero horizontal overflow at 320/375/414/768/1024/1440**, and 0px overflow with the ROI modal open at 375. Visual clips at 320px confirm no clipped text in timeline/footer/demo.
 
 ### Phase 8 — Performance optimization + QA
 - Bundle/code-split review, Lighthouse, cross-browser, final motion/FPS QA, a11y pass.
@@ -85,4 +91,4 @@ Authoritative spec: `docs/CLAUDE_CODE_BUILD_BRIEF.md`. Source references (do not
 3. Verify baseline: `npm run build` (expect success, ~59 modules) or `npm run dev`.
 4. **Hard constraints:** never edit `src/data/content.js`; never modify Phase 4 3D (`Hero3D.jsx`, `three/crystalScene.js`, `hooks/useHeroMode.js`); don't change the Phase 3 section order/layout; keep everything gated on `prefers-reduced-motion`; no layout shift; don't regress 3D FPS.
 5. Not a git repo — no version control; changes are on disk only.
-6. Work phase-by-phase, validate each, stop for approval before starting the next. **Currently awaiting approval to start Phase 7.**
+6. Work phase-by-phase, validate each, stop for approval before starting the next. **Phase 7 complete — currently awaiting approval to start Phase 8.**

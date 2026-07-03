@@ -44,7 +44,16 @@
       "Bash(pkill -f esbuild)",
       "Bash(awk '{print $6, $7}')",
       "Bash(pkill -f \"vite preview\")",
-      "Bash(rm -f /private/tmp/qa*.mjs /private/tmp/ssr.test.mjs)"
+      "Bash(rm -f /private/tmp/qa*.mjs /private/tmp/ssr.test.mjs)",
+      "Bash(npx playwright *)",
+      "Bash(ldconfig -p)",
+      "Bash(timeout 120 npx --prefix /root/.npm/_npx/e41f203b7505f1fb playwright install-deps chromium)",
+      "Bash(timeout 120 dpkg --configure -a)",
+      "Bash(timeout 180 apt-get install -y libnspr4 libnss3 libgbm1 libasound2t64)",
+      "Bash(timeout 300 npx --prefix /root/.npm/_npx/e41f203b7505f1fb playwright install-deps chromium)",
+      "Bash(git checkout *)",
+      "Bash(git add *)",
+      "Bash(git commit *)"
     ]
   }
 }
