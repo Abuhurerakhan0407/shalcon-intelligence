@@ -1,6 +1,13 @@
 # PROJECT_STATE.md — Shalcon Intelligence
 
-Living status doc for the Shalcon Intelligence marketing site. Source of truth for resuming work in a new session. Last updated: end of Phase 6.
+Living status doc for the Shalcon Intelligence marketing site. Source of truth for resuming work in a new session. Last updated: end of Phase 7.
+
+## Version control (current)
+
+- **Now a git repository.** `main` branch exists (baseline commit `0a0b3d2` "final build").
+- Phase 7 committed on branch **`phase-7-responsive-stabilization`** (commit `2ad03e6` "Phase 7: responsive optimization and mobile stabilization"), branched off `main`. Not yet merged.
+- `dist/` is gitignored (build output not tracked).
+- Supersedes the earlier "not a git repo" note.
 
 ---
 
@@ -72,14 +79,31 @@ Authoritative spec: `docs/CLAUDE_CODE_BUILD_BRIEF.md`. Source references (do not
 
 ## Remaining phases
 
-### Phase 7 — Responsive optimization + fallbacks (DONE)
-Most of Phase 7 was already implemented in a prior session (not recorded here): global overflow guards (`html/body/#root overflow-x:hidden`), hero readability scrim + `hide-m` desktop-only stats widget, `.grid-split/-cards-3/-cards-4/-cards-2` collapse helpers, `.no-scrollbar` niche strip, full-screen mobile ROI modal, cursor light gated on `(hover:hover)` + `hide-m`. 3D hero already light (9 shards, WebGL-gated on low-power) — left untouched per hard rule.
+### Phase 7 — Responsive optimization + fallbacks (COMPLETED)
 
-Gaps closed this session (CSS-only, `src/index.css`):
-- `.grid-cards-4` now collapses to 1 column ≤560px → HowItWorks timeline stacks vertically + footer stacks cleanly (was stuck 2-up to 320px).
+**Responsive helpers already implemented** (pre-existing from an earlier unrecorded session):
+- Global overflow guards: `html / body / #root` all `overflow-x: hidden`; App root wrapper too.
+- Grid-collapse helper classes in `index.css`: `.grid-split`, `.grid-cards-3`, `.grid-cards-4`, `.grid-cards-2`, `.grid-mobile-2`, `.no-scrollbar` — sections keep inline `display:grid`, column counts collapse via breakpoints.
+- Desktop-only chrome hidden on mobile via `.hide-m` (hero stats widget, cursor light, timeline connector line).
+- Full-screen ROI modal on mobile; ROI calculator has its own `@media(max-width:640px)` 1-col collapse.
+
+**Mobile overflow resolved** — closed this session (CSS-only, `src/index.css`):
+- `.grid-cards-4` now collapses to 1 column ≤560px → HowItWorks timeline stacks vertically + footer stacks cleanly (previously stuck 2-up down to 320px, risking clipped text in ~130px cells).
 - `body { overflow-wrap: break-word }` + `img { max-width:100%; height:auto }` — long-token / media overflow safety.
 
-Verified (headless chromium, `/tmp/overflow-check.mjs`): **zero horizontal overflow at 320/375/414/768/1024/1440**, and 0px overflow with the ROI modal open at 375. Visual clips at 320px confirm no clipped text in timeline/footer/demo.
+**Hero mobile fallback already existed** — `useHeroMode` returns `fallback` (static gradient + CSS glow, no WebGL) when reduced-motion / low-power (`hardwareConcurrency < 4`) / no WebGL; WebGL scene is only 9 shards and defers to `requestIdleCallback`. Cursor-reactive effects already gated on `(hover:hover)`. Left untouched per hard rule (no Phase 4 3D edits).
+
+**Verified breakpoints** (headless Chromium against the production `preview` build, `/tmp/overflow-check.mjs`) — zero horizontal overflow at each:
+- 320
+- 375
+- 414
+- 768
+- 1024
+- 1440
+
+Also 0px overflow with the ROI modal open at 375. Visual clips at 320px confirm no clipped text in timeline / footer / demo.
+
+**Build remains green** — `npm run build` succeeds, **62 modules**, no warnings; code-splitting intact (ROI modal ~8.58 kB gzip stays out of the initial bundle).
 
 ### Phase 8 — Performance optimization + QA
 - Bundle/code-split review, Lighthouse, cross-browser, final motion/FPS QA, a11y pass.
@@ -90,5 +114,5 @@ Verified (headless chromium, `/tmp/overflow-check.mjs`): **zero horizontal overf
 2. Read `docs/CLAUDE_CODE_BUILD_BRIEF.md` (authoritative) and `CLAUDE.md` (brand context), then this file.
 3. Verify baseline: `npm run build` (expect success, ~59 modules) or `npm run dev`.
 4. **Hard constraints:** never edit `src/data/content.js`; never modify Phase 4 3D (`Hero3D.jsx`, `three/crystalScene.js`, `hooks/useHeroMode.js`); don't change the Phase 3 section order/layout; keep everything gated on `prefers-reduced-motion`; no layout shift; don't regress 3D FPS.
-5. Not a git repo — no version control; changes are on disk only.
+5. Git repo (see "Version control" at top). `main` = baseline; Phase 7 lives on `phase-7-responsive-stabilization` (unmerged). Branch before committing new work.
 6. Work phase-by-phase, validate each, stop for approval before starting the next. **Phase 7 complete — currently awaiting approval to start Phase 8.**
