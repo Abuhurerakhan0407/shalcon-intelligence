@@ -30,17 +30,26 @@ export function initMagnetic(root = document) {
 
   const els = Array.from(root.querySelectorAll(SELECTOR));
   const cleanups = [];
+  const invalidators = []; // clears each element's cached rect
 
   els.forEach((el) => {
     const xTo = gsap.quickTo(el, "x", { duration: 0.4, ease: "power3.out" });
     const yTo = gsap.quickTo(el, "y", { duration: 0.4, ease: "power3.out" });
 
+    // Cached bounds (Phase 8A) — reading getBoundingClientRect() on every
+    // pointermove forces a layout each frame. Instead we read once on enter and
+    // reuse it; scroll/resize invalidate it so it stays correct.
+    let rect = null;
+    const readRect = () => { rect = el.getBoundingClientRect(); };
+    invalidators.push(() => { rect = null; });
+
+    const onEnter = () => readRect();
     const onMove = (e) => {
-      const r = el.getBoundingClientRect();
-      const relX = e.clientX - (r.left + r.width / 2);
-      const relY = e.clientY - (r.top + r.height / 2);
+      if (!rect) readRect();
+      const relX = e.clientX - (rect.left + rect.width / 2);
+      const relY = e.clientY - (rect.top + rect.height / 2);
       const dist = Math.hypot(relX, relY);
-      const radius = Math.max(r.width, r.height) / 2 + RADIUS_PAD;
+      const radius = Math.max(rect.width, rect.height) / 2 + RADIUS_PAD;
       if (dist > radius) {
         xTo(0);
         yTo(0);
@@ -52,18 +61,32 @@ export function initMagnetic(root = document) {
       yTo(Math.max(-MAX_PULL, Math.min(MAX_PULL, relY * strength)));
     };
     const onLeave = () => {
+      rect = null;
       xTo(0);
       yTo(0);
     };
 
-    el.addEventListener("pointermove", onMove);
-    el.addEventListener("pointerleave", onLeave);
+    // Passive — none of these call preventDefault (transform-only pull).
+    el.addEventListener("pointerenter", onEnter, { passive: true });
+    el.addEventListener("pointermove", onMove, { passive: true });
+    el.addEventListener("pointerleave", onLeave, { passive: true });
     cleanups.push(() => {
+      el.removeEventListener("pointerenter", onEnter);
       el.removeEventListener("pointermove", onMove);
       el.removeEventListener("pointerleave", onLeave);
       gsap.set(el, { x: 0, y: 0 });
     });
   });
 
-  return () => cleanups.forEach((fn) => fn());
+  // One shared scroll/resize listener invalidates all cached rects (positions
+  // change on scroll) — cheaper than per-move layout reads. Passive.
+  const invalidateAll = () => invalidators.forEach((fn) => fn());
+  window.addEventListener("scroll", invalidateAll, { passive: true });
+  window.addEventListener("resize", invalidateAll, { passive: true });
+
+  return () => {
+    window.removeEventListener("scroll", invalidateAll);
+    window.removeEventListener("resize", invalidateAll);
+    cleanups.forEach((fn) => fn());
+  };
 }

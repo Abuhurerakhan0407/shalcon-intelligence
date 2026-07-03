@@ -56,6 +56,17 @@ export function initCountUp(root = document) {
     const meta = parseValue(raw);
     if (!meta) return; // non-numeric (e.g. "24/7") — leave the rendered value alone
 
+    // CLS guard (Phase 8A) — the element currently holds the FINAL value (React
+    // rendered `raw`), i.e. its widest state. Lock that width before we swap in
+    // "0" so the number growing back up (0 → target) can never widen the box and
+    // shift neighbours. inline-block so min-width applies; block flow/left-align
+    // is visually unchanged (siblings are separate block rows).
+    const reserve = Math.ceil(el.getBoundingClientRect().width);
+    if (reserve > 0) {
+      el.style.display = "inline-block";
+      el.style.minWidth = `${reserve}px`;
+    }
+
     const proxy = { v: 0 };
     el.textContent = format(0, meta);
 
@@ -66,7 +77,7 @@ export function initCountUp(root = document) {
       scrollTrigger: {
         trigger: el,
         start: "top 90%",
-        toggleActions: "play none none none",
+        once: true, // self-kills after the single count-up (Phase 8A)
       },
       onUpdate: () => {
         el.textContent = format(proxy.v, meta);
@@ -78,8 +89,6 @@ export function initCountUp(root = document) {
     });
     tweens.push(tween);
   });
-
-  ScrollTrigger.refresh();
 
   return () => {
     tweens.forEach((t) => {

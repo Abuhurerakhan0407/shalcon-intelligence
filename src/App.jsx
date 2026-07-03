@@ -79,6 +79,9 @@ export default function App() {
       disposeReveal = reveal.initScrollReveals();
       disposeMagnetic = magnetic.initMagnetic();
       disposeCountUp = countUp.initCountUp();
+      // Single coordinated ScrollTrigger.refresh() after BOTH reveal + countUp
+      // have registered (Phase 8A) — replaces two back-to-back refreshes.
+      reveal.refreshAll();
     });
 
     return () => {

@@ -11,8 +11,10 @@ gsap.registerPlugin(ScrollTrigger);
  * gsap.from() so the *natural* state is the visible one — if JS ever fails,
  * content stays visible (no permanent hiding, no layout shift).
  *
- * No blur, no scale distortion. Reveals fire once (toggleActions play-once).
- * Caller must skip this entirely when prefers-reduced-motion is set.
+ * No blur, no scale distortion. Reveals fire once (`once: true` → the trigger
+ * kill()s itself after firing, so it stops listening on scroll/resize and never
+ * costs recalc for the rest of the session). Caller must skip this entirely when
+ * prefers-reduced-motion is set.
  *
  * @returns {() => void} cleanup that kills all triggers/tweens it created.
  */
@@ -28,13 +30,10 @@ export function initScrollReveals() {
       scrollTrigger: {
         trigger: el,
         start: "top 85%",
-        toggleActions: "play none none none",
+        once: true, // self-kills after the one-time reveal (Phase 8A)
       },
     })
   );
-
-  // Ensure positions are correct once layout/fonts settle.
-  ScrollTrigger.refresh();
 
   return () => {
     tweens.forEach((t) => {
@@ -42,4 +41,14 @@ export function initScrollReveals() {
       t.kill();
     });
   };
+}
+
+/**
+ * refreshAll — single coordinated ScrollTrigger.refresh() (Phase 8A).
+ * Previously initScrollReveals() and initCountUp() each refreshed at boot (two
+ * back-to-back full-document reflows). The caller now invokes this ONCE after
+ * both have registered their triggers, so positions settle with a single reflow.
+ */
+export function refreshAll() {
+  ScrollTrigger.refresh();
 }

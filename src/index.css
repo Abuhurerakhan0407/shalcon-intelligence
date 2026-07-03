@@ -1,8 +1,24 @@
-/* ── Google Fonts (kept identical to source imports, brief §2) ── */
-@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@300;400;500;600&family=Syne+Mono&display=swap");
+/* ── Fonts ──
+   Self-hosted latin WOFF2 subsets (Phase 8A perf). Replaces the render-blocking
+   Google Fonts CSS @import that chained first paint / hero-headline (LCP) behind
+   an external stylesheet fetch. Same families + weights → identical typography.
+   The hero weight (Syne 800) and body (IBM Plex Mono 400) are <link rel=preload>-ed
+   in index.html so the LCP text paints in-font with no swap reflow. font-display
+   remains swap so text is never blocked. @font-face must follow @import rules. */
 
 /* ── Tailwind v4 ── */
 @import "tailwindcss";
+
+/* Self-hosted latin WOFF2 subset — display:swap, weights match the prior import. */
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:300;font-display:swap;src:url('/fonts/ibm-plex-mono-300.woff2') format('woff2');}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/ibm-plex-mono-400.woff2') format('woff2');}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url('/fonts/ibm-plex-mono-500.woff2') format('woff2');}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url('/fonts/ibm-plex-mono-600.woff2') format('woff2');}
+@font-face{font-family:'Syne';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/syne-400.woff2') format('woff2');}
+@font-face{font-family:'Syne';font-style:normal;font-weight:600;font-display:swap;src:url('/fonts/syne-600.woff2') format('woff2');}
+@font-face{font-family:'Syne';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/syne-700.woff2') format('woff2');}
+@font-face{font-family:'Syne';font-style:normal;font-weight:800;font-display:swap;src:url('/fonts/syne-800.woff2') format('woff2');}
+@font-face{font-family:'Syne Mono';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/syne-mono-400.woff2') format('woff2');}
 
 /* ── Brand design tokens exposed as CSS vars (brief §2 palette) ── */
 @theme {
