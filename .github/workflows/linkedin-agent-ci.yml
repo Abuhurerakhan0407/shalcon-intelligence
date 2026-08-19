@@ -1,0 +1,33 @@
+name: LinkedIn Agent CI
+
+on:
+  pull_request:
+    paths:
+      - 'apps/linkedin-agent/**'
+      - '.github/workflows/linkedin-agent-ci.yml'
+  push:
+    branches:
+      - 'agent/linkedin-agent-v1-foundation'
+    paths:
+      - 'apps/linkedin-agent/**'
+      - '.github/workflows/linkedin-agent-ci.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/linkedin-agent
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: apps/linkedin-agent/package.json
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Typecheck and build
+        run: npm run build
