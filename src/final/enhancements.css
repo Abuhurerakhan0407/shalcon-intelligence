@@ -1,0 +1,152 @@
+/* Premium motion accents: the project visuals should feel like active systems,
+   not static mockups. These loops only touch paint/compositor-friendly values. */
+
+.capability-rail {
+  position: relative;
+  isolation: isolate;
+  mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
+}
+
+.project-visual-inner {
+  transform-style: preserve-3d;
+  contain: paint;
+}
+
+/* GSAP owns the lamp's transform. Center it without a baseline transform so
+   resize/reflow never leaves a stale translated X value. */
+.cta-lamp { left: -5%; transform: none; }
+
+.network-core {
+  animation: networkCoreSignal 4.6s ease-in-out infinite;
+}
+.net-node {
+  animation: networkNodeFloat 4.2s ease-in-out infinite;
+  will-change: translate;
+}
+.net-node:nth-of-type(2) { animation-delay: -.7s; }
+.net-node:nth-of-type(3) { animation-delay: -1.4s; }
+.net-node:nth-of-type(4) { animation-delay: -2.1s; }
+.net-node:nth-of-type(5) { animation-delay: -2.8s; }
+.net-node:nth-of-type(6) { animation-delay: -3.5s; }
+.network-art svg path {
+  stroke-dasharray: 4 10;
+  animation: networkRoute 9s linear infinite;
+}
+
+.dash-chart b {
+  transform-origin: bottom;
+  animation: dashboardSignal 4.4s ease-in-out infinite alternate;
+  will-change: scale, opacity;
+}
+.dash-chart b:nth-child(2) { animation-delay: -.6s; }
+.dash-chart b:nth-child(3) { animation-delay: -1.2s; }
+.dash-chart b:nth-child(4) { animation-delay: -1.8s; }
+.dash-chart b:nth-child(5) { animation-delay: -2.4s; }
+.dash-chart b:nth-child(6) { animation-delay: -3s; }
+.dash-chart b:nth-child(7) { animation-delay: -3.6s; }
+
+.layer-cursor {
+  animation: layerCursorDrift 3.8s cubic-bezier(.16,1,.3,1) infinite;
+  will-change: translate, box-shadow;
+}
+.mail-layer.front i {
+  position: relative;
+  overflow: hidden;
+}
+.mail-layer.front i::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.75), transparent);
+  translate: -150% 0;
+  animation: layerSignal 3.6s ease-in-out infinite;
+}
+
+.matrix-grid i {
+  animation: matrixBreath 4.8s ease-in-out infinite;
+}
+.matrix-grid i:nth-child(2n) { animation-delay: -.8s; }
+.matrix-grid i:nth-child(3n) { animation-delay: -1.6s; }
+.matrix-grid i:nth-child(4n) { animation-delay: -2.4s; }
+.matrix-line {
+  transform-origin: left;
+  animation: matrixRoute 3.2s cubic-bezier(.16,1,.3,1) infinite;
+}
+
+.project-progress span.active {
+  animation: progressSignal 1.9s ease-in-out infinite;
+}
+
+.primary-btn,
+.nav-cta {
+  position: relative;
+  overflow: hidden;
+}
+.primary-btn::before,
+.nav-cta::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,.42) 48%, transparent 76%);
+  translate: -150% 0;
+  transition: translate .65s cubic-bezier(.16,1,.3,1);
+  pointer-events: none;
+}
+.primary-btn:hover::before,
+.nav-cta:hover::before { translate: 150% 0; }
+
+@keyframes networkCoreSignal {
+  0%,100% { box-shadow: 0 0 60px rgba(0,255,138,.09); }
+  50% { box-shadow: 0 0 0 10px rgba(0,255,138,.018), 0 0 86px rgba(0,255,138,.19); }
+}
+@keyframes networkNodeFloat {
+  0%,100% { translate: 0 0; }
+  50% { translate: 0 -6px; }
+}
+@keyframes networkRoute { to { stroke-dashoffset: -140; } }
+@keyframes dashboardSignal {
+  0% { scale: 1 .78; opacity: .62; }
+  100% { scale: 1 1; opacity: 1; }
+}
+@keyframes layerCursorDrift {
+  0%,100% { translate: 0 0; box-shadow: 0 16px 34px rgba(0,255,138,.18); }
+  50% { translate: -12px -10px; box-shadow: 0 22px 48px rgba(0,255,138,.3); }
+}
+@keyframes layerSignal {
+  0%,25% { translate: -150% 0; opacity: 0; }
+  50% { opacity: .85; }
+  72%,100% { translate: 150% 0; opacity: 0; }
+}
+@keyframes matrixBreath {
+  0%,100% { opacity: .68; }
+  50% { opacity: 1; }
+}
+@keyframes matrixRoute {
+  0%,15% { scale: 0 1; opacity: .25; }
+  55% { scale: 1 1; opacity: 1; }
+  100% { scale: 1 1; opacity: .2; }
+}
+@keyframes progressSignal {
+  0%,100% { box-shadow: 0 0 8px rgba(0,255,138,.2); }
+  50% { box-shadow: 0 0 18px rgba(0,255,138,.62); }
+}
+
+@media (max-width: 900px) {
+  .capability-rail { mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
+  .net-node { animation-duration: 5.4s; }
+  .dash-chart b { animation-duration: 5.8s; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .network-core,
+  .net-node,
+  .network-art svg path,
+  .dash-chart b,
+  .layer-cursor,
+  .mail-layer.front i::after,
+  .matrix-grid i,
+  .matrix-line,
+  .project-progress span.active {
+    animation: none !important;
+  }
+}
