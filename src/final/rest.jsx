@@ -12,6 +12,42 @@ function IndustrySignal() {
   );
 }
 
+function IndustryIcon({ index }) {
+  const common = { viewBox: "0 0 24 24", fill: "none", className: "industry-icon-svg" };
+  const stroke = { stroke: "currentColor", strokeWidth: 1.6, strokeLinecap: "round", strokeLinejoin: "round" };
+
+  if (index === 0) {
+    return <div className="industry-icon" aria-hidden="true"><svg {...common}><path d="M4 19h16" {...stroke}/><path d="M7 19V10.5L12 7l5 3.5V19" {...stroke}/><path d="M10.25 19v-4.25h3.5V19" {...stroke}/></svg></div>;
+  }
+  if (index === 1) {
+    return <div className="industry-icon" aria-hidden="true"><svg {...common}><rect x="4.5" y="5" width="15" height="14" rx="2.5" {...stroke}/><path d="M8 9.5h8M8 13h5M7.25 3.75v2.5M16.75 3.75v2.5" {...stroke}/></svg></div>;
+  }
+  if (index === 2) {
+    return <div className="industry-icon" aria-hidden="true"><svg {...common}><path d="M12 3.8l6 2.7v4.7c0 4.1-2.4 7.6-6 9-3.6-1.4-6-4.9-6-9V6.5l6-2.7Z" {...stroke}/><path d="M9.4 12.2l1.7 1.7 3.5-4" {...stroke}/></svg></div>;
+  }
+  if (index === 3) {
+    return <div className="industry-icon" aria-hidden="true"><svg {...common}><path d="M7 8.5h10c1.7 0 3 1.3 3 3v3.5H4V11.5c0-1.7 1.3-3 3-3Z" {...stroke}/><path d="M9 8.5V7a3 3 0 0 1 6 0v1.5M4 15h16v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2Z" {...stroke}/></svg></div>;
+  }
+  if (index === 4) {
+    return <div className="industry-icon" aria-hidden="true"><svg {...common}><circle cx="9" cy="8" r="2.7" {...stroke}/><path d="M4.8 18c.6-2.7 2.5-4.3 4.2-4.3 1.6 0 3.5 1.6 4.1 4.3M15.3 9.1h4.4M17.5 6.9v4.4" {...stroke}/></svg></div>;
+  }
+  if (index === 5) {
+    return <div className="industry-icon" aria-hidden="true"><svg {...common}><path d="M4.5 18.5h15" {...stroke}/><path d="M6.5 18.5V10l5.5-4 5.5 4v8.5" {...stroke}/><path d="M8.5 11.2h3M8.5 14h3" {...stroke}/></svg></div>;
+  }
+  return <div className="industry-icon" aria-hidden="true"><svg {...common}><rect x="4.5" y="5.5" width="15" height="13" rx="3" {...stroke}/><path d="M8 12h8M12 8v8" {...stroke}/></svg></div>;
+}
+
+function CustomWorkflow() {
+  return (
+    <div className="custom-workflow" aria-hidden="true">
+      <div className="custom-workflow-chiprow"><span>Intake</span><span>Logic</span><span>CRM</span><span>WhatsApp</span></div>
+      <div className="custom-workflow-rail" />
+      <div className="custom-workflow-nodes"><i/><i/><i/><i/><i/></div>
+      <div className="custom-workflow-footer"><span>Human handoff</span><b/></div>
+    </div>
+  );
+}
+
 function ProductionSignal({ index }) {
   if (index === 0) return <div className="production-signal escalation" aria-hidden="true"><span/><span/><span/><i/></div>;
   if (index === 1) return <div className="production-signal integration" aria-hidden="true"><span/><span/><span/><i/></div>;
@@ -25,12 +61,29 @@ export function Industries() {
       <Reveal className="section-heading"><div><span className="eyebrow"><span>06</span> INDUSTRIES</span><h2>Different businesses. Same friction.</h2></div><p>The interface changes. The underlying problems are familiar: slow response, duplicated work, broken handoffs and disconnected systems.</p></Reveal>
       <div className="industry-grid">
         {INDUSTRIES.map(([name, desc], i) => (
-          <TiltCard className="industry-card" key={name} delay={i * 0.035} depth={5}>
-            <span>0{i + 1}</span><h3>{name}</h3><p>{desc}</p><i>↗</i><IndustrySignal/>
+          <TiltCard className={`industry-card industry-card-${i + 1}`} key={name} delay={i * 0.035} depth={5} data-cursor="VIEW">
+            <span>0{i + 1}</span>
+            <IndustryIcon index={i}/>
+            <h3>{name}</h3>
+            <p>{desc}</p>
+            <i>↗</i>
+            <IndustrySignal/>
           </TiltCard>
         ))}
-        <TiltCard className="industry-card custom-industry" delay={.16} depth={5}><span>07</span><h3>Custom</h3><p>Your workflow, mapped from scratch.</p><i>↗</i><IndustrySignal/></TiltCard>
       </div>
+
+      <TiltCard className="industry-card custom-feature-card" delay={.18} depth={6} data-cursor="CUSTOM">
+        <div className="custom-feature-copy">
+          <span>07</span>
+          <h3>Custom Systems</h3>
+          <p>Built around your workflow, not forced into a template. Mapped from scratch, integrated end-to-end, and designed for how your team actually operates.</p>
+          <div className="custom-feature-tags"><small>Mapped from scratch</small><small>Integrated end-to-end</small><small>Human handoff ready</small></div>
+        </div>
+        <div className="custom-feature-visual">
+          <IndustryIcon index={6}/>
+          <CustomWorkflow/>
+        </div>
+      </TiltCard>
     </section>
   );
 }
