@@ -78,11 +78,9 @@ function createFlowTimeline(gsap) {
     defaults: { ease: "none" },
     scrollTrigger: {
       trigger: stage,
-      start: "top 11%",
-      end: "+=1500",
-      pin: true,
-      scrub: 0.75,
-      anticipatePin: 1,
+      start: "top 78%",
+      end: "bottom 22%",
+      scrub: 0.7,
       invalidateOnRefresh: true,
     },
   });
