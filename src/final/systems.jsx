@@ -1,5 +1,6 @@
 import { SERVICES } from "./data.js";
 import { Reveal } from "./ui.jsx";
+import { TiltCard } from "./effects.jsx";
 
 function ServiceSignal({ index }) {
   if (index === 0) {
@@ -32,7 +33,7 @@ export function Services() {
       </Reveal>
       <div className="bento-grid">
         {SERVICES.map((service, i) => (
-          <Reveal key={service.title} className={`service-card ${service.size}`} delay={i * 0.035}>
+          <TiltCard key={service.title} className={`service-card ${service.size}`} delay={i * 0.035} depth={4.5}>
             <div className="card-glow" />
             <div className="service-top"><span>{service.n}</span><i>↗</i></div>
             <ServiceSignal index={i} />
@@ -41,7 +42,7 @@ export function Services() {
               <p>{service.body}</p>
             </div>
             <small>{service.tag}</small>
-          </Reveal>
+          </TiltCard>
         ))}
       </div>
     </section>
