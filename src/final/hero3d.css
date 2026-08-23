@@ -1,0 +1,183 @@
+.hero-story {
+  min-height: 100svh;
+  overflow: hidden;
+}
+
+.hero-story .hero-visual {
+  position: relative;
+  height: min(720px, 74vh);
+  min-height: 540px;
+  border-radius: 34px;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(0,255,138,.05), transparent 44%),
+    linear-gradient(145deg, rgba(255,255,255,.018), rgba(255,255,255,.004));
+  border: 1px solid rgba(255,255,255,.055);
+  box-shadow: inset 0 0 80px rgba(0,0,0,.35), 0 30px 90px rgba(0,0,0,.2);
+}
+
+.hero-story .hero-visual::before,
+.hero-story .hero-visual::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.hero-story .hero-visual::before {
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.024) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.024) 1px, transparent 1px);
+  background-size: 34px 34px;
+  mask-image: radial-gradient(circle at center, #000 12%, transparent 74%);
+  opacity: .52;
+}
+
+.hero-story .hero-visual::after {
+  left: 9%; right: 9%; top: 50%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,255,138,.5), transparent);
+  box-shadow: 0 0 24px rgba(0,255,138,.22);
+  opacity: .34;
+}
+
+.hero-canvas {
+  position: absolute;
+  inset: -8%;
+  z-index: 1;
+}
+
+.hero-canvas canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.hero-scene-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  font-family: var(--mono);
+}
+
+.scene-label {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 10px;
+  border: 1px solid rgba(255,255,255,.11);
+  border-radius: 999px;
+  background: rgba(4,7,6,.66);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #b8c0bb;
+  font: 500 7px/1 var(--mono);
+  letter-spacing: .13em;
+  opacity: 0;
+  transform: scale(.82);
+  will-change: transform, opacity;
+}
+
+.scene-label::before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 12px rgba(0,255,138,.8);
+}
+
+.scene-crm { left: 8%; top: 25%; }
+.scene-api { right: 8%; top: 27%; }
+.scene-data { left: 10%; bottom: 24%; }
+.scene-human { right: 9%; bottom: 23%; }
+.scene-wa { left: 50%; bottom: 9%; transform: translateX(-50%) scale(.82); }
+.scene-agent { left: 50%; top: 8%; transform: translateX(-50%) scale(.82); }
+
+.hero-stage-readout {
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  right: 18px;
+  height: 20px;
+  overflow: hidden;
+}
+
+.hero-stage {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #6f7872;
+  font: 500 8px/1 var(--mono);
+  letter-spacing: .13em;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.hero-transition-copy {
+  position: absolute;
+  left: clamp(20px,4vw,64px);
+  right: clamp(20px,4vw,64px);
+  bottom: 25px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(10px);
+  font: 500 7px/1 var(--mono);
+  letter-spacing: .13em;
+  color: #6f7872;
+}
+
+.hero-transition-copy i {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(0,255,138,.06), rgba(0,255,138,.52), rgba(0,255,138,.06));
+}
+
+.hero-story .hero-scroll-cue {
+  transition: opacity .25s ease;
+}
+
+@media (max-width: 1100px) {
+  .hero-story .hero-visual { min-height: 500px; height: 600px; }
+}
+
+@media (max-width: 900px) {
+  .hero-story .hero-visual {
+    height: 540px;
+    min-height: 540px;
+    border-radius: 26px;
+  }
+  .hero-canvas { inset: -4%; }
+  .hero-transition-copy { display: none; }
+}
+
+@media (max-width: 640px) {
+  .hero-story .hero-visual {
+    height: 410px;
+    min-height: 410px;
+    border-radius: 20px;
+  }
+  .hero-story .hero-visual::before { background-size: 26px 26px; }
+  .scene-label { padding: 6px 8px; font-size: 6px; }
+  .scene-crm { left: 3%; top: 27%; }
+  .scene-api { right: 3%; top: 29%; }
+  .scene-data { left: 4%; bottom: 25%; }
+  .scene-human { right: 4%; bottom: 24%; }
+  .scene-agent { top: 10%; }
+  .scene-wa { bottom: 9%; }
+  .hero-stage-readout { left: 12px; top: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-story .hero-visual {
+    border-color: rgba(255,255,255,.07);
+  }
+}
