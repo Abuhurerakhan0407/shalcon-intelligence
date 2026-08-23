@@ -4,10 +4,13 @@ import { CapabilityRail, Hero } from "./final/hero.jsx";
 import { OrchestrationFlow, Services } from "./final/systems.jsx";
 import { Projects, UseCases } from "./final/projects.jsx";
 import { About, FinalCTA, Footer, Industries, Process, Production, ROICalculator } from "./final/rest.jsx";
+import { usePortfolioMotion } from "./final/motion.jsx";
 
 export default function App() {
   const [loaded, setLoaded] = useState(false);
   const reduced = useReducedMotionPreference();
+
+  usePortfolioMotion(loaded);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoaded(true), reduced ? 0 : 700);
