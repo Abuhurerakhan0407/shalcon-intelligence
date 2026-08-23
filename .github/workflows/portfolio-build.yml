@@ -45,7 +45,6 @@ jobs:
             qa
           retention-days: 1
       - name: Publish production dist branch
-        if: github.event_name == 'push'
         run: |
           cp -R dist /tmp/abu-portfolio-2-dist
           git config user.name "github-actions[bot]"
