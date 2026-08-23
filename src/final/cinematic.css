@@ -101,7 +101,7 @@
 .flow-node { will-change: opacity, filter; }
 .flow-node.orchestrator { transform-style:preserve-3d; }
 .flow-story-readout { position:absolute;left:24px;top:22px;z-index:5;height:18px;right:24px;overflow:hidden;pointer-events:none; }
-.flow-story-step { position:absolute;left:0;top:0;font:500 8px/1 var(--mono);letter-spacing:.12em;color:#667069;opacity:0;transform:translateY(9px); }
+.flow-story-step { position:absolute;left:0;top:0;font:500 8px/1 var(--mono);letter-spacing:.12em;color:var(--muted);opacity:0;transform:translateY(9px); }
 
 .project-sticky { perspective: 1300px; }
 .project-sticky .project-visual-inner { transform-style: preserve-3d; backface-visibility:hidden; }
