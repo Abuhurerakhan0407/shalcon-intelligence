@@ -1,0 +1,6 @@
+button:focus-visible,
+a:focus-visible,
+[tabindex]:focus-visible {
+  outline: 1px solid var(--signal);
+  outline-offset: 4px;
+}

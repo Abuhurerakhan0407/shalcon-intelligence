@@ -8,272 +8,354 @@ const CONTACT = {
 };
 
 const capabilities = [
-  "AI Agents",
-  "Multi-Agent Systems",
-  "Business Automation",
-  "Workflow Orchestration",
-  "CRM + WhatsApp",
-  "API Integrations",
-  "Internal Tools",
-  "AI SaaS",
-  "Data + Reporting",
+  {
+    no: "01",
+    title: "AI & Voice Agents",
+    short: "Agents that listen, answer, qualify, route and act.",
+    detail: "Voice, chat, support and knowledge agents with memory, tools, guardrails and human escalation.",
+    use: "Support · Intake · Booking · Qualification",
+  },
+  {
+    no: "02",
+    title: "Workflow Orchestration",
+    short: "Multiple agents and workflows working as one system.",
+    detail: "I design the handoffs between triggers, decisions, tools, data and people instead of leaving automations isolated.",
+    use: "Multi-agent · Routing · Retries · Handoffs",
+  },
+  {
+    no: "03",
+    title: "CRM, WhatsApp & Lead Ops",
+    short: "From first inquiry to qualified conversation.",
+    detail: "Lead capture, enrichment, qualification, follow-up, reminders, pipeline updates and sales handoff across channels.",
+    use: "CRM · WhatsApp · Email · Calendar",
+  },
+  {
+    no: "04",
+    title: "Internal Tools & Web Apps",
+    short: "Software shaped around the process—not the other way around.",
+    detail: "Dashboards, portals, admin tools and operational apps for teams whose workflow does not fit generic software.",
+    use: "Portals · Admin · Dashboards · Operations",
+  },
+  {
+    no: "05",
+    title: "AI SaaS, ERP & Custom Software",
+    short: "Products with real business logic behind the interface.",
+    detail: "Multi-tenant SaaS, vertical ERPs, AI features, roles, workflows, billing logic and the systems that make products usable.",
+    use: "SaaS · ERP · Product systems",
+  },
+  {
+    no: "06",
+    title: "API & Systems Integration",
+    short: "Existing tools finally sharing context.",
+    detail: "I connect CRMs, messaging, databases, business apps and custom APIs so information moves once and stays consistent.",
+    use: "APIs · Webhooks · Sync · Middleware",
+  },
+  {
+    no: "07",
+    title: "Document & Data Automation",
+    short: "Turn unstructured work into usable data and next actions.",
+    detail: "Extract, validate, transform, route and generate documents or records without creating another manual review queue.",
+    use: "Extraction · Validation · Generation · Routing",
+  },
+  {
+    no: "08",
+    title: "Reporting & Observability",
+    short: "Know what happened after the automation ran.",
+    detail: "Operational reporting, alerts and traces that show completed work, failures, handoffs and where a system needs improvement.",
+    use: "Reporting · Alerts · Logs · Insights",
+  },
 ];
 
-const services = [
+const systemSteps = [
   {
-    id: "agents",
-    index: "01",
-    title: "AI Agents",
-    desc: "Voice, chat, support and knowledge agents that handle real work, keep context and escalate when a human should take over.",
-    example: "Intake · Support · Booking · Qualification",
-    size: "wide",
+    no: "01",
+    label: "Inquiry arrives",
+    meta: "03:14 PM · Website form",
+    text: "A new lead enters once. The system creates one source of truth instead of five tabs and a copy-paste ritual.",
   },
   {
-    id: "orchestration",
-    index: "02",
-    title: "Workflow Orchestration",
-    desc: "Multiple workflows, agents and tools coordinated as one system instead of isolated automations that stop talking to each other.",
-    example: "Triggers · Routing · Retries · Human handoff",
-    size: "tall",
+    no: "02",
+    label: "AI qualifies",
+    meta: "Intent + fit + urgency",
+    text: "The agent asks the useful questions, identifies buying intent and separates a real opportunity from noise.",
   },
   {
-    id: "crm",
-    index: "03",
-    title: "CRM + WhatsApp Systems",
-    desc: "Lead capture, qualification, follow-ups, reminders, pipeline updates and handoffs connected across the customer journey.",
-    example: "WhatsApp · CRM · Email · Calendar",
-    size: "small",
+    no: "03",
+    label: "CRM is written",
+    meta: "Contact + context + stage",
+    text: "The record is updated automatically with the conversation context, not a vague note someone has to decode later.",
   },
   {
-    id: "tools",
-    index: "04",
-    title: "Internal Tools + Web Apps",
-    desc: "Purpose-built dashboards, portals and operational tools for processes that generic software cannot handle cleanly.",
-    example: "Portals · Dashboards · Admin tools",
-    size: "small",
+    no: "04",
+    label: "Follow-up starts",
+    meta: "WhatsApp · Email",
+    text: "The next message is triggered by the lead state—not by someone remembering to chase it after lunch.",
   },
   {
-    id: "saas",
-    index: "05",
-    title: "AI SaaS + Custom Software",
-    desc: "From product concept to production software: multi-tenant apps, AI features, business logic and the systems behind them.",
-    example: "SaaS · ERP · AI products · APIs",
-    size: "wide",
+    no: "05",
+    label: "Meeting gets booked",
+    meta: "Calendar + reminders",
+    text: "Availability, booking, confirmations and reminders happen inside the same flow without another manual handoff.",
   },
   {
-    id: "data",
-    index: "06",
-    title: "Data + Reporting",
-    desc: "Data pipelines and reporting that show what automation completed, what failed and where the business needs attention.",
-    example: "Sync · Reporting · Alerts · Insights",
-    size: "small",
+    no: "06",
+    label: "Human takes over",
+    meta: "Qualified context attached",
+    text: "The person receives the conversation, qualification and next action. Automation stops exactly where judgment becomes valuable.",
+  },
+  {
+    no: "07",
+    label: "System reports back",
+    meta: "Outcome + failure + next signal",
+    text: "The workflow leaves a trace: what happened, what failed, what converted and what should improve next.",
   },
 ];
 
 const projects = [
   {
-    number: "01",
-    name: "Edqora",
+    no: "01",
+    name: "EDQORA",
     type: "K–12 School ERP / SIS",
-    stage: "Live + selling",
-    intro: "A full school operations platform built for admissions, academics, fees, staff, communication and daily administration.",
-    role: "Product strategy, system design, automation, web and go-to-market.",
-    systems: ["Student Information", "Admissions", "Fees + Accounting", "Attendance", "Exams", "HR + Payroll", "Transport", "Parent Portal"],
-    signal: "BUSINESS SOFTWARE",
+    stage: "Built + selling",
+    accent: "#8da5ff",
+    problem: "Schools run admissions, fees, attendance, exams, staff and communication across disconnected tools and manual follow-ups.",
+    building: "A full operating system for school administration—one product connecting the daily work of admins, teachers, students and parents.",
+    role: "Product strategy · System architecture · Automation · Web · Go-to-market",
+    systems: ["Admissions", "SIS", "Fees", "Attendance", "Exams", "HR", "Transport", "Parent portal"],
+    proves: "Vertical SaaS thinking, operational depth, multi-role product design and business-system integration.",
   },
   {
-    number: "02",
-    name: "Pagevelope",
+    no: "02",
+    name: "PAGEVELOPE",
     type: "Visual Email Design SaaS",
     stage: "In development",
-    intro: "A design-first platform for building animated, email-safe campaigns and exporting them into real ecommerce marketing workflows.",
-    role: "Product concept, UX architecture, SaaS system design and build orchestration.",
-    systems: ["Visual Builder", "Compatibility Testing", "Animation Controls", "Preview", "Exports", "Campaign History"],
-    signal: "DESIGN + SAAS",
+    accent: "#ff9bc8",
+    problem: "Designers can make beautiful web experiences, but email production still forces them into a much narrower technical workflow.",
+    building: "A visual product for designing animated, email-safe campaigns, testing compatibility and exporting into ecommerce marketing stacks.",
+    role: "Product concept · UX architecture · SaaS system design · Build orchestration",
+    systems: ["Visual builder", "Animation controls", "Compatibility", "Preview", "Exports", "Campaign history"],
+    proves: "Design-tool product thinking, technical constraints, SaaS architecture and builder UX.",
   },
   {
-    number: "03",
-    name: "Madarsa ERP",
+    no: "03",
+    name: "MADARSA ERP",
     type: "Urdu-first Institution ERP",
     stage: "In development",
-    intro: "A customizable ERP for madarsas and Urdu-medium institutions, covering academics, finance, people and administration in one system.",
-    role: "Product architecture, data model, workflow design and implementation planning.",
+    accent: "#f0bd72",
+    problem: "Madarsas and Urdu-medium institutions need serious management software without forcing their operations into generic school products.",
+    building: "A customizable ERP for academics, finance, people and administration with an Urdu-first product direction.",
+    role: "Product architecture · Data model · Workflow design · Implementation planning",
     systems: ["Students", "Fees", "Attendance", "Exams", "Staff", "Hostel", "Library", "Urdu-first UX"],
-    signal: "VERTICAL ERP",
+    proves: "Domain modelling, localization, ERP architecture and configurable workflows.",
   },
   {
-    number: "04",
-    name: "AI Software Factory",
+    no: "04",
+    name: "AI SOFTWARE FACTORY",
     type: "Agentic Build Infrastructure",
-    stage: "R&D / active build",
-    intro: "An internal system for turning scoped product work into coordinated planning, implementation, review and deployment workflows.",
-    role: "Agent orchestration, workflow architecture, tooling and deployment design.",
-    systems: ["Mission Control", "Planning Agents", "Execution", "Human Gates", "GitHub", "Vercel", "Observability"],
-    signal: "AGENT SYSTEMS",
+    stage: "Active R&D",
+    accent: "#00ff8a",
+    problem: "AI coding becomes unreliable when planning, execution, review and deployment live as separate conversations.",
+    building: "An internal system that coordinates planning, implementation, human approval, GitHub, deployment and observability as one build workflow.",
+    role: "Agent orchestration · Workflow architecture · Tooling · Deployment design",
+    systems: ["Mission control", "Planning", "Execution", "Human gates", "GitHub", "Vercel", "Observability"],
+    proves: "Multi-agent systems, tool orchestration, approval boundaries and AI-native operations.",
   },
 ];
 
-const useCases = [
-  ["New lead arrives", "Qualify, enrich, route and update CRM"],
-  ["Missed call", "Trigger AI follow-up and booking flow"],
-  ["Form submitted", "Validate, sync systems and notify owner"],
-  ["Document received", "Extract data and start the next workflow"],
-  ["Customer asks a question", "Answer instantly or escalate with context"],
-  ["Meeting gets booked", "Prepare records, reminders and handoff"],
-  ["Report is due", "Generate and deliver the latest operational view"],
+const sectors = [
+  ["Healthcare", "Patient intake · booking · follow-up · support"],
+  ["EdTech", "Admissions · student ops · fees · communication"],
+  ["Insurance", "Qualification · renewals · claims intake · documents"],
+  ["E-commerce", "Support · recovery · lifecycle · operations"],
+  ["HR", "Screening · scheduling · onboarding · documents"],
+  ["Real Estate", "Qualification · follow-up · booking · CRM"],
+  ["Custom", "Your workflow, mapped from the ground up"],
 ];
 
-const industries = [
-  { name: "Healthcare", text: "Patient intake, appointment workflows, support and operational follow-up.", code: "HC" },
-  { name: "EdTech", text: "Admissions, student operations, fee reminders and support systems.", code: "ED" },
-  { name: "Insurance", text: "Lead qualification, renewals, documents, claims intake and follow-up.", code: "IN" },
-  { name: "E-commerce", text: "Support, cart recovery, customer operations and lifecycle automation.", code: "EC" },
-  { name: "HR", text: "Screening, scheduling, onboarding, documents and internal workflows.", code: "HR" },
-  { name: "Real Estate", text: "Lead routing, qualification, follow-up, booking and CRM operations.", code: "RE" },
-  { name: "Custom Workflows", text: "When your business process does not fit a template, we design the system around it.", code: "++" },
-];
-
-const production = [
-  ["01", "Human escalation", "AI knows when confidence is low, risk is high or a person simply needs to take over."],
-  ["02", "System integration", "CRM, messaging, APIs, databases and internal tools share context instead of becoming new silos."],
-  ["03", "Failure handling", "Retries, fallbacks and exception paths are designed before the happy path gets celebrated."],
-  ["04", "Monitoring", "You can see what ran, what failed, what was handed off and where the workflow needs improvement."],
+const principles = [
+  ["01", "Human judgment stays human", "Automation handles repetition. High-risk, low-confidence or exceptional cases reach the right person with context attached."],
+  ["02", "Integrate before replacing", "A useful system should work with the tools the business already depends on whenever that makes more sense than rebuilding everything."],
+  ["03", "Design the failure path", "Retries, fallbacks, duplicate prevention and exception handling belong in the architecture—not in a panicked patch after launch."],
+  ["04", "Everything should leave a trace", "If a workflow cannot show what ran, what changed and what failed, it is hard to trust and harder to improve."],
 ];
 
 const process = [
-  ["01", "Audit", "Understand the repetitive work, bottlenecks, systems and edge cases."],
-  ["02", "Architect", "Map agents, workflows, data, integrations and human checkpoints."],
-  ["03", "Build", "Implement the automation, software and interfaces as one system."],
-  ["04", "Deploy", "Test real workflows, permissions, failures and handoffs before rollout."],
-  ["05", "Improve", "Measure, refine and expand only where the system earns it."],
+  ["01", "Audit", "Map the actual work: people, tools, triggers, repetition, delays and edge cases."],
+  ["02", "Architect", "Decide what should be automated, what stays human and how every system connects."],
+  ["03", "Build", "Create the agents, workflows, software and integrations as one operating system."],
+  ["04", "Deploy", "Test with real data, permissions, failures and handoffs before expanding usage."],
+  ["05", "Improve", "Observe outcomes, remove friction and extend the system only where it earns the complexity."],
 ];
 
-const assistantTopics = {
-  start: ["What does Abu build?", "Show current projects", "How can AI automate my business?", "What industries do you work with?", "How does a project start?"],
-  work: ["Explain workflow orchestration", "Can you build custom software?", "Do you only build chatbots?", "What can be automated?", "Show current projects"],
-  projects: ["Tell me about Edqora", "What is Pagevelope?", "What is Madarsa ERP?", "What is the AI Software Factory?", "What does this prove?"],
-  process: ["What happens in an audit?", "How do you handle failures?", "Can you use my existing tools?", "How do humans stay in control?", "How do I start?"],
-};
+const assistantAnswers = [
+  {
+    keys: ["edqora"],
+    answer: "Edqora is a K–12 school ERP/SIS that connects admissions, students, fees, attendance, exams, HR, transport and parent-facing operations. Abu works across product, automation, system design and go-to-market.",
+  },
+  {
+    keys: ["pagevelope"],
+    answer: "Pagevelope is a visual email-design SaaS for animated, email-safe campaigns. The interesting part is not just the editor—it is compatibility, preview, export and the technical rules email clients impose.",
+  },
+  {
+    keys: ["madarsa"],
+    answer: "Madarsa ERP is an Urdu-first institution management product covering academics, finance, staff and administration with a configurable vertical-ERP approach.",
+  },
+  {
+    keys: ["software factory", "factory"],
+    answer: "The AI Software Factory is an internal agentic system for coordinating planning, implementation, human approval, GitHub, deployment and observability instead of treating AI coding as one giant chat.",
+  },
+  {
+    keys: ["orchestration", "multi-agent", "multiple agents"],
+    answer: "Orchestration is the part between the pieces. A trigger starts work, agents make or support decisions, tools take actions, data stays synchronized, failures have fallback paths and humans take over where judgment matters.",
+  },
+  {
+    keys: ["voice", "agent", "chatbot"],
+    answer: "Agents are one capability, not the whole offer. Abu also builds workflow orchestration, CRM and WhatsApp systems, lead qualification, integrations, internal tools, web apps, SaaS, ERP, document automation and reporting.",
+  },
+  {
+    keys: ["automate", "automation", "what can"],
+    answer: "Good candidates are repetitive, rule-heavy and cross-system: qualification, follow-up, CRM updates, reminders, document handling, appointment flows, support triage, reporting and internal handoffs.",
+  },
+  {
+    keys: ["start", "audit", "project", "work together"],
+    answer: "A project starts by mapping how the process works today. From there Abu separates automation from human judgment, defines the architecture, then builds and deploys the connected system.",
+  },
+];
 
 function useReveal() {
   useEffect(() => {
     const nodes = [...document.querySelectorAll("[data-reveal]")];
     if (!nodes.length) return;
-    const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
-    if (reduced) {
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches) {
       nodes.forEach((node) => node.classList.add("is-visible"));
       return;
     }
-    const io = new IntersectionObserver(
-      (entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add("is-visible")),
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("is-visible");
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -7% 0px" }
     );
-    nodes.forEach((node) => io.observe(node));
-    return () => io.disconnect();
+    nodes.forEach((node) => observer.observe(node));
+    return () => observer.disconnect();
   }, []);
 }
 
-function ScrollProgress() {
+function useSectionSpy() {
+  const [section, setSection] = useState("top");
+  useEffect(() => {
+    const ids = ["top", "capabilities", "system-trace", "projects", "sectors", "principles", "process", "about"];
+    const nodes = ids.map((id) => document.getElementById(id)).filter(Boolean);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const current = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (current?.target?.id) setSection(current.target.id);
+      },
+      { threshold: [0.2, 0.45, 0.7], rootMargin: "-20% 0px -55% 0px" }
+    );
+    nodes.forEach((node) => observer.observe(node));
+    return () => observer.disconnect();
+  }, []);
+  return section;
+}
+
+function Cursor() {
+  const ref = useRef(null);
+  useEffect(() => {
+    if (window.matchMedia?.("(pointer: coarse)")?.matches) return;
+    const el = ref.current;
+    if (!el) return;
+    let x = -40;
+    let y = -40;
+    let tx = x;
+    let ty = y;
+    let frame = 0;
+    const move = (event) => {
+      tx = event.clientX;
+      ty = event.clientY;
+      el.dataset.mode = event.target.closest?.("[data-cursor]") ? "active" : "idle";
+    };
+    const tick = () => {
+      x += (tx - x) * 0.24;
+      y += (ty - y) * 0.24;
+      el.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      frame = requestAnimationFrame(tick);
+    };
+    window.addEventListener("pointermove", move, { passive: true });
+    frame = requestAnimationFrame(tick);
+    return () => {
+      window.removeEventListener("pointermove", move);
+      cancelAnimationFrame(frame);
+    };
+  }, []);
+  return <div className="cursor-dot" ref={ref} data-mode="idle" aria-hidden="true" />;
+}
+
+function SideProgress() {
   const [progress, setProgress] = useState(0);
   useEffect(() => {
-    const onScroll = () => {
+    const update = () => {
       const max = document.documentElement.scrollHeight - window.innerHeight;
       setProgress(max > 0 ? window.scrollY / max : 0);
     };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
-  }, []);
-  return <div className="scroll-progress" style={{ transform: `scaleX(${progress})` }} aria-hidden="true" />;
-}
-
-function SmoothCursor() {
-  const cursorRef = useRef(null);
-  const labelRef = useRef(null);
-  useEffect(() => {
-    if (window.matchMedia?.("(pointer: coarse)")?.matches) return;
-    const cursor = cursorRef.current;
-    const label = labelRef.current;
-    if (!cursor) return;
-    let tx = -100;
-    let ty = -100;
-    let x = tx;
-    let y = ty;
-    let raf = 0;
-    const move = (e) => {
-      tx = e.clientX;
-      ty = e.clientY;
-      const target = e.target.closest?.("[data-cursor]");
-      const text = target?.getAttribute("data-cursor") || "";
-      cursor.classList.toggle("cursor-active", Boolean(target));
-      if (label) label.textContent = text;
-    };
-    const tick = () => {
-      x += (tx - x) * 0.2;
-      y += (ty - y) * 0.2;
-      cursor.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-      raf = requestAnimationFrame(tick);
-    };
-    window.addEventListener("pointermove", move, { passive: true });
-    raf = requestAnimationFrame(tick);
-    return () => {
-      window.removeEventListener("pointermove", move);
-      cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
     };
   }, []);
   return (
-    <div className="cursor" ref={cursorRef} aria-hidden="true">
-      <span ref={labelRef} />
+    <div className="side-progress" aria-hidden="true">
+      <span style={{ transform: `scaleY(${progress})` }} />
     </div>
   );
 }
 
-function FloatingNav() {
-  const [visible, setVisible] = useState(true);
-  const [compact, setCompact] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  useEffect(() => {
-    let last = 0;
-    const onScroll = () => {
-      const y = window.scrollY;
-      setCompact(y > 36);
-      setVisible(y < 120 || y < last || Math.abs(y - last) < 8);
-      last = y;
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+function Navigation({ current }) {
+  const [open, setOpen] = useState(false);
   const go = (id) => {
-    setMenuOpen(false);
-    document.querySelector(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    setOpen(false);
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+  const labelMap = {
+    top: "INTRO",
+    capabilities: "CAPABILITIES",
+    "system-trace": "SYSTEM TRACE",
+    projects: "CURRENT WORK",
+    sectors: "SECTORS",
+    principles: "PRINCIPLES",
+    process: "PROCESS",
+    about: "ABOUT",
   };
   return (
     <>
-      <header className={`nav-shell ${compact ? "compact" : ""} ${visible ? "shown" : "hidden"}`}>
-        <button className="brand" onClick={() => go("#top")} data-cursor="TOP" aria-label="Back to top">
-          <span className="brand-mark">A</span>
-          <span className="brand-copy"><strong>ABU HURERA</strong><small>AI SYSTEMS + AUTOMATION</small></span>
+      <header className="nav-line">
+        <button className="nav-name" onClick={() => go("top")} data-cursor>
+          ABU HURERA
         </button>
-        <nav className="desktop-nav" aria-label="Primary navigation">
-          <button onClick={() => go("#work")}>Work</button>
-          <button onClick={() => go("#systems")}>Systems</button>
-          <button onClick={() => go("#about")}>About</button>
-          <a className="nav-cta" href={CONTACT.calendly} target="_blank" rel="noreferrer" data-cursor="BOOK">Discuss a project <span>↗</span></a>
+        <div className="nav-state">
+          <span className="nav-signal" />
+          <span>{labelMap[current] || "PORTFOLIO"}</span>
+        </div>
+        <nav className="nav-links" aria-label="Primary">
+          <button onClick={() => go("projects")}>Work</button>
+          <button onClick={() => go("capabilities")}>Capabilities</button>
+          <button onClick={() => go("about")}>About</button>
+          <a href={CONTACT.calendly} target="_blank" rel="noreferrer">Start a project ↗</a>
         </nav>
-        <button className="mobile-menu-button" onClick={() => setMenuOpen((v) => !v)} aria-expanded={menuOpen} aria-label="Toggle menu">
-          <span>{menuOpen ? "CLOSE" : "MENU"}</span>
-        </button>
+        <button className="nav-menu" onClick={() => setOpen((value) => !value)} aria-expanded={open}>{open ? "CLOSE" : "MENU"}</button>
       </header>
-      <div className={`mobile-menu ${menuOpen ? "open" : ""}`}>
-        <button onClick={() => go("#work")}>01 / Work</button>
-        <button onClick={() => go("#systems")}>02 / Systems</button>
-        <button onClick={() => go("#projects")}>03 / Projects</button>
-        <button onClick={() => go("#about")}>04 / About</button>
-        <a href={CONTACT.calendly} target="_blank" rel="noreferrer">Discuss a project ↗</a>
+      <div className={`mobile-nav ${open ? "open" : ""}`}>
+        <button onClick={() => go("projects")}>Current work</button>
+        <button onClick={() => go("capabilities")}>Capabilities</button>
+        <button onClick={() => go("system-trace")}>How systems work</button>
+        <button onClick={() => go("process")}>Process</button>
+        <button onClick={() => go("about")}>About Abu</button>
+        <a href={CONTACT.calendly} target="_blank" rel="noreferrer">Start a project ↗</a>
       </div>
     </>
   );
@@ -281,103 +363,68 @@ function FloatingNav() {
 
 function Hero() {
   return (
-    <section className="hero section" id="top">
-      <div className="hero-grid" aria-hidden="true" />
-      <div className="hero-glow glow-a" aria-hidden="true" />
-      <div className="hero-glow glow-b" aria-hidden="true" />
-      <div className="section-inner hero-inner">
-        <div className="hero-kicker" data-reveal>
-          <span className="status-dot" /> AVAILABLE FOR SELECT PROJECTS
-        </div>
-        <h1 className="hero-title" data-reveal>
-          I BUILD <span>AI-POWERED</span><br />BUSINESS SYSTEMS.
+    <section className="hero" id="top">
+      <svg className="hero-route" viewBox="0 0 1400 900" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M-80 680 C190 590 280 740 490 620 C715 492 770 305 1015 360 C1200 402 1255 240 1490 160" />
+        <circle r="5" className="route-dot"><animateMotion dur="9s" repeatCount="indefinite" path="M-80 680 C190 590 280 740 490 620 C715 492 770 305 1015 360 C1200 402 1255 240 1490 160" /></circle>
+      </svg>
+      <div className="hero-meta rail-meta" data-reveal>
+        <span>FOUNDER / SHALCON INTELLIGENCE</span>
+        <span>MUMBAI / INDIA</span>
+        <span>AVAILABLE FOR SELECT BUILDS</span>
+      </div>
+      <div className="hero-main">
+        <div className="hero-name" data-reveal>ABU HURERA</div>
+        <h1 data-reveal>
+          I build <em>systems</em><br />that move work.
         </h1>
-        <div className="hero-bottom" data-reveal>
-          <p className="hero-copy">
-            I design and build end-to-end systems that connect AI agents, workflows, software, data and human teams — so repetitive work stops living in somebody’s browser tabs.
+        <div className="hero-lower" data-reveal>
+          <p>
+            AI agents, software, automation, data and people—designed as one operating flow instead of a pile of disconnected tools.
           </p>
           <div className="hero-actions">
-            <a href={CONTACT.calendly} target="_blank" rel="noreferrer" className="primary-button magnetic" data-cursor="START">
-              Discuss a project <span>↗</span>
-            </a>
-            <button className="text-button" onClick={() => document.querySelector("#work")?.scrollIntoView({ behavior: "smooth" })} data-cursor="SCROLL">
-              See what I build <span>↓</span>
-            </button>
+            <a className="arrow-link" href={CONTACT.calendly} target="_blank" rel="noreferrer" data-cursor>Discuss a project <span>↗</span></a>
+            <button className="arrow-link muted-link" onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })} data-cursor>See current work <span>↓</span></button>
           </div>
         </div>
-        <div className="hero-foot" data-reveal>
-          <span>FOUNDER / SHALCON INTELLIGENCE</span>
-          <span>MUMBAI, INDIA</span>
-          <span className="hero-foot-personality">LESS TAB JUGGLING. MORE WORK FINISHING.</span>
-        </div>
       </div>
+      <aside className="hero-index" data-reveal>
+        <div className="hero-index-title">CURRENTLY BUILDING</div>
+        {projects.map((project) => (
+          <button key={project.name} onClick={() => document.getElementById(`project-${project.no}`)?.scrollIntoView({ behavior: "smooth" })}>
+            <span>{project.no}</span><strong>{project.name}</strong><small>{project.stage}</small>
+          </button>
+        ))}
+      </aside>
+      <div className="hero-footnote" data-reveal>AI AUTOMATION · PRODUCT SYSTEMS · WEB DEVELOPMENT</div>
     </section>
   );
 }
 
-function CapabilityRail() {
-  const doubled = [...capabilities, ...capabilities];
+function CapabilityLedger() {
+  const [active, setActive] = useState(0);
   return (
-    <div className="capability-rail" aria-label="Capabilities">
-      <div className="marquee-track">
-        {doubled.map((item, i) => (
-          <span key={`${item}-${i}`}><b>{item}</b><i>✦</i></span>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function ServiceVisual({ id }) {
-  if (id === "orchestration") {
-    return (
-      <div className="mini-orbit" aria-hidden="true">
-        <span className="orbit-center">AI</span>
-        <span className="orbit-node n1">CRM</span>
-        <span className="orbit-node n2">API</span>
-        <span className="orbit-node n3">MSG</span>
-      </div>
-    );
-  }
-  if (id === "agents") {
-    return (
-      <div className="voice-bars" aria-hidden="true">
-        {[24, 52, 80, 38, 68, 92, 44, 74, 58, 30, 65, 42].map((h, i) => <span key={i} style={{ height: `${h}%`, animationDelay: `${i * -0.08}s` }} />)}
-      </div>
-    );
-  }
-  if (id === "crm") {
-    return <div className="mini-flow" aria-hidden="true"><span>LEAD</span><i>→</i><span>CRM</span><i>→</i><span>FOLLOW-UP</span></div>;
-  }
-  if (id === "tools") {
-    return <div className="mini-ui" aria-hidden="true"><div /><div /><div /><div /></div>;
-  }
-  if (id === "saas") {
-    return <div className="mini-stack" aria-hidden="true"><span>PRODUCT</span><span>LOGIC</span><span>DATA</span><span>AI</span></div>;
-  }
-  return <div className="mini-chart" aria-hidden="true"><span style={{ height: "35%" }} /><span style={{ height: "58%" }} /><span style={{ height: "47%" }} /><span style={{ height: "82%" }} /><span style={{ height: "72%" }} /></div>;
-}
-
-function WhatIBuild() {
-  return (
-    <section className="section" id="work">
-      <div className="section-inner">
-        <div className="section-heading" data-reveal>
-          <div className="eyebrow">01 / WHAT I BUILD</div>
-          <h2>Systems, not random automations.</h2>
-          <p>I can build individual agents or tools. The real value usually appears when they share context, data and responsibility.</p>
+    <section className="section ledger-section" id="capabilities">
+      <div className="section-shell">
+        <div className="section-intro" data-reveal>
+          <span className="section-kicker">WHAT I CAN BUILD</span>
+          <h2>Capability without the buzzword soup.</h2>
+          <p>Each capability can stand alone. The better systems usually combine several of them around one business process.</p>
         </div>
-        <div className="service-bento">
-          {services.map((service) => (
-            <article className={`service-card ${service.size}`} key={service.id} data-reveal data-cursor="EXPLORE">
-              <div className="card-glow" aria-hidden="true" />
-              <div className="service-top"><span>{service.index}</span><span className="service-plus">+</span></div>
-              <ServiceVisual id={service.id} />
-              <div className="service-copy">
-                <h3>{service.title}</h3>
-                <p>{service.desc}</p>
-                <small>{service.example}</small>
-              </div>
+        <div className="ledger" data-reveal>
+          {capabilities.map((item, index) => (
+            <article
+              key={item.title}
+              className={`ledger-row ${active === index ? "active" : ""}`}
+              onMouseEnter={() => setActive(index)}
+              onFocus={() => setActive(index)}
+              tabIndex={0}
+              data-cursor
+            >
+              <span className="ledger-no">{item.no}</span>
+              <div className="ledger-title-wrap"><h3>{item.title}</h3><p>{item.short}</p></div>
+              <div className="ledger-detail"><p>{item.detail}</p><small>{item.use}</small></div>
+              <span className="ledger-mark">{active === index ? "—" : "+"}</span>
             </article>
           ))}
         </div>
@@ -386,151 +433,99 @@ function WhatIBuild() {
   );
 }
 
-function SystemFlow() {
-  const nodes = [
-    ["flow-lead", "LEAD", "16%", "15%"],
-    ["flow-agent", "AI AGENT", "42%", "32%"],
-    ["flow-orch", "ORCHESTRATOR", "70%", "50%"],
-    ["flow-crm", "CRM", "26%", "74%"],
-    ["flow-wa", "WHATSAPP", "50%", "78%"],
-    ["flow-api", "APIs", "74%", "74%"],
-    ["flow-human", "HUMAN", "88%", "90%"],
-  ];
-  return (
-    <section className="section system-section" id="systems">
-      <div className="section-inner">
-        <div className="section-heading split-heading" data-reveal>
-          <div><div className="eyebrow">02 / ORCHESTRATION</div><h2>Everything should talk to everything.</h2></div>
-          <p>I don’t just build a chatbot and leave. I design the flow around the business — what starts it, what each system does, where data moves and when a human takes control.</p>
-        </div>
-        <div className="system-canvas" data-reveal>
-          <div className="canvas-grid" aria-hidden="true" />
-          <svg className="beam-map" viewBox="0 0 1000 520" preserveAspectRatio="none" aria-hidden="true">
-            <path d="M180 90 C260 110 310 145 420 170" />
-            <path d="M490 188 C560 210 610 245 705 260" />
-            <path d="M715 280 C590 330 440 365 270 385" />
-            <path d="M720 282 C650 340 580 380 510 405" />
-            <path d="M735 278 C760 330 775 355 770 385" />
-            <path d="M785 395 C835 420 865 435 890 470" />
-          </svg>
-          <svg className="beam-map pulse" viewBox="0 0 1000 520" preserveAspectRatio="none" aria-hidden="true">
-            <path d="M180 90 C260 110 310 145 420 170" />
-            <path d="M490 188 C560 210 610 245 705 260" />
-            <path d="M715 280 C590 330 440 365 270 385" />
-            <path d="M720 282 C650 340 580 380 510 405" />
-            <path d="M735 278 C760 330 775 355 770 385" />
-            <path d="M785 395 C835 420 865 435 890 470" />
-          </svg>
-          {nodes.map(([id, label, left, top]) => (
-            <div className={`flow-node ${id}`} style={{ left, top }} key={id}>
-              <span>{label}</span>
-              <i />
-            </div>
-          ))}
-          <div className="system-caption">
-            <span>TRIGGER</span><i>→</i><span>DECISION</span><i>→</i><span>ACTION</span><i>→</i><span>DATA</span><i>→</i><span>HUMAN</span>
-          </div>
-        </div>
-        <div className="system-note" data-reveal>
-          <strong>No magic wand.</strong> Just well-connected systems with clear responsibilities.
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ProjectVisual({ project }) {
-  return (
-    <div className="project-visual-shell">
-      <div className="project-visual-top"><span>{project.signal}</span><span className="live-dot" />{project.stage.toUpperCase()}</div>
-      <div className="project-display">
-        <div className="project-display-header"><span>{project.name}</span><i>↗</i></div>
-        <div className="project-display-body">
-          <div className="project-side-rail"><span /><span /><span /><span /></div>
-          <div className="project-dashboard">
-            <div className="dash-hero"><small>SYSTEM</small><strong>{project.type}</strong></div>
-            <div className="dash-grid">
-              {project.systems.slice(0, 6).map((item, i) => <div key={item} className={`dash-cell c${i}`}><span>{String(i + 1).padStart(2, "0")}</span><b>{item}</b></div>)}
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="project-visual-foot"><span>PRODUCT / SYSTEM DESIGN</span><span>{project.number} / 04</span></div>
-    </div>
-  );
-}
-
-function Projects() {
+function SystemTrace() {
   const [active, setActive] = useState(0);
   const refs = useRef([]);
   useEffect(() => {
-    const io = new IntersectionObserver(
+    const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) setActive(Number(visible.target.dataset.index));
+        if (visible) setActive(Number(visible.target.dataset.step));
       },
-      { threshold: [0.35, 0.55, 0.75], rootMargin: "-20% 0px -30% 0px" }
+      { threshold: [0.4, 0.7], rootMargin: "-22% 0px -32% 0px" }
     );
-    refs.current.forEach((node) => node && io.observe(node));
-    return () => io.disconnect();
+    refs.current.forEach((node) => node && observer.observe(node));
+    return () => observer.disconnect();
   }, []);
   return (
-    <section className="section projects-section" id="projects">
-      <div className="section-inner">
-        <div className="section-heading split-heading" data-reveal>
-          <div><div className="eyebrow">03 / CURRENTLY BUILDING</div><h2>Current projects are the proof.</h2></div>
-          <p>No invented case studies. These are products and systems I’m actively building, operating or taking to market — and the work shows what I can actually handle.</p>
+    <section className="section trace-section" id="system-trace">
+      <div className="section-shell">
+        <div className="trace-heading" data-reveal>
+          <span className="section-kicker">ONE EVENT / SEVEN HANDOFFS</span>
+          <h2>Orchestration is what happens between the boxes.</h2>
         </div>
-        <div className="projects-desktop">
-          <div className="projects-sticky"><ProjectVisual project={projects[active]} /></div>
-          <div className="projects-copy-column">
-            {projects.map((project, i) => (
-              <article className={`project-story ${active === i ? "active" : ""}`} key={project.name} data-index={i} ref={(node) => (refs.current[i] = node)}>
-                <div className="project-meta"><span>{project.number}</span><span>{project.stage}</span></div>
-                <h3>{project.name}</h3>
-                <h4>{project.type}</h4>
-                <p>{project.intro}</p>
-                <div className="project-role"><small>MY ROLE</small><span>{project.role}</span></div>
-                <div className="project-tags">{project.systems.map((tag) => <span key={tag}>{tag}</span>)}</div>
+        <div className="trace-layout">
+          <div className="trace-sticky">
+            <div className="trace-stage">
+              <div className="trace-stage-top"><span>LIVE EXAMPLE</span><span>{systemSteps[active].no} / 07</span></div>
+              <div className="trace-stage-main">
+                <span className="trace-ghost">{systemSteps[active].no}</span>
+                <div><small>{systemSteps[active].meta}</small><h3>{systemSteps[active].label}</h3></div>
+              </div>
+              <div className="trace-rail" aria-hidden="true">
+                {systemSteps.map((step, index) => <span key={step.no} className={index <= active ? "done" : ""} />)}
+              </div>
+              <p>{systemSteps[active].text}</p>
+            </div>
+          </div>
+          <div className="trace-copy">
+            {systemSteps.map((step, index) => (
+              <article key={step.no} data-step={index} ref={(node) => (refs.current[index] = node)} className={active === index ? "active" : ""}>
+                <span>{step.no}</span><h4>{step.label}</h4><p>{step.text}</p>
               </article>
             ))}
           </div>
         </div>
-        <div className="projects-mobile">
-          {projects.map((project) => (
-            <article className="project-mobile-card" key={project.name} data-reveal>
-              <ProjectVisual project={project} />
-              <div className="project-mobile-copy">
-                <div className="project-meta"><span>{project.number}</span><span>{project.stage}</span></div>
-                <h3>{project.name}</h3><h4>{project.type}</h4><p>{project.intro}</p>
-                <div className="project-role"><small>MY ROLE</small><span>{project.role}</span></div>
-                <div className="project-tags">{project.systems.slice(0, 6).map((tag) => <span key={tag}>{tag}</span>)}</div>
-              </div>
-            </article>
-          ))}
-        </div>
       </div>
     </section>
   );
 }
 
-function UseCases() {
+function ProjectChapter({ project }) {
   return (
-    <section className="section usecase-section">
-      <div className="section-inner">
-        <div className="section-heading" data-reveal>
-          <div className="eyebrow">04 / REAL BUSINESS USE</div>
-          <h2>What can actually be automated?</h2>
-          <p>Start with an event. Decide what should happen next. Connect the systems. Keep a human available for judgment.</p>
+    <article className="project-chapter" id={`project-${project.no}`} style={{ "--project-accent": project.accent }}>
+      <div className="project-title-side" data-reveal>
+        <div className="project-label"><span>BUILD FILE {project.no}</span><span>{project.stage}</span></div>
+        <h3>{project.name}</h3>
+        <p className="project-type">{project.type}</p>
+        <div className="project-wordmark" aria-hidden="true">{project.name.split(" ")[0]}</div>
+      </div>
+      <div className="project-content" data-reveal>
+        <div className="project-block"><span>THE PROBLEM</span><p>{project.problem}</p></div>
+        <div className="project-block important"><span>WHAT I’M BUILDING</span><p>{project.building}</p></div>
+        <div className="project-block"><span>MY ROLE</span><p>{project.role}</p></div>
+        <div className="project-system-list"><span>SYSTEMS INSIDE</span><div>{project.systems.map((item, index) => <b key={item}><i>{String(index + 1).padStart(2, "0")}</i>{item}</b>)}</div></div>
+        <div className="project-proof"><span>WHAT THIS DEMONSTRATES</span><strong>{project.proves}</strong></div>
+      </div>
+    </article>
+  );
+}
+
+function Projects() {
+  return (
+    <section className="projects-section" id="projects">
+      <div className="projects-intro section-shell" data-reveal>
+        <span className="section-kicker">CURRENT WORK / NOT TESTIMONIALS</span>
+        <h2>I’d rather show what I’m building than invent proof I don’t have.</h2>
+        <p>These projects are active build files. They show the kinds of systems, products and problems I’m capable of handling right now.</p>
+      </div>
+      {projects.map((project) => <ProjectChapter key={project.name} project={project} />)}
+    </section>
+  );
+}
+
+function Sectors() {
+  return (
+    <section className="section sector-section" id="sectors">
+      <div className="section-shell">
+        <div className="sector-head" data-reveal>
+          <span className="section-kicker">WHERE THIS WORKS</span>
+          <h2>Different industry. Same operational friction.</h2>
         </div>
-        <div className="usecase-table" data-reveal>
-          <div className="usecase-head"><span>WHEN THIS HAPPENS</span><span>SYSTEM DOES THIS</span></div>
-          {useCases.map(([trigger, action], i) => (
-            <div className="usecase-row" key={trigger}>
-              <span className="row-index">{String(i + 1).padStart(2, "0")}</span>
-              <strong>{trigger}</strong>
-              <i>→</i>
-              <span>{action}</span>
+        <div className="sector-list" data-reveal>
+          {sectors.map(([name, use], index) => (
+            <div className="sector-row" key={name} data-cursor>
+              <span>{String(index + 1).padStart(2, "0")}</span><strong>{name}</strong><p>{use}</p><i>↗</i>
             </div>
           ))}
         </div>
@@ -539,42 +534,18 @@ function UseCases() {
   );
 }
 
-function Industries() {
+function Principles() {
   return (
-    <section className="section industries-section">
-      <div className="section-inner">
-        <div className="section-heading split-heading" data-reveal>
-          <div><div className="eyebrow">05 / INDUSTRIES</div><h2>Built around the workflow, not the label.</h2></div>
-          <p>I work most naturally where teams deal with repetitive communication, handoffs, records and operational follow-up. Custom industries are welcome.</p>
+    <section className="section principles-section" id="principles">
+      <div className="section-shell">
+        <div className="principle-head" data-reveal>
+          <span className="section-kicker">THE PART AFTER THE DEMO</span>
+          <h2>If it only works once, it doesn’t work.</h2>
         </div>
-        <div className="industry-grid">
-          {industries.map((industry, i) => (
-            <article className={`industry-card ${i === industries.length - 1 ? "industry-wide" : ""}`} key={industry.name} data-reveal data-cursor="VIEW">
-              <span className="industry-code">{industry.code}</span>
-              <div><h3>{industry.name}</h3><p>{industry.text}</p></div>
-              <span className="industry-arrow">↗</span>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ProductionReady() {
-  return (
-    <section className="section production-section">
-      <div className="section-inner">
-        <div className="section-heading" data-reveal>
-          <div className="eyebrow">06 / PRODUCTION THINKING</div>
-          <h2>Built for real business operations.</h2>
-          <p>A workflow is not finished when the happy path works once.</p>
-        </div>
-        <div className="production-grid">
-          {production.map(([num, title, text]) => (
-            <article className="production-card" key={title} data-reveal>
-              <div className="border-beam" aria-hidden="true" />
-              <span>{num}</span><h3>{title}</h3><p>{text}</p>
+        <div className="principle-grid">
+          {principles.map(([no, title, text]) => (
+            <article key={title} data-reveal>
+              <span>{no}</span><h3>{title}</h3><p>{text}</p>
             </article>
           ))}
         </div>
@@ -584,19 +555,20 @@ function ProductionReady() {
 }
 
 function Process() {
+  const [active, setActive] = useState(0);
   return (
-    <section className="section process-section">
-      <div className="section-inner">
-        <div className="section-heading split-heading" data-reveal>
-          <div><div className="eyebrow">07 / HOW I WORK</div><h2>From messy process to working system.</h2></div>
-          <p>Five steps. Not fifteen meetings.</p>
+    <section className="section process-section" id="process">
+      <div className="section-shell process-layout">
+        <div className="process-sticky" data-reveal>
+          <span className="section-kicker">HOW I WORK</span>
+          <h2>Five moves.<br /><em>Fewer meetings.</em></h2>
+          <div className="process-counter">{String(active + 1).padStart(2, "0")} <span>/ 05</span></div>
         </div>
-        <div className="timeline">
-          {process.map(([num, title, text], i) => (
-            <article className="timeline-item" key={title} data-reveal>
-              <div className="timeline-axis"><span>{num}</span>{i < process.length - 1 && <i />}</div>
-              <div className="timeline-copy"><h3>{title}</h3><p>{text}</p></div>
-            </article>
+        <div className="process-list" data-reveal>
+          {process.map(([no, title, text], index) => (
+            <button key={title} className={active === index ? "active" : ""} onMouseEnter={() => setActive(index)} onFocus={() => setActive(index)} onClick={() => setActive(index)}>
+              <span>{no}</span><div><h3>{title}</h3><p>{text}</p></div><i>{active === index ? "—" : "+"}</i>
+            </button>
           ))}
         </div>
       </div>
@@ -604,49 +576,28 @@ function Process() {
   );
 }
 
-function AnimatedNumber({ value }) {
-  const [display, setDisplay] = useState(value);
-  const prev = useRef(value);
-  useEffect(() => {
-    const start = prev.current;
-    const diff = value - start;
-    const duration = 420;
-    let startTime;
-    let raf;
-    const tick = (t) => {
-      if (!startTime) startTime = t;
-      const p = Math.min((t - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - p, 3);
-      setDisplay(Math.round(start + diff * eased));
-      if (p < 1) raf = requestAnimationFrame(tick);
-      else prev.current = value;
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [value]);
-  return <>₹{Math.max(0, display).toLocaleString("en-IN")}</>;
-}
-
-function ROICalculator() {
-  const [people, setPeople] = useState(4);
-  const [hours, setHours] = useState(8);
-  const [hourly, setHourly] = useState(350);
-  const monthly = Math.round(people * hours * hourly * 4.33);
+function ManualCost() {
+  const [people, setPeople] = useState(3);
+  const [hours, setHours] = useState(6);
+  const [rate, setRate] = useState(350);
+  const monthly = Math.round(people * hours * rate * 4.33);
   return (
-    <section className="section roi-section" id="roi">
-      <div className="section-inner roi-grid">
-        <div className="roi-copy" data-reveal>
-          <div className="eyebrow">08 / MANUAL WORK CALCULATOR</div>
-          <h2>What is repetitive work costing you?</h2>
-          <p>This is not a sales quote. It is a quick way to put a number on recurring manual effort before deciding whether automation is worth discussing.</p>
-          <small>Adjust three inputs. No signup. No mysterious “AI score”.</small>
+    <section className="section diagnostic-section">
+      <div className="section-shell diagnostic-layout" data-reveal>
+        <div>
+          <span className="section-kicker">QUICK DIAGNOSTIC</span>
+          <h2>Put a number on the repetition.</h2>
+          <p>Not an ROI promise. Just a fast way to see whether a recurring manual process is expensive enough to deserve a closer look.</p>
         </div>
-        <div className="calculator" data-reveal>
-          <label><span>People doing the task</span><b>{people}</b><input type="range" min="1" max="30" value={people} onChange={(e) => setPeople(Number(e.target.value))} /></label>
-          <label><span>Hours per person / week</span><b>{hours}h</b><input type="range" min="1" max="40" value={hours} onChange={(e) => setHours(Number(e.target.value))} /></label>
-          <label><span>Approx. hourly cost</span><b>₹{hourly.toLocaleString("en-IN")}</b><input type="range" min="100" max="2500" step="50" value={hourly} onChange={(e) => setHourly(Number(e.target.value))} /></label>
-          <div className="roi-result"><small>ESTIMATED MONTHLY MANUAL COST</small><strong><AnimatedNumber value={monthly} /></strong><span>≈ ₹{Math.round(monthly * 12).toLocaleString("en-IN")} / year</span></div>
-          <a href={CONTACT.calendly} target="_blank" rel="noreferrer" className="secondary-button" data-cursor="DISCUSS">See what can be automated <span>↗</span></a>
+        <div className="diagnostic-controls">
+          <label><span>People</span><b>{people}</b><input type="range" min="1" max="20" value={people} onChange={(e) => setPeople(Number(e.target.value))} /></label>
+          <label><span>Hours / week each</span><b>{hours}</b><input type="range" min="1" max="40" value={hours} onChange={(e) => setHours(Number(e.target.value))} /></label>
+          <label><span>Hourly cost</span><b>₹{rate}</b><input type="range" min="100" max="2000" step="50" value={rate} onChange={(e) => setRate(Number(e.target.value))} /></label>
+        </div>
+        <div className="diagnostic-result">
+          <span>ESTIMATED MONTHLY MANUAL COST</span>
+          <strong>₹{monthly.toLocaleString("en-IN")}</strong>
+          <small>≈ ₹{Math.round(monthly * 12).toLocaleString("en-IN")} / year</small>
         </div>
       </div>
     </section>
@@ -656,23 +607,23 @@ function ROICalculator() {
 function About() {
   return (
     <section className="section about-section" id="about">
-      <div className="section-inner about-grid">
-        <div className="about-visual" data-reveal>
-          <div className="portrait-card">
-            <div className="portrait-orbit" />
-            <div className="portrait-monogram">AH</div>
-            <div className="portrait-meta"><span>ABU HURERA</span><span>MUMBAI / IN</span></div>
-          </div>
+      <div className="section-shell">
+        <div className="about-statement" data-reveal>
+          <span className="section-kicker">ABOUT ABU</span>
+          <h2>I’m more interested in <em>how the work moves</em> than where the AI badge goes.</h2>
         </div>
-        <div className="about-copy" data-reveal>
-          <div className="eyebrow">09 / ABOUT</div>
-          <h2>Builder first. Tool collector second.</h2>
-          <p className="about-lead">I’m Abu Hurera, founder of Shalcon Intelligence. I work across AI automation, product systems and web development.</p>
-          <p>My focus is not “adding AI” to a business. It is understanding how work moves, where it gets stuck, and then building a system that makes the process simpler, faster and easier to operate.</p>
-          <div className="about-skills">
-            <span>AI Agents</span><span>Multi-Agent Systems</span><span>Workflow Orchestration</span><span>Web Apps</span><span>Internal Tools</span><span>AI SaaS</span><span>ERP Systems</span><span>Integrations</span>
+        <div className="about-grid" data-reveal>
+          <div className="about-copy">
+            <p>I’m Abu Hurera, founder of Shalcon Intelligence. I design AI automation, product systems and web software for businesses with repetitive work, disconnected tools or processes that have outgrown manual coordination.</p>
+            <p>My strongest work sits between disciplines: part product, part automation, part software architecture, part operations. That is usually where the interesting problems are anyway.</p>
           </div>
-          <div className="about-links"><a href={CONTACT.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a><a href={`mailto:${CONTACT.email}`}>Email ↗</a></div>
+          <dl className="about-facts">
+            <div><dt>BASE</dt><dd>Mumbai, India</dd></div>
+            <div><dt>FOCUS</dt><dd>AI systems · Automation · Product software</dd></div>
+            <div><dt>BUILDING</dt><dd>Edqora · Pagevelope · Madarsa ERP · AI Software Factory</dd></div>
+            <div><dt>WORK STYLE</dt><dd>Audit → architect → build → deploy → improve</dd></div>
+            <div><dt>AVAILABLE</dt><dd>Selected custom systems and product work</dd></div>
+          </dl>
         </div>
       </div>
     </section>
@@ -681,15 +632,15 @@ function About() {
 
 function FinalCTA() {
   return (
-    <section className="section final-cta">
-      <div className="cta-lamp" aria-hidden="true" />
-      <div className="section-inner" data-reveal>
-        <div className="eyebrow">10 / START A CONVERSATION</div>
-        <h2>Have a process your team should not be doing manually?</h2>
-        <p>Show me how it works today. I’ll help separate what should be automated, what should stay human and what the system actually needs.</p>
-        <div className="cta-actions">
-          <a href={CONTACT.calendly} target="_blank" rel="noreferrer" className="primary-button" data-cursor="START">Discuss a project <span>↗</span></a>
-          <a href={CONTACT.whatsapp} target="_blank" rel="noreferrer" className="text-button">WhatsApp <span>↗</span></a>
+    <section className="final-cta section">
+      <div className="section-shell" data-reveal>
+        <span className="section-kicker">YOUR PROCESS / NEXT</span>
+        <h2>If a process repeats every week, it probably deserves a system.</h2>
+        <p>Show me how the work happens today. I’ll help figure out what should be automated, what should stay human and what the system actually needs.</p>
+        <div className="final-links">
+          <a href={CONTACT.calendly} target="_blank" rel="noreferrer" data-cursor>Discuss a project <span>↗</span></a>
+          <a href={CONTACT.whatsapp} target="_blank" rel="noreferrer">WhatsApp ↗</a>
+          <a href={`mailto:${CONTACT.email}`}>Email ↗</a>
         </div>
       </div>
     </section>
@@ -699,59 +650,58 @@ function FinalCTA() {
 function Footer() {
   return (
     <footer className="footer">
-      <div className="section-inner footer-grid">
-        <div><strong>ABU HURERA</strong><span>Founder — Shalcon Intelligence</span></div>
+      <div className="section-shell footer-inner">
+        <div><strong>ABU HURERA</strong><span>Founder / Shalcon Intelligence</span></div>
         <div><span>AI AUTOMATION</span><span>PRODUCT SYSTEMS</span><span>WEB DEVELOPMENT</span></div>
-        <div><a href={CONTACT.linkedin} target="_blank" rel="noreferrer">LINKEDIN ↗</a><a href={`mailto:${CONTACT.email}`}>EMAIL ↗</a><a href={CONTACT.whatsapp} target="_blank" rel="noreferrer">WHATSAPP ↗</a></div>
-        <div className="footer-end"><span>MUMBAI, INDIA</span><span>© 2026</span></div>
+        <div><a href={CONTACT.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a><a href={CONTACT.whatsapp} target="_blank" rel="noreferrer">WhatsApp ↗</a><a href={`mailto:${CONTACT.email}`}>Email ↗</a></div>
+        <div><span>Mumbai / India</span><span>© 2026</span></div>
       </div>
     </footer>
   );
 }
 
-function answerAssistant(input) {
-  const q = input.toLowerCase();
-  if (q.includes("edqora")) return ["Edqora is a K–12 school ERP/SIS covering admissions, fees, attendance, exams, HR, transport and parent-facing operations. Abu works across product, automation, web and go-to-market.", "projects"];
-  if (q.includes("pagevelope")) return ["Pagevelope is a visual email-design SaaS for building animated, email-safe campaigns, testing compatibility and exporting campaigns into ecommerce marketing workflows.", "projects"];
-  if (q.includes("madarsa")) return ["Madarsa ERP is an Urdu-first, customizable institution management system for students, fees, attendance, exams, staff, hostel, library and administration.", "projects"];
-  if (q.includes("software factory") || q.includes("factory")) return ["The AI Software Factory is an internal agentic build system: mission control, planning, execution, human approval gates, GitHub, deployment and observability working together.", "projects"];
-  if (q.includes("orchestration") || q.includes("multi-agent") || q.includes("multiple")) return ["Workflow orchestration means the agent is not the whole product. A trigger starts a process, agents make or support decisions, CRMs/APIs/messaging systems act, data stays synced, failures have fallback paths and humans can take over with context.", "work"];
-  if (q.includes("chatbot") || q.includes("only")) return ["No. Chatbots are one surface. Abu also builds voice agents, multi-agent systems, CRM/WhatsApp automation, API integrations, internal tools, web apps, AI SaaS, ERPs, data flows and end-to-end business automation.", "work"];
-  if (q.includes("custom software") || q.includes("web app") || q.includes("saas")) return ["Yes. Custom software is part of the work: internal dashboards, portals, AI SaaS, ERP-style systems and workflow-specific web apps when off-the-shelf software does not fit the operation.", "work"];
-  if (q.includes("industry") || q.includes("industries")) return ["Common areas include healthcare, EdTech, insurance, ecommerce, HR and real estate. The better filter is workflow fit: repetitive communication, handoffs, records, follow-ups and multi-system operations.", "work"];
-  if (q.includes("failure") || q.includes("reliab")) return ["Production workflows need retries, fallbacks, logging, permissions and clear human escalation. A demo that works once is not the same thing as a business system you can rely on.", "process"];
-  if (q.includes("human") || q.includes("control")) return ["Humans stay in the loop where judgment matters. The system can route low-confidence cases, approvals, exceptions or high-risk actions to the right person with the context already prepared.", "process"];
-  if (q.includes("audit") || q.includes("start") || q.includes("project")) return ["A project starts by mapping the current process: people, tools, inputs, repetitive steps, bottlenecks and edge cases. From there Abu defines what should be automated, what should remain human and how the pieces connect.", "process"];
-  if (q.includes("automate") || q.includes("automation") || q.includes("what can")) return ["Good automation candidates are repetitive, rule-heavy and cross-system: lead qualification, follow-ups, CRM updates, document extraction, appointment flows, reminders, support triage, reporting and internal handoffs.", "work"];
-  if (q.includes("current") || q.includes("proof") || q.includes("build")) return ["Current work includes Edqora, Pagevelope, Madarsa ERP and an AI Software Factory. They show product architecture, vertical software, AI workflows, automation and system orchestration — without pretending unfinished work is a testimonial.", "projects"];
-  return ["Abu builds AI-powered business systems: agents, workflows, software, integrations and data working together. Pick a topic below and I’ll keep it useful — buzzword bingo not included.", "start"];
+function assistantReply(input) {
+  const value = input.toLowerCase();
+  const match = assistantAnswers.find((item) => item.keys.some((key) => value.includes(key)));
+  return match?.answer || "Abu builds connected business systems: agents, workflows, software, integrations and data working together. Ask me about a project, capability or how a workflow gets designed.";
 }
 
-function AbuAssistant() {
+const assistantSuggestions = {
+  top: ["What does Abu actually build?", "Show current projects", "What is workflow orchestration?"],
+  capabilities: ["Do you build voice agents?", "Can you build custom software?", "What can be automated?"],
+  "system-trace": ["Explain orchestration simply", "Where does a human take over?", "How are failures handled?"],
+  projects: ["Tell me about Edqora", "What is Pagevelope?", "What is the AI Software Factory?"],
+  process: ["How does a project start?", "What happens in the audit?", "Can you use my existing tools?"],
+  about: ["Why work with Abu?", "What industries does he work with?", "How do I start?"],
+};
+
+function Assistant({ current }) {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
-  const [topic, setTopic] = useState("start");
-  const [messages, setMessages] = useState([{ role: "bot", text: "Hey — I’m Abu’s portfolio assistant. Ask what he builds, how the systems work, or what he’s building right now." }]);
-  const suggestions = useMemo(() => assistantTopics[topic] || assistantTopics.start, [topic]);
+  const [messages, setMessages] = useState([
+    { role: "bot", text: "Ask about the work, the current projects or how a system gets put together." },
+  ]);
+  const suggestions = useMemo(() => assistantSuggestions[current] || assistantSuggestions.top, [current]);
   const send = (text) => {
     const value = (text || input).trim();
     if (!value) return;
-    const [reply, nextTopic] = answerAssistant(value);
-    setMessages((m) => [...m, { role: "user", text: value }, { role: "bot", text: reply }]);
-    setTopic(nextTopic);
+    setMessages((items) => [...items, { role: "user", text: value }, { role: "bot", text: assistantReply(value) }]);
     setInput("");
   };
   return (
-    <div className={`assistant-shell ${open ? "open" : ""}`}>
-      {!open && <button className="assistant-launcher" onClick={() => setOpen(true)} data-cursor="ASK"><span className="assistant-pulse" />Ask Abu’s assistant <i>↗</i></button>}
+    <div className={`assistant ${open ? "open" : ""}`}>
+      {!open && <button className="assistant-trigger" onClick={() => setOpen(true)} data-cursor><span>ASK /</span> Abu’s assistant <i>↗</i></button>}
       {open && (
-        <div className="assistant-panel" role="dialog" aria-label="Abu's assistant">
-          <div className="assistant-header"><div><span className="assistant-avatar">A</span><div><strong>ABU’S ASSISTANT</strong><small><i /> PORTFOLIO GUIDE</small></div></div><button onClick={() => setOpen(false)} aria-label="Close assistant">×</button></div>
-          <div className="assistant-messages">
-            {messages.map((m, i) => <div key={i} className={`assistant-message ${m.role}`}>{m.text}</div>)}
+        <div className="assistant-drawer" role="dialog" aria-label="Abu's assistant">
+          <div className="assistant-head"><div><span>ABU / ASSISTANT</span><small>Portfolio guide</small></div><button onClick={() => setOpen(false)} aria-label="Close">×</button></div>
+          <div className="assistant-body">
+            {messages.map((message, index) => <div key={index} className={`assistant-message ${message.role}`}>{message.text}</div>)}
           </div>
-          <div className="assistant-suggestions">{suggestions.map((s) => <button key={s} onClick={() => send(s)}>{s}</button>)}</div>
-          <form className="assistant-input" onSubmit={(e) => { e.preventDefault(); send(); }}><input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Ask about systems, projects, process..." aria-label="Ask Abu's assistant" /><button type="submit" aria-label="Send">↗</button></form>
+          <div className="assistant-suggestions">{suggestions.map((text) => <button key={text} onClick={() => send(text)}>{text}</button>)}</div>
+          <form onSubmit={(event) => { event.preventDefault(); send(); }} className="assistant-form">
+            <input value={input} onChange={(event) => setInput(event.target.value)} placeholder="Ask about systems, projects, process..." />
+            <button type="submit">↗</button>
+          </form>
         </div>
       )}
     </div>
@@ -760,33 +710,24 @@ function AbuAssistant() {
 
 export default function App() {
   useReveal();
-  useEffect(() => {
-    const onMove = (e) => {
-      document.documentElement.style.setProperty("--pointer-x", `${e.clientX}px`);
-      document.documentElement.style.setProperty("--pointer-y", `${e.clientY}px`);
-    };
-    window.addEventListener("pointermove", onMove, { passive: true });
-    return () => window.removeEventListener("pointermove", onMove);
-  }, []);
+  const current = useSectionSpy();
   return (
     <main>
-      <ScrollProgress />
-      <SmoothCursor />
-      <FloatingNav />
+      <Cursor />
+      <SideProgress />
+      <Navigation current={current} />
       <Hero />
-      <CapabilityRail />
-      <WhatIBuild />
-      <SystemFlow />
+      <CapabilityLedger />
+      <SystemTrace />
       <Projects />
-      <UseCases />
-      <Industries />
-      <ProductionReady />
+      <Sectors />
+      <Principles />
       <Process />
-      <ROICalculator />
+      <ManualCost />
       <About />
       <FinalCTA />
       <Footer />
-      <AbuAssistant />
+      <Assistant current={current} />
     </main>
   );
 }
