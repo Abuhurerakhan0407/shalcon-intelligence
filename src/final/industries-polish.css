@@ -109,7 +109,7 @@
 .custom-feature-copy > span {
   font: 500 8px var(--mono);
   letter-spacing: .12em;
-  color: #6b746f;
+  color: var(--soft);
 }
 
 .custom-feature-copy h3 {

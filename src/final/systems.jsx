@@ -90,12 +90,12 @@ export function OrchestrationFlow() {
           <path className="beam base b7" d="M794 430 C670 485 590 485 500 485" />
           <path className="beam pulse p7" d="M794 430 C670 485 590 485 500 485" />
         </svg>
-        <div className="flow-node lead"><small>EVENT</small><strong>Lead / request / action</strong></div>
-        <div className="flow-node orchestrator"><small>INTELLIGENCE LAYER</small><strong>AI Orchestrator</strong><span>understands → decides → routes</span></div>
-        <div className="flow-node system crm"><small>SYSTEM</small><strong>CRM</strong></div>
-        <div className="flow-node system whatsapp"><small>CHANNEL</small><strong>WhatsApp</strong></div>
-        <div className="flow-node system api"><small>INTEGRATION</small><strong>APIs</strong></div>
-        <div className="flow-node outcome"><small>SHARED CONTEXT</small><strong>Data + human decision</strong><span>one process, one source of truth</span></div>
+        <div className="flow-node lead" tabIndex={0}><small>EVENT</small><strong>Lead / request / action</strong><i className="node-tip">e.g. a WhatsApp message, a form submit, a missed call</i></div>
+        <div className="flow-node orchestrator" tabIndex={0}><small>INTELLIGENCE LAYER</small><strong>AI Orchestrator</strong><span>understands → decides → routes</span><i className="node-tip">reads intent, checks history, picks the next system — no manual triage</i></div>
+        <div className="flow-node system crm" tabIndex={0}><small>SYSTEM</small><strong>CRM</strong><i className="node-tip">lead logged with full context, not just a name and number</i></div>
+        <div className="flow-node system whatsapp" tabIndex={0}><small>CHANNEL</small><strong>WhatsApp</strong><i className="node-tip">reply sent from the same thread the event came from</i></div>
+        <div className="flow-node system api" tabIndex={0}><small>INTEGRATION</small><strong>APIs</strong><i className="node-tip">connects the tools you already run — no rip and replace</i></div>
+        <div className="flow-node outcome" tabIndex={0}><small>SHARED CONTEXT</small><strong>Data + human decision</strong><span>one process, one source of truth</span><i className="node-tip">a person steps in only where judgment is actually needed</i></div>
         <div className="flow-status"><span className="live-dot" /> LIVE SIGNAL PATH</div>
       </Reveal>
     </section>

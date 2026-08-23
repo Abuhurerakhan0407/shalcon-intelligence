@@ -189,7 +189,7 @@ export function Footer() {
   return (
     <footer className="footer section-shell">
       <div><strong>ABU HURERA</strong><span>AI Automation · Product Systems · Web Development</span></div>
-      <div><span>Shalcon Intelligence</span><span>Mumbai, India</span></div>
+      <div><span className="footer-shalcon"><img src="/shalcon-logo.svg" alt="" aria-hidden="true" />Shalcon Intelligence</span><span>Mumbai, India</span></div>
       <div><span>© 2026</span><a href="#top">Back to top ↑</a></div>
     </footer>
   );

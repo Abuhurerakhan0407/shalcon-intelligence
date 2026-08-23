@@ -11,11 +11,11 @@
 .card-glow { position: absolute; inset: 0; opacity: 0; background: radial-gradient(500px circle at var(--mx,50%) var(--my,50%), rgba(0,255,138,.09), transparent 45%); transition: opacity .25s; pointer-events: none; }
 .service-card:hover { transform: translateY(-5px); border-color: rgba(0,255,138,.22); background: linear-gradient(145deg, rgba(255,255,255,.038), rgba(0,255,138,.017)); }
 .service-card:hover .card-glow { opacity: 1; }.service-card:hover::after { transform: scale(1.15); }
-.service-top { display: flex; justify-content: space-between; align-items: center; font: 500 9px var(--mono); color: #67706a; }
+.service-top { display: flex; justify-content: space-between; align-items: center; font: 500 9px var(--mono); color: var(--soft); }
 .service-top i { font-style: normal; color: var(--green); opacity: .4; font-size: 15px; transition: .25s ease; }.service-card:hover .service-top i { opacity: 1; transform: translate(3px,-3px); }
 .service-card h3 { font: 600 clamp(25px,2.5vw,38px)/1.08 var(--display); letter-spacing: -.035em; margin: 0 0 16px; max-width: 600px; }
 .service-card p { color: #8e9691; font-size: 13px; line-height: 1.75; max-width: 620px; margin: 0; }
-.service-card small { margin-top: 34px; font: 500 8px var(--mono); letter-spacing: .12em; color: #5d6660; }
+.service-card small { margin-top: 34px; font: 500 8px var(--mono); letter-spacing: .12em; color: var(--soft); }
 .service-card.tall h3 { font-size: clamp(30px,3.2vw,48px); }
 .service-card.tall > div:nth-of-type(2) { margin-top: auto; margin-bottom: auto; }
 
@@ -30,9 +30,14 @@
 .beam.p2 { animation-delay: -.7s }.beam.p3{animation-delay:-1.3s}.beam.p4{animation-delay:-2s}.beam.p5{animation-delay:-2.6s}.beam.p6{animation-delay:-3.15s}.beam.p7{animation-delay:-3.6s}
 @keyframes beamTravel { to { stroke-dashoffset: -665; } }
 .flow-node { position: absolute; border: 1px solid rgba(255,255,255,.13); background: rgba(10,12,12,.92); border-radius: 16px; padding: 14px 16px; box-shadow: 0 16px 45px rgba(0,0,0,.22); z-index: 2; }
-.flow-node small { display: block; font: 500 7px var(--mono); letter-spacing: .13em; color: #626a65; margin-bottom: 5px; }.flow-node strong { display:block; font: 600 13px var(--display); letter-spacing: -.02em; }.flow-node span { display:block; color:#727a75; font-size:9px; margin-top:4px; }
+.flow-node small { display: block; font: 500 7px var(--mono); letter-spacing: .13em; color: var(--soft); margin-bottom: 5px; }.flow-node strong { display:block; font: 600 13px var(--display); letter-spacing: -.02em; }.flow-node span { display:block; color:#727a75; font-size:9px; margin-top:4px; }
 .flow-node.lead { left:50%; top: 9%; transform: translateX(-50%); min-width: 210px; text-align:center; }
 .flow-node.orchestrator { left:50%; top: 34%; transform: translate(-50%,-50%); min-width:260px; padding:20px 22px; text-align:center; border-color:rgba(0,255,138,.35); box-shadow:0 0 0 8px rgba(0,255,138,.025),0 24px 80px rgba(0,255,138,.08); }.flow-node.orchestrator small{color:var(--green)}.flow-node.orchestrator strong{font-size:19px}
 .flow-node.system { top: 60%; width: 150px; text-align:center; }.flow-node.crm{left:13%}.flow-node.whatsapp{left:50%;transform:translateX(-50%)}.flow-node.api{right:13%}
 .flow-node.outcome { left:50%; bottom: 7%; transform:translateX(-50%); min-width:300px; text-align:center; }
-.flow-status { position:absolute; left:24px; bottom:22px; display:flex; align-items:center; gap:8px; font:500 8px var(--mono); letter-spacing:.1em; color:#59615c; }
+.flow-status { position:absolute; left:24px; bottom:22px; display:flex; align-items:center; gap:8px; font:500 8px var(--mono); letter-spacing:.1em; color:var(--muted); }
+.flow-node { cursor: default; }
+.flow-node .node-tip { position:absolute; left:50%; top:calc(100% + 10px); transform:translate(-50%,4px); width:max(220px,120%); max-width:260px; padding:10px 12px; border-radius:10px; border:1px solid rgba(0,255,138,.22); background:rgba(6,8,7,.96); backdrop-filter:blur(10px); font:400 11px/1.5 var(--body); font-style:normal; color:var(--text); letter-spacing:0; text-align:center; opacity:0; pointer-events:none; transition:opacity .2s ease, transform .2s ease; z-index:6; box-shadow:0 18px 40px rgba(0,0,0,.35); }
+.flow-node.outcome .node-tip, .flow-node.lead .node-tip { top:auto; bottom:calc(100% + 10px); transform:translate(-50%,-4px); }
+.flow-node:hover .node-tip, .flow-node:focus-visible .node-tip, .flow-node:focus-within .node-tip { opacity:1; transform:translate(-50%,0); pointer-events:auto; }
+@media (pointer: coarse) { .flow-node .node-tip { display:none; } }
