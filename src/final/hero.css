@@ -15,7 +15,7 @@
 .text-link { font-size: 12px; color: #bec4c0; display: inline-flex; align-items: center; gap: 10px; padding: 12px 2px; border-bottom: 1px solid rgba(255,255,255,.14); }
 .text-link span { color: var(--green); }
 .hero-footnote { margin-top: 44px; display: flex; align-items: center; gap: 10px; font: 500 9px/1.4 var(--mono); color: #8d9490; text-transform: uppercase; letter-spacing: .08em; }
-.hero-footnote em { margin-left: 16px; color: #606763; font-style: normal; letter-spacing: 0; text-transform: none; }
+.hero-footnote em { margin-left: 16px; color: var(--soft); font-style: normal; letter-spacing: 0; text-transform: none; }
 .hero-visual { perspective: 1100px; min-width: 0; }
 .system-orb-wrap { height: min(650px, 72vh); position: relative; display: grid; place-items: center; transform-style: preserve-3d; will-change: transform; }
 .orb-aura { position: absolute; width: 70%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(0,255,138,.16), rgba(0,255,138,.03) 42%, transparent 70%); filter: blur(34px); animation: aura 5s ease-in-out infinite; }
@@ -41,8 +41,8 @@
 .orb-label::before { content:""; width: 4px; height: 4px; border-radius: 50%; background: var(--green); display: inline-block; margin-right: 6px; }
 .orb-label.l1 { top: 9%; left: 3%; }.orb-label.l2 { right: -1%; top: 25%; }.orb-label.l3 { bottom: 10%; right: 10%; }.orb-label.l4 { bottom: 6%; left: 4%; }.orb-label.l5 { left: -5%; top: 48%; }
 .orb-caption { position: absolute; bottom: 3%; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 9px; font: 500 8px var(--mono); color: #78807b; letter-spacing: .08em; white-space: nowrap; }
-.hero-scroll-cue { position: absolute; right: clamp(20px,4vw,64px); bottom: 30px; display: flex; align-items: center; gap: 12px; font: 500 8px var(--mono); letter-spacing: .12em; color: #565d59; }
-.hero-scroll-cue i { width: 42px; height: 1px; background: linear-gradient(90deg, #535b56, var(--green)); }
+.hero-scroll-cue { position: absolute; right: clamp(20px,4vw,64px); bottom: 30px; display: flex; align-items: center; gap: 12px; font: 500 8px var(--mono); letter-spacing: .12em; color: var(--muted); }
+.hero-scroll-cue i { width: 42px; height: 1px; background: linear-gradient(90deg, var(--muted), var(--green)); }
 
 .capability-rail { width: 100%; overflow: hidden; border-block: 1px solid var(--line); background: #050607; padding: 17px 0; }
 .capability-track { width: max-content; display: flex; animation: marquee 34s linear infinite; }
