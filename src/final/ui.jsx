@@ -105,14 +105,17 @@ export function Cursor() {
 export function Nav() {
   const [open, setOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
+  const [compact, setCompact] = useState(false);
   const lastY = useRef(0);
 
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY;
+      setCompact(y > 110);
       setHidden(y > 140 && y > lastY.current);
       lastY.current = y;
     };
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -123,7 +126,12 @@ export function Nav() {
       animate={{ y: hidden && !open ? -110 : 0 }}
       transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
     >
-      <nav className="nav glass-panel" aria-label="Primary navigation">
+      <motion.nav
+        className={`nav glass-panel ${compact ? "is-compact" : ""}`}
+        aria-label="Primary navigation"
+        layout
+        transition={{ layout: { type: "spring", stiffness: 180, damping: 28 } }}
+      >
         <a href="#top" className="brand" data-cursor="TOP">
           <span className="brand-mark">AH</span>
           <span className="brand-copy">Abu Hurera<small>AI Systems + Automation</small></span>
@@ -134,14 +142,14 @@ export function Nav() {
           <a href="#process">Process</a>
           <a href="#about">About</a>
         </div>
-        <MagneticLink href={CONTACT.whatsapp} className="nav-cta" external>
+        <MagneticLink href={CONTACT.whatsapp} className="nav-cta glow-border" external>
           Discuss a project <span>↗</span>
         </MagneticLink>
         <button className={`menu-btn ${open ? "open" : ""}`} onClick={() => setOpen((v) => !v)} aria-label="Toggle menu">
           <span />
           <span />
         </button>
-      </nav>
+      </motion.nav>
       {open && (
         <motion.div className="mobile-menu glass-panel" initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }}>
           {[

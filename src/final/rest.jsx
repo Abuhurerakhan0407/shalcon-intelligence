@@ -2,6 +2,22 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { CONTACT, INDUSTRIES, PROCESS } from "./data.js";
 import { MagneticLink, Reveal } from "./ui.jsx";
+import { PointerHighlight, RippleField, ScrambleText, TiltCard } from "./effects.jsx";
+
+function IndustrySignal() {
+  return (
+    <div className="industry-signal" aria-hidden="true">
+      <i/><i/><i/><i/><i/><i/><b/>
+    </div>
+  );
+}
+
+function ProductionSignal({ index }) {
+  if (index === 0) return <div className="production-signal escalation" aria-hidden="true"><span/><span/><span/><i/></div>;
+  if (index === 1) return <div className="production-signal integration" aria-hidden="true"><span/><span/><span/><i/></div>;
+  if (index === 2) return <div className="production-signal failure" aria-hidden="true"><span/><span/><span/></div>;
+  return <div className="production-signal monitoring" aria-hidden="true"><i/><i/><i/><i/><i/><i/></div>;
+}
 
 export function Industries() {
   return (
@@ -9,11 +25,11 @@ export function Industries() {
       <Reveal className="section-heading"><div><span className="eyebrow"><span>06</span> INDUSTRIES</span><h2>Different businesses. Same friction.</h2></div><p>The interface changes. The underlying problems are familiar: slow response, duplicated work, broken handoffs and disconnected systems.</p></Reveal>
       <div className="industry-grid">
         {INDUSTRIES.map(([name, desc], i) => (
-          <Reveal className="industry-card" key={name} delay={i * 0.035}>
-            <span>0{i + 1}</span><h3>{name}</h3><p>{desc}</p><i>↗</i>
-          </Reveal>
+          <TiltCard className="industry-card" key={name} delay={i * 0.035} depth={5}>
+            <span>0{i + 1}</span><h3>{name}</h3><p>{desc}</p><i>↗</i><IndustrySignal/>
+          </TiltCard>
         ))}
-        <Reveal className="industry-card custom-industry"><span>07</span><h3>Custom</h3><p>Your workflow, mapped from scratch.</p><i>↗</i></Reveal>
+        <TiltCard className="industry-card custom-industry" delay={.16} depth={5}><span>07</span><h3>Custom</h3><p>Your workflow, mapped from scratch.</p><i>↗</i><IndustrySignal/></TiltCard>
       </div>
     </section>
   );
@@ -28,8 +44,19 @@ export function Production() {
   ];
   return (
     <section className="section-shell section-pad production-section">
-      <Reveal className="section-heading compact"><div><span className="eyebrow"><span>07</span> BUILT FOR REAL BUSINESS</span><h2>Production is where the clever demo ends.</h2></div><p>Reliable systems need boring things too: permissions, logs, retries, escalation and clear ownership.</p></Reveal>
-      <div className="production-grid">{cards.map(([n, title, body], i) => <Reveal className="production-card" key={title} delay={i * .04}><div className="border-beam"/><span>{n}</span><h3>{title}</h3><p>{body}</p><small>OPERATIONS READY</small></Reveal>)}</div>
+      <Reveal className="section-heading compact"><div><span className="eyebrow"><span>07</span> BUILT FOR REAL BUSINESS</span><h2>Production is where the <PointerHighlight>clever demo ends.</PointerHighlight></h2></div><p>Reliable systems need boring things too: permissions, logs, retries, escalation and clear ownership.</p></Reveal>
+      <div className="production-grid">
+        {cards.map(([n, title, body], i) => (
+          <TiltCard className="production-card" key={title} delay={i * .04} depth={5}>
+            <div className="border-beam"/>
+            <span>{n}</span>
+            <ProductionSignal index={i}/>
+            <h3>{title}</h3>
+            <p>{body}</p>
+            <small>OPERATIONS READY</small>
+          </TiltCard>
+        ))}
+      </div>
     </section>
   );
 }
@@ -80,7 +107,7 @@ export function About() {
       <Reveal className="about-copy" delay={.08}>
         <span className="eyebrow"><span>10</span> ABOUT</span>
         <h2>Abu Hurera</h2>
-        <h3>Founder — Shalcon Intelligence</h3>
+        <h3><ScrambleText text="FOUNDER — SHALCON INTELLIGENCE" speed={18}/></h3>
         <p>I build AI automation, product systems and web software around real business operations. My strongest work is orchestration: connecting agents, workflows, CRMs, APIs, data and people so the result behaves like one system.</p>
         <div className="about-tags"><span>AI AUTOMATION</span><span>PRODUCT SYSTEMS</span><span>WEB DEVELOPMENT</span></div>
         <div className="about-links"><a href={CONTACT.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a><a href={`mailto:${CONTACT.email}`}>Email ↗</a></div>
@@ -92,12 +119,13 @@ export function About() {
 export function FinalCTA() {
   return (
     <section className="cta-section section-shell" id="contact">
+      <RippleField/>
       <div className="cta-lamp" />
       <Reveal className="cta-inner">
         <span className="eyebrow"><span>11</span> START A CONVERSATION</span>
-        <h2>Have a process your team should not be doing manually?</h2>
+        <h2>Have a process your team should not be doing <PointerHighlight>manually?</PointerHighlight></h2>
         <p>Tell me how it works today. I’ll figure out what should be automated — and what should stay human.</p>
-        <MagneticLink href={CONTACT.whatsapp} className="primary-btn large" external>Discuss a project <span>↗</span></MagneticLink>
+        <MagneticLink href={CONTACT.whatsapp} className="primary-btn large glow-border" external>Discuss a project <span>↗</span></MagneticLink>
         <div className="cta-links"><a href={CONTACT.whatsapp} target="_blank" rel="noreferrer">WhatsApp</a><a href={`mailto:${CONTACT.email}`}>Email</a><a href={CONTACT.linkedin} target="_blank" rel="noreferrer">LinkedIn</a></div>
       </Reveal>
     </section>
