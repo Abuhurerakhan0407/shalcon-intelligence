@@ -19,10 +19,10 @@ function createHeroTimeline(gsap, ScrollTrigger, { distance, scrub, mobile = fal
     scrollTrigger: {
       trigger: hero,
       start: "top top",
-      end: `+=${distance}`,
-      pin: true,
+      end: mobile ? "bottom top" : `+=${distance}`,
+      pin: !mobile,
       scrub,
-      anticipatePin: 1,
+      anticipatePin: mobile ? 0 : 1,
       invalidateOnRefresh: true,
       onUpdate: (self) => setHeroScrollState(self.progress, self.getVelocity()),
       onRefresh: (self) => setHeroScrollState(self.progress, 0),
