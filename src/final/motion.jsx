@@ -124,18 +124,39 @@ export function usePortfolioMotion(ready = true) {
 
         const mm = gsap.matchMedia();
         const pointerCleanups = [];
+        const finePointer = window.matchMedia("(pointer: fine)").matches;
 
-        document
-          .querySelectorAll(".service-card, .industry-card, .production-card, .roi-shell")
-          .forEach((surface) => {
-            const onMove = (event) => {
-              const rect = surface.getBoundingClientRect();
-              surface.style.setProperty("--mx", `${event.clientX - rect.left}px`);
-              surface.style.setProperty("--my", `${event.clientY - rect.top}px`);
-            };
-            surface.addEventListener("pointermove", onMove, { passive: true });
-            pointerCleanups.push(() => surface.removeEventListener("pointermove", onMove));
-          });
+        if (finePointer) {
+          document
+            .querySelectorAll(".service-card, .industry-card, .production-card, .roi-shell")
+            .forEach((surface) => {
+              let raf = 0;
+              let clientX = 0;
+              let clientY = 0;
+              const onMove = (event) => {
+                clientX = event.clientX;
+                clientY = event.clientY;
+                if (raf) return;
+                raf = requestAnimationFrame(() => {
+                  raf = 0;
+                  const rect = surface.getBoundingClientRect();
+                  surface.style.setProperty("--mx", `${clientX - rect.left}px`);
+                  surface.style.setProperty("--my", `${clientY - rect.top}px`);
+                });
+              };
+              const cancelFrame = () => {
+                if (raf) cancelAnimationFrame(raf);
+                raf = 0;
+              };
+              surface.addEventListener("pointermove", onMove, { passive: true });
+              surface.addEventListener("pointerleave", cancelFrame, { passive: true });
+              pointerCleanups.push(() => {
+                surface.removeEventListener("pointermove", onMove);
+                surface.removeEventListener("pointerleave", cancelFrame);
+                cancelFrame();
+              });
+            });
+        }
 
         mm.add("all", () => {
           gsap.utils.toArray(".section-heading h2").forEach((title) => {
@@ -183,19 +204,20 @@ export function usePortfolioMotion(ready = true) {
             );
           });
 
-          gsap.utils.toArray(".usecase-row").forEach((row) => {
+          gsap.utils.toArray(".usecase-row").forEach((row, index) => {
             const signal = row.querySelector("i b");
             if (!signal) return;
-            gsap.fromTo(
-              signal,
-              { xPercent: -110 },
-              {
-                xPercent: 110,
-                duration: 0.95,
-                ease: "power2.inOut",
-                scrollTrigger: { trigger: row, start: "top 88%", once: true },
-              },
-            );
+            const beam = gsap.timeline({ repeat: -1, repeatDelay: 0.42 + index * 0.04, paused: true });
+            beam.fromTo(signal, { xPercent: -110 }, { xPercent: 110, duration: 1.05, ease: "power2.inOut" });
+            ScrollTrigger.create({
+              trigger: row,
+              start: "top bottom",
+              end: "bottom top",
+              onEnter: () => beam.play(0),
+              onEnterBack: () => beam.play(0),
+              onLeave: () => beam.pause(0),
+              onLeaveBack: () => beam.pause(0),
+            });
           });
 
           gsap.fromTo(
