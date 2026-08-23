@@ -111,7 +111,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  color: #6f7872;
+  color: var(--muted);
   font: 500 8px/1 var(--mono);
   letter-spacing: .13em;
   opacity: 0;
@@ -132,7 +132,7 @@
   transform: translateY(10px);
   font: 500 7px/1 var(--mono);
   letter-spacing: .13em;
-  color: #6f7872;
+  color: var(--muted);
 }
 
 .hero-transition-copy i {
@@ -166,7 +166,7 @@
     border-radius: 20px;
   }
   .hero-story .hero-visual::before { background-size: 26px 26px; }
-  .scene-label { padding: 6px 8px; font-size: 6px; }
+  .scene-label { padding: 6px 8px; font-size: 8px; }
   .scene-crm { left: 3%; top: 27%; }
   .scene-api { right: 3%; top: 29%; }
   .scene-data { left: 4%; bottom: 25%; }
