@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { CAPABILITIES, CONTACT } from "./data.js";
+import Hero3D from "./hero3d.jsx";
 import { MagneticLink, useReducedMotionPreference } from "./ui.jsx";
 
 export function SystemOrb() {
@@ -43,10 +44,29 @@ export function SystemOrb() {
   );
 }
 
+function HeroSceneLabels() {
+  return (
+    <div className="hero-scene-overlay" aria-hidden="true">
+      <span className="scene-label scene-crm">CRM</span>
+      <span className="scene-label scene-api">API</span>
+      <span className="scene-label scene-data">DATA</span>
+      <span className="scene-label scene-human">HUMAN</span>
+      <span className="scene-label scene-wa">WHATSAPP</span>
+      <span className="scene-label scene-agent">AGENTS</span>
+      <div className="hero-stage-readout">
+        <span className="hero-stage stage-core">01 / CORE ONLINE</span>
+        <span className="hero-stage stage-context">02 / CONTEXT CONNECTED</span>
+        <span className="hero-stage stage-route">03 / WORK ROUTED</span>
+        <span className="hero-stage stage-system">04 / ONE OPERATING SYSTEM</span>
+      </div>
+    </div>
+  );
+}
+
 export function Hero() {
   const reduced = useReducedMotionPreference();
   return (
-    <section className="hero section-shell" id="top">
+    <section className="hero hero-story section-shell" id="top">
       <div className="hero-grid-bg" />
       <div className="hero-spotlight" />
       <div className="hero-copy">
@@ -86,9 +106,15 @@ export function Hero() {
         </motion.div>
       </div>
       <motion.div className="hero-visual" initial={reduced ? false : { opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.35, duration: 1 }}>
-        <SystemOrb />
+        {reduced ? <SystemOrb /> : <Hero3D />}
+        {!reduced && <HeroSceneLabels />}
       </motion.div>
-      <div className="hero-scroll-cue"><span>SCROLL TO TRACE THE SYSTEM</span><i /></div>
+      <div className="hero-transition-copy" aria-hidden="true">
+        <span>ONE EVENT</span><i />
+        <span>SHARED CONTEXT</span><i />
+        <span>COORDINATED ACTION</span>
+      </div>
+      <div className="hero-scroll-cue"><span>SCROLL TO RUN THE SYSTEM</span><i /></div>
     </section>
   );
 }

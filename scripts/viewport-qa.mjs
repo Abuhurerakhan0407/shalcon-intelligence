@@ -35,7 +35,11 @@ for (const viewport of viewports) {
   page.on("pageerror", (error) => runtimeErrors.push(error.message));
 
   await page.setViewport(viewport);
-  await page.goto("http://127.0.0.1:4173", { waitUntil: "networkidle0", timeout: 30000 });
+  // This portfolio has no runtime data dependency. Waiting for networkidle0 is
+  // unnecessarily flaky because external font connections can stay open on CI.
+  // DOM readiness + document.fonts.ready below gives us the stable visual state
+  // we actually need while preserving all runtime/overflow assertions.
+  await page.goto("http://127.0.0.1:4173", { waitUntil: "domcontentloaded", timeout: 30000 });
   await page.evaluate(() => document.fonts?.ready);
   await new Promise((resolve) => setTimeout(resolve, 1400));
 

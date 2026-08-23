@@ -1,6 +1,25 @@
 import { SERVICES } from "./data.js";
 import { Reveal } from "./ui.jsx";
 
+function ServiceSignal({ index }) {
+  if (index === 0) {
+    return <div className="service-signal signal-agents" aria-hidden="true"><b/><i/><i/><i/><i/><span/></div>;
+  }
+  if (index === 1) {
+    return <div className="service-signal signal-orchestration" aria-hidden="true"><span/><span/><span/><i/><i/><b/></div>;
+  }
+  if (index === 2) {
+    return <div className="service-signal signal-pipeline" aria-hidden="true"><span/><span/><span/><span/><i/></div>;
+  }
+  if (index === 3) {
+    return <div className="service-signal signal-app" aria-hidden="true"><span className="window-back"/><span className="window-mid"/><span className="window-front"><i/><i/><i/></span></div>;
+  }
+  if (index === 4) {
+    return <div className="service-signal signal-data" aria-hidden="true">{Array.from({ length: 9 }).map((_, i) => <i key={i}/>) }<b/></div>;
+  }
+  return <div className="service-signal signal-product" aria-hidden="true"><span/><span/><span/><span/><b/></div>;
+}
+
 export function Services() {
   return (
     <section className="section-shell section-pad" id="systems">
@@ -16,7 +35,8 @@ export function Services() {
           <Reveal key={service.title} className={`service-card ${service.size}`} delay={i * 0.035}>
             <div className="card-glow" />
             <div className="service-top"><span>{service.n}</span><i>↗</i></div>
-            <div>
+            <ServiceSignal index={i} />
+            <div className="service-copy">
               <h3>{service.title}</h3>
               <p>{service.body}</p>
             </div>
@@ -40,6 +60,12 @@ export function OrchestrationFlow() {
       </Reveal>
       <Reveal className="flow-stage">
         <div className="flow-grid" />
+        <div className="flow-story-readout" aria-hidden="true">
+          <span className="flow-story-step flow-step-1">01 / EVENT RECEIVED</span>
+          <span className="flow-story-step flow-step-2">02 / CONTEXT UNDERSTOOD</span>
+          <span className="flow-story-step flow-step-3">03 / SYSTEMS ACTIVATED</span>
+          <span className="flow-story-step flow-step-4">04 / HUMAN + DATA SYNCED</span>
+        </div>
         <svg className="beam-svg" viewBox="0 0 1000 540" preserveAspectRatio="none" aria-hidden="true">
           <defs>
             <linearGradient id="beamGreen" x1="0" y1="0" x2="1" y2="0">
@@ -48,19 +74,19 @@ export function OrchestrationFlow() {
               <stop offset="100%" stopColor="rgba(0,255,138,0)" />
             </linearGradient>
           </defs>
-          <path className="beam base" d="M500 74 C500 130 500 140 500 190" />
+          <path className="beam base b1" d="M500 74 C500 130 500 140 500 190" />
           <path className="beam pulse p1" d="M500 74 C500 130 500 140 500 190" />
-          <path className="beam base" d="M500 262 C390 292 292 310 206 360" />
+          <path className="beam base b2" d="M500 262 C390 292 292 310 206 360" />
           <path className="beam pulse p2" d="M500 262 C390 292 292 310 206 360" />
-          <path className="beam base" d="M500 262 C500 305 500 330 500 360" />
+          <path className="beam base b3" d="M500 262 C500 305 500 330 500 360" />
           <path className="beam pulse p3" d="M500 262 C500 305 500 330 500 360" />
-          <path className="beam base" d="M500 262 C610 292 708 310 794 360" />
+          <path className="beam base b4" d="M500 262 C610 292 708 310 794 360" />
           <path className="beam pulse p4" d="M500 262 C610 292 708 310 794 360" />
-          <path className="beam base" d="M206 430 C330 485 410 485 500 485" />
+          <path className="beam base b5" d="M206 430 C330 485 410 485 500 485" />
           <path className="beam pulse p5" d="M206 430 C330 485 410 485 500 485" />
-          <path className="beam base" d="M500 430 L500 485" />
+          <path className="beam base b6" d="M500 430 L500 485" />
           <path className="beam pulse p6" d="M500 430 L500 485" />
-          <path className="beam base" d="M794 430 C670 485 590 485 500 485" />
+          <path className="beam base b7" d="M794 430 C670 485 590 485 500 485" />
           <path className="beam pulse p7" d="M794 430 C670 485 590 485 500 485" />
         </svg>
         <div className="flow-node lead"><small>EVENT</small><strong>Lead / request / action</strong></div>
