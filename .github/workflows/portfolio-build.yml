@@ -21,9 +21,23 @@ jobs:
         run: npm ci
       - name: Build production bundle
         run: npm run build
-      - name: Upload production build
+      - name: Install viewport QA driver
+        run: npm install --no-save --package-lock=false puppeteer-core@24
+      - name: Run responsive viewport QA
+        run: |
+          npm run preview -- --host 127.0.0.1 --port 4173 > /tmp/portfolio-preview.log 2>&1 &
+          PREVIEW_PID=$!
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:4173 >/dev/null; then break; fi
+            sleep 1
+          done
+          node scripts/viewport-qa.mjs
+          kill $PREVIEW_PID || true
+      - name: Upload production build and QA captures
         uses: actions/upload-artifact@v4
         with:
           name: portfolio-dist
-          path: dist
+          path: |
+            dist
+            qa
           retention-days: 1
