@@ -12,6 +12,10 @@
   contain: paint;
 }
 
+/* GSAP owns the lamp's transform. Center it without a baseline transform so
+   resize/reflow never leaves a stale translated X value. */
+.cta-lamp { left: -5%; transform: none; }
+
 .network-core {
   animation: networkCoreSignal 4.6s ease-in-out infinite;
 }
