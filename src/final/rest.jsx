@@ -17,10 +17,10 @@ function IndustryIcon({ index }) {
   const stroke = { stroke: "currentColor", strokeWidth: 1.6, strokeLinecap: "round", strokeLinejoin: "round" };
 
   if (index === 0) {
-    return <div className="industry-icon" aria-hidden="true"><svg {...common}><path d="M4 19h16" {...stroke}/><path d="M7 19V10.5L12 7l5 3.5V19" {...stroke}/><path d="M10.25 19v-4.25h3.5V19" {...stroke}/></svg></div>;
+    return <div className="industry-icon" aria-hidden="true"><svg {...common}><rect x="5" y="5" width="14" height="14" rx="4" {...stroke}/><path d="M12 8.5v7M8.5 12h7" {...stroke}/></svg></div>;
   }
   if (index === 1) {
-    return <div className="industry-icon" aria-hidden="true"><svg {...common}><rect x="4.5" y="5" width="15" height="14" rx="2.5" {...stroke}/><path d="M8 9.5h8M8 13h5M7.25 3.75v2.5M16.75 3.75v2.5" {...stroke}/></svg></div>;
+    return <div className="industry-icon" aria-hidden="true"><svg {...common}><path d="M3.5 9.5 12 5l8.5 4.5L12 14 3.5 9.5Z" {...stroke}/><path d="M7 11.5v4c2.9 2 7.1 2 10 0v-4M20.5 9.5v5" {...stroke}/></svg></div>;
   }
   if (index === 2) {
     return <div className="industry-icon" aria-hidden="true"><svg {...common}><path d="M12 3.8l6 2.7v4.7c0 4.1-2.4 7.6-6 9-3.6-1.4-6-4.9-6-9V6.5l6-2.7Z" {...stroke}/><path d="M9.4 12.2l1.7 1.7 3.5-4" {...stroke}/></svg></div>;
@@ -97,7 +97,7 @@ export function Production() {
   ];
   return (
     <section className="section-shell section-pad production-section">
-      <Reveal className="section-heading compact"><div><span className="eyebrow"><span>07</span> BUILT FOR REAL BUSINESS</span><h2>Production is where the <PointerHighlight>clever demo ends.</PointerHighlight></h2></div><p>Reliable systems need boring things too: permissions, logs, retries, escalation and clear ownership.</p></Reveal>
+      <Reveal className="section-heading compact"><div><span className="eyebrow"><span>07</span> BUILT FOR REAL BUSINESS</span><h2>Production is where the clever demo ends.</h2></div><p>Reliable systems need boring things too: permissions, logs, retries, escalation and clear ownership.</p></Reveal>
       <div className="production-grid">
         {cards.map(([n, title, body], i) => (
           <TiltCard className="production-card" key={title} delay={i * .04} depth={5}>
