@@ -8,8 +8,10 @@ import {
   useTransform,
 } from "framer-motion";
 
-export function TiltCard({ children, className = "", delay = 0, depth = 7, as = "article" }) {
+export function TiltCard({ children, className = "", delay = 0, depth = 7, as = "article", ...rest }) {
   const ref = useRef(null);
+  const rafRef = useRef(0);
+  const pointerRef = useRef({ x: 0, y: 0 });
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const springX = useSpring(x, { stiffness: 170, damping: 22, mass: 0.45 });
@@ -20,31 +22,42 @@ export function TiltCard({ children, className = "", delay = 0, depth = 7, as = 
   const glareY = useTransform(springY, [-0.5, 0.5], [12, 88]);
   const glare = useMotionTemplate`radial-gradient(circle at ${glareX}% ${glareY}%, rgba(0,255,138,.18) 0%, rgba(0,255,138,.055) 24%, transparent 56%)`;
   const Tag = motion[as] || motion.article;
+  const canHover = typeof window !== "undefined" && window.matchMedia("(pointer: fine)").matches;
 
   const move = (event) => {
-    if (event.pointerType && event.pointerType !== "mouse") return;
-    const rect = ref.current?.getBoundingClientRect();
-    if (!rect) return;
-    x.set((event.clientX - rect.left) / rect.width - 0.5);
-    y.set((event.clientY - rect.top) / rect.height - 0.5);
+    if (!canHover || (event.pointerType && event.pointerType !== "mouse")) return;
+    pointerRef.current = { x: event.clientX, y: event.clientY };
+    if (rafRef.current) return;
+    rafRef.current = requestAnimationFrame(() => {
+      rafRef.current = 0;
+      const rect = ref.current?.getBoundingClientRect();
+      if (!rect) return;
+      x.set((pointerRef.current.x - rect.left) / rect.width - 0.5);
+      y.set((pointerRef.current.y - rect.top) / rect.height - 0.5);
+    });
   };
 
   const reset = () => {
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    rafRef.current = 0;
     x.set(0);
     y.set(0);
   };
+
+  useEffect(() => reset, []);
 
   return (
     <Tag
       ref={ref}
       className={`tilt-surface ${className}`}
-      onPointerMove={move}
-      onPointerLeave={reset}
+      onPointerMove={canHover ? move : undefined}
+      onPointerLeave={canHover ? reset : undefined}
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.16 }}
       transition={{ duration: 0.68, delay, ease: [0.22, 1, 0.36, 1] }}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+      {...rest}
     >
       <motion.div className="tilt-glare" style={{ background: glare }} aria-hidden="true" />
       {children}
@@ -120,22 +133,35 @@ export function ScrambleText({ text, className = "", speed = 24 }) {
 
 export function RippleField() {
   const ref = useRef(null);
+  const rafRef = useRef(0);
+  const pointerRef = useRef({ x: 0, y: 0 });
   const [pulse, setPulse] = useState(0);
   const cells = useMemo(() => Array.from({ length: 96 }), []);
+  const canHover = typeof window !== "undefined" && window.matchMedia("(pointer: fine)").matches;
 
   const move = (event) => {
-    const rect = ref.current?.getBoundingClientRect();
-    if (!rect) return;
-    ref.current.style.setProperty("--ripple-x", `${event.clientX - rect.left}px`);
-    ref.current.style.setProperty("--ripple-y", `${event.clientY - rect.top}px`);
+    if (!canHover) return;
+    pointerRef.current = { x: event.clientX, y: event.clientY };
+    if (rafRef.current) return;
+    rafRef.current = requestAnimationFrame(() => {
+      rafRef.current = 0;
+      const rect = ref.current?.getBoundingClientRect();
+      if (!rect || !ref.current) return;
+      ref.current.style.setProperty("--ripple-x", `${pointerRef.current.x - rect.left}px`);
+      ref.current.style.setProperty("--ripple-y", `${pointerRef.current.y - rect.top}px`);
+    });
   };
+
+  useEffect(() => () => {
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+  }, []);
 
   return (
     <div
       ref={ref}
       className="ripple-field"
-      onPointerMove={move}
-      onPointerDown={() => setPulse((value) => value + 1)}
+      onPointerMove={canHover ? move : undefined}
+      onPointerDown={canHover ? () => setPulse((value) => value + 1) : undefined}
       aria-hidden="true"
     >
       <div className="ripple-grid">{cells.map((_, index) => <i key={index} />)}</div>

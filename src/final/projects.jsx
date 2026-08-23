@@ -15,7 +15,7 @@ export function ProjectVisual({ project }) {
       <div className="pv-top"><span>{project.index}</span><span>{project.stage}</span></div>
       {project.kind === "network" && (
         <div className="network-art">
-          <div className="network-core">S</div>
+          <div className="network-core"><img src="/shalcon-logo.svg" alt="" aria-hidden="true" /></div>
           {["AI", "CRM", "WA", "API", "BI"].map((x, i) => <span key={x} className={`net-node n${i + 1}`}>{x}</span>)}
           <svg viewBox="0 0 500 300"><path d="M250 150 L90 65 M250 150 L405 70 M250 150 L88 238 M250 150 L410 232 M250 150 L250 28" /></svg>
         </div>
