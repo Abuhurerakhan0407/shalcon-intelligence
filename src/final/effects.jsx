@@ -8,7 +8,7 @@ import {
   useTransform,
 } from "framer-motion";
 
-export function TiltCard({ children, className = "", delay = 0, depth = 7, as = "article" }) {
+export function TiltCard({ children, className = "", delay = 0, depth = 7, as = "article", ...rest }) {
   const ref = useRef(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -45,6 +45,7 @@ export function TiltCard({ children, className = "", delay = 0, depth = 7, as = 
       viewport={{ once: true, amount: 0.16 }}
       transition={{ duration: 0.68, delay, ease: [0.22, 1, 0.36, 1] }}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+      {...rest}
     >
       <motion.div className="tilt-glare" style={{ background: glare }} aria-hidden="true" />
       {children}
