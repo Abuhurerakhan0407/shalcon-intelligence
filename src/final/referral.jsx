@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { CAPABILITIES, CONTACT, SERVICES } from "./data.js";
+import { CAPABILITIES, CONTACT, PROCESS, SERVICES } from "./data.js";
 import { MagneticLink, Reveal, useReducedMotionPreference } from "./ui.jsx";
 
 function WebsitePreview() {
@@ -100,6 +100,24 @@ export function ReferralServices() {
             <p>{service.body}</p>
             <small>{service.tag}</small>
           </motion.article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export function ReferralProcess() {
+  return (
+    <section className="section-shell section-pad referral-process" id="process">
+      <Reveal className="section-heading referral-heading">
+        <div><span className="eyebrow"><span>04</span> HOW I WORK</span><h2>A simple process. No agency maze.</h2></div>
+        <p>Enough structure to keep the project sharp, without turning a website into three weeks of meetings.</p>
+      </Reveal>
+      <div className="referral-process-grid">
+        {PROCESS.map(([n, title, body], i) => (
+          <Reveal className="referral-process-step" key={title} delay={i * .04}>
+            <span>{n}</span><h3>{title}</h3><p>{body}</p>
+          </Reveal>
         ))}
       </div>
     </section>
