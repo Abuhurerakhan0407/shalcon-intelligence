@@ -1,0 +1,4 @@
+@media (min-width:1051px){
+  .balanced-title-wrap .referral-title-line h1{font-size:clamp(46px,4.9vw,76px)}
+  .balanced-title-wrap .referral-title-line:nth-child(3) h1{font-size:clamp(38px,4.2vw,64px)}
+}
