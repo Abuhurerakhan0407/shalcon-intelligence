@@ -12,6 +12,7 @@ export function MotionPolish() {
 
     const cleanups = [];
     const finePointer = window.matchMedia("(pointer: fine)").matches;
+    const desktop = window.matchMedia("(min-width: 900px)").matches;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (finePointer && !reduced) {
@@ -57,57 +58,51 @@ export function MotionPolish() {
     }
 
     const ctx = gsap.context(() => {
-      if (!reduced) {
-        gsap.utils.toArray(".aw-section-head").forEach((head) => {
-          const title = head.querySelector("h2");
-          const copy = head.querySelector("p");
-          if (!title) return;
-          gsap.fromTo(
-            title,
-            { yPercent: 12, autoAlpha: 0.72 },
-            {
-              yPercent: 0,
-              autoAlpha: 1,
-              ease: "none",
-              scrollTrigger: {
-                trigger: head,
-                start: "top 88%",
-                end: "top 48%",
-                scrub: 0.35,
-              },
-            }
-          );
-          if (copy) {
-            gsap.fromTo(
-              copy,
-              { y: 18, autoAlpha: 0.45 },
-              {
-                y: 0,
-                autoAlpha: 1,
-                ease: "none",
-                scrollTrigger: {
-                  trigger: head,
-                  start: "top 90%",
-                  end: "top 55%",
-                  scrub: 0.35,
-                },
-              }
-            );
-          }
+      if (reduced) return;
+
+      gsap.utils.toArray(".aw-section-head").forEach((head) => {
+        const title = head.querySelector("h2");
+        const copy = head.querySelector("p");
+        if (!title) return;
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: head,
+            start: "top 88%",
+            end: "top 50%",
+            scrub: 0.35,
+          },
         });
 
-        gsap.utils.toArray(".aw-service-art").forEach((art) => {
-          gsap.to(art, {
-            yPercent: -12,
-            rotate: 1.5,
-            ease: "none",
-            scrollTrigger: {
-              trigger: art.closest(".aw-service-card"),
-              start: "top bottom",
-              end: "bottom top",
-              scrub: 0.5,
-            },
-          });
+        tl.fromTo(title, { yPercent: 12, autoAlpha: 0.72 }, { yPercent: 0, autoAlpha: 1, ease: "none", duration: 1 }, 0);
+        if (copy) tl.fromTo(copy, { y: 18, autoAlpha: 0.45 }, { y: 0, autoAlpha: 1, ease: "none", duration: 1 }, 0.08);
+      });
+
+      gsap.utils.toArray(".aw-service-art").forEach((art) => {
+        gsap.to(art, {
+          yPercent: -12,
+          rotate: 1.5,
+          ease: "none",
+          scrollTrigger: {
+            trigger: art.closest(".aw-service-card"),
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 0.5,
+          },
+        });
+      });
+
+      if (desktop) {
+        ScrollTrigger.create({
+          trigger: ".aw-duality",
+          start: "top top",
+          end: "+=240%",
+          snap: {
+            snapTo: [0, 0.5, 1],
+            duration: { min: 0.12, max: 0.28 },
+            delay: 0.035,
+            ease: "power1.inOut",
+          },
         });
       }
     });
