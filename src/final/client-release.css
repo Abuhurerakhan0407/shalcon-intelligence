@@ -1,0 +1,110 @@
+/* Final client-release polish: a flowing divider between the industries heading columns
+   and a distinct workflow/circuit mark for Custom Systems. */
+
+.industries-section .section-heading {
+  grid-template-columns: minmax(0,1.35fr) minmax(120px,.32fr) minmax(280px,.55fr);
+  gap: 24px;
+}
+
+.industries-section .section-heading > div {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.industries-section .section-heading > p {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.industries-section .section-heading::before,
+.industries-section .section-heading::after {
+  content: "";
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  justify-self: stretch;
+  height: 1px;
+  pointer-events: none;
+}
+
+.industries-section .section-heading::before {
+  width: 100%;
+  background: linear-gradient(90deg, rgba(255,255,255,.035), rgba(255,255,255,.11), rgba(255,255,255,.035));
+}
+
+.industries-section .section-heading::after {
+  width: 44%;
+  background: linear-gradient(90deg, transparent, rgba(0,255,138,.98) 48%, transparent);
+  box-shadow: 0 0 12px rgba(0,255,138,.38);
+  transform: translateX(-120%);
+  will-change: transform, opacity;
+  animation: industriesHeadingFlow 2.7s cubic-bezier(.45,0,.55,1) infinite;
+}
+
+@keyframes industriesHeadingFlow {
+  0% { transform: translateX(-120%); opacity: 0; }
+  14% { opacity: 1; }
+  72% { opacity: 1; }
+  100% { transform: translateX(250%); opacity: 0; }
+}
+
+/* Custom Systems previously echoed the Healthcare medical-cross mark.
+   Replace only the custom-card mark with a small orchestration/circuit glyph. */
+.custom-feature-visual .industry-icon svg {
+  display: none;
+}
+
+.custom-feature-visual .industry-icon::before {
+  content: "";
+  width: 28px;
+  height: 18px;
+  color: #9fffc6;
+  background:
+    radial-gradient(circle at 3px 9px, currentColor 0 2px, transparent 2.5px),
+    radial-gradient(circle at 14px 3px, currentColor 0 2px, transparent 2.5px),
+    radial-gradient(circle at 25px 13px, currentColor 0 2px, transparent 2.5px),
+    linear-gradient(151deg, transparent 0 32%, currentColor 33% 36%, transparent 37%),
+    linear-gradient(28deg, transparent 0 55%, currentColor 56% 59%, transparent 60%);
+  opacity: .92;
+  filter: drop-shadow(0 0 7px rgba(0,255,138,.25));
+}
+
+@media (max-width: 900px) {
+  .industries-section .section-heading {
+    grid-template-columns: minmax(0,1fr);
+    gap: 18px;
+  }
+
+  .industries-section .section-heading > div {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .industries-section .section-heading::before,
+  .industries-section .section-heading::after {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: start;
+  }
+
+  .industries-section .section-heading::before {
+    width: min(230px, 58vw);
+  }
+
+  .industries-section .section-heading::after {
+    width: min(96px, 26vw);
+  }
+
+  .industries-section .section-heading > p {
+    grid-column: 1;
+    grid-row: 3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .industries-section .section-heading::after {
+    animation: none;
+    transform: translateX(70%);
+    opacity: .7;
+  }
+}
