@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { Cursor, Nav, ScrollProgress, useReducedMotionPreference } from "./final/ui.jsx";
 import { Projects } from "./final/projects.jsx";
-import { Process } from "./final/rest.jsx";
-import { ReferralAbout, ReferralCapabilityRail, ReferralCTA, ReferralFooter, ReferralHero, ReferralServices } from "./final/referral.jsx";
+import { ReferralAbout, ReferralCapabilityRail, ReferralCTA, ReferralFooter, ReferralHero, ReferralProcess, ReferralServices } from "./final/referral.jsx";
 
 export default function App() {
   const [loaded, setLoaded] = useState(false);
@@ -26,7 +25,7 @@ export default function App() {
         <ReferralCapabilityRail />
         <ReferralServices />
         <Projects />
-        <Process />
+        <ReferralProcess />
         <ReferralAbout />
         <ReferralCTA />
       </main>
