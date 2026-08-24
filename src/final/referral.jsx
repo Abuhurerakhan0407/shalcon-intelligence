@@ -37,7 +37,7 @@ export function ReferralHero() {
           <span>01</span> WEB DESIGN · DEVELOPMENT · AI
         </motion.div>
         <div className="referral-title-wrap">
-          {["I DESIGN & BUILD", "WEBSITES THAT FEEL", "CLEAR, FAST & PREMIUM."].map((line, i) => (
+          {["I DESIGN & BUILD", "PREMIUM WEBSITES", "FOR REAL BUSINESSES."].map((line, i) => (
             <div className="referral-title-line" key={line}>
               <motion.h1
                 initial={reduced ? false : { y: "108%" }}
