@@ -141,13 +141,13 @@ export function Nav() {
       >
         <a href="#top" className="brand" data-cursor="TOP">
           <span className="brand-mark">AH</span>
-          <span className="brand-copy">Abu Hurera<small>Web Design + Development</small></span>
+          <span className="brand-copy">Abu Hurera<small>Web Experiences + AI Systems</small></span>
         </a>
         <div className="nav-links">
           {links.map(([label, href]) => <a key={href} href={href}>{label}</a>)}
         </div>
         <MagneticLink href={CONTACT.whatsapp} className="nav-cta" external>
-          Start a project <span>↗</span>
+          Discuss a project <span>↗</span>
         </MagneticLink>
         <button className={`menu-btn ${open ? "open" : ""}`} onClick={() => setOpen((v) => !v)} aria-label="Toggle menu">
           <span />
