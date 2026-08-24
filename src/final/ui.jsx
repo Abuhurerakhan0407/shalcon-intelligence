@@ -29,7 +29,7 @@ export function Reveal({ children, className = "", delay = 0, y = 26 }) {
   );
 }
 
-export function MagneticLink({ href, children, className = "", external = false }) {
+export function MagneticLink({ href, children, className = "", external = false, ...props }) {
   const ref = useRef(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -37,6 +37,7 @@ export function MagneticLink({ href, children, className = "", external = false 
   const sy = useSpring(y, { stiffness: 260, damping: 24, mass: 0.5 });
 
   const move = (event) => {
+    if (window.matchMedia("(pointer: coarse)").matches) return;
     const rect = ref.current?.getBoundingClientRect();
     if (!rect) return;
     x.set((event.clientX - rect.left - rect.width / 2) * 0.12);
@@ -58,6 +59,7 @@ export function MagneticLink({ href, children, className = "", external = false 
       onMouseLeave={reset}
       target={external ? "_blank" : undefined}
       rel={external ? "noreferrer" : undefined}
+      {...props}
     >
       {children}
     </motion.a>
@@ -77,6 +79,7 @@ export function Cursor() {
   const sx = useSpring(x, { stiffness: 500, damping: 36, mass: 0.18 });
   const sy = useSpring(y, { stiffness: 500, damping: 36, mass: 0.18 });
   const [label, setLabel] = useState("");
+  const [tone, setTone] = useState("");
 
   useEffect(() => {
     if (reduced || window.matchMedia("(pointer: coarse)").matches) return;
@@ -85,15 +88,16 @@ export function Cursor() {
       y.set(e.clientY);
       const target = e.target.closest?.("[data-cursor]");
       setLabel(target?.dataset?.cursor || "");
+      setTone(target?.dataset?.cursorTone || "");
     };
-    window.addEventListener("mousemove", move);
+    window.addEventListener("mousemove", move, { passive: true });
     return () => window.removeEventListener("mousemove", move);
   }, [reduced, x, y]);
 
   if (reduced) return null;
   return (
     <motion.div
-      className={`custom-cursor ${label ? "is-active" : ""}`}
+      className={`custom-cursor ${label ? "is-active" : ""} ${tone ? `tone-${tone}` : ""}`}
       style={{ x: sx, y: sy }}
       aria-hidden="true"
     >
@@ -123,7 +127,7 @@ export function Nav() {
   const links = [
     ["Services", "#services"],
     ["Work", "#projects"],
-    ["Process", "#process"],
+    ["Approach", "#approach"],
     ["About", "#about"],
   ];
 
@@ -141,13 +145,13 @@ export function Nav() {
       >
         <a href="#top" className="brand" data-cursor="TOP">
           <span className="brand-mark">AH</span>
-          <span className="brand-copy">Abu Hurera<small>Web Experiences + AI Systems</small></span>
+          <span className="brand-copy">Abu Hurera<small>Web Experience × AI Systems</small></span>
         </a>
         <div className="nav-links">
           {links.map(([label, href]) => <a key={href} href={href}>{label}</a>)}
         </div>
-        <MagneticLink href={CONTACT.whatsapp} className="nav-cta" external>
-          Discuss a project <span>↗</span>
+        <MagneticLink href={CONTACT.whatsapp} className="nav-cta" external data-cursor="START">
+          Start a project <span>↗</span>
         </MagneticLink>
         <button className={`menu-btn ${open ? "open" : ""}`} onClick={() => setOpen((v) => !v)} aria-label="Toggle menu">
           <span />
