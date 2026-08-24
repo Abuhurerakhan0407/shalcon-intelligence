@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Cursor, Nav, ScrollProgress, useReducedMotionPreference } from "./final/ui.jsx";
 import { AwardAbout, AwardApproach, AwardCTA, AwardFooter, AwardHero, AwardServices, AwardWork, DualityStory } from "./final/showcase.jsx";
+import { MotionPolish } from "./final/motion-polish.jsx";
 
 export default function App() {
   const [loaded, setLoaded] = useState(false);
@@ -13,6 +14,7 @@ export default function App() {
 
   return (
     <>
+      <MotionPolish />
       <Cursor />
       <ScrollProgress />
       {!loaded && (

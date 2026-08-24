@@ -1,0 +1,18 @@
+/* Final visual QA hotfixes */
+.aw-main-cta{
+  border:1px solid transparent;
+  background:
+    linear-gradient(var(--bone),var(--bone)) padding-box,
+    linear-gradient(90deg,var(--web),var(--ai)) border-box;
+  color:#0b090c;
+  box-shadow:0 12px 34px rgba(0,0,0,.26),0 0 0 1px rgba(255,255,255,.05);
+}
+.aw-main-cta:hover{box-shadow:0 16px 44px rgba(0,0,0,.3),0 0 28px rgba(255,91,138,.08),0 0 28px rgba(156,255,87,.06)}
+
+/* Radial gradients already provide softness; removing full-size blur avoids extra scroll repaints. */
+.aw-services::before,.aw-services::after{filter:none}
+
+@media(max-width:620px){
+  .aw-main-cta{width:auto;min-width:166px;justify-content:center}
+  .aw-hero-actions{align-items:center}
+}
