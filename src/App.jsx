@@ -17,7 +17,7 @@ export default function App() {
       <Cursor />
       <ScrollProgress />
       {!loaded && (
-        <div className="loader"><div><span>ABU HURERA</span><i/><small>WEB / DESIGN / BUILD</small></div></div>
+        <div className="loader"><div><span>ABU HURERA</span><i/><small>WEB / AI / SYSTEMS</small></div></div>
       )}
       <Nav />
       <main className={loaded ? "site-ready" : "site-loading"}>
