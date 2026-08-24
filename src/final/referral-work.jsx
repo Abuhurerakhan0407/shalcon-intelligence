@@ -13,8 +13,8 @@ export function ReferralWork() {
   return (
     <section className="section-shell section-pad referral-work" id="projects">
       <Reveal className="section-heading referral-heading">
-        <div><span className="eyebrow"><span>03</span> SELECTED WORK</span><h2>Products I’m actively designing and building.</h2></div>
-        <p>Real work that shows how I think about interface, structure and development — without pretending experiments are client case studies.</p>
+        <div><span className="eyebrow"><span>03</span> SELECTED WORK</span><h2>Where interface, software and automation meet.</h2></div>
+        <p>Products I’m actively designing, building or architecting — showing both the experience people use and the systems working behind it.</p>
       </Reveal>
       <div className="referral-work-grid">
         {PROJECTS.map((project, i) => (
