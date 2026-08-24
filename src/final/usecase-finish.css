@@ -1,0 +1,99 @@
+/* Final targeted polish: keep the use-case signal alive on touch devices and
+   make the Custom Systems icon visually distinct from Healthcare. */
+
+.usecase-row i {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hide the legacy GSAP/hover beam and render an independent compositor-safe
+   beam so the motion remains visible on mobile as well as desktop. */
+.usecase-row i b {
+  opacity: 0;
+}
+
+.usecase-row i::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 40%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0,255,138,.10) 16%,
+    rgba(0,255,138,.95) 50%,
+    rgba(0,255,138,.10) 84%,
+    transparent 100%
+  );
+  box-shadow: 0 0 14px rgba(0,255,138,.32);
+  transform: translateX(-150%);
+  animation: usecaseSignalSweep 2.8s linear infinite;
+  will-change: transform, opacity;
+}
+
+.usecase-row:nth-child(2) i::after { animation-delay: .18s; }
+.usecase-row:nth-child(3) i::after { animation-delay: .36s; }
+.usecase-row:nth-child(4) i::after { animation-delay: .54s; }
+.usecase-row:nth-child(5) i::after { animation-delay: .72s; }
+.usecase-row:nth-child(6) i::after { animation-delay: .90s; }
+.usecase-row:nth-child(7) i::after { animation-delay: 1.08s; }
+.usecase-row:nth-child(8) i::after { animation-delay: 1.26s; }
+
+.usecase-row:hover i::after {
+  animation-duration: 1.95s;
+  box-shadow: 0 0 18px rgba(0,255,138,.48);
+}
+
+@keyframes usecaseSignalSweep {
+  0% { transform: translateX(-150%); opacity: .2; }
+  12% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { transform: translateX(320%); opacity: .2; }
+}
+
+/* Custom Systems gets a connected-node mark instead of the plus-in-a-box
+   symbol, so it cannot be confused with the Healthcare cross. */
+.custom-feature-visual .industry-icon svg {
+  opacity: 0;
+}
+
+.custom-feature-visual .industry-icon::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  transform: translate(-50%,-50%);
+  box-shadow:
+    -10px 8px 0 currentColor,
+    10px 8px 0 currentColor,
+    0 16px 0 currentColor;
+  z-index: 2;
+}
+
+.custom-feature-visual .industry-icon::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 26px;
+  height: 24px;
+  transform: translate(-50%,-42%);
+  background:
+    linear-gradient(32deg, transparent 47%, currentColor 48% 51%, transparent 52%),
+    linear-gradient(-32deg, transparent 47%, currentColor 48% 51%, transparent 52%);
+  opacity: .38;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .usecase-row i::after {
+    animation: none;
+    transform: translateX(75%);
+    opacity: .65;
+  }
+}
