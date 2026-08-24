@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import { Cursor, Nav, ScrollProgress, useReducedMotionPreference } from "./final/ui.jsx";
-import { ReferralAbout, ReferralCapabilityRail, ReferralCTA, ReferralFooter, ReferralHero, ReferralProcess, ReferralServices } from "./final/referral.jsx";
-import { ReferralWork } from "./final/referral-work.jsx";
+import { AwardAbout, AwardApproach, AwardCTA, AwardFooter, AwardHero, AwardServices, AwardWork, DualityStory } from "./final/showcase.jsx";
 
 export default function App() {
   const [loaded, setLoaded] = useState(false);
   const reduced = useReducedMotionPreference();
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoaded(true), reduced ? 0 : 420);
+    const timer = setTimeout(() => setLoaded(true), reduced ? 0 : 520);
     return () => clearTimeout(timer);
   }, [reduced]);
 
@@ -17,19 +16,19 @@ export default function App() {
       <Cursor />
       <ScrollProgress />
       {!loaded && (
-        <div className="loader"><div><span>ABU HURERA</span><i/><small>WEB / AI / SYSTEMS</small></div></div>
+        <div className="loader"><div><span>ABU HURERA</span><i/><small>WEB EXPERIENCE × AI SYSTEMS</small></div></div>
       )}
       <Nav />
       <main className={loaded ? "site-ready" : "site-loading"}>
-        <ReferralHero />
-        <ReferralCapabilityRail />
-        <ReferralServices />
-        <ReferralWork />
-        <ReferralProcess />
-        <ReferralAbout />
-        <ReferralCTA />
+        <AwardHero />
+        <DualityStory />
+        <AwardServices />
+        <AwardWork />
+        <AwardApproach />
+        <AwardAbout />
+        <AwardCTA />
       </main>
-      <ReferralFooter />
+      <AwardFooter />
     </>
   );
 }
