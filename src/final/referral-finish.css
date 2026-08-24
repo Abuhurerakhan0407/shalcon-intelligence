@@ -1,0 +1,2 @@
+@media (min-width:1051px){.referral-title-line h1{font-size:clamp(48px,4.1vw,62px);line-height:.94}.referral-hero{grid-template-columns:minmax(0,1.08fr) minmax(410px,.92fr);gap:clamp(50px,6vw,92px)}.referral-preview{min-height:580px}.preview-page{min-height:480px}}
+@media (max-width:1050px){.referral-title-line h1{max-width:14ch}}

@@ -120,6 +120,13 @@ export function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const links = [
+    ["Services", "#services"],
+    ["Work", "#projects"],
+    ["Process", "#process"],
+    ["About", "#about"],
+  ];
+
   return (
     <motion.header
       className="nav-wrap"
@@ -134,16 +141,13 @@ export function Nav() {
       >
         <a href="#top" className="brand" data-cursor="TOP">
           <span className="brand-mark">AH</span>
-          <span className="brand-copy">Abu Hurera<small>AI Systems + Automation</small></span>
+          <span className="brand-copy">Abu Hurera<small>Web Design + Development</small></span>
         </a>
         <div className="nav-links">
-          <a href="#systems">Systems</a>
-          <a href="#projects">Projects</a>
-          <a href="#process">Process</a>
-          <a href="#about">About</a>
+          {links.map(([label, href]) => <a key={href} href={href}>{label}</a>)}
         </div>
-        <MagneticLink href={CONTACT.whatsapp} className="nav-cta glow-border" external>
-          Discuss a project <span>↗</span>
+        <MagneticLink href={CONTACT.whatsapp} className="nav-cta" external>
+          Start a project <span>↗</span>
         </MagneticLink>
         <button className={`menu-btn ${open ? "open" : ""}`} onClick={() => setOpen((v) => !v)} aria-label="Toggle menu">
           <span />
@@ -152,12 +156,7 @@ export function Nav() {
       </motion.nav>
       {open && (
         <motion.div className="mobile-menu glass-panel" initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }}>
-          {[
-            ["Systems", "#systems"],
-            ["Projects", "#projects"],
-            ["Process", "#process"],
-            ["About", "#about"],
-          ].map(([label, href]) => (
+          {links.map(([label, href]) => (
             <a key={href} href={href} onClick={() => setOpen(false)}>{label}<span>↘</span></a>
           ))}
         </motion.div>

@@ -16,7 +16,7 @@ export function ProjectVisual({ project }) {
       {project.kind === "network" && (
         <div className="network-art">
           <div className="network-core"><img src="/shalcon-logo.svg" alt="" aria-hidden="true" /></div>
-          {["AI", "CRM", "WA", "API", "BI"].map((x, i) => <span key={x} className={`net-node n${i + 1}`}>{x}</span>)}
+          {["AI", "CRM", "WA", "API", "WEB"].map((x, i) => <span key={x} className={`net-node n${i + 1}`}>{x}</span>)}
           <svg viewBox="0 0 500 300"><path d="M250 150 L90 65 M250 150 L405 70 M250 150 L88 238 M250 150 L410 232 M250 150 L250 28" /></svg>
         </div>
       )}
@@ -62,10 +62,10 @@ export function Projects() {
     <section className="section-shell section-pad projects-section" id="projects">
       <Reveal className="section-heading">
         <div>
-          <span className="eyebrow"><span>04</span> CURRENTLY BUILDING</span>
-          <h2>Real systems. Visible work.</h2>
+          <span className="eyebrow"><span>03</span> SELECTED WORK</span>
+          <h2>Products I’m actively designing and building.</h2>
         </div>
-        <p>Products and operating systems I am actively building, selling or architecting — shown as capability, not dressed up as fake case studies.</p>
+        <p>Real product work that shows how I think about interface, structure, systems and development — without dressing experiments up as fake client case studies.</p>
       </Reveal>
       <div className="projects-layout">
         <div className="project-sticky"><ProjectVisual project={PROJECTS[active]} /><div className="project-progress">{PROJECTS.map((p, i) => <span key={p.id} className={i === active ? "active" : ""}/>)}</div></div>
