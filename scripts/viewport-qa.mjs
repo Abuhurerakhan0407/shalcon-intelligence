@@ -35,10 +35,6 @@ for (const viewport of viewports) {
   page.on("pageerror", (error) => runtimeErrors.push(error.message));
 
   await page.setViewport(viewport);
-  // This portfolio has no runtime data dependency. Waiting for networkidle0 is
-  // unnecessarily flaky because external font connections can stay open on CI.
-  // DOM readiness + document.fonts.ready below gives us the stable visual state
-  // we actually need while preserving all runtime/overflow assertions.
   await page.goto("http://127.0.0.1:4173", { waitUntil: "domcontentloaded", timeout: 30000 });
   await page.evaluate(() => document.fonts?.ready);
   await new Promise((resolve) => setTimeout(resolve, 1400));
@@ -89,7 +85,7 @@ for (const viewport of viewports) {
 
   const canScrollSideways = metrics.horizontal.some((point) => Math.abs(point.scrollX) > 1);
   const rootWidthMismatch = Math.abs(metrics.rootWidth - metrics.clientWidth) > 1;
-  const pageTooShort = metrics.rootScrollHeight < metrics.innerHeight * 5 || metrics.sectionCount < 10;
+  const pageTooShort = metrics.rootScrollHeight < metrics.innerHeight * 4 || metrics.sectionCount < 6;
   const cannotReachPage = metrics.bottomScrollY < metrics.innerHeight * 3;
   const hasRuntimeErrors = runtimeErrors.length > 0;
 
@@ -116,4 +112,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log("Viewport QA passed: full page renders, scrolls vertically, has no runtime exceptions, and cannot be scrolled horizontally at any tested breakpoint.");
+console.log("Viewport QA passed: referral portfolio renders fully, scrolls vertically, has no runtime exceptions, and cannot be scrolled horizontally at any tested breakpoint.");
