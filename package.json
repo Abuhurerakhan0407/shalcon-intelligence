@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host",
-    "build": "vite build",
+    "build": "vite build && cp vercel-import/anamorphic-v2/index.html dist/index.html && cp vercel-import/anamorphic-v2/styles-a.css dist/styles-a.css && cp vercel-import/anamorphic-v2/styles-b.css dist/styles-b.css && cp vercel-import/anamorphic-v2/styles-c.css dist/styles-c.css && cp vercel-import/anamorphic-v2/styles.css dist/styles.css && cp vercel-import/anamorphic-v2/motion.js dist/motion.js",
     "preview": "vite preview --host"
   },
   "dependencies": {
