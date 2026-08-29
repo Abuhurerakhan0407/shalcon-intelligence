@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import handler from "../api/lead.js";
+import handler, { resetLeadRateLimitForTests } from "../api/lead.js";
 
 function makeReq({ method = "POST", body = {}, headers = {} } = {}) {
   return { method, body, headers };
@@ -31,13 +31,26 @@ function makeRes() {
 
 const originalFetch = global.fetch;
 const originalWebhook = process.env.LEAD_WEBHOOK_URL;
+const originalWebhookSecret = process.env.LEAD_WEBHOOK_SECRET;
 const originalConsoleError = console.error;
+const TEST_SECRET = "shalcon-test-webhook-secret-123456";
+
+function restoreEnv(name, value) {
+  if (value === undefined) delete process.env[name];
+  else process.env[name] = value;
+}
+
+function configurePersistence() {
+  process.env.LEAD_WEBHOOK_URL = "https://example.com/shalcon-leads";
+  process.env.LEAD_WEBHOOK_SECRET = TEST_SECRET;
+}
 
 function resetGlobals() {
   global.fetch = originalFetch;
-  if (originalWebhook === undefined) delete process.env.LEAD_WEBHOOK_URL;
-  else process.env.LEAD_WEBHOOK_URL = originalWebhook;
+  restoreEnv("LEAD_WEBHOOK_URL", originalWebhook);
+  restoreEnv("LEAD_WEBHOOK_SECRET", originalWebhookSecret);
   console.error = originalConsoleError;
+  resetLeadRateLimitForTests();
 }
 
 test.afterEach(resetGlobals);
@@ -99,6 +112,7 @@ test("honeypot exits without persisting", async () => {
     return { ok: true, status: 200 };
   };
   delete process.env.LEAD_WEBHOOK_URL;
+  delete process.env.LEAD_WEBHOOK_SECRET;
 
   const res = makeRes();
   await handler(makeReq({ body: { website: "bot-filled-field" } }), res);
@@ -107,25 +121,48 @@ test("honeypot exits without persisting", async () => {
   assert.equal(called, false);
 });
 
-test("fails safely when persistence is not configured", async () => {
+test("fails safely when persistence URL is not configured", async () => {
   delete process.env.LEAD_WEBHOOK_URL;
+  process.env.LEAD_WEBHOOK_SECRET = TEST_SECRET;
   const res = makeRes();
   await handler(makeReq({ body: { name: "QA", whatsapp: "919999999999", contactConsent: true } }), res);
   assert.equal(res.statusCode, 503);
   assert.equal(res.json().error, "lead_capture_not_configured");
 });
 
-test("rejects non-HTTPS webhook destinations", async () => {
+test("fails safely when webhook authentication secret is missing or weak", async () => {
+  process.env.LEAD_WEBHOOK_URL = "https://example.com/leads";
+  delete process.env.LEAD_WEBHOOK_SECRET;
+
+  let res = makeRes();
+  await handler(makeReq({ body: { name: "QA", whatsapp: "919999999999", contactConsent: true } }), res);
+  assert.equal(res.statusCode, 503);
+
+  process.env.LEAD_WEBHOOK_SECRET = "too-short";
+  res = makeRes();
+  await handler(makeReq({ body: { name: "QA", whatsapp: "919999999999", contactConsent: true } }), res);
+  assert.equal(res.statusCode, 503);
+  assert.equal(res.json().error, "lead_capture_not_configured");
+});
+
+test("rejects non-HTTPS or credential-bearing webhook destinations", async () => {
   console.error = () => {};
+  process.env.LEAD_WEBHOOK_SECRET = TEST_SECRET;
+
   process.env.LEAD_WEBHOOK_URL = "http://example.com/leads";
-  const res = makeRes();
+  let res = makeRes();
+  await handler(makeReq({ body: { name: "QA", whatsapp: "919999999999", contactConsent: true } }), res);
+  assert.equal(res.statusCode, 503);
+
+  process.env.LEAD_WEBHOOK_URL = "https://user:password@example.com/leads";
+  res = makeRes();
   await handler(makeReq({ body: { name: "QA", whatsapp: "919999999999", contactConsent: true } }), res);
   assert.equal(res.statusCode, 503);
   assert.equal(res.json().error, "lead_capture_not_configured");
 });
 
-test("persists a consented lead with server-computed opportunity values and minimized URLs", async () => {
-  process.env.LEAD_WEBHOOK_URL = "https://example.com/shalcon-leads";
+test("persists a consented lead with server-computed values, authenticated webhook and minimized URLs", async () => {
+  configurePersistence();
   let captured = null;
   global.fetch = async (url, options) => {
     captured = { url: String(url), options };
@@ -163,15 +200,19 @@ test("persists a consented lead with server-computed opportunity values and mini
   assert.equal(captured.url, "https://example.com/shalcon-leads");
   assert.equal(captured.options.method, "POST");
   assert.equal(captured.options.redirect, "error");
+  assert.equal(captured.options.headers["X-Shalcon-Webhook-Secret"], TEST_SECRET);
+  assert.ok(captured.options.headers["Idempotency-Key"]);
 
   const payload = JSON.parse(captured.options.body);
-  assert.equal(payload.schemaVersion, 1);
+  assert.equal(payload.schemaVersion, 2);
   assert.equal(payload.source, "shalcon_opportunity_estimator");
   assert.equal(payload.name, "QA Person");
   assert.equal(payload.whatsapp, "919999999999");
   assert.equal(payload.contactConsent, true);
   assert.equal(payload.contactConsentVersion, "website-audit-contact-v1");
   assert.ok(payload.contactConsentAt);
+  assert.ok(payload.leadId);
+  assert.equal(payload.leadId, captured.options.headers["Idempotency-Key"]);
   assert.equal(payload.industry, "healthcare");
   assert.equal(payload.packageName, "GROWTH");
   assert.equal(payload.currency, "INR");
@@ -191,7 +232,7 @@ test("persists a consented lead with server-computed opportunity values and mini
 });
 
 test("invalid estimator inputs are not converted into fake opportunity values", async () => {
-  process.env.LEAD_WEBHOOK_URL = "https://example.com/shalcon-leads";
+  configurePersistence();
   let payload = null;
   global.fetch = async (_url, options) => {
     payload = JSON.parse(options.body);
@@ -224,9 +265,30 @@ test("invalid estimator inputs are not converted into fake opportunity values", 
   assert.equal(payload.estimatedYearlyOpportunityAtRisk, null);
 });
 
+test("best-effort IP rate limit protects the persistence destination", async () => {
+  configurePersistence();
+  global.fetch = async () => ({ ok: true, status: 200 });
+  const request = () => makeReq({
+    headers: { "x-forwarded-for": "203.0.113.10" },
+    body: { name: "QA", whatsapp: "919999999999", contactConsent: true },
+  });
+
+  for (let i = 0; i < 8; i += 1) {
+    const res = makeRes();
+    await handler(request(), res);
+    assert.equal(res.statusCode, 201);
+  }
+
+  const blocked = makeRes();
+  await handler(request(), blocked);
+  assert.equal(blocked.statusCode, 429);
+  assert.equal(blocked.json().error, "rate_limited");
+  assert.ok(Number(blocked.headers["retry-after"]) >= 1);
+});
+
 test("never returns success when the persistence destination fails", async () => {
   console.error = () => {};
-  process.env.LEAD_WEBHOOK_URL = "https://example.com/shalcon-leads";
+  configurePersistence();
   global.fetch = async () => ({ ok: false, status: 500 });
 
   const res = makeRes();
@@ -237,7 +299,7 @@ test("never returns success when the persistence destination fails", async () =>
 
 test("never returns success when persistence throws", async () => {
   console.error = () => {};
-  process.env.LEAD_WEBHOOK_URL = "https://example.com/shalcon-leads";
+  configurePersistence();
   global.fetch = async () => {
     throw new Error("network down");
   };
