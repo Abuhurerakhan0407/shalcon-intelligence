@@ -20,10 +20,21 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
-      - name: Install dependencies
+      - name: Refresh candidate lockfile
+        run: npm install --package-lock-only --ignore-scripts
+
+      - name: Upload candidate lockfile
+        uses: actions/upload-artifact@v4
+        with:
+          name: shalcon-candidate-lock
+          path: package-lock.json
+          if-no-files-found: error
+          retention-days: 3
+
+      - name: Install dependencies from candidate lock
         run: npm ci
 
       - name: Capture dependency audit
@@ -36,6 +47,9 @@ jobs:
           path: npm-audit.json
           if-no-files-found: error
           retention-days: 3
+
+      - name: Security audit gate
+        run: npm audit --audit-level=moderate
 
       - name: Marketing claim regression guard
         run: node scripts/verify-marketing-claims.mjs
