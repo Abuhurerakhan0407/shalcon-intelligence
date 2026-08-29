@@ -78,6 +78,13 @@ test("requires name and WhatsApp", async () => {
   assert.equal(res.json().error, "name_and_whatsapp_required");
 });
 
+test("rejects invalid WhatsApp length", async () => {
+  const res = makeRes();
+  await handler(makeReq({ body: { name: "QA", whatsapp: "123", contactConsent: true } }), res);
+  assert.equal(res.statusCode, 400);
+  assert.equal(res.json().error, "invalid_whatsapp");
+});
+
 test("requires explicit contact consent", async () => {
   const res = makeRes();
   await handler(makeReq({ body: { name: "QA", whatsapp: "919999999999" } }), res);
@@ -117,7 +124,7 @@ test("rejects non-HTTPS webhook destinations", async () => {
   assert.equal(res.json().error, "lead_capture_not_configured");
 });
 
-test("persists a consented lead and only then returns success", async () => {
+test("persists a consented lead with server-computed opportunity values and minimized URLs", async () => {
   process.env.LEAD_WEBHOOK_URL = "https://example.com/shalcon-leads";
   let captured = null;
   global.fetch = async (url, options) => {
@@ -128,23 +135,24 @@ test("persists a consented lead and only then returns success", async () => {
   const res = makeRes();
   await handler(
     makeReq({
-      headers: { referer: "https://shalcon.example/?utm_source=qa" },
+      headers: { referer: "https://ref.example/some-page?secret=must-not-persist#private" },
       body: {
         name: "  QA Person  ",
-        whatsapp: " 919999999999 ",
+        whatsapp: "+91 99999 99999",
         company: "Test Clinic",
-        industry: "healthcare",
-        packageName: "GROWTH",
+        industry: "Healthcare",
+        packageName: "growth",
         contactConsent: true,
-        currency: "INR",
+        currency: "inr",
         inquiries: 42,
         missPercent: 25,
         conversionRate: 20,
         avgTxn: 1200,
-        estimatedDailyOpportunityAtRisk: 2520,
-        estimatedMonthlyOpportunityAtRisk: 75600,
-        estimatedYearlyOpportunityAtRisk: 919800,
-        page: "https://shalcon.example/",
+        // Deliberately forged browser-derived values. Server must ignore these.
+        estimatedDailyOpportunityAtRisk: 999999999,
+        estimatedMonthlyOpportunityAtRisk: 999999999,
+        estimatedYearlyOpportunityAtRisk: 999999999,
+        page: "https://shalcon.example/?utm_source=qa&utm_medium=email&utm_campaign=launch&secret=drop-me#fragment",
       },
     }),
     res
@@ -157,12 +165,63 @@ test("persists a consented lead and only then returns success", async () => {
   assert.equal(captured.options.redirect, "error");
 
   const payload = JSON.parse(captured.options.body);
+  assert.equal(payload.schemaVersion, 1);
+  assert.equal(payload.source, "shalcon_opportunity_estimator");
   assert.equal(payload.name, "QA Person");
   assert.equal(payload.whatsapp, "919999999999");
   assert.equal(payload.contactConsent, true);
+  assert.equal(payload.contactConsentVersion, "website-audit-contact-v1");
   assert.ok(payload.contactConsentAt);
+  assert.equal(payload.industry, "healthcare");
+  assert.equal(payload.packageName, "GROWTH");
+  assert.equal(payload.currency, "INR");
+
+  // 42 × .25 × .20 × 1200 = 2520/day; derived only on the server.
+  assert.equal(payload.estimatedDailyOpportunityAtRisk, 2520);
   assert.equal(payload.estimatedMonthlyOpportunityAtRisk, 75600);
-  assert.equal(payload.referrer, "https://shalcon.example/?utm_source=qa");
+  assert.equal(payload.estimatedYearlyOpportunityAtRisk, 919800);
+
+  assert.equal(payload.page, "https://shalcon.example/");
+  assert.equal(payload.referrer, "https://ref.example/some-page");
+  assert.equal(payload.utmSource, "qa");
+  assert.equal(payload.utmMedium, "email");
+  assert.equal(payload.utmCampaign, "launch");
+  assert.ok(!JSON.stringify(payload).includes("drop-me"));
+  assert.ok(!JSON.stringify(payload).includes("must-not-persist"));
+});
+
+test("invalid estimator inputs are not converted into fake opportunity values", async () => {
+  process.env.LEAD_WEBHOOK_URL = "https://example.com/shalcon-leads";
+  let payload = null;
+  global.fetch = async (_url, options) => {
+    payload = JSON.parse(options.body);
+    return { ok: true, status: 200 };
+  };
+
+  const res = makeRes();
+  await handler(
+    makeReq({
+      body: {
+        name: "QA",
+        whatsapp: "919999999999",
+        contactConsent: true,
+        inquiries: 100001,
+        missPercent: 101,
+        conversionRate: -1,
+        avgTxn: 1000000001,
+      },
+    }),
+    res
+  );
+
+  assert.equal(res.statusCode, 201);
+  assert.equal(payload.inquiries, null);
+  assert.equal(payload.missPercent, null);
+  assert.equal(payload.conversionRate, null);
+  assert.equal(payload.avgTxn, null);
+  assert.equal(payload.estimatedDailyOpportunityAtRisk, null);
+  assert.equal(payload.estimatedMonthlyOpportunityAtRisk, null);
+  assert.equal(payload.estimatedYearlyOpportunityAtRisk, null);
 });
 
 test("never returns success when the persistence destination fails", async () => {
