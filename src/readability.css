@@ -1,13 +1,9 @@
-/* Market-ready readability overrides.
-   The original visual system used #555577 for secondary text (~2.9:1 on the
-   #030308 background). Preserve hierarchy while lifting readable copy above
-   normal-text contrast targets. */
+/* Market-ready readability and interaction overrides. */
 
 :root {
   --shalcon-muted-readable: #8589a6;
 }
 
-/* React serializes the legacy inline G.muted token to this rgb() form. */
 [style*="color: rgb(85, 85, 119)"] {
   color: var(--shalcon-muted-readable) !important;
 }
@@ -20,11 +16,21 @@
   color: var(--shalcon-muted-readable);
 }
 
-/* Keep tertiary metadata visually quieter without dropping body copy back into
-   low-contrast territory. */
 .mono[style*="font-size: 8px"],
 .mono[style*="font-size: 9px"] {
   letter-spacing: 0.08em;
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
 
 button:focus-visible,
@@ -38,8 +44,8 @@ textarea:focus-visible,
 }
 
 button:disabled {
-  cursor: not-allowed;
-  opacity: 0.65;
+  cursor: not-allowed !important;
+  opacity: 0.58;
 }
 
 @media (max-width: 640px) {
@@ -53,7 +59,46 @@ button:disabled {
   }
 
   .btn-primary,
-  .btn-ghost {
+  .btn-ghost,
+  .btn-text,
+  .nav-brand,
+  .mobile-menu-btn,
+  .roi-nav-pill,
+  .niche-tab,
+  .pill-btn,
+  .footer-link,
+  .demo-send-btn {
     min-height: 44px;
+  }
+
+  .mobile-menu-btn,
+  .roi-modal-close {
+    min-width: 44px;
+  }
+
+  .roi-modal-close {
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  .roi-input,
+  .demo-chat-input {
+    min-height: 44px;
+  }
+
+  .roi-modal-panel input[type="range"] {
+    min-height: 44px;
+  }
+
+  .roi-modal-panel input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 auto;
+  }
+
+  .footer-link {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2px;
   }
 }
