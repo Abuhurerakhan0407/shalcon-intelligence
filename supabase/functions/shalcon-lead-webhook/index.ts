@@ -20,11 +20,11 @@ function clean(value: unknown, max: number) {
   return String(value ?? '').trim().slice(0, max)
 }
 
-function nullableNumber(value: unknown, min: number, max: number) {
-  if (value === null || value === undefined || value === '') return null
+function checkedNullableNumber(value: unknown, min: number, max: number) {
+  if (value === null || value === undefined || value === '') return { ok: true, value: null as number | null }
   const parsed = Number(value)
-  if (!Number.isFinite(parsed) || parsed < min || parsed > max) return null
-  return parsed
+  if (!Number.isFinite(parsed) || parsed < min || parsed > max) return { ok: false, value: null as number | null }
+  return { ok: true, value: parsed }
 }
 
 function validIso(value: unknown) {
@@ -54,6 +54,15 @@ async function secretsEqual(a: string, b: string) {
   return diff === 0
 }
 
+function opportunityFromInputs(inquiries: number, missPercent: number, conversionRate: number, avgTxn: number) {
+  const dailyExact = inquiries * (missPercent / 100) * (conversionRate / 100) * avgTxn
+  return {
+    daily: Math.round(dailyExact),
+    monthly: Math.round(dailyExact * 30),
+    yearly: Math.round(dailyExact * 365),
+  }
+}
+
 function mapLead(body: Record<string, unknown>) {
   const leadId = clean(body.leadId, 64)
   const schemaVersion = Number(body.schemaVersion)
@@ -76,13 +85,39 @@ function mapLead(body: Record<string, unknown>) {
   if (!name || !DIGITS.test(whatsapp)) return { error: 'invalid_contact' as const }
   if (!['', 'INR', 'USD'].includes(currency)) return { error: 'invalid_currency' as const }
 
-  const inquiries = nullableNumber(body.inquiries, 0, 100_000)
-  const missPercent = nullableNumber(body.missPercent, 0, 100)
-  const conversionRate = nullableNumber(body.conversionRate, 0, 100)
-  const avgTxn = nullableNumber(body.avgTxn, 0, 1_000_000_000)
-  const estimatedDaily = nullableNumber(body.estimatedDailyOpportunityAtRisk, 0, Number.MAX_SAFE_INTEGER)
-  const estimatedMonthly = nullableNumber(body.estimatedMonthlyOpportunityAtRisk, 0, Number.MAX_SAFE_INTEGER)
-  const estimatedYearly = nullableNumber(body.estimatedYearlyOpportunityAtRisk, 0, Number.MAX_SAFE_INTEGER)
+  const inquiries = checkedNullableNumber(body.inquiries, 0, 100_000)
+  const missPercent = checkedNullableNumber(body.missPercent, 0, 100)
+  const conversionRate = checkedNullableNumber(body.conversionRate, 0, 100)
+  const avgTxn = checkedNullableNumber(body.avgTxn, 0, 1_000_000_000)
+  const estimatedDaily = checkedNullableNumber(body.estimatedDailyOpportunityAtRisk, 0, Number.MAX_SAFE_INTEGER)
+  const estimatedMonthly = checkedNullableNumber(body.estimatedMonthlyOpportunityAtRisk, 0, Number.MAX_SAFE_INTEGER)
+  const estimatedYearly = checkedNullableNumber(body.estimatedYearlyOpportunityAtRisk, 0, Number.MAX_SAFE_INTEGER)
+
+  if (![inquiries, missPercent, conversionRate, avgTxn, estimatedDaily, estimatedMonthly, estimatedYearly].every((field) => field.ok)) {
+    return { error: 'invalid_estimator_data' as const }
+  }
+
+  const inputValues = [inquiries.value, missPercent.value, conversionRate.value, avgTxn.value]
+  const estimateValues = [estimatedDaily.value, estimatedMonthly.value, estimatedYearly.value]
+  const inputsComplete = inputValues.every((value) => value !== null)
+
+  if (!inputsComplete) {
+    if (!estimateValues.every((value) => value === null)) return { error: 'invalid_opportunity_values' as const }
+  } else {
+    const expected = opportunityFromInputs(
+      inquiries.value as number,
+      missPercent.value as number,
+      conversionRate.value as number,
+      avgTxn.value as number
+    )
+    if (
+      estimatedDaily.value !== expected.daily ||
+      estimatedMonthly.value !== expected.monthly ||
+      estimatedYearly.value !== expected.yearly
+    ) {
+      return { error: 'invalid_opportunity_values' as const }
+    }
+  }
 
   const row = {
     lead_id: leadId,
@@ -98,13 +133,13 @@ function mapLead(body: Record<string, unknown>) {
     industry,
     package_name: packageName,
     currency,
-    inquiries,
-    miss_percent: missPercent,
-    conversion_rate: conversionRate,
-    avg_txn: avgTxn,
-    estimated_daily_opportunity_at_risk: estimatedDaily,
-    estimated_monthly_opportunity_at_risk: estimatedMonthly,
-    estimated_yearly_opportunity_at_risk: estimatedYearly,
+    inquiries: inquiries.value,
+    miss_percent: missPercent.value,
+    conversion_rate: conversionRate.value,
+    avg_txn: avgTxn.value,
+    estimated_daily_opportunity_at_risk: estimatedDaily.value,
+    estimated_monthly_opportunity_at_risk: estimatedMonthly.value,
+    estimated_yearly_opportunity_at_risk: estimatedYearly.value,
     page: clean(body.page, 300),
     referrer: clean(body.referrer, 300),
     utm_source: clean(body.utmSource, 100),
