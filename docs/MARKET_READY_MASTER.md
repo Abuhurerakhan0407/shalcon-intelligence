@@ -2,304 +2,309 @@
 
 Status date: 29 Aug 2026
 Branch: `shalcon-market-ready-2026`
-Purpose: single source of truth for turning Shalcon Intelligence into a credible, compliant, market-ready AI automation agency.
+Purpose: authoritative operating plan for turning Shalcon Intelligence into a credible, secure, measurable AI automation agency.
 
-## 0. Operating rule
+## 0. Operating rules
 
-Do not treat the old 30-foundations checklist as proof that work exists. Every item marked complete must be verified by a working asset, live integration, document, or measurable process.
+1. Do not edit or merge into `main` while it contains Abu's portfolio work.
+2. A checklist item is not evidence. Mark work complete only when a working asset, test, integration, document or measured process exists.
+3. No fabricated client results, testimonials, platform counts, uptime, recovery rates or breakeven promises.
+4. Synthetic demos must remain clearly labeled.
+5. Sell operating systems and measurable workflows, not generic “AI bot” capability lists.
+6. Human judgment remains in the loop for sensitive/consequential medical, insurance and employment decisions.
+7. Do not create/reuse cross-product infrastructure merely to remove a checkbox.
+8. Current release status is governed by `docs/LAUNCH_GATE.md`.
+9. Fast resume state is governed by `PROJECT_STATE.md`.
 
-Do not edit `main` while it contains portfolio work. Build and validate Shalcon on this isolated branch first.
+## 1. Market research conclusion
 
-## 1. Research conclusions
+The AI automation agency market is crowded with the same surface offer: voice agents, WhatsApp automation, CRM routing, n8n/Make workflows, qualification, booking and dashboards.
 
-Current competitors in India and globally commonly sell the same surface stack: AI voice agents, WhatsApp automation, CRM routing, n8n/Make workflows, lead qualification, booking, and dashboards.
+Competitor research is recorded in `docs/COMPETITOR_RESEARCH_2026-08-29.md`.
 
-Benchmarks reviewed:
-- Neogen Media — voice, WhatsApp, back-office automation; strong proof-led positioning and reported deployment counts.
-- Sciquire — real client before/after case studies; Map → Build → Launch → Tune delivery method.
-- TaskShift AI — clearly labels client work vs concept builds.
-- Veltim — productized voice/WhatsApp/CRM integration offer and explicit platform integrations.
-- Fingrtip — audit/tool first, then a short review call; clear Mumbai founder positioning.
-- Pixora / Orbixel / One Autonomous / similar India agencies — show how crowded generic “24/7 AI automation” positioning has become.
+Shalcon cannot differentiate by naming more tools. The defensible launch position is:
+- vertical workflow knowledge;
+- clear audit → pilot → system buying path;
+- implementation quality;
+- explicit human escalation;
+- honest value modelling;
+- measurable production baselines/results;
+- good security/data handling;
+- ongoing optimization after launch.
 
-Competitive conclusion: Shalcon cannot win by saying “AI voice + WhatsApp + CRM.” Differentiation must come from vertical expertise, proof, honest ROI, fast audit-to-deployment, implementation quality, compliance, and clear ongoing optimization.
+## 2. Positioning
 
-## 2. Audit — current assets
-
-### Strong assets to preserve
-- Componentized Vite + React marketing site exists at the pre-portfolio Shalcon commit.
-- Dark premium visual identity is established.
-- ROI / Revenue Leak Detector exists and is already integrated as a lazy modal in the componentized version.
-- Five vertical solution concepts exist: Healthcare, EdTech, Insurance, E-commerce, HR.
-- Service architecture exists: voice, WhatsApp, CRM, documents, support bot, analytics.
-- Demo UI exists.
-- Contact actions and booking architecture exist in componentized source.
-- Phase 5 motion system and Phase 6 ROI integration were already completed before repository drift.
-
-### Critical blockers
-
-#### A. Repository drift — BLOCKER
-Current `main` contains Abu portfolio work. Shalcon agency source must remain isolated until release.
-
-Action: work only from `shalcon-market-ready-2026` until production-ready.
-
-#### B. Unsupported proof — BLOCKER
-Old marketing source contains testimonial text and metrics that cannot be treated as verified client proof without evidence, including example conversion/recovery numbers, platform counts, uptime, and client-result-style statements.
-
-Action:
-- Remove unsupported testimonials and live-business statistics.
-- Replace with clearly labeled “Demo environment”, “Illustrative workflow”, “Sample automation” and capability proof.
-- Create a claims register. No numeric marketing claim ships without evidence/source.
-
-#### C. ROI calculator logic — BLOCKER
-The calculator currently models daily loss as missed inquiries × average transaction value and uses fixed recovery multipliers / fixed break-even days. This can overstate economic impact.
-
-Action:
-- Convert calculator to a conservative scenario estimator.
-- Add conversion probability or qualified-lead rate.
-- Show assumptions visibly.
-- Replace guaranteed recovery/break-even language with estimated scenarios.
-- Never infer client ROI without client inputs.
-
-#### D. ROI lead capture — BLOCKER
-Standalone source's submit handler validates name/WhatsApp then only changes the UI to `confirmed`; no real webhook/CRM persistence is performed.
-
-Action:
-- Send lead to a real endpoint.
-- Store attribution + selected vertical + calculator inputs + package interest.
-- Trigger owner notification.
-- Log success/failure.
-- Show confirmation only after successful persistence, or offer retry/fallback.
-
-#### E. Acquisition plan conflicts with messaging rules — BLOCKER
-Old foundations recommend cold WhatsApp outreach from public business numbers. WhatsApp Business policy requires recipient opt-in for subsequent messages/calls. India commercial communication rules also require consent/registered sender processes for regulated commercial calls/messages.
-
-Action:
-- Do not build mass cold WhatsApp outreach.
-- Use compliant email/LinkedIn/manual prospecting for first contact.
-- Move prospects to WhatsApp only after explicit opt-in or prospect-initiated contact.
-- Record opt-in source and timestamp.
-
-#### F. Privacy/data handling — BLOCKER
-Healthcare, HR, insurance and lead capture can involve personal/sensitive operational data. DPDP Rules 2025 are now part of the compliance environment.
-
-Action:
-- Privacy notice.
-- Data collection purpose and retention policy.
-- Client DPA / processor terms where required.
-- Minimize demo data.
-- Avoid real health/candidate/policy records in public demos.
-- Secret management and access-control checklist.
-
-#### G. “Complete” foundations are not verified
-Foundations 1–10 were marked complete in the old dashboard, but several appear to be plans/templates rather than independently verified live systems.
-
-Action: reclassify every foundation as VERIFIED / PARTIAL / NOT VERIFIED / DEFERRED based on evidence.
-
-## 3. Positioning upgrade
-
-### Market-facing category
+### Category
 **AI Operations Systems Partner**
 
 ### Main promise
-Shalcon designs and deploys AI systems that respond, qualify, follow up, book, route, and update your business systems automatically — with human escalation when needed.
+Shalcon designs and deploys systems that capture, qualify, follow up, book, route and update business systems automatically — while escalating the right exceptions to humans.
 
 ### Launch wedge
-Primary: Healthcare / clinics
-Secondary: EdTech / coaching
-Other verticals stay visible as “additional systems” but should not dilute outbound messaging initially.
+Primary: **Healthcare / clinics**
+
+Secondary: **EdTech / coaching / admissions**
+
+Supported adjacent workflows: Insurance, E-commerce, HR/Recruitment.
 
 ### Flagship offer
 **AI Front Desk + Lead Operations System**
 
 Core modules:
-1. WhatsApp / web inquiry intake
-2. AI voice receptionist or callback agent
-3. qualification + routing
-4. appointment/demo scheduling
-5. follow-up and reminders
-6. CRM/database write-back
-7. owner dashboard / alerts
-8. human escalation + audit logs
+1. web / approved messaging inquiry intake;
+2. voice workflow where appropriate;
+3. qualification and routing;
+4. appointment/demo scheduling;
+5. follow-up and reminders;
+6. CRM/database write-back;
+7. operational events/reporting;
+8. human escalation and safe failure paths.
 
-Reason: competitors sell individual bots. Shalcon should sell one measurable operating system.
-
-## 4. Offer architecture
-
-Do not launch five separate SaaS products as if mature products already exist.
-
-Launch with three buying paths:
+## 3. Buying paths
 
 ### Audit
 Free automation opportunity audit.
-Output: workflow map + automation priority + estimated impact range.
+
+Output: current-state workflow, bottleneck map, automation priority, data/integration constraints and an editable impact model.
 
 ### Pilot
-One bounded production workflow with integrations and measurement.
-Price after discovery; usage/API fees explicit.
+One bounded production workflow with explicit acceptance criteria and measurement.
+
+Price after discovery. Third-party/API fees and client responsibilities stated separately.
 
 ### System
-Multi-channel automation system with CRM, reporting, monitoring and ongoing optimization.
+Multi-channel operating workflow with integrations, reporting, monitoring and optimization.
 
-Keep the old Starter/Growth/Enterprise ranges internally until unit economics are checked. Do not promise fixed break-even days.
+Current Starter/Growth/Enterprise figures are indicative planning ranges until owner approves final commercial risk/margins. Never promise fixed breakeven or recovery percentages.
 
-## 5. Website release criteria
+## 4. Website / engineering state
 
-Must pass before public marketing:
-- Clean Shalcon-only repository/branch.
-- No unsupported client claims.
-- No placeholder contact info.
-- ROI assumptions redesigned.
-- Real lead persistence.
-- Booking works.
-- WhatsApp CTA works.
-- Mobile QA: 360 / 390 / 430 widths.
-- Tablet QA.
-- Desktop QA.
-- Reduced motion.
-- Keyboard navigation/focus.
-- Lighthouse/performance review.
-- SEO title/description/canonical/OG image/schema.
-- Privacy + terms pages.
-- Analytics + conversion events.
-- Error monitoring or at minimum form failure logging.
-- Public demo data clearly labeled simulated.
+### Completed and verified in source/CI
+- Shalcon recovered into an isolated branch.
+- Vite 8 + React 18 build chain.
+- Direct runtime dependencies reduced to React, React DOM, Three.js and GSAP.
+- npm security audit gate.
+- runtime dependency-usage guard.
+- marketing-claim regression guard.
+- compiled-artifact secret/claim/performance guard.
+- unsupported old metrics/testimonials removed.
+- Healthcare-first homepage and flagship architecture proof.
+- synthetic deterministic industry demo logic.
+- opportunity-at-risk estimator replacing misleading loss/recovery framing.
+- estimator assumptions visible/editable.
+- booking, WhatsApp and email paths configured.
+- centralized non-sensitive conversion-event layer.
+- privacy/terms drafts.
+- legal drafts kept `noindex` until final review.
+- responsive/readability improvements.
+- keyboard skip link + main landmark.
+- modal focus trap/return and mobile touch-target improvements.
+- mobile/reduced-motion/low-power/save-data WebGL fallback.
+- Vercel security headers.
+- server-side lead validation, consent evidence, attribution minimization, rate limiting and false-success prevention.
+- authenticated/idempotent persistence contract prepared.
+- strict production CI currently green.
 
-## 6. Sales assets required
+### Still required for deployed release
+- dedicated Shalcon Vercel project/preview;
+- dedicated Shalcon Supabase project;
+- deploy/test lead persistence;
+- deployed browser/contact/API QA;
+- final production domain + canonical/absolute metadata;
+- final legal identity/privacy/terms approval.
 
-- One-page service overview.
-- Healthcare one-page offer.
-- EdTech one-page offer.
-- Discovery call checklist.
-- Workflow audit template.
-- Proposal template.
-- Scope of Work template.
-- Delivery acceptance checklist.
-- Demo case study template explicitly distinguishing concept/demo vs client deployment.
-- Objection library.
-- Follow-up sequences for email/LinkedIn.
-- Client onboarding form.
-- Monthly optimization/report template.
+## 5. Lead capture architecture
+
+Browser → `/api/lead` → authenticated HTTPS webhook → dedicated Shalcon Supabase Edge Function → internal lead table.
+
+### Vercel trust boundary
+`/api/lead` currently:
+- accepts POST only;
+- limits body size;
+- uses a honeypot;
+- applies best-effort short-window rate limiting without persisting IP as lead data;
+- validates name/WhatsApp/explicit contact permission;
+- bounds estimator inputs;
+- recalculates opportunity values server-side;
+- strips query/fragment data from retained page/referrer;
+- allowlists UTM source/medium/campaign;
+- requires HTTPS destination and strong shared secret;
+- creates a UUID lead ID and idempotency key;
+- returns success only when the destination succeeds.
+
+### Supabase destination implementation
+Prepared, not deployed:
+- `supabase/sql/create_shalcon_leads.sql`
+- `supabase/functions/shalcon-lead-webhook/index.ts`
+- `supabase/config.toml`
+- `supabase/README.md`
+- `tests/supabase-lead-destination.test.mjs`
+
+Destination design:
+- custom shared-secret authentication before any DB access;
+- schema/source/contact/consent validation;
+- second estimator validation + recomputation at persistence boundary;
+- RLS enabled;
+- browser roles revoked;
+- exact replay allowed without duplicate;
+- conflicting same-ID payload rejected rather than overwritten;
+- no full payload/secret logging.
+
+Do not point it at Pagevelope, Madrasa ERP or another product database.
+
+## 6. Data protection / compliance baseline
+
+Do not claim generic “100% DPDP compliant.” Compliance is role-, workflow-, data-, vendor- and time-specific.
+
+Important timing: the 13 Nov 2025 Government notifications phased commencement of the DPDP Act/Rules. As of 29 Aug 2026, the framework is enacted/notified, but many substantive private-sector processing provisions and Rules are scheduled for later commencement rather than all being in force today.
+
+Shalcon should nevertheless build toward the notified standard now: data minimization, clear notice/purpose, access controls, reasonable security safeguards, appropriate logs, processor-contract terms, deletion/retention handling and breach readiness.
+
+Operational/legal research is in `docs/INDIA_DATA_PROTECTION_BASELINE_2026-08-29.md`.
+Working client appendix is `docs/DATA_PROCESSING_ADDENDUM_TEMPLATE.md`.
+
+Before any real client personal data enters production:
+- identify client/Shalcon roles;
+- create field/data map;
+- approve vendors/integrations;
+- define access, retention and escalation;
+- sign appropriate contract/DPA terms;
+- use client-authorized credentials;
+- keep sensitive/consequential decisions human-controlled where required;
+- obtain engagement-specific legal advice when the risk warrants it.
 
 ## 7. Proof strategy
 
-Before real clients:
-- Build one polished Healthcare demo system.
-- Build one EdTech demo system.
-- Label both as demonstration systems.
-- Show architecture, inputs, outputs, escalation and audit logs.
-- Record short demo videos.
-- Use measured demo metrics only: latency, workflow steps, test success rate, coverage, not fictional revenue.
+### Before real client evidence
+Use capability proof only:
+- synthetic workflow demo;
+- architecture view;
+- test/QA evidence;
+- safe failure behavior;
+- integration design;
+- measurable demo properties that are actually observed.
 
-After real clients:
-- Capture baseline before deployment.
-- Define outcome metric before build.
-- Collect permission before publishing name/logo/results.
-- Publish before/after evidence with timeframe and sample size.
+Do not turn demo numbers into client-performance claims.
 
-## 8. Owner split — target 90/10
+### After a production pilot
+1. record baseline before deployment;
+2. define success metric before build;
+3. collect post-launch measurements;
+4. document timeframe/sample size/context;
+5. obtain client permission before publishing name/logo/result;
+6. add approved evidence to `CLAIMS_REGISTER.md`;
+7. only then replace demo proof with a public case study.
 
-### ChatGPT / execution owner (~90%)
-- Research competitors and positioning.
-- Maintain this source-of-truth plan.
-- Recover/refactor Shalcon website safely.
-- Code responsive/performance/accessibility fixes.
-- Redesign ROI calculator logic and UX.
-- Implement lead capture endpoint/workflow where available.
-- Add analytics events and conversion tracking.
-- Replace unsupported marketing claims.
-- Write website copy.
-- Create privacy/terms drafts for review.
-- Create service sheets, proposal, SOW, audit template, onboarding material.
-- Build demo workflows/code/integration scaffolding using available connected tools.
-- Create prospecting criteria and compliant outreach copy.
-- Build lead list process and CRM schema.
-- Create QA checklist and test website.
-- Prepare/deploy preview/production through connected deployment tools.
-- Maintain launch dashboard and blockers.
+## 8. Sales machine
 
-### Abu / business owner (~10%)
-Only items requiring identity, legal authority, account ownership, money, or human selling:
-- Confirm legal/business identity used on contracts/invoices.
-- Complete Razorpay/bank/KYC/GST/accountant actions when required.
-- Approve/sign legal documents after professional review where appropriate.
-- Approve final prices and commercial risk limits.
-- Own/authorize WhatsApp Business / Meta account and phone number.
-- Provide registrar/domain changes if connector access cannot.
-- Attend discovery/sales calls and close early clients.
-- Provide truthful client results/testimonials and permission to publish them.
-- Approve any real-client access to sensitive systems/data.
+Working assets exist for:
+- service overview;
+- Healthcare offer;
+- EdTech offer;
+- discovery/audit questions;
+- qualification scoring;
+- objections/closing;
+- proposal + SOW;
+- client onboarding;
+- delivery/UAT;
+- pilot reporting/measurement;
+- financial/margin control;
+- Healthcare outreach copy;
+- pipeline operating rhythm;
+- initial Mumbai prospect seed list;
+- launch-critical SOP index.
 
-## 9. Execution order
+Controlled outbound uses targeted email/LinkedIn/manual research first. WhatsApp is not the default mass cold channel. Prospect observations must be public/supportable and opt-outs must be recorded.
+
+## 9. Owner split — target 90/10
+
+### ChatGPT / execution owner
+Research, planning, code, QA, truthful copy, website conversion, estimator, analytics architecture, lead-capture implementation, security controls, documentation, demos, offer sheets, sales collateral, prospecting process, deployment preparation and launch tracking.
+
+### Business owner only
+Tasks requiring identity, legal authority, money/account ownership or real human selling:
+- choose/authorize billable infrastructure when required;
+- final legal/business identity;
+- review/sign legal agreements;
+- approve prices/payment/risk limits;
+- complete bank/KYC/GST/accounting/provider ownership actions;
+- authorize real client/system access;
+- attend/close early sales conversations;
+- provide/approve truthful client evidence;
+- approve final domain purchase/ownership where necessary.
+
+## 10. Current execution status
 
 ### Sprint 0 — Recovery + truth
-1. Isolate old Shalcon source branch. DONE.
-2. Create market-readiness master. DONE.
-3. Verify project builds from recovered branch.
-4. Reclassify 30 foundations from evidence.
-5. Create claims register.
+- [x] Isolate Shalcon branch.
+- [x] Recover genuine agency site.
+- [x] Reclassify old 30 foundations.
+- [x] Create claims register.
+- [x] Remove stale duplicate/Claude-era instructions that could reintroduce old claims.
 
 ### Sprint 1 — Website trust + conversion
-6. Remove unsupported proof.
-7. Replace demo/live wording.
-8. Fix contact data.
-9. Rebuild ROI assumptions.
-10. Implement real lead capture.
-11. Add privacy/terms.
-12. Add analytics/conversion events.
-13. Responsive + a11y + performance QA.
-14. Deploy preview.
+- [x] Remove unsupported proof.
+- [x] Reframe demos as synthetic.
+- [x] Fix contact routes.
+- [x] Redesign estimator assumptions/language.
+- [x] Implement secure lead server boundary.
+- [x] Prepare dedicated persistence implementation.
+- [x] Add privacy/terms drafts.
+- [x] Add conversion event architecture.
+- [x] Responsive/accessibility/performance engineering pass.
+- [x] Strict CI/build/artifact gates.
+- [ ] Deploy dedicated preview.
+- [ ] Deploy/test dedicated persistence.
 
 ### Sprint 2 — Flagship proof
-15. Build Healthcare flagship demo.
-16. Create architecture view and measurable test report.
-17. Record demo-ready flow.
-18. Build lighter EdTech demo.
-19. Add demo proof to website.
+- [x] Healthcare flagship workflow on website.
+- [x] Healthcare architecture proof.
+- [x] Synthetic interactive demo with safety boundaries.
+- [x] EdTech synthetic scenario within the multi-industry demo.
+- [ ] Production pilot evidence (requires client).
 
 ### Sprint 3 — Sales machine
-20. Finalize offer/pricing economics.
-21. Service/offer sheets.
-22. Discovery audit system.
-23. Proposal + SOW.
-24. Lead CRM.
-25. Compliant prospect sourcing.
-26. Email + LinkedIn outbound sequences.
-27. Follow-up automation.
-28. Weekly pipeline dashboard.
+- [x] Service/offer sheets.
+- [x] Discovery audit system.
+- [x] Proposal/SOW.
+- [x] Objection/close framework.
+- [x] Delivery/onboarding/report templates.
+- [x] CRM schema/process.
+- [x] Healthcare targeting and outreach framework.
+- [x] Initial researched Mumbai seed accounts.
+- [ ] Final owner-approved commercial terms.
+- [ ] Live CRM/pipeline persistence tied to real leads.
 
 ### Sprint 4 — Launch
-29. Production domain release.
-30. 100-account Healthcare target list.
-31. First outreach batch.
-32. Iterate copy/offer from replies and calls.
-33. First pilot client.
-34. Capture real baseline + result.
-35. Replace demo proof with verified client proof over time.
+- [x] Domain options researched; exact-brand `.com` recommended if still available at purchase time.
+- [ ] Dedicated preview + deployed QA.
+- [ ] Final production domain release.
+- [ ] First controlled outreach batch.
+- [ ] First qualified audit/proposal.
+- [ ] First paid pilot.
+- [ ] Permission-backed case study.
 
-## 10. Deferred until revenue
+## 11. Deferred until evidence/revenue
 
 Do not block launch on:
-- hiring,
-- partnerships,
-- exit strategy,
-- broad international expansion,
-- five fully productized SaaS products,
-- complex authority/content programs,
-- large internal automation suite.
+- hiring;
+- partnerships;
+- broad international expansion;
+- five mature standalone SaaS products;
+- complex authority/content programs;
+- large internal automation suite;
+- exit planning.
 
-These map to later Foundations 18–30 and should follow real demand.
+## 12. Release standard
 
-## 11. Release standard
+Shalcon is market-ready when a prospect can:
+1. understand the operating problem/offer quickly;
+2. see real proof or an explicitly labeled synthetic demo;
+3. estimate value without misleading guarantees;
+4. book/contact without broken links;
+5. submit a lead that is durably stored;
+6. understand the next step;
+7. see credible privacy/security boundaries;
+8. receive a professional audit/proposal/onboarding flow.
 
-Shalcon is “ready to market” only when a prospect can:
-1. Understand the problem Shalcon solves in under 10 seconds.
-2. See a real or explicitly labeled demo.
-3. Estimate value without misleading guarantees.
-4. Book/contact without broken links.
-5. Submit a lead that is actually stored.
-6. Understand what happens next.
-7. Trust privacy/compliance basics.
-8. Receive a professional audit/proposal/onboarding flow.
-
-Anything else is polish, not a launch blocker.
+Anything beyond that is optimization, evidence-building or scale—not a reason to keep polishing forever.
