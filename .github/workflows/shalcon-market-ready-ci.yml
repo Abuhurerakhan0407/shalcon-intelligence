@@ -26,6 +26,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Capture dependency audit
+        run: npm audit --json > npm-audit.json || true
+
+      - name: Upload dependency audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: shalcon-npm-audit
+          path: npm-audit.json
+          if-no-files-found: error
+          retention-days: 3
+
       - name: Marketing claim regression guard
         run: node scripts/verify-marketing-claims.mjs
 
