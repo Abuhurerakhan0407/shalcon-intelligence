@@ -1,7 +1,8 @@
 # Shalcon Intelligence — Commercial Recommendation V1
 
-Status: recommended default for owner approval; not yet an approved public price card.
+Status: **OWNER APPROVED on 30 Aug 2026**. This is the internal default commercial baseline, not a mandatory public price card.
 Research date: 29 Aug 2026.
+Owner approval date: 30 Aug 2026.
 
 ## 1. Market read
 
@@ -15,12 +16,12 @@ Observed current public examples include:
 
 Conclusion: Shalcon should not compete with ₹2k/month clinic SaaS. The flagship offer is a custom workflow/integration service with discovery, system design, safe escalation, write-back, UAT and measurement.
 
-## 2. Recommended launch offer — Healthcare Pilot
+## 2. Approved launch offer — Healthcare Pilot
 
 ### AI Front Desk + Lead Operations Pilot
-**Recommended setup: ₹39,000**
+**Approved setup: ₹39,000**
 
-**Recommended managed optimization/support: ₹9,000/month** after the initial included stabilization period.
+**Approved managed optimization/support: ₹9,000/month** after the initial included stabilization period.
 
 Third-party usage/platform costs stay in the client's own accounts or are separately itemized.
 
@@ -60,7 +61,7 @@ This keeps Shalcon:
 - below the ₹75k+ starting point published by some custom agencies, reducing first-client friction while public proof is still being built;
 - high enough to fund proper discovery, integration, UAT and stabilization rather than selling a loss-making “bot.”
 
-Do not discount below **₹30,000 setup** for the defined pilot unless scope is reduced in writing or there is a deliberate strategic exchange approved by the owner (for example a genuinely valuable permission-backed case study opportunity after successful delivery).
+Do not discount below **₹30,000 setup** for the defined pilot unless scope is reduced in writing or there is a deliberate strategic exchange approved by the owner.
 
 Do not include open-ended monthly support below **₹7,500/month**. If the client does not want recurring support, define a paid change/support rate and clear post-stabilization boundary instead.
 
@@ -76,12 +77,12 @@ Keep **₹2,00,000+** as custom-scope territory where there are multiple departm
 
 Never promise “unlimited capacity” unless third-party/system limits and economics support it.
 
-## 6. Payment schedule
+## 6. Approved payment schedule
 
-Recommended implementation collection:
-- 50% at signature/start;
-- 30% when staging is ready for agreed UAT;
-- 20% on production acceptance.
+Implementation collection:
+- **50%** at signature/start;
+- **30%** when staging is ready for agreed UAT;
+- **20%** on production acceptance.
 
 Do not begin material third-party spend before the corresponding client funds are received unless the owner explicitly accepts the cash risk.
 
@@ -113,10 +114,12 @@ Do not include by default:
 
 Shalcon guarantees the written deliverables/acceptance criteria, not customer behavior.
 
-## 9. Owner decision required later
+## 9. Owner decision record
 
-Recommended approval is intentionally simple:
+On 30 Aug 2026, the owner approved V1 as written:
+- Healthcare Pilot: **₹39,000 setup + ₹9,000/month**;
+- client-paid or separately itemized vendor usage;
+- **50/30/20** implementation milestones;
+- scope and pricing floors above.
 
-**Approve V1 default:** Healthcare Pilot = **₹39,000 setup + ₹9,000/month**, client-paid vendor usage, 50/30/20 milestones, with the scope/floors above.
-
-Until approved, public website ranges remain indicative and proposals remain subject to owner review.
+Any client-specific deviation that materially increases risk or falls below the internal floors requires a new explicit owner decision.
