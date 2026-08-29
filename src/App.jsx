@@ -56,25 +56,21 @@ export default function App() {
 
     let disposeReveal = () => {};
     let disposeMagnetic = () => {};
-    let disposeCountUp = () => {};
     let cancelled = false;
 
     Promise.all([
       import("./motion/scrollReveal.js"),
       import("./motion/magnetic.js"),
-      import("./motion/countUp.js"),
-    ]).then(([reveal, magnetic, countUp]) => {
+    ]).then(([reveal, magnetic]) => {
       if (cancelled) return;
       disposeReveal = reveal.initScrollReveals();
       disposeMagnetic = magnetic.initMagnetic();
-      disposeCountUp = countUp.initCountUp();
     });
 
     return () => {
       cancelled = true;
       disposeReveal();
       disposeMagnetic();
-      disposeCountUp();
     };
   }, []);
 
