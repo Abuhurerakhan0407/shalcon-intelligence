@@ -1,39 +1,26 @@
 import { useState, useEffect } from "react";
 import { SITE_CONFIG, G } from "../data/content.js";
 
-/**
- * Nav — fixed top bar (ported structure from source, brief §3/§12.1).
- * - Logo uses shalcon-logo.svg (replaces old spinning-square mark).
- * - Desktop links + "Book A Call" ghost button.
- * - "Calculate My ROI" distinct filled pill (key feature entry point, §12.1).
- *   Idle pulse-glow animation is added in Phase 5 — static pill here.
- * - Mobile hamburger + dropdown menu (functional, brief §5).
- *
- * Scroll-to uses native scrollIntoView (base behavior, NOT an animation lib).
- */
 const LINKS = ["Services", "Industries", "How It Works", "Demo"];
 
 export default function Nav({ onBookCall, onOpenROI }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeId, setActiveId] = useState("");
 
-  // Active-section scroll spy (lightweight, IntersectionObserver only).
   useEffect(() => {
     const ids = LINKS.map((l) => l.toLowerCase().replace(/ /g, "-"));
-    const sections = ids
-      .map((id) => document.getElementById(id))
-      .filter(Boolean);
+    const sections = ids.map((id) => document.getElementById(id)).filter(Boolean);
     if (!sections.length) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) setActiveId(e.target.id);
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveId(entry.target.id);
         });
       },
       { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
     );
-    sections.forEach((s) => observer.observe(s));
+    sections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
   }, []);
 
@@ -45,6 +32,7 @@ export default function Nav({ onBookCall, onOpenROI }) {
   return (
     <>
       <nav
+        aria-label="Primary navigation"
         style={{
           position: "fixed",
           top: 0,
@@ -62,8 +50,9 @@ export default function Nav({ onBookCall, onOpenROI }) {
           padding: "0 clamp(16px,5vw,60px)",
         }}
       >
-        {/* Logo */}
         <button
+          className="nav-brand"
+          aria-label="Back to top — Shalcon Intelligence"
           onClick={() => scrollTo("hero")}
           style={{
             background: "none",
@@ -75,18 +64,9 @@ export default function Nav({ onBookCall, onOpenROI }) {
             padding: 0,
           }}
         >
-          <img
-            src="/shalcon-logo.svg"
-            alt="Shalcon Intelligence logo"
-            width={26}
-            height={26}
-            style={{ flexShrink: 0, display: "block" }}
-          />
+          <img src="/shalcon-logo.svg" alt="" width={26} height={26} style={{ flexShrink: 0, display: "block" }} />
           <div style={{ textAlign: "left" }}>
-            <div
-              className="syne"
-              style={{ color: G.green, fontSize: 13, fontWeight: 800, letterSpacing: ".26em", lineHeight: 1 }}
-            >
+            <div className="syne" style={{ color: G.green, fontSize: 13, fontWeight: 800, letterSpacing: ".26em", lineHeight: 1 }}>
               {SITE_CONFIG.agencyName}
             </div>
             <div className="mono" style={{ color: G.muted, fontSize: 8, letterSpacing: ".2em" }}>
@@ -95,33 +75,25 @@ export default function Nav({ onBookCall, onOpenROI }) {
           </div>
         </button>
 
-        {/* Desktop nav */}
         <div className="hide-m" style={{ display: "flex", alignItems: "center", gap: 24 }}>
-          {LINKS.map((l) => {
-            const id = l.toLowerCase().replace(/ /g, "-");
+          {LINKS.map((label) => {
+            const id = label.toLowerCase().replace(/ /g, "-");
             return (
-              <button
-                key={l}
-                className={`nav-link${activeId === id ? " active" : ""}`}
-                onClick={() => scrollTo(id)}
-              >
-                {l}
+              <button key={label} className={`nav-link${activeId === id ? " active" : ""}`} onClick={() => scrollTo(id)}>
+                {label}
               </button>
             );
           })}
-          {/* Key feature entry point — distinct filled pill (brief §12.1) */}
-          <button className="roi-nav-pill" onClick={onOpenROI}>
-            Calculate My ROI
-          </button>
-          <button className="btn-ghost" onClick={onBookCall}>
-            <span>Book A Call</span>
-          </button>
+          <button className="roi-nav-pill" onClick={onOpenROI}>Open Estimator</button>
+          <button className="btn-ghost" onClick={onBookCall}><span>Book A Call</span></button>
         </div>
 
-        {/* Mobile hamburger */}
         <button
-          onClick={() => setMobileOpen((o) => !o)}
+          onClick={() => setMobileOpen((open) => !open)}
           className="mobile-menu-btn"
+          aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-navigation"
           style={{
             background: "none",
             border: `1px solid ${G.border}`,
@@ -137,9 +109,9 @@ export default function Nav({ onBookCall, onOpenROI }) {
         </button>
       </nav>
 
-      {/* Mobile menu */}
       {mobileOpen && (
         <div
+          id="mobile-navigation"
           style={{
             position: "fixed",
             top: 64,
@@ -154,10 +126,10 @@ export default function Nav({ onBookCall, onOpenROI }) {
             gap: 4,
           }}
         >
-          {LINKS.map((l) => (
+          {LINKS.map((label) => (
             <button
-              key={l}
-              onClick={() => scrollTo(l.toLowerCase().replace(/ /g, "-"))}
+              key={label}
+              onClick={() => scrollTo(label.toLowerCase().replace(/ /g, "-"))}
               style={{
                 background: "none",
                 border: "none",
@@ -170,7 +142,7 @@ export default function Nav({ onBookCall, onOpenROI }) {
                 borderBottom: `1px solid ${G.border}`,
               }}
             >
-              › {l}
+              › {label}
             </button>
           ))}
           <button
@@ -181,7 +153,7 @@ export default function Nav({ onBookCall, onOpenROI }) {
               onOpenROI?.();
             }}
           >
-            Calculate My ROI
+            Open Estimator
           </button>
           <button
             className="btn-ghost"
