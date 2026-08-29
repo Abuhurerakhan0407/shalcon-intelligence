@@ -73,32 +73,37 @@ export default function App() {
 
   return (
     <div style={{ background: G.bg, minHeight: "100vh", overflowX: "hidden", position: "relative" }}>
+      <a className="skip-link" href="#main-content">Skip to main content</a>
       <CursorLight />
       <ScrollProgress />
       <Nav onBookCall={onBookCall} onOpenROI={onOpenROI} />
-      <HeroSection onBookCall={onBookCall} />
-      <FlagshipSystem onBookCall={onBookCall} />
-      <HealthcareArchitecture />
-      <ROITeaser onOpenROI={onOpenROI} />
-      <PlatformStats />
-      <IndustriesSection />
 
-      <section id="roi-calculator" style={{ padding: "clamp(56px,8vw,110px) clamp(20px,5vw,60px)", borderTop: `1px solid ${G.border}`, textAlign: "center" }}>
-        <div data-reveal style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div className="mono" style={{ color: G.green, fontSize: 10, letterSpacing: ".2em", marginBottom: 14 }}>› OPPORTUNITY-AT-RISK ESTIMATOR</div>
-          <h2 className="syne" style={{ fontSize: "clamp(28px,5vw,48px)", fontWeight: 800, lineHeight: 1.1, marginBottom: 20 }}>Put your assumptions into the model.</h2>
-          <p className="mono" style={{ color: G.muted, fontSize: 13, lineHeight: 1.9, maxWidth: 660, margin: "0 auto 32px" }}>
-            Estimate the value tied to delayed or missed follow-up using your own inquiry volume, conversion assumption and average transaction value. The result is a planning estimate — not a guarantee of loss or recovery.
-          </p>
-          <button className="btn-primary" onClick={onOpenROI} style={{ fontSize: 14 }}>Open estimator</button>
-        </div>
-      </section>
+      <main id="main-content" tabIndex="-1">
+        <HeroSection onBookCall={onBookCall} />
+        <FlagshipSystem onBookCall={onBookCall} />
+        <HealthcareArchitecture />
+        <ROITeaser onOpenROI={onOpenROI} />
+        <PlatformStats />
+        <IndustriesSection />
 
-      <ServicesSection />
-      <HowItWorks />
-      <DemoWidget />
-      <Testimonials />
-      <CTA onBookCall={onBookCall} />
+        <section id="roi-calculator" style={{ padding: "clamp(56px,8vw,110px) clamp(20px,5vw,60px)", borderTop: `1px solid ${G.border}`, textAlign: "center" }}>
+          <div data-reveal style={{ maxWidth: 1200, margin: "0 auto" }}>
+            <div className="mono" style={{ color: G.green, fontSize: 10, letterSpacing: ".2em", marginBottom: 14 }}>› OPPORTUNITY-AT-RISK ESTIMATOR</div>
+            <h2 className="syne" style={{ fontSize: "clamp(28px,5vw,48px)", fontWeight: 800, lineHeight: 1.1, marginBottom: 20 }}>Put your assumptions into the model.</h2>
+            <p className="mono" style={{ color: G.muted, fontSize: 13, lineHeight: 1.9, maxWidth: 660, margin: "0 auto 32px" }}>
+              Estimate the value tied to delayed or missed follow-up using your own inquiry volume, conversion assumption and average transaction value. The result is a planning estimate — not a guarantee of loss or recovery.
+            </p>
+            <button className="btn-primary" onClick={onOpenROI} style={{ fontSize: 14 }}>Open estimator</button>
+          </div>
+        </section>
+
+        <ServicesSection />
+        <HowItWorks />
+        <DemoWidget />
+        <Testimonials />
+        <CTA onBookCall={onBookCall} />
+      </main>
+
       <Footer onBookCall={onBookCall} onWhatsApp={onWhatsApp} onLinkedIn={onLinkedIn} onEmail={onEmail} />
 
       {roiOpen && (
