@@ -11,10 +11,11 @@ test("Supabase lead webhook disables platform JWT only with custom webhook authe
   assert.match(configSource, /verify_jwt\s*=\s*false/);
   assert.match(functionSource, /withSupabase\(\{ auth: 'none' \}/);
   assert.match(functionSource, /x-shalcon-webhook-secret/i);
-  assert.match(functionSource, /SHALCON_LEAD_WEBHOOK_SECRET/);
-  assert.match(functionSource, /secretsEqual\(configuredSecret, suppliedSecret\)/);
+  assert.match(functionSource, /EXPECTED_WEBHOOK_SECRET_SHA256/);
+  assert.match(functionSource, /suppliedSecretMatches\(suppliedSecret\)/);
+  assert.ok(!/SHALCON_LEAD_WEBHOOK_SECRET\s*=/.test(functionSource), "raw shared secret must not be embedded in function source");
 
-  const authCheck = functionSource.indexOf("if (!(await secretsEqual(configuredSecret, suppliedSecret)))");
+  const authCheck = functionSource.indexOf("if (!(await suppliedSecretMatches(suppliedSecret)))");
   const firstDbWrite = functionSource.indexOf(".from('shalcon_leads')");
   assert.ok(authCheck >= 0 && firstDbWrite > authCheck, "secret authentication must happen before database access");
 });
@@ -46,9 +47,10 @@ test("destination revalidates estimator inputs and recomputes opportunity values
   assert.match(functionSource, /estimatedYearly\.value !== expected\.yearly/);
 });
 
-test("destination never embeds browser-safe or admin database keys in source", () => {
+test("destination never embeds browser-safe/admin database keys or raw webhook secret", () => {
   assert.ok(!/SUPABASE_ANON_KEY/.test(functionSource));
   assert.ok(!/SUPABASE_SERVICE_ROLE_KEY/.test(functionSource));
   assert.ok(!/sb_secret_|service_role\s*[:=]\s*['\"][A-Za-z0-9]/.test(functionSource));
+  assert.match(functionSource, /EXPECTED_WEBHOOK_SECRET_SHA256\s*=\s*'[a-f0-9]{64}'/);
   assert.ok(!/console\.(log|error)\([^\n]*(body|row|payload)/i.test(functionSource), "full lead payload must not be logged");
 });
