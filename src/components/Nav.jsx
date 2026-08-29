@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { SITE_CONFIG, G } from "../data/content.js";
 
 const LINKS = ["Services", "Industries", "How It Works", "Demo"];
@@ -6,6 +6,8 @@ const LINKS = ["Services", "Industries", "How It Works", "Demo"];
 export default function Nav({ onBookCall, onOpenROI }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeId, setActiveId] = useState("");
+  const menuButtonRef = useRef(null);
+  const firstMobileItemRef = useRef(null);
 
   useEffect(() => {
     const ids = LINKS.map((l) => l.toLowerCase().replace(/ /g, "-"));
@@ -23,6 +25,20 @@ export default function Nav({ onBookCall, onOpenROI }) {
     sections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+    firstMobileItemRef.current?.focus();
+
+    const onKeyDown = (event) => {
+      if (event.key !== "Escape") return;
+      setMobileOpen(false);
+      requestAnimationFrame(() => menuButtonRef.current?.focus());
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [mobileOpen]);
 
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -78,8 +94,9 @@ export default function Nav({ onBookCall, onOpenROI }) {
         <div className="hide-m" style={{ display: "flex", alignItems: "center", gap: 24 }}>
           {LINKS.map((label) => {
             const id = label.toLowerCase().replace(/ /g, "-");
+            const active = activeId === id;
             return (
-              <button key={label} className={`nav-link${activeId === id ? " active" : ""}`} onClick={() => scrollTo(id)}>
+              <button key={label} className={`nav-link${active ? " active" : ""}`} aria-current={active ? "location" : undefined} onClick={() => scrollTo(id)}>
                 {label}
               </button>
             );
@@ -89,6 +106,7 @@ export default function Nav({ onBookCall, onOpenROI }) {
         </div>
 
         <button
+          ref={menuButtonRef}
           onClick={() => setMobileOpen((open) => !open)}
           className="mobile-menu-btn"
           aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
@@ -112,6 +130,8 @@ export default function Nav({ onBookCall, onOpenROI }) {
       {mobileOpen && (
         <div
           id="mobile-navigation"
+          role="navigation"
+          aria-label="Mobile navigation"
           style={{
             position: "fixed",
             top: 64,
@@ -126,25 +146,31 @@ export default function Nav({ onBookCall, onOpenROI }) {
             gap: 4,
           }}
         >
-          {LINKS.map((label) => (
-            <button
-              key={label}
-              onClick={() => scrollTo(label.toLowerCase().replace(/ /g, "-"))}
-              style={{
-                background: "none",
-                border: "none",
-                color: G.muted,
-                fontFamily: "'IBM Plex Mono',monospace",
-                fontSize: 13,
-                cursor: "pointer",
-                textAlign: "left",
-                padding: "12px 0",
-                borderBottom: `1px solid ${G.border}`,
-              }}
-            >
-              › {label}
-            </button>
-          ))}
+          {LINKS.map((label, index) => {
+            const id = label.toLowerCase().replace(/ /g, "-");
+            const active = activeId === id;
+            return (
+              <button
+                key={label}
+                ref={index === 0 ? firstMobileItemRef : undefined}
+                aria-current={active ? "location" : undefined}
+                onClick={() => scrollTo(id)}
+                style={{
+                  background: "none",
+                  border: "none",
+                  color: active ? G.green : G.muted,
+                  fontFamily: "'IBM Plex Mono',monospace",
+                  fontSize: 13,
+                  cursor: "pointer",
+                  textAlign: "left",
+                  padding: "12px 0",
+                  borderBottom: `1px solid ${G.border}`,
+                }}
+              >
+                › {label}
+              </button>
+            );
+          })}
           <button
             className="roi-nav-pill"
             style={{ marginTop: 16, width: "100%" }}
