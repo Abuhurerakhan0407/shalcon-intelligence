@@ -39,8 +39,6 @@ export default async function handler(req, res) {
     return send(res, 400, { ok: false, error: "invalid_payload" });
   }
 
-  // Honeypot: bots commonly fill hidden fields. Return generic success so the
-  // form cannot be used to probe anti-bot behavior.
   if (clean(body.website, 100)) {
     return send(res, 200, { ok: true });
   }
@@ -93,9 +91,9 @@ export default async function handler(req, res) {
     missPercent: finiteNumber(body.missPercent),
     conversionRate: finiteNumber(body.conversionRate),
     avgTxn: finiteNumber(body.avgTxn),
-    estimatedDailyLoss: finiteNumber(body.estimatedDailyLoss),
-    estimatedMonthlyLoss: finiteNumber(body.estimatedMonthlyLoss),
-    estimatedYearlyLoss: finiteNumber(body.estimatedYearlyLoss),
+    estimatedDailyOpportunityAtRisk: finiteNumber(body.estimatedDailyOpportunityAtRisk),
+    estimatedMonthlyOpportunityAtRisk: finiteNumber(body.estimatedMonthlyOpportunityAtRisk),
+    estimatedYearlyOpportunityAtRisk: finiteNumber(body.estimatedYearlyOpportunityAtRisk),
     page: clean(body.page, 300),
     referrer: clean(req.headers.referer, 300),
   };
