@@ -1,16 +1,11 @@
 import { useMemo, useState } from "react";
 import { SITE_CONFIG, ROI_INDUSTRIES, ROI_PACKAGES, G, formatINR } from "../data/content.js";
 import { submitLead } from "../lib/leadCapture.js";
+import { trackConversion } from "../lib/conversionTracking.js";
 
 function money(value, currency) {
   if (currency === "INR") return formatINR(Math.round(value));
   return `$${Math.round(value).toLocaleString("en-US")}`;
-}
-
-function track(name, detail = {}) {
-  if (typeof window === "undefined") return;
-  window.dispatchEvent(new CustomEvent("shalcon:conversion", { detail: { name, ...detail } }));
-  if (Array.isArray(window.dataLayer)) window.dataLayer.push({ event: name, ...detail });
 }
 
 export default function ROICalculatorV2() {
@@ -42,7 +37,7 @@ export default function ROICalculatorV2() {
       setDelayedRate(next.missRate);
       setAvgValue(next.avgTxn);
     }
-    track("roi_industry_selected", { industry: id });
+    trackConversion("roi_industry_selected", { industry: id });
   };
 
   const handleSubmit = async (event) => {
@@ -74,7 +69,7 @@ export default function ROICalculatorV2() {
         estimatedYearlyOpportunityAtRisk: Math.round(estimate.yearly),
       });
       setState("confirmed");
-      track("roi_lead_submitted", { industry, packageName: selectedPackage });
+      trackConversion("roi_lead_submitted", { industry, packageName: selectedPackage });
     } catch (submitError) {
       setState("error");
       setError(
@@ -82,7 +77,7 @@ export default function ROICalculatorV2() {
           ? "Online capture is not configured yet. Please use WhatsApp or book directly below."
           : "We could not safely save your request. Nothing has been marked as submitted. Please use WhatsApp or book directly."
       );
-      track("roi_lead_failed", { code: submitError?.code || "unknown" });
+      trackConversion("roi_lead_failed", { code: submitError?.code || "unknown" });
     }
   };
 
@@ -94,8 +89,8 @@ export default function ROICalculatorV2() {
           <h2 className="syne" style={{ fontSize: "clamp(28px,5vw,46px)", marginBottom: 16 }}>Your automation audit request is in.</h2>
           <p className="mono" style={{ color: G.muted, lineHeight: 1.8, marginBottom: 28 }}>We saved the details you submitted. You can also choose a call slot now or message Shalcon directly.</p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <a className="btn-primary" href={SITE_CONFIG.calendlyLink} target="_blank" rel="noreferrer">Book a call</a>
-            <a className="btn-ghost" href={`https://wa.me/${SITE_CONFIG.whatsappNumber}`} target="_blank" rel="noreferrer"><span>WhatsApp</span></a>
+            <a className="btn-primary" href={SITE_CONFIG.calendlyLink} target="_blank" rel="noreferrer" onClick={() => trackConversion("booking_clicked", { surface: "roi_confirmed" })}>Book a call</a>
+            <a className="btn-ghost" href={`https://wa.me/${SITE_CONFIG.whatsappNumber}`} target="_blank" rel="noreferrer" onClick={() => trackConversion("whatsapp_clicked", { surface: "roi_confirmed" })}><span>WhatsApp</span></a>
           </div>
         </div>
       </div>
@@ -186,8 +181,8 @@ export default function ROICalculatorV2() {
 
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 18 }}>
             <button className="btn-primary" type="submit" disabled={state === "submitting"}>{state === "submitting" ? "Saving…" : "Request free audit"}</button>
-            <a className="btn-ghost" href={`https://wa.me/${SITE_CONFIG.whatsappNumber}`} target="_blank" rel="noreferrer"><span>WhatsApp instead</span></a>
-            <a className="btn-text" href={SITE_CONFIG.calendlyLink} target="_blank" rel="noreferrer">Book directly</a>
+            <a className="btn-ghost" href={`https://wa.me/${SITE_CONFIG.whatsappNumber}`} target="_blank" rel="noreferrer" onClick={() => trackConversion("whatsapp_clicked", { surface: "roi_form" })}><span>WhatsApp instead</span></a>
+            <a className="btn-text" href={SITE_CONFIG.calendlyLink} target="_blank" rel="noreferrer" onClick={() => trackConversion("booking_clicked", { surface: "roi_form" })}>Book directly</a>
           </div>
         </form>
       </div>
