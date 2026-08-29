@@ -1,0 +1,7 @@
+# Shalcon Intelligence Supabase function configuration.
+# This webhook is called server-to-server by the Vercel /api/lead route.
+# Platform JWT verification is disabled only because the function performs its
+# own shared-secret authentication before any database operation.
+
+[functions.shalcon-lead-webhook]
+verify_jwt = false
