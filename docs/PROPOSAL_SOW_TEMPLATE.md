@@ -1,6 +1,16 @@
 # Shalcon Intelligence — Proposal + Statement of Work Template
 
-> Working template. Replace bracketed fields. Commercial/legal terms require owner approval before signing.
+> Working template. Replace bracketed client/project fields. Shalcon commercial defaults below were owner-approved on 30 Aug 2026. Client-specific legal terms still require review before signing.
+
+## 0. Shalcon contracting details
+- Contracting party: Abu Hurera Khan
+- Trading name: Shalcon Intelligence
+- Business type: Sole proprietorship
+- Business/notice address: Rm 2, Mahavir Bldg, Opp. P&T Colony, Near Shri Kumar Society, Vakola, Santacruz East, Mumbai 400055, Maharashtra, India
+- Billing / notices email: shalconintelligence@gmail.com
+- GST status supplied by proprietor on 30 Aug 2026: Not registered
+- Authorized signatory: Abu Hurera Khan
+- Signatory title: Founder
 
 ## 1. Client
 - Company: [CLIENT]
@@ -102,22 +112,28 @@ Client will:
 - notify Shalcon before changing connected systems or credentials.
 
 ## 10. Commercials
-### Implementation fee
-[AMOUNT / RANGE]
+### Owner-approved default — Healthcare AI Front Desk + Lead Operations Pilot
+For the bounded Healthcare Pilot defined in the applicable proposal, the current Shalcon default is:
+- implementation/setup fee: **₹39,000**;
+- managed optimization/support after the included stabilization period: **₹9,000/month**;
+- third-party/API/message/call/vendor usage: paid by the client in its own account or separately itemized;
+- included stabilization: 14 days after acceptance unless the proposal states otherwise.
 
-### Ongoing support/optimization
-[AMOUNT / MONTH]
+The approved internal floor remains ₹30,000 setup and ₹7,500/month support; any pricing below those floors requires a deliberate written scope reduction or owner-approved strategic exception.
+
+For non-Healthcare-Pilot or expanded/custom scope:
+- Implementation fee: [AMOUNT / RANGE]
+- Ongoing support/optimization: [AMOUNT / MONTH]
 
 ### Third-party costs
 Billed directly by vendor or reimbursed by client as specified: [LIST].
 
-### Payment schedule
-Recommended default:
-- 50% to start;
-- 30% when staging workflow is ready for UAT;
-- 20% on production acceptance.
+### Payment schedule — owner-approved default
+- **50%** at signature/start;
+- **30%** when the staging workflow is ready for agreed UAT;
+- **20%** on production acceptance.
 
-Alternative schedules must be written into this SOW.
+Monthly support is billed in advance. Alternative schedules must be written into this SOW and approved where they materially change commercial risk.
 
 ## 11. Change requests
 Anything that materially adds a channel, integration, workflow branch, data source, role model, reporting requirement or objective is estimated separately before work begins.
@@ -164,7 +180,11 @@ Specify treatment of:
 ## 18. Sign-off
 Client: ____________________  Date: ______
 
-Shalcon Intelligence: ____________________  Date: ______
+For Shalcon Intelligence:
+
+Abu Hurera Khan — Founder  Date: ______
+
+Sole proprietor trading as Shalcon Intelligence
 
 ---
 
