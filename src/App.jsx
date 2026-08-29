@@ -1,5 +1,6 @@
 import { useEffect, useState, lazy, Suspense } from "react";
 import { SITE_CONFIG, G } from "./data/content.js";
+import { trackConversion } from "./lib/conversionTracking.js";
 import CursorLight from "./components/CursorLight.jsx";
 import ScrollProgress from "./components/ScrollProgress.jsx";
 import Nav from "./components/Nav.jsx";
@@ -21,20 +22,15 @@ const ROICalculatorModal = lazy(() => import("./components/ROICalculatorModal.js
 export default function App() {
   const [roiOpen, setRoiOpen] = useState(false);
 
-  const track = (name, detail = {}) => {
-    window.dispatchEvent(new CustomEvent("shalcon:conversion", { detail: { name, ...detail } }));
-    if (Array.isArray(window.dataLayer)) window.dataLayer.push({ event: name, ...detail });
-  };
-
   const openLink = (url, eventName) => {
-    if (eventName) track(eventName);
+    if (eventName) trackConversion(eventName);
     if (url && url !== "#") window.open(url, "_blank", "noopener");
   };
   const onBookCall = () => openLink(SITE_CONFIG.calendlyLink, "booking_clicked");
   const onWhatsApp = () => openLink(`https://wa.me/${SITE_CONFIG.whatsappNumber}`, "whatsapp_clicked");
   const onLinkedIn = () => openLink(SITE_CONFIG.linkedinURL, "linkedin_clicked");
   const onEmail = () => {
-    track("email_clicked");
+    trackConversion("email_clicked");
     window.location.href = `mailto:${SITE_CONFIG.email}`;
   };
 
@@ -46,7 +42,7 @@ export default function App() {
       el.classList.add("roi-bounce");
       setTimeout(() => el.classList.remove("roi-bounce"), 200);
     }
-    track("roi_opened");
+    trackConversion("roi_opened");
     setRoiOpen(true);
   };
   const onCloseROI = () => setRoiOpen(false);
