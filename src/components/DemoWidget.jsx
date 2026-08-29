@@ -1,79 +1,22 @@
 import { useState } from "react";
 import { NICHES, G } from "../data/content.js";
+import { DEMO_SCENARIOS, getDemoResponse } from "../lib/demoScenarios.js";
 import Section from "./Section.jsx";
 
-const DEMO = {
-  Healthcare: {
-    init: [
-      { r: "bot", t: "Demo clinic assistant ready. I can show a sample intake, appointment request, FAQ handoff, or follow-up flow." },
-      { r: "user", t: "I need an appointment tomorrow." },
-      { r: "bot", t: "I can collect your preferred time, doctor type, and contact details, then route the request to the clinic workflow." },
-    ],
-    responses: [
-      "For this demo, I can collect your preferred slot and contact details, then show where a real clinic integration would check availability.",
-      "A production version can hand off to staff whenever a medical, billing, or policy question needs human review.",
-      "This prototype uses synthetic data only. No patient record or live calendar is connected.",
-    ],
-  },
-  EdTech: {
-    init: [
-      { r: "bot", t: "Demo admissions assistant ready. Ask about a course, fee follow-up, demo class, or enrollment workflow." },
-      { r: "user", t: "I want course details." },
-      { r: "bot", t: "I can capture course interest, qualification details, preferred contact time, and route the lead to admissions." },
-    ],
-    responses: [
-      "A production flow can capture the learner's course interest and push the lead into the institute CRM.",
-      "Follow-up timing, fee reminders, and counselor handoff can be configured around the institute's actual process.",
-      "This is a synthetic prototype; it is not connected to a real institute database.",
-    ],
-  },
-  Insurance: {
-    init: [
-      { r: "bot", t: "Demo insurance assistant ready. Try a renewal, document collection, claim-intake, or callback request." },
-      { r: "user", t: "My policy renewal is due." },
-      { r: "bot", t: "I can demonstrate collecting policy context and routing the request. A production system would verify data in the insurer or broker system." },
-    ],
-    responses: [
-      "A real deployment can trigger renewal reminders using approved customer data and consent rules.",
-      "Claim or policy-specific advice should escalate to an authorized human workflow where required.",
-      "No live policy record is being accessed in this prototype.",
-    ],
-  },
-  "E-commerce": {
-    init: [
-      { r: "bot", t: "Demo commerce assistant ready. Try an order-status, return, product, or cart-follow-up question." },
-      { r: "user", t: "Where is my order?" },
-      { r: "bot", t: "I can show the support flow. In production, order status would come from the store or fulfillment system after verification." },
-    ],
-    responses: [
-      "A production integration can retrieve verified order status and escalate exceptions to support staff.",
-      "Cart follow-up can be configured around consent, timing, store policy, and CRM or commerce events.",
-      "This demo does not access a real order database.",
-    ],
-  },
-  HR: {
-    init: [
-      { r: "bot", t: "Demo recruitment assistant ready. Try candidate intake, screening questions, scheduling, or onboarding." },
-      { r: "user", t: "Schedule an interview." },
-      { r: "bot", t: "I can demonstrate collecting availability and routing the request. A production version would connect to the approved calendar and ATS workflow." },
-    ],
-    responses: [
-      "A real workflow can collect structured candidate information and route it to the recruiting team for review.",
-      "Screening rules should be approved by the employer and include human review where decisions affect candidates.",
-      "This prototype uses synthetic candidate data only.",
-    ],
-  },
-};
-
+/**
+ * Interactive prototype using synthetic example data.
+ * It demonstrates conversation flow and UX only; it does not imply a live
+ * client integration, production SLA, or verified performance benchmark.
+ */
 export default function DemoWidget() {
   const [demoNiche, setDemoNiche] = useState("Healthcare");
-  const [chatMsgs, setChatMsgs] = useState(DEMO.Healthcare.init);
+  const [chatMsgs, setChatMsgs] = useState(DEMO_SCENARIOS.Healthcare.init);
   const [chatInput, setChatInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
 
   const changeDemo = (n) => {
     setDemoNiche(n);
-    setChatMsgs(DEMO[n].init);
+    setChatMsgs(DEMO_SCENARIOS[n].init);
     setChatInput("");
     setIsTyping(false);
   };
@@ -81,14 +24,14 @@ export default function DemoWidget() {
   const sendChat = () => {
     const trimmed = chatInput.trim();
     if (!trimmed || isTyping) return;
+    const response = getDemoResponse(demoNiche, trimmed);
     setChatMsgs((current) => [...current, { r: "user", t: trimmed }]);
     setChatInput("");
     setIsTyping(true);
     setTimeout(() => {
-      const responses = DEMO[demoNiche].responses;
-      setChatMsgs((current) => [...current, { r: "bot", t: responses[Math.floor(Math.random() * responses.length)] }]);
+      setChatMsgs((current) => [...current, { r: "bot", t: response }]);
       setIsTyping(false);
-    }, 700);
+    }, 550);
   };
 
   return (
@@ -118,7 +61,7 @@ export default function DemoWidget() {
             {[
               ["Conversation", "Intake + qualification"],
               ["Escalation", "Human handoff ready"],
-              ["Languages", "Configurable"],
+              ["Data", "Synthetic only"],
               ["Channels", "Web · WhatsApp-ready"],
             ].map(([key, value]) => (
               <div key={key} style={{ background: G.card, border: `1px solid ${G.border}`, padding: "12px 14px" }}>
@@ -142,7 +85,7 @@ export default function DemoWidget() {
               </div>
             </div>
 
-            <div role="log" aria-live="polite" aria-label={`${demoNiche} prototype conversation`} style={{ height: 320, overflowY: "auto", padding: 14, display: "flex", flexDirection: "column", gap: 10, background: "linear-gradient(180deg,#060610,#030308)" }}>
+            <div role="log" aria-live="polite" aria-label={`${demoNiche} synthetic demo conversation`} style={{ height: 320, overflowY: "auto", padding: 14, display: "flex", flexDirection: "column", gap: 10, background: "linear-gradient(180deg,#060610,#030308)" }}>
               {chatMsgs.map((message, index) => (
                 <div key={`${message.r}-${index}`} style={{ display: "flex", flexDirection: "column" }}>
                   <div className={message.r === "bot" ? "chat-bot" : "chat-user"}>{message.t}</div>
