@@ -29,6 +29,15 @@ function makeRes() {
   };
 }
 
+function successfulWebhookResponse(options, status = 201) {
+  const leadId = JSON.parse(options.body).leadId;
+  return {
+    ok: true,
+    status,
+    json: async () => ({ ok: true, leadId }),
+  };
+}
+
 const originalFetch = global.fetch;
 const originalWebhook = process.env.LEAD_WEBHOOK_URL;
 const originalWebhookSecret = process.env.LEAD_WEBHOOK_SECRET;
@@ -61,6 +70,27 @@ test("rejects non-POST methods", async () => {
   assert.equal(res.statusCode, 405);
   assert.equal(res.headers.allow, "POST");
   assert.equal(res.json().error, "method_not_allowed");
+});
+
+test("rejects browser requests explicitly marked cross-site", async () => {
+  const res = makeRes();
+  await handler(makeReq({ headers: { "sec-fetch-site": "cross-site" } }), res);
+  assert.equal(res.statusCode, 403);
+  assert.equal(res.json().error, "cross_site_request_rejected");
+});
+
+test("allows same-origin fetch metadata", async () => {
+  const res = makeRes();
+  await handler(makeReq({ headers: { "sec-fetch-site": "same-origin" }, body: { contactConsent: true } }), res);
+  assert.equal(res.statusCode, 400);
+  assert.equal(res.json().error, "name_and_whatsapp_required");
+});
+
+test("rejects explicitly non-JSON request media types", async () => {
+  const res = makeRes();
+  await handler(makeReq({ headers: { "content-type": "application/x-www-form-urlencoded" } }), res);
+  assert.equal(res.statusCode, 415);
+  assert.equal(res.json().error, "unsupported_media_type");
 });
 
 test("rejects oversized declared payloads", async () => {
@@ -166,7 +196,7 @@ test("persists a consented lead with server-computed values, authenticated webho
   let captured = null;
   global.fetch = async (url, options) => {
     captured = { url: String(url), options };
-    return { ok: true, status: 200 };
+    return successfulWebhookResponse(options);
   };
 
   const res = makeRes();
@@ -185,7 +215,6 @@ test("persists a consented lead with server-computed values, authenticated webho
         missPercent: 25,
         conversionRate: 20,
         avgTxn: 1200,
-        // Deliberately forged browser-derived values. Server must ignore these.
         estimatedDailyOpportunityAtRisk: 999999999,
         estimatedMonthlyOpportunityAtRisk: 999999999,
         estimatedYearlyOpportunityAtRisk: 999999999,
@@ -217,7 +246,6 @@ test("persists a consented lead with server-computed values, authenticated webho
   assert.equal(payload.packageName, "GROWTH");
   assert.equal(payload.currency, "INR");
 
-  // 42 × .25 × .20 × 1200 = 2520/day; derived only on the server.
   assert.equal(payload.estimatedDailyOpportunityAtRisk, 2520);
   assert.equal(payload.estimatedMonthlyOpportunityAtRisk, 75600);
   assert.equal(payload.estimatedYearlyOpportunityAtRisk, 919800);
@@ -231,12 +259,12 @@ test("persists a consented lead with server-computed values, authenticated webho
   assert.ok(!JSON.stringify(payload).includes("must-not-persist"));
 });
 
-test("invalid estimator inputs are not converted into fake opportunity values", async () => {
+test("invalid estimator inputs are stored as null rather than fake opportunity values", async () => {
   configurePersistence();
   let payload = null;
   global.fetch = async (_url, options) => {
     payload = JSON.parse(options.body);
-    return { ok: true, status: 200 };
+    return successfulWebhookResponse(options);
   };
 
   const res = makeRes();
@@ -267,7 +295,7 @@ test("invalid estimator inputs are not converted into fake opportunity values", 
 
 test("best-effort IP rate limit protects the persistence destination", async () => {
   configurePersistence();
-  global.fetch = async () => ({ ok: true, status: 200 });
+  global.fetch = async (_url, options) => successfulWebhookResponse(options);
   const request = () => makeReq({
     headers: { "x-forwarded-for": "203.0.113.10" },
     body: { name: "QA", whatsapp: "919999999999", contactConsent: true },
@@ -286,10 +314,43 @@ test("best-effort IP rate limit protects the persistence destination", async () 
   assert.ok(Number(blocked.headers["retry-after"]) >= 1);
 });
 
-test("never returns success when the persistence destination fails", async () => {
+test("never returns success when the persistence destination fails HTTP", async () => {
   console.error = () => {};
   configurePersistence();
-  global.fetch = async () => ({ ok: false, status: 500 });
+  global.fetch = async () => ({ ok: false, status: 500, json: async () => ({ ok: false }) });
+
+  const res = makeRes();
+  await handler(makeReq({ body: { name: "QA", whatsapp: "919999999999", contactConsent: true } }), res);
+  assert.equal(res.statusCode, 502);
+  assert.equal(res.json().error, "lead_persistence_failed");
+});
+
+test("never returns success for a 2xx destination response that says ok false", async () => {
+  console.error = () => {};
+  configurePersistence();
+  global.fetch = async () => ({ ok: true, status: 200, json: async () => ({ ok: false }) });
+
+  const res = makeRes();
+  await handler(makeReq({ body: { name: "QA", whatsapp: "919999999999", contactConsent: true } }), res);
+  assert.equal(res.statusCode, 502);
+  assert.equal(res.json().error, "lead_persistence_failed");
+});
+
+test("never returns success when destination acknowledges the wrong lead ID", async () => {
+  console.error = () => {};
+  configurePersistence();
+  global.fetch = async () => ({ ok: true, status: 201, json: async () => ({ ok: true, leadId: "00000000-0000-4000-8000-000000000000" }) });
+
+  const res = makeRes();
+  await handler(makeReq({ body: { name: "QA", whatsapp: "919999999999", contactConsent: true } }), res);
+  assert.equal(res.statusCode, 502);
+  assert.equal(res.json().error, "lead_persistence_failed");
+});
+
+test("never returns success when destination acknowledgement is not valid JSON", async () => {
+  console.error = () => {};
+  configurePersistence();
+  global.fetch = async () => ({ ok: true, status: 200, json: async () => { throw new Error("not json"); } });
 
   const res = makeRes();
   await handler(makeReq({ body: { name: "QA", whatsapp: "919999999999", contactConsent: true } }), res);
