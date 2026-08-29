@@ -1,88 +1,206 @@
 # PROJECT_STATE.md — Shalcon Intelligence
 
-Living status doc for the Shalcon Intelligence marketing site. Source of truth for resuming work in a new session. Last updated: end of Phase 6.
+Status date: 29 Aug 2026
+Branch: `shalcon-market-ready-2026`
 
----
+This file is the fast recovery handoff. `docs/MARKET_READY_MASTER.md` is the strategic source of truth; `docs/LAUNCH_GATE.md` is the release gate.
 
-## Project goal
+## 1. Repository safety
 
-Premium B2B marketing site for **Shalcon Intelligence**, an AI automation agency. Dark-luxury aesthetic (black + emerald green), cinematic, high-trust, ROI-driven. Flagship feature = the **Revenue Leak Detector / ROI Calculator** (Phase 6). Migrated from two standalone source files into a componentized Vite + React app.
+- **Do not edit or merge into `main` while it contains Abu's portfolio work.**
+- Shalcon market-ready work lives on `shalcon-market-ready-2026`.
+- Old duplicate prototype files under `source/` were removed from this branch; Git history preserves them.
+- Machine-local `.claude/settings.local.json` was removed and is ignored.
 
-Authoritative spec: `docs/CLAUDE_CODE_BUILD_BRIEF.md`. Source references (do not ship directly): `source/shalcon_final.jsx`, `source/shalcon_roi_calculator.jsx`.
+## 2. Current product / market position
 
-## Tech stack
+Category: **AI Operations Systems Partner**.
 
-- **Build:** Vite 5 (`npm run dev` / `build` / `preview`), ESM, `type: module`.
-- **UI:** React 18 (StrictMode).
-- **Styling:** Tailwind v4 via `@tailwindcss/vite` + design tokens in `@theme`; heavy use of inline styles + a few hand-written utility/animation classes in `src/index.css`.
-- **3D:** THREE.js (imperative, not R3F despite deps) — lazy `crystalScene.js`. `@react-three/fiber` + `drei` are installed but the hero uses a hand-rolled imperative scene.
-- **Motion:** GSAP 3 + ScrollTrigger. `framer-motion` installed but not used (GSAP chosen instead).
-- **Fonts:** Syne, IBM Plex Mono, Syne Mono (Google Fonts).
+Primary launch wedge: **Healthcare / clinics**.
+Secondary: **EdTech / coaching / admissions**.
+Other supported workflows: Insurance, E-commerce, HR/Recruitment.
 
-## Completed phases
+Flagship offer: **AI Front Desk + Lead Operations System** — intake, qualification, routing/booking, approved follow-up, CRM/database write-back, reporting and human escalation.
 
-### Phase 2 — Architecture + data extraction
-- `src/data/content.js` — all content/config as named exports: `SITE_CONFIG`, `NICHES`, `SERVICES`, `TESTIMONIALS`, `HERO_STATS`, `PLATFORM_STATS`, `LIVE_FEED`, `DEMO_INIT`/`DEMO_RESPONSES`, `ROI_PACKAGES`, `ROI_INDUSTRIES`, `ROI_DEFAULTS`, `ROI_MATH`, and the `G` palette object. **Frozen — do not edit.**
-- `src/index.css` — Tailwind import, `@theme` tokens, glass/button/card utility classes, keyframe library, reduced-motion + mobile media queries.
+Public demos are synthetic unless explicitly identified as verified client deployments.
 
-### Phase 3 — Base layout + shared components
-- `src/App.jsx` shell; section order: `#hero → #roi-teaser → (#platform-stats) → #industries → #roi-calculator → #services → #how-it-works → #demo → #testimonials → #book → footer`.
-- Shared `Section.jsx` wrapper (id, eyebrow, top-border, `data-reveal` inner container).
-- Components: `Nav`, `HeroSection`, `ROITeaser`, `IndustriesSection`, `ServicesSection`, `HowItWorks`, `DemoWidget`, `Testimonials`, `CTA`, `Footer`, `GlassCard`, `CursorLight`.
-- `#roi-calculator` is currently an anchor + placeholder button (real modal = Phase 6).
+## 3. Current stack
 
-### Phase 4 — Hero 3D
-- `Hero3D.jsx` renders a CSS gradient/glow fallback always, then upgrades to WebGL after `requestIdleCallback`. Never blocks first paint.
-- `three/crystalScene.js` — imperative THREE scene (own rAF loop), disposed on unmount.
-- `hooks/useHeroMode.js` — picks `fallback` vs `webgl` (WebGL support, reduced-motion, `hardwareConcurrency < 4`). Initial value always `fallback`.
-- **Do not modify Phase 4 files.**
+- Vite 8
+- React 18
+- Tailwind v4
+- Three.js (imperative, lazy/conditional WebGL enhancement)
+- GSAP / ScrollTrigger
+- Vercel server route: `/api/lead`
 
-### Phase 5 — Motion + interaction (just completed)
-- Lazy motion boot in `App.jsx` `useEffect`: dynamic-imports `scrollReveal + magnetic + countUp`, gated on `prefers-reduced-motion`, cleaned up on unmount.
-- `motion/scrollReveal.js` — `gsap.from` opacity/y on `[data-reveal]`, play-once (visible is the natural state, so JS-fail = content still shows).
-- `motion/magnetic.js` — `quickTo` transform-only pull (±8px) on `.btn-primary, .btn-ghost, .roi-nav-pill, .niche-tab`. Cards excluded (they own a CSS `:hover` transform).
-- `motion/countUp.js` — GSAP ScrollTrigger 0→target on `[data-countup]`, parses value strings, snaps to exact authored string, play-once.
-- `components/PlatformStats.jsx` — restored "PLATFORM METRICS" band (was dropped in Phase 3), mounted between ROI teaser and `#industries`. Values animate via count-up.
-- `HeroSection.jsx` — HERO_STATS count up 0→seed once on visibility, then existing live tick-up + feed rotation resume; paused off-screen.
-- `Nav.jsx` — native smooth scroll + IntersectionObserver scroll-spy (`.nav-link.active`).
-- `CursorLight.jsx` — dot + lagging ring; grows/brightens over interactive elements.
+Direct runtime dependencies are intentionally limited to React, React DOM, Three.js and GSAP. Unused R3F/Drei/Framer runtime packages were removed.
 
-### Phase 6 — ROI calculator integration (just completed)
-- `components/ROICalculator.jsx` — ported verbatim from `source/shalcon_roi_calculator.jsx`. Only two changes on port: import path (`../src/data` → `../data`) and a new `CONTACT` object (the source referenced `CONTACT.*` in the confirmed phase but never defined it — would ReferenceError; §12.3 sanctions adding it). Internals untouched: `useCountUp`, `formatINR`, `calc→reveal→pricing→capture→confirmed` flow, loss math, glitch/scanline/particle effects.
-- `components/ROICalculatorModal.jsx` — full-screen glass overlay wrapper. **CSS-only motion (no framer-motion)** per user decision: backdrop fade+blur, panel opacity/translateY(24)/scale(.96) enter, symmetrical faster exit. X + Escape + click-outside close, body scroll-lock (overflow:hidden → preserves scroll position). Unmount-on-close resets the calculator (no imperative reset needed).
-- `App.jsx` — `roiOpen` state; `onOpenROI(e)` gives the clicked trigger a scale-bounce then opens; modal is `React.lazy` + `Suspense`, mounted only while open (§12.5). Placeholder `#roi-calculator` copy finalized; button now opens the real modal.
-- `ROITeaser.jsx` — live ticking loss preview from a **generic** `ROI_DEFAULTS` seed (not calculator state), reduced-motion gated, width-reserved (no layout shift); `.roi-sweep` gradient-border highlight.
-- `index.css` — Phase 6 block: modal overlay + keyframes, nav pill idle pulse-glow, teaser sweep, `roi-bounce`, all frozen under `prefers-reduced-motion`.
-- Modal is code-split into its own chunk (`ROICalculatorModal`, ~8.6 kB gzip) — confirmed absent from the initial bundle.
+## 4. Website state
 
-## Architecture decisions
+Completed on this branch:
+- Healthcare-first positioning and flagship workflow.
+- Unsupported client metrics/testimonials removed.
+- Marketing-claim regression guard prevents known stale claims from reappearing.
+- Synthetic demo labels and human-escalation boundaries.
+- Opportunity-at-Risk Estimator replaces misleading recovery/breakeven framing.
+- Editable assumptions + visible formula/limitations.
+- Real booking URL, WhatsApp and email paths configured in source.
+- Privacy and website-terms drafts.
+- Consent before audit-request persistence.
+- Responsive/readability/accessibility improvements.
+- Modal focus trap + focus return.
+- 44px mobile touch targets on key controls.
+- Mobile/reduced-motion/low-power/save-data WebGL fallback.
+- Security headers in `vercel.json`.
 
-- **GSAP over framer-motion** for all motion (both installed; framer-motion unused).
-- **Imperative THREE**, not R3F — hero scene lives in a ref, fully detached from React reconciliation, so React re-renders never restart/throttle the 3D rAF (protects 3D FPS).
-- **Motion is always additive/lazy** — dynamic-imported after mount, never blocks first paint; `gsap.from`-style reveals keep the final/visible state as the default so failures/reduced-motion never hide content.
-- **Reduced-motion is a hard gate** — JS motion boot early-returns; CSS media query freezes keyframes/transitions; elements always render real final values.
-- **Content is centralized + frozen** in `content.js`; components import, never inline copy.
-- **No layout shift** — all animation is transform/opacity or text-only inside fixed grids.
+SEO still requires the final production domain before canonical/absolute OG metadata can be finalized safely.
 
-## Files modified in Phase 5
+## 5. Lead capture trust boundary
 
-- Created: `src/components/PlatformStats.jsx`, `src/motion/countUp.js`
-- Modified: `src/App.jsx`, `src/components/HeroSection.jsx`, `src/motion/magnetic.js`, `src/index.css`
-- Pre-existing Phase 5 scaffolding (verified/kept): `src/motion/scrollReveal.js`, `src/components/CursorLight.jsx`, `src/hooks/useReducedMotion.js`, scroll-spy in `Nav.jsx`.
+Browser submits to `/api/lead`.
 
-## Remaining phases
+Current server behavior:
+- POST only;
+- payload-size limit;
+- honeypot;
+- best-effort short-window IP rate limit without storing IP as lead data;
+- explicit contact consent;
+- WhatsApp normalization/validation;
+- bounded estimator inputs;
+- server recomputes opportunity values and ignores forged browser totals;
+- page/referrer query/fragment minimization;
+- only UTM source/medium/campaign attribution retained;
+- requires HTTPS persistence destination;
+- requires `LEAD_WEBHOOK_SECRET` (minimum 24 chars);
+- sends `X-Shalcon-Webhook-Secret` server-to-server;
+- server generates `leadId` UUID and sends matching `Idempotency-Key`;
+- no saved confirmation unless persistence returns successful HTTP response;
+- upstream failures fail closed.
 
-### Phase 7 — Responsive optimization + fallbacks (NEXT)
-- Mobile hero (reduce shard count ~20, disable cursor light-sync), tablet/mobile layouts, `.grid-mobile-*` audits, touch behavior for magnetic/cursor (already guarded).
+Required production env vars:
+- `LEAD_WEBHOOK_URL`
+- `LEAD_WEBHOOK_SECRET`
 
-### Phase 8 — Performance optimization + QA
-- Bundle/code-split review, Lighthouse, cross-browser, final motion/FPS QA, a11y pass.
+Current payload schema: v2.
 
-## Recovery instructions (new session)
+**Remaining blocker:** no dedicated durable Shalcon persistence destination has been created/configured yet.
 
-1. `cd /root/projects/shalcon-intelligence`; `npm install` if `node_modules` missing.
-2. Read `docs/CLAUDE_CODE_BUILD_BRIEF.md` (authoritative) and `CLAUDE.md` (brand context), then this file.
-3. Verify baseline: `npm run build` (expect success, ~59 modules) or `npm run dev`.
-4. **Hard constraints:** never edit `src/data/content.js`; never modify Phase 4 3D (`Hero3D.jsx`, `three/crystalScene.js`, `hooks/useHeroMode.js`); don't change the Phase 3 section order/layout; keep everything gated on `prefers-reduced-motion`; no layout shift; don't regress 3D FPS.
-5. Not a git repo — no version control; changes are on disk only.
-6. Work phase-by-phase, validate each, stop for approval before starting the next. **Currently awaiting approval to start Phase 7.**
+See `docs/LEAD_CAPTURE_SETUP.md` and `docs/SUPABASE_LEAD_DESTINATION_SPEC.md`.
+
+## 6. CI / QA
+
+Workflow: `.github/workflows/shalcon-market-ready-ci.yml`
+
+Current gates:
+- Node 22 dependency install;
+- valid Vercel config JSON;
+- npm security audit;
+- direct runtime dependency usage guard;
+- marketing-claim regression guard;
+- lead API/client safety tests;
+- production build;
+- compiled-artifact secret/claim/performance budget gate;
+- build artifact upload.
+
+Strict CI passed on the current authenticated/idempotent lead-capture contract before this handoff update.
+
+Compiled-artifact browser QA previously passed for:
+- estimator open/close;
+- industry presets;
+- consent behavior;
+- persistence-failure state;
+- booking/WhatsApp target URLs;
+- legal links;
+- Escape + body scroll restore;
+- focus trap and focus return;
+- 390px mobile modal/form containment;
+- 44px touch target checks;
+- no observed critical runtime errors.
+
+A dedicated deployed Shalcon preview is still required for final deployed-environment and cross-browser verification.
+
+## 7. Market-ready operating assets
+
+### Strategy / truth
+- `docs/MARKET_READY_MASTER.md`
+- `docs/FOUNDATION_RECONCILIATION.md`
+- `docs/CLAIMS_REGISTER.md`
+- `docs/COMPETITOR_RESEARCH_2026-08-29.md`
+- `docs/LAUNCH_GATE.md`
+
+### Offer / sales
+- `docs/SERVICE_OVERVIEW_ONE_PAGE.md`
+- `docs/OFFER_HEALTHCARE_ONE_PAGE.md`
+- `docs/OFFER_EDTECH_ONE_PAGE.md`
+- `docs/SALES_PLAYBOOK.md`
+- `docs/DISCOVERY_AUDIT_TEMPLATE.md`
+- `docs/OBJECTION_CLOSE_PLAYBOOK.md`
+- `docs/PROPOSAL_SOW_TEMPLATE.md`
+
+### Acquisition
+- `docs/HEALTHCARE_GTM_100_ACCOUNTS.md`
+- `docs/HEALTHCARE_TARGETS_MUMBAI_SEED.md`
+- `docs/OUTREACH_COPY_HEALTHCARE.md`
+- `docs/PIPELINE_OPERATING_RHYTHM.md`
+- `docs/LEAD_MAGNET_RELEASE.md`
+
+### Delivery / evidence / operations
+- `docs/CLIENT_ONBOARDING_TEMPLATE.md`
+- `docs/DELIVERY_PLAYBOOK.md`
+- `docs/MEASUREMENT_SCHEMA.md`
+- `docs/CLIENT_PILOT_REPORT_TEMPLATE.md`
+- `docs/FINANCIAL_CONTROL.md`
+- `docs/SOP_INDEX.md`
+
+### Persistence
+- `docs/LEAD_CAPTURE_SETUP.md`
+- `docs/SUPABASE_LEAD_DESTINATION_SPEC.md`
+
+## 8. 30 Foundations — current interpretation
+
+Do not trust the old “complete/active/next” labels. Use `docs/FOUNDATION_RECONCILIATION.md`.
+
+Launch-useful items now have working assets for positioning, discovery, proposal, objections, onboarding, delivery, reporting, financial control and SOPs.
+
+Items intentionally deferred until revenue include hiring, partnerships, broad scaling operations and exit planning.
+
+## 9. Genuine remaining blockers
+
+### Infrastructure / owner-controlled
+1. Dedicated Shalcon lead persistence project/destination.
+2. Dedicated Shalcon Vercel preview/production project + deployed verification.
+3. Final production domain/canonical metadata.
+
+### Legal / commercial owner-controlled
+4. Final legal/business identity for terms/contracts/invoices.
+5. Owner/legal review of privacy/website terms/client legal terms.
+6. Final commercial price/risk approval.
+7. Payment/KYC/bank/accounting collection path.
+
+### Market evidence
+8. Execute first controlled Healthcare outreach.
+9. Complete first qualified audits/proposals.
+10. Deliver first production pilot.
+11. Capture baseline/post-pilot evidence.
+12. Publish client proof only with verified evidence + permission.
+
+## 10. Next execution order
+
+1. Keep CI green after every change.
+2. Prepare all non-billable infrastructure/specs that do not require owner credentials.
+3. Create dedicated Shalcon persistence once owner authorizes the Supabase organization/cost.
+4. Create/verify dedicated Vercel preview without touching portfolio deployments.
+5. Run deployed lead success/failure + contact + cross-browser checks.
+6. Finalize domain SEO/legal identity when known.
+7. Begin/measure controlled Healthcare outreach.
+8. Convert qualified opportunity → audit → proposal → bounded pilot.
+
+## 11. Non-negotiable truth rules
+
+- No fabricated client or platform metrics.
+- No fake testimonials.
+- No guaranteed revenue/recovery/breakeven language without a separately approved contractual basis.
+- Do not imply synthetic demos are live client systems.
+- Do not automate sensitive professional judgment without appropriate human control.
+- Do not send mass cold WhatsApp outreach; use permission-aware communication.
+- Do not create or reuse cross-product data infrastructure just to remove a launch checkbox.
