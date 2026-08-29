@@ -34,3 +34,12 @@ jobs:
 
       - name: Verify build output
         run: test -f dist/index.html
+
+      - name: Upload production build
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: shalcon-dist
+          path: dist
+          if-no-files-found: error
+          retention-days: 3
