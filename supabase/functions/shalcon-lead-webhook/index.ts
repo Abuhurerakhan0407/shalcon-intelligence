@@ -1,10 +1,13 @@
 import { withSupabase } from 'npm:@supabase/server@^1'
 
 const MAX_BODY_BYTES = 20_000
-const MIN_SECRET_LENGTH = 24
 const UUID_V4ISH = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
 const DIGITS = /^[0-9]{7,15}$/
 const HASH = /^[a-f0-9]{64}$/
+
+// SHA-256 verifier only. The raw shared secret lives only in the trusted caller
+// environment. Rotating the secret means updating this verifier and redeploying.
+const EXPECTED_WEBHOOK_SECRET_SHA256 = '585414741393e8531c76b516c69b5faa6caebb168449ae0db1fb412db2bdfa1f'
 
 function json(status: number, body: Record<string, unknown>) {
   return Response.json(body, {
@@ -42,14 +45,14 @@ async function sha256(value: string) {
   return hex(new Uint8Array(digest))
 }
 
-async function secretsEqual(a: string, b: string) {
-  if (!a || !b) return false
-  const [left, right] = await Promise.all([sha256(a), sha256(b)])
-  if (!HASH.test(left) || !HASH.test(right) || left.length !== right.length) return false
+async function suppliedSecretMatches(value: string) {
+  if (!value) return false
+  const suppliedHash = await sha256(value)
+  if (!HASH.test(suppliedHash) || suppliedHash.length !== EXPECTED_WEBHOOK_SECRET_SHA256.length) return false
 
   let diff = 0
-  for (let index = 0; index < left.length; index += 1) {
-    diff |= left.charCodeAt(index) ^ right.charCodeAt(index)
+  for (let index = 0; index < suppliedHash.length; index += 1) {
+    diff |= suppliedHash.charCodeAt(index) ^ EXPECTED_WEBHOOK_SECRET_SHA256.charCodeAt(index)
   }
   return diff === 0
 }
@@ -156,13 +159,8 @@ export default {
       return json(405, { ok: false, error: 'method_not_allowed' })
     }
 
-    const configuredSecret = clean(Deno.env.get('SHALCON_LEAD_WEBHOOK_SECRET'), 500)
-    if (configuredSecret.length < MIN_SECRET_LENGTH || /[\r\n]/.test(configuredSecret)) {
-      return json(503, { ok: false, error: 'webhook_not_configured' })
-    }
-
     const suppliedSecret = clean(req.headers.get('x-shalcon-webhook-secret'), 500)
-    if (!(await secretsEqual(configuredSecret, suppliedSecret))) {
+    if (!(await suppliedSecretMatches(suppliedSecret))) {
       return json(401, { ok: false, error: 'unauthorized' })
     }
 
