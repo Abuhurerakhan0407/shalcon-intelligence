@@ -26,6 +26,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Validate Vercel configuration JSON
+        run: node -e "JSON.parse(require('fs').readFileSync('vercel.json','utf8')); console.log('vercel.json valid')"
+
       - name: Capture dependency audit
         run: npm audit --json > npm-audit.json || true
 
@@ -52,8 +55,8 @@ jobs:
       - name: Production build
         run: npm run build
 
-      - name: Verify build output
-        run: test -f dist/index.html
+      - name: Compiled artifact security and performance gate
+        run: node scripts/verify-built-artifact.mjs
 
       - name: Upload production build
         if: success()
