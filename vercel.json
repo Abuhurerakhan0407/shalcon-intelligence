@@ -22,7 +22,7 @@
         },
         {
           "key": "X-Robots-Tag",
-          "value": "noindex, nofollow"
+          "value": "noindex, nofollow, noarchive"
         },
         {
           "key": "Content-Security-Policy",
