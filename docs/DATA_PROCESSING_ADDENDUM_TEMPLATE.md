@@ -2,7 +2,16 @@
 
 > Working commercial template only. Not legal advice. Final language must be reviewed for the actual parties, jurisdiction, data, vendors and law in force when signed.
 
-This Addendum supplements the applicable proposal / Statement of Work (the “Agreement”) between **[CLIENT LEGAL NAME]** (“Client”) and **[SHALCON LEGAL NAME]** (“Shalcon”).
+This Addendum supplements the applicable proposal / Statement of Work (the “Agreement”) between **[CLIENT LEGAL NAME]** (“Client”) and **Abu Hurera Khan, sole proprietor trading as Shalcon Intelligence** (“Shalcon”).
+
+Shalcon notice details:
+- Operator / contracting party: Abu Hurera Khan
+- Trading name: Shalcon Intelligence
+- Business type: Sole proprietorship
+- Notice address: Rm 2, Mahavir Bldg, Opp. P&T Colony, Near Shri Kumar Society, Vakola, Santacruz East, Mumbai 400055, Maharashtra, India
+- Email: shalconintelligence@gmail.com
+- GST status supplied by proprietor on 30 Aug 2026: not registered
+- Authorized signatory: Abu Hurera Khan, Founder
 
 ## 1. Scope and roles
 
@@ -158,9 +167,9 @@ Authorized signatory: ___________________________
 
 Date: __________________
 
-Shalcon legal name: _____________________________
+Shalcon legal name: Abu Hurera Khan, sole proprietor trading as Shalcon Intelligence
 
-Authorized signatory: ___________________________
+Authorized signatory: Abu Hurera Khan — Founder
 
 Date: __________________
 
@@ -184,7 +193,7 @@ Date: __________________
 | Deletion/offboarding | [ ] |
 | Human decision/escalation owner | [ ] |
 | Client privacy/security contact | [ ] |
-| Shalcon incident contact | [ ] |
+| Shalcon incident contact | shalconintelligence@gmail.com |
 
 # Appendix B — Security / Operational Controls
 
@@ -194,7 +203,7 @@ Date: __________________
 - Logging/monitoring: [ ]
 - Backup/recovery responsibility: [ ]
 - Production/staging separation: [ ]
-- Incident alert path: [ ]
+- Incident alert path: shalconintelligence@gmail.com unless a project-specific channel is agreed
 - Sensitive-field redaction/minimization: [ ]
 - Human escalation rules: [ ]
 - Availability/support target: [ ]
