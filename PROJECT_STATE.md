@@ -34,6 +34,7 @@ Buying path: Audit → bounded Pilot → connected System.
 - Three.js, imperative/lazy enhancement
 - GSAP / ScrollTrigger
 - Vercel server route `/api/lead`
+- Dedicated Supabase lead persistence in `ap-south-1`
 
 Direct runtime dependencies intentionally limited to React, React DOM, Three.js and GSAP.
 
@@ -55,12 +56,13 @@ Implemented:
 - responsive architecture flow.
 - constrained/mobile/save-data/reduced-motion WebGL fallback.
 - Vercel CSP/security headers.
+- Trust-by-Design section.
 
 Final SEO canonical/absolute social metadata waits for an owned production domain.
 
 ## 5. Lead capture
 
-Browser → `/api/lead` → authenticated HTTPS webhook → dedicated Shalcon persistence destination.
+Browser → `/api/lead` → authenticated HTTPS webhook → dedicated Shalcon Supabase persistence.
 
 ### Vercel `/api/lead`
 - POST only;
@@ -75,55 +77,68 @@ Browser → `/api/lead` → authenticated HTTPS webhook → dedicated Shalcon pe
 - HTTPS persistence URL only;
 - shared secret minimum 24 chars;
 - server-generated UUID `leadId` + matching `Idempotency-Key`;
-- failure closes safely; success only follows upstream success.
+- upstream JSON acknowledgement must contain `{ ok: true }` before success;
+- failure closes safely.
 
-Production env:
+Required Vercel env:
 - `LEAD_WEBHOOK_URL`
 - `LEAD_WEBHOOK_SECRET`
 
 Payload schema: v2.
 
-### Dedicated Supabase implementation — CODE COMPLETE, NOT DEPLOYED
-Files:
-- `supabase/sql/create_shalcon_leads.sql`
-- `supabase/config.toml`
-- `supabase/functions/shalcon-lead-webhook/index.ts`
-- `supabase/functions/.env.example`
-- `supabase/README.md`
-- `tests/supabase-lead-destination.test.mjs`
+### Dedicated Supabase — DEPLOYED
+Project:
+- name: `shalcon-intelligence`
+- project ref: `qfsnmjeacwdkbukwxbwz`
+- region: `ap-south-1`
+- status at creation/test: `ACTIVE_HEALTHY`
 
-Design:
-- custom shared-secret auth occurs before database access;
-- `auth:'none'` / `verify_jwt=false` used only for the server-to-server external webhook, with custom authentication in the function;
+Live components:
+- migration `create_shalcon_leads` applied;
+- `public.shalcon_leads` created with RLS enabled;
+- no public RLS policy;
+- `anon` and `authenticated` table privileges revoked;
+- only trusted server role has table privileges;
+- Edge Function `shalcon-lead-webhook` active;
+- custom server-to-server shared-secret verification happens before DB access;
+- raw secret is not committed to Git or embedded in Supabase source; only a SHA-256 verifier is stored in source;
 - destination revalidates schema/contact/consent/numbers;
-- destination independently recomputes opportunity values and rejects mismatches;
-- RLS enabled; `anon`/`authenticated` privileges revoked;
-- payload hash + lead UUID provide safe exact replay behavior;
-- same UUID with different normalized payload returns conflict rather than overwrite;
-- full lead payload/secrets are never logged by design.
+- destination recomputes expected opportunity values and rejects mismatches;
+- UUID + payload hash preserve exact replay behavior without overwriting conflicts.
 
-**Infrastructure blocker:** dedicated Shalcon Supabase project still needs owner organization/cost authorization before creation/deployment.
+Live persistence evidence completed:
+- wrong secret → 401;
+- first synthetic write → 201 / `replay:false`;
+- exact same write → 200 / `replay:true`;
+- same UUID with changed payload → 409 `idempotency_conflict`;
+- stored row remained unchanged after conflict;
+- synthetic QA row deleted after test;
+- temporary QA credential rotated out and then rejected with 401;
+- table returned to zero rows.
 
-Do not reuse Madrasa ERP or Pagevelope databases.
+Supabase advisors after schema creation:
+- security: one INFO for “RLS enabled, no policy” — intentional because the table is server-only;
+- performance: unused-index INFO only — expected for a new zero-row table.
+
+**Remaining lead-capture blocker:** Vercel project/env must be created and the full browser → `/api/lead` → Supabase path must be tested on a deployed preview, including a forced failure proving the UI never shows a false saved state.
 
 ## 6. CI / QA
 
 Workflow: `.github/workflows/shalcon-market-ready-ci.yml`.
 
-Latest fully checked branch run after the persistence/legal/domain batch: **PASS**.
-
 Current gates:
 - Node 22 install;
+- repository secret-leakage guard;
 - Vercel config JSON validation;
 - npm dependency/security audit;
 - runtime dependency usage;
 - marketing-claim regression;
-- API/client + demo + persistence + legal safety tests;
+- API/client + demo + Supabase destination + legal safety tests;
 - production build;
 - compiled-artifact secret/claim/performance budget;
 - build artifact upload.
 
-Compiled browser QA on prior exact green artifacts passed estimator interaction, consent/failure paths, contact targets, legal links, focus trap/return, 390px containment, 44px target checks and showed no critical runtime errors.
+Compiled browser QA on green artifacts passed estimator interaction, consent/failure paths, contact targets, legal links, focus trap/return, 390px containment, 44px target checks and showed no critical runtime errors.
 
 A dedicated deployed Shalcon preview remains required for final deployed-environment/cross-browser verification.
 
@@ -156,14 +171,17 @@ Offer/sales:
 - `docs/OFFER_EDTECH_ONE_PAGE.md`
 - `docs/SALES_PLAYBOOK.md`
 - `docs/DISCOVERY_AUDIT_TEMPLATE.md`
+- `docs/AUTOMATION_AUDIT_DELIVERABLE_TEMPLATE.md`
 - `docs/OBJECTION_CLOSE_PLAYBOOK.md`
 - `docs/PROPOSAL_SOW_TEMPLATE.md`
 - `docs/DATA_PROCESSING_ADDENDUM_TEMPLATE.md`
+- `docs/HEALTHCARE_PILOT_PRICING_RECOMMENDATION.md`
 
 Acquisition:
 - `docs/HEALTHCARE_GTM_100_ACCOUNTS.md`
 - `docs/HEALTHCARE_TARGETS_MUMBAI_SEED.md`
 - `docs/OUTREACH_COPY_HEALTHCARE.md`
+- `docs/HEALTHCARE_OUTREACH_BATCH_01.md`
 - `docs/PIPELINE_OPERATING_RHYTHM.md`
 - `docs/LEAD_MAGNET_RELEASE.md`
 
@@ -173,6 +191,8 @@ Delivery/evidence/operations:
 - `docs/MEASUREMENT_SCHEMA.md`
 - `docs/CLIENT_PILOT_REPORT_TEMPLATE.md`
 - `docs/FINANCIAL_CONTROL.md`
+- `docs/ACCESS_SECURITY_SOP.md`
+- `docs/INCIDENT_RESPONSE_SOP.md`
 - `docs/SOP_INDEX.md`
 
 Infrastructure:
@@ -196,9 +216,9 @@ Hiring, partnerships, broad scaling and exit planning remain intentionally defer
 ## 10. Genuine remaining blockers
 
 ### Owner/infrastructure
-1. Authorize which Supabase organization + the disclosed project cost for dedicated Shalcon persistence.
-2. Create/deploy dedicated Shalcon Supabase project/function/table/secrets and run live success/failure/idempotency tests.
-3. Create a dedicated Shalcon Vercel project/preview without touching portfolio deployments; current connected Vercel project list has no Shalcon project.
+1. Create a dedicated Shalcon Vercel project/preview without touching portfolio deployments; current connected Vercel project list has no Shalcon project.
+2. Configure Vercel `LEAD_WEBHOOK_URL` and `LEAD_WEBHOOK_SECRET` for preview/production as appropriate.
+3. Verify full deployed lead success + forced-failure paths.
 4. Choose/control final production domain.
 
 ### Legal/commercial
@@ -208,22 +228,21 @@ Hiring, partnerships, broad scaling and exit planning remain intentionally defer
 8. Payment/KYC/bank/accounting collection path.
 
 ### Market evidence
-9. First controlled Healthcare outreach batch.
+9. Send first controlled Healthcare outreach batch.
 10. First qualified audit/proposal.
 11. First production pilot.
-12. baseline/post-pilot evidence + permission-backed case study.
+12. Baseline/post-pilot evidence + permission-backed case study.
 
 ## 11. Next execution order
 
-1. Keep CI green.
-2. Finish every safe non-owner implementation/task.
-3. When no material non-owner blocker remains, get Supabase organization/cost authorization.
-4. Deploy/test persistence.
-5. Create/verify dedicated Vercel preview.
-6. Finish deployed cross-browser/contact/API QA.
-7. Finalize domain canonical/SEO + approved legal identity.
-8. Run controlled Healthcare outreach.
-9. Convert audit → proposal → bounded pilot → measured evidence.
+1. Keep CI green after the Supabase source/auth update.
+2. Owner creates dedicated Vercel Shalcon project because the connected Vercel app does not expose project/env creation and no authenticated Vercel CLI is available in the runtime.
+3. Configure the two server env variables without exposing the secret publicly.
+4. Deploy `shalcon-market-ready-2026` preview.
+5. Run deployed browser/contact/API/success/failure/cross-browser QA.
+6. Finalize domain canonical/SEO + approved legal identity.
+7. Run controlled Healthcare outreach.
+8. Convert audit → proposal → bounded pilot → measured evidence.
 
 ## 12. Truth rules
 
