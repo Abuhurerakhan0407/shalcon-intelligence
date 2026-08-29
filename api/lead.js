@@ -1,12 +1,19 @@
 const MAX_FIELD = 240;
+const MAX_BODY_BYTES = 20_000;
 
 function clean(value, max = MAX_FIELD) {
   return String(value ?? "").trim().slice(0, max);
 }
 
+function finiteNumber(value) {
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : null;
+}
+
 function send(res, status, payload) {
   res.status(status).setHeader("Content-Type", "application/json");
   res.setHeader("Cache-Control", "no-store");
+  res.setHeader("X-Content-Type-Options", "nosniff");
   return res.end(JSON.stringify(payload));
 }
 
@@ -16,9 +23,24 @@ export default async function handler(req, res) {
     return send(res, 405, { ok: false, error: "method_not_allowed" });
   }
 
-  const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : (req.body || {});
+  const declaredLength = Number(req.headers["content-length"] || 0);
+  if (declaredLength > MAX_BODY_BYTES) {
+    return send(res, 413, { ok: false, error: "payload_too_large" });
+  }
 
-  // Honeypot: bots commonly fill hidden fields.
+  let body;
+  try {
+    body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : (req.body || {});
+  } catch {
+    return send(res, 400, { ok: false, error: "invalid_json" });
+  }
+
+  if (!body || typeof body !== "object" || Array.isArray(body)) {
+    return send(res, 400, { ok: false, error: "invalid_payload" });
+  }
+
+  // Honeypot: bots commonly fill hidden fields. Return generic success so the
+  // form cannot be used to probe anti-bot behavior.
   if (clean(body.website, 100)) {
     return send(res, 200, { ok: true });
   }
@@ -28,42 +50,63 @@ export default async function handler(req, res) {
   const company = clean(body.company, 120);
   const industry = clean(body.industry, 80);
   const packageName = clean(body.packageName, 80);
+  const contactConsent = body.contactConsent === true;
 
   if (!name || !whatsapp) {
     return send(res, 400, { ok: false, error: "name_and_whatsapp_required" });
   }
+  if (!contactConsent) {
+    return send(res, 400, { ok: false, error: "contact_consent_required" });
+  }
 
   const webhook = process.env.LEAD_WEBHOOK_URL;
   if (!webhook) {
-    // Critical: never pretend a lead was stored when persistence is unavailable.
     return send(res, 503, { ok: false, error: "lead_capture_not_configured" });
   }
 
+  let webhookUrl;
+  try {
+    webhookUrl = new URL(webhook);
+  } catch {
+    console.error("lead_webhook_invalid_url");
+    return send(res, 503, { ok: false, error: "lead_capture_not_configured" });
+  }
+
+  if (webhookUrl.protocol !== "https:") {
+    console.error("lead_webhook_requires_https");
+    return send(res, 503, { ok: false, error: "lead_capture_not_configured" });
+  }
+
+  const now = new Date().toISOString();
   const payload = {
     source: "shalcon_roi_calculator",
-    createdAt: new Date().toISOString(),
+    createdAt: now,
+    contactConsent: true,
+    contactConsentAt: now,
     name,
     whatsapp,
     company,
     industry,
     packageName,
     currency: clean(body.currency, 8),
-    inquiries: Number(body.inquiries) || null,
-    missPercent: Number(body.missPercent) || null,
-    avgTxn: Number(body.avgTxn) || null,
-    estimatedDailyLoss: Number(body.estimatedDailyLoss) || null,
-    estimatedMonthlyLoss: Number(body.estimatedMonthlyLoss) || null,
-    estimatedYearlyLoss: Number(body.estimatedYearlyLoss) || null,
+    inquiries: finiteNumber(body.inquiries),
+    missPercent: finiteNumber(body.missPercent),
+    conversionRate: finiteNumber(body.conversionRate),
+    avgTxn: finiteNumber(body.avgTxn),
+    estimatedDailyLoss: finiteNumber(body.estimatedDailyLoss),
+    estimatedMonthlyLoss: finiteNumber(body.estimatedMonthlyLoss),
+    estimatedYearlyLoss: finiteNumber(body.estimatedYearlyLoss),
     page: clean(body.page, 300),
     referrer: clean(req.headers.referer, 300),
   };
 
   try {
-    const upstream = await fetch(webhook, {
+    const upstream = await fetch(webhookUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
       signal: AbortSignal.timeout(8000),
+      redirect: "error",
     });
 
     if (!upstream.ok) {
