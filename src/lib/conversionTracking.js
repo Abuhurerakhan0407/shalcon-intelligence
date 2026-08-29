@@ -1,3 +1,5 @@
+const SAFE_DETAIL_KEYS = new Set(["industry", "packageName", "code", "surface"]);
+
 function clean(value, max = 160) {
   return String(value ?? "").trim().slice(0, max);
 }
@@ -30,13 +32,23 @@ function context() {
   }
 }
 
+function safeDetail(detail) {
+  const output = {};
+  for (const [key, value] of Object.entries(detail || {})) {
+    if (!SAFE_DETAIL_KEYS.has(key)) continue;
+    if (!["string", "number", "boolean"].includes(typeof value)) continue;
+    output[key] = typeof value === "string" ? clean(value) : value;
+  }
+  return output;
+}
+
 export function trackConversion(name, detail = {}) {
   if (typeof window === "undefined") return;
 
   const payload = {
     name: clean(name, 100),
     ...context(),
-    ...detail,
+    ...safeDetail(detail),
   };
 
   window.dispatchEvent(new CustomEvent("shalcon:conversion", { detail: payload }));
