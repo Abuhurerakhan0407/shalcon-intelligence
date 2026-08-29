@@ -40,6 +40,9 @@ jobs:
       - name: Security audit gate
         run: npm audit --audit-level=moderate
 
+      - name: Runtime dependency usage guard
+        run: node scripts/verify-runtime-deps.mjs
+
       - name: Marketing claim regression guard
         run: node scripts/verify-marketing-claims.mjs
 
