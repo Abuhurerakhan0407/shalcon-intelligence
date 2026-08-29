@@ -57,7 +57,8 @@ A checked box means evidence exists now. Production/public paid acquisition is G
 - [x] Current India DPDP commencement/timing baseline researched from official government sources.
 - [x] Working client Data Processing Addendum template exists.
 - [x] Marketing rule prohibits broad unsupported “fully compliant” claims.
-- [ ] **BLOCKER — final legal/business identity inserted where required.**
+- [x] Owner-supplied legal/business identity inserted into website legal drafts and client contracting templates: Abu Hurera Khan, sole proprietor trading as Shalcon Intelligence.
+- [x] Billing/notices email, proprietor GST status and authorized signatory details recorded in contracting templates.
 - [ ] **BLOCKER — owner/legal review of production terms/privacy complete.**
 - [ ] **BLOCKER FOR REAL CLIENT PERSONAL DATA — engagement-specific role/data/security/retention review completed where applicable.**
 
@@ -84,6 +85,7 @@ A checked box means evidence exists now. Production/public paid acquisition is G
 - [x] Live homepage, privacy, terms and `/api/lead` method behavior verified through Vercel.
 - [x] Live `/api/lead` success and forced-failure behavior verified against the real Supabase destination.
 - [x] Runtime 502/401 observed during QA is explained by the intentional destination-failure test; production destination was restored and re-tested successfully.
+- [x] Latest robots-header source commit passes the full GitHub Actions gate: secret scan, Vercel config, dependency audit, truth guard, lead tests, production build and compiled-artifact checks.
 - [ ] Deployed-site cross-browser visual smoke test (Chromium + at least one Firefox/WebKit-class browser where available).
 
 ## F. Sales readiness
@@ -101,10 +103,11 @@ A checked box means evidence exists now. Production/public paid acquisition is G
 - [x] Mumbai first-100-account research process.
 - [x] Initial researched healthcare seed list.
 - [x] Personalized Healthcare outreach Batch 01 prepared.
+- [x] Two Tier-A first-touch emails with verified professional addresses saved as Gmail drafts; not sent.
 - [x] Founder-led pipeline operating rhythm.
 - [x] Basic financial/margin control model.
 - [x] Launch-critical SOP index.
-- [ ] **BLOCKER FOR PAID WORK — final commercial pricing/risk terms owner-approved.**
+- [x] Owner-approved Healthcare Pilot commercial default: ₹39,000 setup + ₹9,000/month, client-paid/separately-itemized vendor usage, 50/30/20 milestones.
 - [ ] **BLOCKER FOR PAID WORK — payment/KYC/bank/accounting collection path owner-ready.**
 
 ## G. Proof readiness
@@ -127,22 +130,23 @@ Controlled, low-volume, targeted outreach may start when:
 5. prospect opt-outs are respected;
 6. the website does not pretend failed lead persistence succeeded.
 
-Current status: **TECHNICALLY READY FOR CONTROLLED, LOW-VOLUME FOUNDER-LED HEALTHCARE OUTREACH.** The deployed estimator persistence path has now been proven end-to-end and under forced failure.
+Current status: **TECHNICALLY READY FOR CONTROLLED, LOW-VOLUME FOUNDER-LED HEALTHCARE OUTREACH.** The deployed estimator persistence path has been proven end-to-end and under forced failure. Draft emails remain unsent pending the owner's explicit send instruction.
 
 ## I. Full public / paid-traffic launch gate
 Full public/paid acquisition still requires:
-- final privacy/legal identity review;
-- owner-approved commercial/payment setup;
+- final owner/legal review of privacy/terms and applicable client legal templates;
+- payment/KYC/bank/accounting collection readiness;
 - final production domain/metadata;
 - production webhook-secret rotation after final infrastructure freeze;
-- staging/no-index protection deployed until final launch approval;
+- staging robots-header deployment and verification before unprotecting/indexing the site;
 - final deployed release QA after those changes.
 
 ## J. Domain / SEO
 - [x] Exact-brand domain options researched through connected registrar/deployment account.
 - [x] `shalconintelligence.com` recommended if still available when purchased.
-- [x] Pre-launch global `X-Robots-Tag: noindex, nofollow` patch committed in `vercel.json` (`e55b721264d90d012b6db3796e0b4aa4ea7ecdad`).
-- [ ] **BLOCKER WHILE STAGING URL IS PUBLIC — no-index header patch must successfully deploy. Current Vercel Hobby build-rate limit blocked that deployment; the currently live `9a32577` deployment remains indexable.**
+- [x] Pre-launch global robots response-header patch committed in `vercel.json`; latest source value is `X-Robots-Tag: noindex, nofollow, noarchive` at commit `1caa3b2b362966366f3eeab76b63d665fbcf43b6`.
+- [x] Vercel Authentication enabled for All Deployments as an interim staging-protection control.
+- [ ] **BLOCKER BEFORE UNPROTECTED STAGING/PUBLIC RELEASE — robots-header patch must successfully deploy. Vercel Hobby build-rate limiting is currently rejecting new deployments; verified live build `9a32577` still contains homepage `index,follow`.**
 - [ ] **BLOCKER FOR FINAL DOMAIN RELEASE — owner controls/approves final domain.**
 - [ ] Canonical URL, sitemap and absolute social metadata finalized after domain ownership/connection.
 
