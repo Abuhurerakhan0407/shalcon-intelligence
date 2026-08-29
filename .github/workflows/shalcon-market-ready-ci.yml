@@ -46,6 +46,9 @@ jobs:
       - name: Marketing claim regression guard
         run: node scripts/verify-marketing-claims.mjs
 
+      - name: Lead capture safety tests
+        run: npm test
+
       - name: Production build
         run: npm run build
 
