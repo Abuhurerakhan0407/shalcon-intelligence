@@ -1,0 +1,59 @@
+/* Market-ready readability overrides.
+   The original visual system used #555577 for secondary text (~2.9:1 on the
+   #030308 background). Preserve hierarchy while lifting readable copy above
+   normal-text contrast targets. */
+
+:root {
+  --shalcon-muted-readable: #8589a6;
+}
+
+/* React serializes the legacy inline G.muted token to this rgb() form. */
+[style*="color: rgb(85, 85, 119)"] {
+  color: var(--shalcon-muted-readable) !important;
+}
+
+.btn-text,
+.nav-link,
+.niche-tab,
+.pill-btn,
+.footer-link {
+  color: var(--shalcon-muted-readable);
+}
+
+/* Keep tertiary metadata visually quieter without dropping body copy back into
+   low-contrast territory. */
+.mono[style*="font-size: 8px"],
+.mono[style*="font-size: 9px"] {
+  letter-spacing: 0.08em;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #00ff94 !important;
+  outline-offset: 3px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+@media (max-width: 640px) {
+  body {
+    text-rendering: optimizeLegibility;
+  }
+
+  .service-card,
+  .stat-card {
+    padding: 24px 20px;
+  }
+
+  .btn-primary,
+  .btn-ghost {
+    min-height: 44px;
+  }
+}
