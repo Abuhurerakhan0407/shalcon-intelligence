@@ -6,295 +6,199 @@ Branch: `shalcon-market-ready-2026`
 Fast recovery handoff. Strategy/source of truth: `docs/MARKET_READY_MASTER.md`. Release evidence: `docs/LAUNCH_GATE.md`.
 
 ## 1. Repository safety
-
 - **Do not edit or merge into `main` while it contains Abu's portfolio work.**
-- Market-ready Shalcon work lives only on `shalcon-market-ready-2026`.
-- Old `source/` prototype duplicates removed; Git history preserves them.
-- Obsolete `docs/CLAUDE_CODE_BUILD_BRIEF.md` removed because it instructed future agents to preserve unsupported claims and stale architecture rules.
-- Machine-local Claude settings removed/ignored.
-- `.env*` secrets and `.vercel` local bindings ignored; `.env.example` is intentionally tracked.
+- Shalcon market-ready work lives only on `shalcon-market-ready-2026`.
+- Old prototype duplicates and obsolete Claude-era preservation instructions were removed from the active branch.
+- `.env*`, `.vercel` and local secret/deployment files are ignored; `.env.example` is intentionally tracked.
 
-## 2. Market position
-
+## 2. Positioning
 Category: **AI Operations Systems Partner**.
 
 Primary wedge: **Healthcare / clinics**.
 Secondary: **EdTech / coaching / admissions**.
-Adjacent workflows remain: Insurance, E-commerce, HR/Recruitment.
+Adjacent supported workflows: Insurance, E-commerce, HR/Recruitment.
 
 Flagship: **AI Front Desk + Lead Operations System** — intake, qualification, routing/booking, approved follow-up, CRM/database write-back, reporting and human escalation.
 
 Buying path: Audit → bounded Pilot → connected System.
 
-## 3. Stack
+## 3. Owner-approved business identity — LOCKED 30 Aug 2026
+Use these facts unless the owner explicitly changes them:
+- Contracting party: **Abu Hurera Khan**
+- Trading name: **Shalcon Intelligence**
+- Business type: **Sole proprietorship**
+- Business/notice address: **Rm 2, Mahavir Bldg, Opp. P&T Colony, Near Shri Kumar Society, Vakola, Santacruz East, Mumbai 400055, Maharashtra, India**
+- Billing/notices email: **shalconintelligence@gmail.com**
+- GST status supplied by proprietor: **Not registered**
+- Authorized signatory: **Abu Hurera Khan**
+- Signatory title: **Founder**
 
-- Vite 8
-- React 18
-- Tailwind v4
-- Three.js, imperative/lazy enhancement
+For contracts/DPA, preferred unambiguous party wording is: **“Abu Hurera Khan, sole proprietor trading as Shalcon Intelligence.”**
+
+Do not ask the owner for these details again unless a later legal/accounting review requires a change.
+
+## 4. Owner-approved commercial baseline — LOCKED 30 Aug 2026
+Healthcare AI Front Desk + Lead Operations Pilot:
+- setup/implementation: **₹39,000**;
+- managed optimization/support after stabilization: **₹9,000/month**;
+- implementation collection: **50% start / 30% staging-UAT-ready / 20% production acceptance**;
+- third-party/API/message/call/vendor usage: client-paid or separately itemized;
+- included stabilization: 14 days after acceptance unless proposal changes it;
+- internal floor: do not go below ₹30,000 setup or ₹7,500/month support without written scope reduction or explicit strategic approval.
+
+Public website pricing may remain indicative; this is the approved proposal default, not a requirement to publish a fixed price card.
+
+## 5. Stack
+- Vite 8 / React 18 / Tailwind v4
+- Three.js lazy decorative enhancement
 - GSAP / ScrollTrigger
 - Vercel server route `/api/lead`
 - Dedicated Supabase lead persistence in `ap-south-1`
 
 Direct runtime dependencies intentionally limited to React, React DOM, Three.js and GSAP.
 
-## 4. Website / trust state
-
+## 6. Website/trust state
 Implemented:
 - Healthcare-first flagship and architecture proof;
 - unsupported metrics/testimonials removed;
-- marketing truth guard;
-- deterministic synthetic demo scenarios with explicit safety boundaries;
-- Opportunity-at-Risk Estimator with editable assumptions/formula limitations;
+- marketing truth regression guard;
+- deterministic synthetic demo scenarios with safety/routing boundaries;
+- editable Opportunity-at-Risk Estimator with clear limitations;
 - booking, WhatsApp, LinkedIn and email routes;
-- centralized non-sensitive conversion tracking + UTM attribution;
-- privacy/terms drafts; drafts are `noindex,nofollow` until approved;
-- keyboard skip link + main landmark;
-- mobile navigation Escape/focus return;
-- estimator modal focus trap/focus return;
-- key mobile touch targets >=44px in tested UI;
-- responsive architecture flow;
+- conversion/UTM tracking without unnecessary lead-data expansion;
+- Privacy/Terms drafts with owner identity inserted;
+- keyboard/focus/mobile accessibility improvements;
 - constrained/mobile/save-data/reduced-motion WebGL fallback;
 - Vercel CSP/security headers;
 - Trust-by-Design section.
 
-Live production alias:
-- `https://shalcon-intelligence.vercel.app`
+Live alias: `https://shalcon-intelligence.vercel.app`
 
-Verified live deployment source:
-- Vercel project: `shalcon-intelligence`
+Verified live Shalcon deployment:
 - project id: `prj_AZBIuv6c0uJmR4AF8SStuzGB2Dzp`
 - branch: `shalcon-market-ready-2026`
-- verified deployment commit: `9a32577ec4b339b5b71482ae41cc2726f00bab80`
+- verified live commit: `9a32577ec4b339b5b71482ae41cc2726f00bab80`
 - deployment id: `dpl_GhJnrgAksxEvDwe7umhgbfNuxiR9`
-- build: READY / production
+- state: READY / production
 
-The initial Vercel deployment from `main` was portfolio code and is not valid Shalcon evidence. Production Branch tracking has since been changed to `shalcon-market-ready-2026`.
+The first Vercel import from `main` was portfolio code and is not valid Shalcon evidence. Production Branch now tracks `shalcon-market-ready-2026`.
 
-Final SEO canonical/absolute social metadata waits for an owned production domain.
+## 7. Lead capture — VERIFIED END TO END
+Flow: Browser → `/api/lead` → authenticated HTTPS webhook → dedicated Shalcon Supabase.
 
-## 5. Lead capture
+Vercel route protections include POST-only handling, size limit, honeypot, bounded inputs, consent, WhatsApp normalization, server-side estimator recomputation, minimized page/referrer storage, allowlisted UTM attribution, HTTPS-only persistence, generated UUID/idempotency key and explicit `{ok:true}` acknowledgement before success.
 
-Browser → `/api/lead` → authenticated HTTPS webhook → dedicated Shalcon Supabase persistence.
-
-### Vercel `/api/lead`
-- POST only;
-- body limit;
-- honeypot;
-- best-effort in-memory short-window rate limit without persisting IP as lead data;
-- explicit contact consent;
-- WhatsApp normalization/validation;
-- estimator bounds and server-side recomputation;
-- minimized page/referrer storage;
-- only UTM source/medium/campaign retained;
-- HTTPS persistence URL only;
-- shared secret minimum 24 chars;
-- server-generated UUID `leadId` + matching `Idempotency-Key`;
-- upstream JSON acknowledgement must contain `{ ok: true }` before success;
-- failure closes safely.
-
-Vercel env configured by owner:
-- `LEAD_WEBHOOK_URL`
-- `LEAD_WEBHOOK_SECRET`
-
-Do not expose the raw secret in source, screenshots or general logs. Rotate it before final public launch because the current integration credential was manually transferred during setup.
-
-Payload schema: v2.
-
-### Dedicated Supabase — DEPLOYED
-Project:
-- name: `shalcon-intelligence`
-- project ref: `qfsnmjeacwdkbukwxbwz`
+Dedicated Supabase:
+- project: `shalcon-intelligence`
+- ref: `qfsnmjeacwdkbukwxbwz`
 - region: `ap-south-1`
-- status at creation/test: `ACTIVE_HEALTHY`
-
-Live components:
-- migration `create_shalcon_leads` applied;
-- `public.shalcon_leads` created with RLS enabled;
-- no public RLS policy;
-- `anon` and `authenticated` table privileges revoked;
-- only trusted server role has table privileges;
+- table RLS enabled;
+- `anon`/`authenticated` access revoked;
 - Edge Function `shalcon-lead-webhook` active;
-- custom server-to-server shared-secret verification happens before DB access;
-- raw secret is not committed to Git or embedded in Supabase source; only a SHA-256 verifier is stored in source;
-- destination revalidates schema/contact/consent/numbers;
-- destination recomputes expected opportunity values and rejects mismatches;
-- UUID + payload hash preserve exact replay behavior without overwriting conflicts.
+- raw shared secret not committed to Git/Supabase source.
 
-### Live persistence evidence
-Destination-only contract:
-- wrong secret → 401;
-- first synthetic write → 201 / `replay:false`;
-- exact same write → 200 / `replay:true`;
-- same UUID with changed payload → 409 `idempotency_conflict`;
-- stored row remained unchanged after conflict;
-- temporary QA credential rotated out and verified rejected.
+Evidence:
+- destination wrong secret → 401;
+- first write → 201;
+- exact replay → 200 / `replay:true`;
+- conflicting replay → 409;
+- live Vercel `/api/lead` → Supabase → 201 with correct consent/UTM/server-computed values;
+- forced real destination failure → Vercel 502 `lead_persistence_failed`, no false saved state/no extra row;
+- destination restored → subsequent live 201;
+- all synthetic QA rows deleted; table returned to zero rows.
 
-Deployed Vercel integration:
-- synthetic POST through `https://shalcon-intelligence.vercel.app/api/lead` → 201;
-- Supabase stored consent, UTM attribution and server-computed opportunity values correctly;
-- production Supabase verifier intentionally invalidated for forced-failure QA;
-- same deployed Vercel endpoint then returned 502 `lead_persistence_failed` and no extra row was stored;
-- production verifier immediately restored;
-- a second deployed integration POST returned 201 again;
-- all synthetic integration QA rows deleted; table returned to zero rows.
+The only recorded Vercel runtime 401/502 is explained by the intentional forced-failure QA.
 
-The one Vercel runtime 401/502 sequence during QA is explained by this intentional forced-failure test, not an unresolved production failure.
-
-Supabase advisors after schema creation:
-- security: one INFO for “RLS enabled, no policy” — intentional because the table is server-only;
-- performance: unused-index INFO only — expected for a new zero-row table.
-
-## 6. CI / QA
-
+## 8. CI / QA
 Workflow: `.github/workflows/shalcon-market-ready-ci.yml`.
 
-Current gates:
-- Node 22 install;
-- repository secret-leakage guard;
-- Vercel config JSON validation;
-- npm dependency/security audit;
+Current gates cover:
+- repository secret leakage;
+- Vercel JSON validation;
+- dependency/security audit;
 - runtime dependency usage;
-- marketing-claim regression;
-- API/client + demo + Supabase destination + legal safety tests;
+- marketing claim regression;
+- lead/API/client/demo/Supabase/legal safety tests;
 - production build;
-- compiled-artifact secret/claim/performance budget;
-- build artifact upload.
+- compiled artifact secret/claim/performance budgets.
 
-Compiled browser QA on green artifacts passed estimator interaction, consent/failure paths, contact targets, legal links, focus trap/return, 390px containment, 44px target checks and showed no critical runtime errors.
+Latest robots-header source commit passed the full GitHub Actions gate.
 
-Live Vercel verification completed:
-- correct branch/commit metadata;
-- successful production build;
-- homepage returns 200 with Shalcon metadata and security headers;
-- privacy and terms return 200 and are individually `noindex,nofollow`;
-- `GET /api/lead` correctly returns 405 with `Allow: POST`;
-- live compiled JS contains the canonical booking/WhatsApp/email configuration;
-- real `/api/lead` success and forced-upstream-failure behavior verified.
+Compiled browser QA previously passed desktop/mobile containment, estimator interaction, failure handling, consent, legal/contact targets, focus trap/return, keyboard close, 44px touch targets and no critical runtime errors.
 
-Remaining QA limitation:
-- deployed-site visual cross-browser smoke in a Firefox/WebKit-class browser is not yet evidenced.
+Remaining QA limitation: deployed Firefox/WebKit-class visual smoke is not yet evidenced.
 
-## 7. Pre-launch indexing safety
+## 9. Pre-launch indexing / staging protection
+The verified live build `9a32577...` still contains homepage `index,follow`.
 
-The currently live verified deployment `9a32577...` still contains homepage `index,follow` metadata.
+Latest source `vercel.json` contains:
+`X-Robots-Tag: noindex, nofollow, noarchive`
 
-A global staging protection patch was committed afterward:
-- commit: `e55b721264d90d012b6db3796e0b4aa4ea7ecdad`
-- change: `X-Robots-Tag: noindex, nofollow` in `vercel.json`
+Latest relevant source commit: `1caa3b2b362966366f3eeab76b63d665fbcf43b6`.
 
-**Important:** this no-index patch is not live yet because Vercel Hobby build-rate limiting rejected the deployment. Do not claim the staging homepage is no-indexed until a later Vercel deployment is verified to contain that header.
+Vercel Hobby build-rate limiting is rejecting new deployments, so the response-header change is **not live yet**. Do not claim otherwise.
 
-## 8. Data protection baseline
+Owner enabled **Vercel Authentication → All Deployments**, which is the interim staging protection while waiting for the build window to reopen.
 
-Current official India DPDP notifications were rechecked on 29 Aug 2026.
+Do not spam redeploy attempts.
 
-Important correction: the 2025 commencement notifications phased the Act/Rules. The framework is enacted/notified, but many substantive private-sector provisions are scheduled for later commencement rather than all being in force today.
-
-Shalcon nevertheless builds toward the notified standard now: minimization, clear purpose/notice, access controls, reasonable security safeguards, logging, processor-contract terms, retention/deletion handling and breach readiness.
-
-Files:
-- `docs/INDIA_DATA_PROTECTION_BASELINE_2026-08-29.md`
+## 10. Legal/data-protection state
+Current drafts/assets:
+- `public/privacy.html`
+- `public/terms.html`
 - `docs/DATA_PROCESSING_ADDENDUM_TEMPLATE.md`
+- `docs/PROPOSAL_SOW_TEMPLATE.md`
+- `docs/INDIA_DATA_PROTECTION_BASELINE_2026-08-29.md`
+
+Owner identity is inserted. **Final owner/legal review remains open.** The templates are not legal opinions and engagement-specific role/data/security/retention review remains required where real client personal data is processed.
 
 Never market a generic unsupported “100% DPDP compliant” claim.
 
-## 9. Market-ready business assets
+## 11. Sales readiness
+Complete assets include sales playbook, audit/discovery templates, proposal/SOW, DPA, objection/close playbook, onboarding, UAT/delivery, measurement/reporting, financial control, security/incident SOPs and Healthcare GTM materials.
 
-Strategy/truth:
-- `docs/MARKET_READY_MASTER.md`
-- `docs/FOUNDATION_RECONCILIATION.md`
-- `docs/CLAIMS_REGISTER.md`
-- `docs/COMPETITOR_RESEARCH_2026-08-29.md`
-- `docs/LAUNCH_GATE.md`
+Healthcare Batch 01:
+- six Tier-A businesses have current public-observation/recipient verification recorded in Issue #27;
+- directly strong first-touch routes currently include The Dental Hub email, VRX professional email and Meesha founder LinkedIn;
+- two vetted email messages are saved in Gmail as **drafts only** and have not been sent;
+- do not use patient booking WhatsApp numbers for unsolicited first-touch outreach;
+- do not send external outreach without explicit owner instruction.
 
-Offer/sales:
-- `docs/SERVICE_OVERVIEW_ONE_PAGE.md`
-- `docs/OFFER_HEALTHCARE_ONE_PAGE.md`
-- `docs/OFFER_EDTECH_ONE_PAGE.md`
-- `docs/SALES_PLAYBOOK.md`
-- `docs/DISCOVERY_AUDIT_TEMPLATE.md`
-- `docs/AUTOMATION_AUDIT_DELIVERABLE_TEMPLATE.md`
-- `docs/OBJECTION_CLOSE_PLAYBOOK.md`
-- `docs/PROPOSAL_SOW_TEMPLATE.md`
-- `docs/DATA_PROCESSING_ADDENDUM_TEMPLATE.md`
-- `docs/HEALTHCARE_PILOT_PRICING_RECOMMENDATION.md`
-
-Acquisition:
-- `docs/HEALTHCARE_GTM_100_ACCOUNTS.md`
-- `docs/HEALTHCARE_TARGETS_MUMBAI_SEED.md`
-- `docs/OUTREACH_COPY_HEALTHCARE.md`
-- `docs/HEALTHCARE_OUTREACH_BATCH_01.md`
-- `docs/PIPELINE_OPERATING_RHYTHM.md`
-- `docs/LEAD_MAGNET_RELEASE.md`
-
-Delivery/evidence/operations:
-- `docs/CLIENT_ONBOARDING_TEMPLATE.md`
-- `docs/DELIVERY_PLAYBOOK.md`
-- `docs/MEASUREMENT_SCHEMA.md`
-- `docs/CLIENT_PILOT_REPORT_TEMPLATE.md`
-- `docs/FINANCIAL_CONTROL.md`
-- `docs/ACCESS_SECURITY_SOP.md`
-- `docs/INCIDENT_RESPONSE_SOP.md`
-- `docs/SOP_INDEX.md`
-
-Infrastructure:
-- `docs/LEAD_CAPTURE_SETUP.md`
-- `docs/SUPABASE_LEAD_DESTINATION_SPEC.md`
-- `supabase/README.md`
-
-Domain:
-- `docs/DOMAIN_OPTIONS_2026-08-29.md`
-- connected check found `shalconintelligence.com`, `shalcon.ai` and `shalcon.io` available at the time of the check; recheck immediately before purchase.
-- exact-brand `.com` is recommended unless an already-owned better domain exists.
-
-## 10. 30 Foundations
-
-Do not use the legacy dashboard's complete/active/next labels. Use `docs/FOUNDATION_RECONCILIATION.md` plus `docs/LAUNCH_GATE.md`.
-
-Launch-critical operational assets now exist for positioning, proof standard, discovery, proposals, objections, onboarding, delivery, reporting, financial control and SOPs.
-
-Hiring, partnerships, broad scaling and exit planning remain intentionally deferred until evidence/revenue.
-
-## 11. Genuine remaining blockers
-
+## 12. Genuine remaining blockers
 ### Infrastructure / release
-1. Get the committed global no-index staging header onto a successful Vercel deployment after the Hobby build-rate window reopens.
-2. Run final deployed release verification after that deployment.
-3. Rotate the Vercel/Supabase webhook integration credential before final public launch.
-4. Choose/control final production domain and finalize canonical/sitemap/social metadata.
-5. Capture a deployed Firefox/WebKit-class visual smoke test where available.
+1. Vercel Hobby build window must reopen.
+2. Deploy and verify the committed global robots header.
+3. Run final deployed release QA, including a Firefox/WebKit-class pass where available.
+4. Rotate Vercel/Supabase webhook credential before full public/paid launch.
+5. Choose/control final production domain and finalize canonical/sitemap/social metadata.
 
-### Legal/commercial — owner controlled
-6. Final legal/business identity for public legal pages/contracts/invoices.
-7. Review/approve privacy, website terms, DPA/client legal terms.
-8. Final price/risk/margin approval.
-9. Payment/KYC/bank/accounting collection path.
+### Legal / commercial owner-controlled
+6. Final owner/legal review of Privacy, Terms, DPA/SOW risk language.
+7. Payment/KYC/bank/accounting collection path ready.
+
+Identity and Healthcare Pilot price/payment milestones are **no longer blockers**; they were supplied/approved on 30 Aug 2026.
 
 ### Market evidence
-10. Send first controlled Healthcare outreach batch.
-11. First qualified audit/proposal.
-12. First production pilot.
-13. Baseline/post-pilot evidence + permission-backed case study.
+8. Send first controlled Healthcare outreach batch when owner authorizes sending.
+9. First qualified audit/proposal.
+10. First production pilot.
+11. Baseline/post-pilot evidence + permission-backed case study.
 
-## 12. Next execution order
+## 13. Next execution order
+1. Keep CI green while Vercel throttles.
+2. Finish safe legal/payment/domain preparation that does not require owner credentials or purchases.
+3. When Vercel build window reopens, deploy/verify robots protection and rerun release QA.
+4. Complete owner/legal review and payment/KYC readiness.
+5. Purchase/connect final domain when owner authorizes the cost.
+6. Rotate integration secret immediately before final public launch.
+7. Run controlled Healthcare outreach only after explicit send approval.
+8. Convert audit → proposal → bounded pilot → measured evidence.
 
-1. Keep CI green.
-2. Wait for the Vercel Hobby build-rate window to reopen; do not spam commits/redeploy attempts.
-3. Deploy/verify the committed no-index staging header.
-4. Finish remaining safe release QA and owner-decision packets.
-5. Obtain legal/business identity and commercial/payment approvals only when they become the real blocker.
-6. Finalize domain and production SEO.
-7. Rotate integration credential before final public launch.
-8. Run controlled Healthcare outreach.
-9. Convert audit → proposal → bounded pilot → measured evidence.
-
-## 13. Truth rules
-
+## 14. Truth rules
 - no fabricated metrics/testimonials;
 - no guaranteed revenue/recovery/breakeven claims without separately approved contractual basis;
 - synthetic demos never presented as client deployments;
-- sensitive professional judgment remains appropriately human-controlled;
+- sensitive professional judgment remains human-controlled;
 - no mass cold WhatsApp strategy;
 - no cross-product infrastructure shortcuts;
 - no broad compliance claim without evidence and engagement-specific basis.
