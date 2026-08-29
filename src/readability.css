@@ -33,6 +33,31 @@
   border: 0 !important;
 }
 
+.skip-link {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 5000;
+  transform: translateY(-160%);
+  background: #00ff94;
+  color: #030308;
+  border: 2px solid #030308;
+  padding: 10px 14px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 120ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+#main-content:focus {
+  outline: none;
+}
+
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
