@@ -107,6 +107,23 @@ function pruneRateBuckets(now = Date.now()) {
   }
 }
 
+function requestLooksCrossSite(req) {
+  const fetchSite = clean(firstHeader(req.headers["sec-fetch-site"]), 32).toLowerCase();
+  if (!fetchSite) return false;
+  return !new Set(["same-origin", "same-site", "none"]).has(fetchSite);
+}
+
+async function acknowledgedPersistence(upstream, expectedLeadId) {
+  if (!upstream.ok) return false;
+  let body;
+  try {
+    body = await upstream.json();
+  } catch {
+    return false;
+  }
+  return body?.ok === true && body?.leadId === expectedLeadId;
+}
+
 export function resetLeadRateLimitForTests() {
   rateBuckets.clear();
 }
@@ -115,6 +132,15 @@ export default async function handler(req, res) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
     return send(res, 405, { ok: false, error: "method_not_allowed" });
+  }
+
+  if (requestLooksCrossSite(req)) {
+    return send(res, 403, { ok: false, error: "cross_site_request_rejected" });
+  }
+
+  const contentType = clean(firstHeader(req.headers["content-type"]), 100).toLowerCase();
+  if (contentType && !contentType.includes("application/json")) {
+    return send(res, 415, { ok: false, error: "unsupported_media_type" });
   }
 
   const declaredLength = Number(req.headers["content-length"] || 0);
@@ -233,8 +259,8 @@ export default async function handler(req, res) {
       redirect: "error",
     });
 
-    if (!upstream.ok) {
-      console.error("lead_webhook_failed", upstream.status);
+    if (!(await acknowledgedPersistence(upstream, leadId))) {
+      console.error("lead_webhook_failed_or_unacknowledged", upstream.status);
       return send(res, 502, { ok: false, error: "lead_persistence_failed" });
     }
 
