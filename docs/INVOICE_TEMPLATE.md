@@ -7,13 +7,15 @@
 Sole proprietor trading as **Shalcon Intelligence**  
 Rm 2, Mahavir Bldg, Opp. P&T Colony, Near Shri Kumar Society, Vakola, Santacruz East, Mumbai 400055, Maharashtra, India  
 Email: shalconintelligence@gmail.com  
-GSTIN: Not registered / Not applicable under current proprietor-supplied status
+GST status: **Not registered**
 
 ---
 
 # INVOICE
 
-**Invoice No.:** SI-[YEAR]-[####]  
+> This document is **not a GST tax invoice** while the supplier remains unregistered for GST. Do not collect or separately charge GST unless registration status changes and the invoice process is updated.
+
+**Invoice No.:** SI-[FY]-[####]  
 **Invoice Date:** [DD MMM YYYY]  
 **Due Date:** [DD MMM YYYY]  
 **Project / SOW:** [PROJECT NAME / SOW REFERENCE]  
@@ -24,7 +26,7 @@ GSTIN: Not registered / Not applicable under current proprietor-supplied status
 **Contact:** [NAME / ROLE]  
 **Billing address:** [ADDRESS]  
 **Email:** [EMAIL]  
-**GSTIN (client, if provided):** [GSTIN / N/A]
+**Client GSTIN (if they provide one for their records):** [GSTIN / N/A]
 
 ## Charges
 
@@ -34,7 +36,7 @@ GSTIN: Not registered / Not applicable under current proprietor-supplied status
 | [Optional separately approved item] | [ ] | ₹[ ] | ₹[ ] |
 
 **Subtotal:** ₹[ ]  
-**GST charged:** ₹0 under the proprietor's current non-GST-registered status; confirm accountant treatment before issue  
+**GST:** **Not charged — supplier currently not GST-registered**  
 **Total due:** **₹[ ]**
 
 ## Approved Healthcare Pilot milestone reference
@@ -58,7 +60,8 @@ Third-party/API/message/call/vendor costs are client-paid or separately itemized
 - This invoice relates to the written proposal/SOW referenced above.
 - Business outcomes such as revenue, conversion or appointment volume are not guaranteed unless separately written and approved in the signed agreement.
 - Third-party usage charges are excluded unless expressly listed above.
-- Any change in Shalcon's GST registration status must be reflected before issuing future invoices.
+- Shalcon must not collect a GST amount while it remains unregistered; if registration status changes, update the invoice process before the next invoice.
+- Accountant review remains required before first paid use, including financial-year numbering, income-tax/TDS handling where relevant, and record retention.
 
 ## Authorized by
 **Abu Hurera Khan**  
