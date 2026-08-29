@@ -1,6 +1,6 @@
 # Shalcon Intelligence — Production Launch Gate
 
-Status date: 29 Aug 2026
+Status date: 30 Aug 2026
 
 A checked box means evidence exists now. Production/public paid acquisition is GO only when every explicit **BLOCKER** is PASS. Controlled founder-led outreach has a narrower gate in Section H.
 
@@ -27,24 +27,25 @@ A checked box means evidence exists now. Production/public paid acquisition is G
 - [x] Claims register exists and public numeric proof requires evidence + permission.
 
 ## C. Conversion / lead capture
-- [x] Real booking URL configured in source.
-- [x] WhatsApp contact path configured in source.
-- [x] Email path configured in source.
+- [x] Real booking URL configured in source and present in deployed bundle.
+- [x] WhatsApp contact path configured in source and present in deployed bundle.
+- [x] Email path configured in source and present in deployed bundle.
 - [x] Estimator form has a server boundary and false-success protection.
 - [x] Contact consent collected and recorded in payload.
 - [x] Server recalculates estimator values rather than trusting browser totals.
 - [x] Server persistence contract uses authenticated webhook delivery + idempotency key.
 - [x] Basic abuse controls: honeypot, input bounds and best-effort IP rate limit.
-- [x] Dedicated Supabase table/function/config implementation prepared in repository.
+- [x] Dedicated Supabase table/function/config implementation exists in repository.
 - [x] Persistence destination revalidates contact/consent/estimator contract and refuses conflicting idempotent replays.
-- [x] Supabase table design enables RLS and revokes browser-role access.
+- [x] Supabase table uses RLS and revokes browser-role access.
 - [x] Dedicated Shalcon Supabase project created in `ap-south-1` (`qfsnmjeacwdkbukwxbwz`).
-- [x] Lead table + Edge Function deployed; final raw shared secret is not committed to Git/Supabase source.
-- [x] Real persistence path tested: wrong secret 401, initial write 201, exact replay 200 with `replay:true`, conflicting replay 409.
-- [x] Synthetic QA row removed after test; lead table returned to zero rows.
-- [x] Temporary QA credential rotated out and verified rejected after rotation.
-- [ ] **BLOCKER — deployed Vercel `/api/lead` configured with the final webhook URL/secret and successful end-to-end form persistence verified.**
-- [ ] **BLOCKER — forced deployed Vercel destination failure proves the website never shows false success.**
+- [x] Lead table + Edge Function deployed; raw shared secret is not committed to Git/Supabase source.
+- [x] Direct destination contract tested: wrong secret 401, initial write 201, exact replay 200 with `replay:true`, conflicting replay 409.
+- [x] Dedicated Vercel project configured with the authenticated Supabase webhook destination.
+- [x] Real deployed Vercel → Supabase persistence test completed: `/api/lead` returned 201 and the row was stored with consent, attribution and server-computed estimator values.
+- [x] Forced real destination failure completed: Supabase verifier was intentionally invalidated, `/api/lead` returned 502 `lead_persistence_failed`, and no additional row was stored.
+- [x] Production verifier restored and re-tested: `/api/lead` returned 201 again.
+- [x] All synthetic integration QA rows deleted after testing; lead table returned to zero rows.
 
 ## D. Privacy / legal baseline
 - [x] Privacy draft exists.
@@ -78,9 +79,12 @@ A checked box means evidence exists now. Production/public paid acquisition is G
 - [x] No critical console/runtime errors observed in tested compiled-artifact browser pass.
 - [x] Supabase security advisor reviewed after schema creation; only intentional INFO for RLS with no policies.
 - [x] Supabase performance advisor reviewed; unused-index INFO expected on new zero-row table.
-- [ ] **BLOCKER — dedicated Shalcon preview deployment exists and current branch is verified on it.**
-- [ ] **BLOCKER — booking/WhatsApp/email + `/api/lead` verified against deployed preview.**
-- [ ] Cross-browser deployed-preview smoke test (Chromium + at least one WebKit/Firefox-class browser where available).
+- [x] Dedicated Shalcon Vercel production deployment exists and is verified as branch `shalcon-market-ready-2026`, commit `9a32577ec4b339b5b71482ae41cc2726f00bab80`.
+- [x] Vercel production build completed successfully with Vite 8.2.2.
+- [x] Live homepage, privacy, terms and `/api/lead` method behavior verified through Vercel.
+- [x] Live `/api/lead` success and forced-failure behavior verified against the real Supabase destination.
+- [x] Runtime 502/401 observed during QA is explained by the intentional destination-failure test; production destination was restored and re-tested successfully.
+- [ ] Deployed-site cross-browser visual smoke test (Chromium + at least one Firefox/WebKit-class browser where available).
 
 ## F. Sales readiness
 - [x] Sales playbook.
@@ -123,19 +127,22 @@ Controlled, low-volume, targeted outreach may start when:
 5. prospect opt-outs are respected;
 6. the website does not pretend failed lead persistence succeeded.
 
-Current status: **TECHNICALLY READY FOR CONTROLLED OUTREACH USING DIRECT BOOKING/CONTACT PATHS.** Supabase persistence exists, but do not depend on the estimator form until the Vercel preview is configured and the complete browser → Vercel → Supabase path is tested.
+Current status: **TECHNICALLY READY FOR CONTROLLED, LOW-VOLUME FOUNDER-LED HEALTHCARE OUTREACH.** The deployed estimator persistence path has now been proven end-to-end and under forced failure.
 
 ## I. Full public / paid-traffic launch gate
-Full public/paid acquisition additionally requires:
-- dedicated Shalcon preview/production deployment verification;
-- deployed Vercel → Supabase lead persistence success + forced-failure tests;
+Full public/paid acquisition still requires:
 - final privacy/legal identity review;
 - owner-approved commercial/payment setup;
-- final production domain/metadata.
+- final production domain/metadata;
+- production webhook-secret rotation after final infrastructure freeze;
+- staging/no-index protection deployed until final launch approval;
+- final deployed release QA after those changes.
 
 ## J. Domain / SEO
 - [x] Exact-brand domain options researched through connected registrar/deployment account.
 - [x] `shalconintelligence.com` recommended if still available when purchased.
+- [x] Pre-launch global `X-Robots-Tag: noindex, nofollow` patch committed in `vercel.json` (`e55b721264d90d012b6db3796e0b4aa4ea7ecdad`).
+- [ ] **BLOCKER WHILE STAGING URL IS PUBLIC — no-index header patch must successfully deploy. Current Vercel Hobby build-rate limit blocked that deployment; the currently live `9a32577` deployment remains indexable.**
 - [ ] **BLOCKER FOR FINAL DOMAIN RELEASE — owner controls/approves final domain.**
 - [ ] Canonical URL, sitemap and absolute social metadata finalized after domain ownership/connection.
 
