@@ -36,6 +36,16 @@ test("destination preserves idempotency without overwriting conflicting payloads
   assert.ok(!/\.upsert\(/.test(functionSource), "do not upsert attacker-controlled data over an existing lead");
 });
 
+test("destination revalidates estimator inputs and recomputes opportunity values", () => {
+  assert.match(functionSource, /checkedNullableNumber/);
+  assert.match(functionSource, /invalid_estimator_data/);
+  assert.match(functionSource, /opportunityFromInputs/);
+  assert.match(functionSource, /invalid_opportunity_values/);
+  assert.match(functionSource, /estimatedDaily\.value !== expected\.daily/);
+  assert.match(functionSource, /estimatedMonthly\.value !== expected\.monthly/);
+  assert.match(functionSource, /estimatedYearly\.value !== expected\.yearly/);
+});
+
 test("destination never embeds browser-safe or admin database keys in source", () => {
   assert.ok(!/SUPABASE_ANON_KEY/.test(functionSource));
   assert.ok(!/SUPABASE_SERVICE_ROLE_KEY/.test(functionSource));
