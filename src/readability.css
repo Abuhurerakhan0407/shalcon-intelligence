@@ -48,9 +48,23 @@ button:disabled {
   opacity: 0.58;
 }
 
+@media (max-width: 900px) {
+  .architecture-flow {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .architecture-arrow {
+    display: none !important;
+  }
+}
+
 @media (max-width: 640px) {
   body {
     text-rendering: optimizeLegibility;
+  }
+
+  .architecture-flow {
+    grid-template-columns: 1fr !important;
   }
 
   .service-card,
