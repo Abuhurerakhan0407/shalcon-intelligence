@@ -1,6 +1,6 @@
 # PROJECT_STATE.md — Shalcon Intelligence
 
-Status date: 29 Aug 2026
+Status date: 30 Aug 2026
 Branch: `shalcon-market-ready-2026`
 
 Fast recovery handoff. Strategy/source of truth: `docs/MARKET_READY_MASTER.md`. Release evidence: `docs/LAUNCH_GATE.md`.
@@ -10,7 +10,7 @@ Fast recovery handoff. Strategy/source of truth: `docs/MARKET_READY_MASTER.md`. 
 - **Do not edit or merge into `main` while it contains Abu's portfolio work.**
 - Market-ready Shalcon work lives only on `shalcon-market-ready-2026`.
 - Old `source/` prototype duplicates removed; Git history preserves them.
-- Obsolete `docs/CLAUDE_CODE_BUILD_BRIEF.md` removed because it instructed future agents to preserve old unsupported claims and stale architecture rules.
+- Obsolete `docs/CLAUDE_CODE_BUILD_BRIEF.md` removed because it instructed future agents to preserve unsupported claims and stale architecture rules.
 - Machine-local Claude settings removed/ignored.
 - `.env*` secrets and `.vercel` local bindings ignored; `.env.example` is intentionally tracked.
 
@@ -41,22 +41,35 @@ Direct runtime dependencies intentionally limited to React, React DOM, Three.js 
 ## 4. Website / trust state
 
 Implemented:
-- Healthcare-first flagship and architecture proof.
-- Unsupported metrics/testimonials removed.
-- marketing truth guard.
-- deterministic synthetic demo scenarios with explicit safety boundaries.
-- Opportunity-at-Risk Estimator with editable assumptions/formula limitations.
-- booking, WhatsApp, LinkedIn and email routes.
-- centralized non-sensitive conversion tracking + UTM attribution.
-- privacy/terms drafts; drafts are `noindex,nofollow` until approved.
-- keyboard skip link + main landmark.
-- mobile navigation Escape/focus return.
-- estimator modal focus trap/focus return.
-- key mobile touch targets >=44px in tested UI.
-- responsive architecture flow.
-- constrained/mobile/save-data/reduced-motion WebGL fallback.
-- Vercel CSP/security headers.
+- Healthcare-first flagship and architecture proof;
+- unsupported metrics/testimonials removed;
+- marketing truth guard;
+- deterministic synthetic demo scenarios with explicit safety boundaries;
+- Opportunity-at-Risk Estimator with editable assumptions/formula limitations;
+- booking, WhatsApp, LinkedIn and email routes;
+- centralized non-sensitive conversion tracking + UTM attribution;
+- privacy/terms drafts; drafts are `noindex,nofollow` until approved;
+- keyboard skip link + main landmark;
+- mobile navigation Escape/focus return;
+- estimator modal focus trap/focus return;
+- key mobile touch targets >=44px in tested UI;
+- responsive architecture flow;
+- constrained/mobile/save-data/reduced-motion WebGL fallback;
+- Vercel CSP/security headers;
 - Trust-by-Design section.
+
+Live production alias:
+- `https://shalcon-intelligence.vercel.app`
+
+Verified live deployment source:
+- Vercel project: `shalcon-intelligence`
+- project id: `prj_AZBIuv6c0uJmR4AF8SStuzGB2Dzp`
+- branch: `shalcon-market-ready-2026`
+- verified deployment commit: `9a32577ec4b339b5b71482ae41cc2726f00bab80`
+- deployment id: `dpl_GhJnrgAksxEvDwe7umhgbfNuxiR9`
+- build: READY / production
+
+The initial Vercel deployment from `main` was portfolio code and is not valid Shalcon evidence. Production Branch tracking has since been changed to `shalcon-market-ready-2026`.
 
 Final SEO canonical/absolute social metadata waits for an owned production domain.
 
@@ -80,9 +93,11 @@ Browser → `/api/lead` → authenticated HTTPS webhook → dedicated Shalcon Su
 - upstream JSON acknowledgement must contain `{ ok: true }` before success;
 - failure closes safely.
 
-Required Vercel env:
+Vercel env configured by owner:
 - `LEAD_WEBHOOK_URL`
 - `LEAD_WEBHOOK_SECRET`
+
+Do not expose the raw secret in source, screenshots or general logs. Rotate it before final public launch because the current integration credential was manually transferred during setup.
 
 Payload schema: v2.
 
@@ -106,21 +121,29 @@ Live components:
 - destination recomputes expected opportunity values and rejects mismatches;
 - UUID + payload hash preserve exact replay behavior without overwriting conflicts.
 
-Live persistence evidence completed:
+### Live persistence evidence
+Destination-only contract:
 - wrong secret → 401;
 - first synthetic write → 201 / `replay:false`;
 - exact same write → 200 / `replay:true`;
 - same UUID with changed payload → 409 `idempotency_conflict`;
 - stored row remained unchanged after conflict;
-- synthetic QA row deleted after test;
-- temporary QA credential rotated out and then rejected with 401;
-- table returned to zero rows.
+- temporary QA credential rotated out and verified rejected.
+
+Deployed Vercel integration:
+- synthetic POST through `https://shalcon-intelligence.vercel.app/api/lead` → 201;
+- Supabase stored consent, UTM attribution and server-computed opportunity values correctly;
+- production Supabase verifier intentionally invalidated for forced-failure QA;
+- same deployed Vercel endpoint then returned 502 `lead_persistence_failed` and no extra row was stored;
+- production verifier immediately restored;
+- a second deployed integration POST returned 201 again;
+- all synthetic integration QA rows deleted; table returned to zero rows.
+
+The one Vercel runtime 401/502 sequence during QA is explained by this intentional forced-failure test, not an unresolved production failure.
 
 Supabase advisors after schema creation:
 - security: one INFO for “RLS enabled, no policy” — intentional because the table is server-only;
 - performance: unused-index INFO only — expected for a new zero-row table.
-
-**Remaining lead-capture blocker:** Vercel project/env must be created and the full browser → `/api/lead` → Supabase path must be tested on a deployed preview, including a forced failure proving the UI never shows a false saved state.
 
 ## 6. CI / QA
 
@@ -140,9 +163,29 @@ Current gates:
 
 Compiled browser QA on green artifacts passed estimator interaction, consent/failure paths, contact targets, legal links, focus trap/return, 390px containment, 44px target checks and showed no critical runtime errors.
 
-A dedicated deployed Shalcon preview remains required for final deployed-environment/cross-browser verification.
+Live Vercel verification completed:
+- correct branch/commit metadata;
+- successful production build;
+- homepage returns 200 with Shalcon metadata and security headers;
+- privacy and terms return 200 and are individually `noindex,nofollow`;
+- `GET /api/lead` correctly returns 405 with `Allow: POST`;
+- live compiled JS contains the canonical booking/WhatsApp/email configuration;
+- real `/api/lead` success and forced-upstream-failure behavior verified.
 
-## 7. Data protection baseline
+Remaining QA limitation:
+- deployed-site visual cross-browser smoke in a Firefox/WebKit-class browser is not yet evidenced.
+
+## 7. Pre-launch indexing safety
+
+The currently live verified deployment `9a32577...` still contains homepage `index,follow` metadata.
+
+A global staging protection patch was committed afterward:
+- commit: `e55b721264d90d012b6db3796e0b4aa4ea7ecdad`
+- change: `X-Robots-Tag: noindex, nofollow` in `vercel.json`
+
+**Important:** this no-index patch is not live yet because Vercel Hobby build-rate limiting rejected the deployment. Do not claim the staging homepage is no-indexed until a later Vercel deployment is verified to contain that header.
+
+## 8. Data protection baseline
 
 Current official India DPDP notifications were rechecked on 29 Aug 2026.
 
@@ -156,7 +199,7 @@ Files:
 
 Never market a generic unsupported “100% DPDP compliant” claim.
 
-## 8. Market-ready business assets
+## 9. Market-ready business assets
 
 Strategy/truth:
 - `docs/MARKET_READY_MASTER.md`
@@ -205,7 +248,7 @@ Domain:
 - connected check found `shalconintelligence.com`, `shalcon.ai` and `shalcon.io` available at the time of the check; recheck immediately before purchase.
 - exact-brand `.com` is recommended unless an already-owned better domain exists.
 
-## 9. 30 Foundations
+## 10. 30 Foundations
 
 Do not use the legacy dashboard's complete/active/next labels. Use `docs/FOUNDATION_RECONCILIATION.md` plus `docs/LAUNCH_GATE.md`.
 
@@ -213,38 +256,40 @@ Launch-critical operational assets now exist for positioning, proof standard, di
 
 Hiring, partnerships, broad scaling and exit planning remain intentionally deferred until evidence/revenue.
 
-## 10. Genuine remaining blockers
+## 11. Genuine remaining blockers
 
-### Owner/infrastructure
-1. Create a dedicated Shalcon Vercel project/preview without touching portfolio deployments; current connected Vercel project list has no Shalcon project.
-2. Configure Vercel `LEAD_WEBHOOK_URL` and `LEAD_WEBHOOK_SECRET` for preview/production as appropriate.
-3. Verify full deployed lead success + forced-failure paths.
-4. Choose/control final production domain.
+### Infrastructure / release
+1. Get the committed global no-index staging header onto a successful Vercel deployment after the Hobby build-rate window reopens.
+2. Run final deployed release verification after that deployment.
+3. Rotate the Vercel/Supabase webhook integration credential before final public launch.
+4. Choose/control final production domain and finalize canonical/sitemap/social metadata.
+5. Capture a deployed Firefox/WebKit-class visual smoke test where available.
 
-### Legal/commercial
-5. Final legal/business identity for public legal pages/contracts/invoices.
-6. Review/approve privacy, website terms, DPA/client legal terms.
-7. Final price/risk/margin approval.
-8. Payment/KYC/bank/accounting collection path.
+### Legal/commercial — owner controlled
+6. Final legal/business identity for public legal pages/contracts/invoices.
+7. Review/approve privacy, website terms, DPA/client legal terms.
+8. Final price/risk/margin approval.
+9. Payment/KYC/bank/accounting collection path.
 
 ### Market evidence
-9. Send first controlled Healthcare outreach batch.
-10. First qualified audit/proposal.
-11. First production pilot.
-12. Baseline/post-pilot evidence + permission-backed case study.
+10. Send first controlled Healthcare outreach batch.
+11. First qualified audit/proposal.
+12. First production pilot.
+13. Baseline/post-pilot evidence + permission-backed case study.
 
-## 11. Next execution order
+## 12. Next execution order
 
-1. Keep CI green after the Supabase source/auth update.
-2. Owner creates dedicated Vercel Shalcon project because the connected Vercel app does not expose project/env creation and no authenticated Vercel CLI is available in the runtime.
-3. Configure the two server env variables without exposing the secret publicly.
-4. Deploy `shalcon-market-ready-2026` preview.
-5. Run deployed browser/contact/API/success/failure/cross-browser QA.
-6. Finalize domain canonical/SEO + approved legal identity.
-7. Run controlled Healthcare outreach.
-8. Convert audit → proposal → bounded pilot → measured evidence.
+1. Keep CI green.
+2. Wait for the Vercel Hobby build-rate window to reopen; do not spam commits/redeploy attempts.
+3. Deploy/verify the committed no-index staging header.
+4. Finish remaining safe release QA and owner-decision packets.
+5. Obtain legal/business identity and commercial/payment approvals only when they become the real blocker.
+6. Finalize domain and production SEO.
+7. Rotate integration credential before final public launch.
+8. Run controlled Healthcare outreach.
+9. Convert audit → proposal → bounded pilot → measured evidence.
 
-## 12. Truth rules
+## 13. Truth rules
 
 - no fabricated metrics/testimonials;
 - no guaranteed revenue/recovery/breakeven claims without separately approved contractual basis;
