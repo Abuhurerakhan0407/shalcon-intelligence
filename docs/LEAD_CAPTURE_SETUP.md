@@ -3,12 +3,19 @@
 ## Current behavior
 The website submits automation-audit requests to `/api/lead`.
 
-The server endpoint returns success only after the configured persistence destination returns a successful HTTP response. If persistence is unavailable, invalid or failing, the visitor receives an explicit failure and is offered direct WhatsApp / calendar paths. The website must never display a false “saved” confirmation.
+The server returns success only after the configured persistence destination returns a successful HTTP response. If persistence is unavailable, invalid or failing, the visitor receives an explicit failure and is offered direct WhatsApp / calendar paths. The website must never display a false “saved” confirmation.
 
-## Required production environment variable
-`LEAD_WEBHOOK_URL`
+## Required production environment
 
-This must be a server-side **HTTPS** endpoint that accepts JSON POST requests. Never expose its secret/token in frontend code.
+### `LEAD_WEBHOOK_URL`
+Server-side **HTTPS** endpoint that accepts JSON POST requests.
+
+### `LEAD_WEBHOOK_SECRET`
+Generated shared secret of at least 24 characters. The Vercel function sends it only in the server-to-server `X-Shalcon-Webhook-Secret` header.
+
+Never expose either value in browser code. Do not place webhook credentials in the URL itself.
+
+The persistence destination must reject requests whose shared-secret header does not match its configured value.
 
 ## Server trust boundary
 Browser-derived totals are **not trusted**.
@@ -20,11 +27,19 @@ The server:
 - recalculates opportunity-at-risk values itself;
 - strips query strings/fragments from stored page/referrer URLs;
 - allowlists only `utm_source`, `utm_medium`, and `utm_campaign` for attribution;
-- rejects non-HTTPS persistence destinations;
+- rejects non-HTTPS or credential-bearing persistence URLs;
+- requires an authenticated shared-secret webhook;
+- generates a unique `leadId` for each accepted persistence attempt;
+- sends that same ID as the `Idempotency-Key` header;
+- applies a best-effort short-window IP rate limit before calling persistence;
+- does not persist or log the client IP as lead data;
 - fails closed when persistence fails.
 
-## Persisted payload — schema v1
-- `schemaVersion` = `1`
+The in-memory rate limit is defense in depth, not a replacement for destination/WAF abuse controls because serverless instances do not share one guaranteed global memory space.
+
+## Persisted payload — schema v2
+- `schemaVersion` = `2`
+- `leadId` — server-generated UUID
 - `source` = `shalcon_opportunity_estimator`
 - `createdAt`
 - `contactConsent` = `true`
@@ -64,32 +79,38 @@ If any required numeric input is invalid or outside the approved bound, the stor
 
 ## Destination requirements
 The final destination must:
-1. persist the request durably;
-2. return non-2xx on failure;
-3. preserve `createdAt` and consent evidence;
-4. preserve source/attribution fields;
-5. restrict access to authorized Shalcon operators;
-6. support deletion/correction workflows;
-7. avoid collecting unnecessary sensitive data;
-8. provide a clear way to record contact opt-out;
-9. document retention and deletion policy;
-10. avoid silently coercing failed writes into successful HTTP responses.
+1. require and verify `X-Shalcon-Webhook-Secret`;
+2. use `leadId` / `Idempotency-Key` to prevent duplicate storage where supported;
+3. persist the request durably;
+4. return non-2xx on failure;
+5. preserve `createdAt` and consent evidence;
+6. preserve source/attribution fields;
+7. restrict access to authorized Shalcon operators;
+8. support deletion/correction workflows;
+9. avoid collecting unnecessary sensitive data;
+10. provide a clear way to record contact opt-out;
+11. document retention and deletion policy;
+12. apply its own abuse/rate controls as needed;
+13. avoid silently coercing failed writes into successful HTTP responses.
 
 ## Production verification
 Before launch:
-1. submit a synthetic test lead;
-2. confirm the persisted record matches schema v1;
-3. verify server-computed opportunity values match the submitted assumptions;
-4. verify query strings/fragments are not retained in page/referrer;
-5. verify the UI shows success only after persistence;
-6. force destination failure and verify the UI does **not** show success;
-7. confirm WhatsApp and booking fallbacks work;
-8. confirm no secret appears in browser source/network configuration;
-9. test correction/deletion handling;
-10. document retention and authorized operators.
+1. configure both server-side environment variables;
+2. send a request with the wrong webhook secret directly to the destination and confirm rejection;
+3. submit a synthetic test lead through the website;
+4. confirm the persisted record matches schema v2;
+5. confirm `leadId` matches the server `Idempotency-Key` received by the destination;
+6. verify server-computed opportunity values match submitted assumptions;
+7. verify query strings/fragments are not retained in page/referrer;
+8. verify the UI shows success only after persistence;
+9. force destination failure and verify the UI does **not** show success;
+10. confirm WhatsApp and booking fallbacks work;
+11. confirm neither secret appears in browser source/network configuration;
+12. test correction/deletion handling;
+13. document retention and authorized operators.
 
 ## Automated safety coverage
-CI tests cover method restrictions, body limits, malformed payloads, consent, WhatsApp validation, honeypot behavior, persistence configuration, HTTPS-only webhook destinations, server-side opportunity calculation, URL minimization, invalid estimator inputs and upstream failure handling.
+CI tests cover method restrictions, body limits, malformed payloads, consent, WhatsApp validation, honeypot behavior, persistence configuration, webhook-secret strength, HTTPS/credential restrictions, server-side opportunity calculation, idempotency headers, URL minimization, invalid estimator inputs, best-effort IP rate limiting and upstream failure handling.
 
 ## Current launch status
 **BLOCKED** until a dedicated Shalcon persistence destination is configured and the production verification above passes.
