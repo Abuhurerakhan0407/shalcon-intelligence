@@ -26,6 +26,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Marketing claim regression guard
+        run: node scripts/verify-marketing-claims.mjs
+
       - name: Production build
         run: npm run build
 
