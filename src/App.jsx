@@ -5,6 +5,7 @@ import ScrollProgress from "./components/ScrollProgress.jsx";
 import Nav from "./components/Nav.jsx";
 import HeroSection from "./components/HeroSection.jsx";
 import FlagshipSystem from "./components/FlagshipSystem.jsx";
+import HealthcareArchitecture from "./components/HealthcareArchitecture.jsx";
 import ROITeaser from "./components/ROITeaser.jsx";
 import PlatformStats from "./components/PlatformStats.jsx";
 import IndustriesSection from "./components/IndustriesSection.jsx";
@@ -81,6 +82,7 @@ export default function App() {
       <Nav onBookCall={onBookCall} onOpenROI={onOpenROI} />
       <HeroSection onBookCall={onBookCall} />
       <FlagshipSystem onBookCall={onBookCall} />
+      <HealthcareArchitecture />
       <ROITeaser onOpenROI={onOpenROI} />
       <PlatformStats />
       <IndustriesSection />
