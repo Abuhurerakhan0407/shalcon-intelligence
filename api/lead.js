@@ -1,8 +1,16 @@
+import { randomUUID } from "node:crypto";
+
 const MAX_FIELD = 240;
 const MAX_BODY_BYTES = 20_000;
 const MAX_AVG_VALUE = 1_000_000_000;
 const MAX_DAILY_INQUIRIES = 100_000;
 const ALLOWED_CURRENCIES = new Set(["INR", "USD"]);
+const RATE_LIMIT_WINDOW_MS = 60_000;
+const RATE_LIMIT_MAX = 8;
+const MIN_WEBHOOK_SECRET_LENGTH = 24;
+
+const rateBuckets = globalThis.__shalconLeadRateBuckets || new Map();
+globalThis.__shalconLeadRateBuckets = rateBuckets;
 
 function clean(value, max = MAX_FIELD) {
   return String(value ?? "").trim().slice(0, max);
@@ -60,6 +68,49 @@ function send(res, status, payload) {
   return res.end(JSON.stringify(payload));
 }
 
+function firstHeader(value) {
+  if (Array.isArray(value)) return value[0] || "";
+  return String(value || "").split(",")[0].trim();
+}
+
+function clientIp(req) {
+  return clean(
+    firstHeader(req.headers["x-forwarded-for"]) ||
+      firstHeader(req.headers["x-real-ip"]) ||
+      firstHeader(req.headers["x-vercel-forwarded-for"]),
+    80
+  );
+}
+
+function consumeRateLimit(ip, now = Date.now()) {
+  if (!ip) return { allowed: true, retryAfter: 0 };
+
+  const existing = rateBuckets.get(ip);
+  if (!existing || now - existing.startedAt >= RATE_LIMIT_WINDOW_MS) {
+    rateBuckets.set(ip, { startedAt: now, count: 1 });
+    return { allowed: true, retryAfter: 0 };
+  }
+
+  existing.count += 1;
+  if (existing.count <= RATE_LIMIT_MAX) {
+    return { allowed: true, retryAfter: 0 };
+  }
+
+  const retryAfter = Math.max(1, Math.ceil((RATE_LIMIT_WINDOW_MS - (now - existing.startedAt)) / 1000));
+  return { allowed: false, retryAfter };
+}
+
+function pruneRateBuckets(now = Date.now()) {
+  if (rateBuckets.size < 500) return;
+  for (const [ip, bucket] of rateBuckets) {
+    if (now - bucket.startedAt >= RATE_LIMIT_WINDOW_MS) rateBuckets.delete(ip);
+  }
+}
+
+export function resetLeadRateLimitForTests() {
+  rateBuckets.clear();
+}
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
@@ -88,6 +139,13 @@ export default async function handler(req, res) {
     return send(res, 200, { ok: true });
   }
 
+  pruneRateBuckets();
+  const rate = consumeRateLimit(clientIp(req));
+  if (!rate.allowed) {
+    res.setHeader("Retry-After", String(rate.retryAfter));
+    return send(res, 429, { ok: false, error: "rate_limited" });
+  }
+
   const name = clean(body.name, 100);
   const whatsapp = clean(body.whatsapp, 40);
   const whatsappDigits = whatsapp.replace(/\D/g, "");
@@ -107,7 +165,8 @@ export default async function handler(req, res) {
   }
 
   const webhook = process.env.LEAD_WEBHOOK_URL;
-  if (!webhook) {
+  const webhookSecret = String(process.env.LEAD_WEBHOOK_SECRET || "").trim();
+  if (!webhook || webhookSecret.length < MIN_WEBHOOK_SECRET_LENGTH || /[\r\n]/.test(webhookSecret)) {
     return send(res, 503, { ok: false, error: "lead_capture_not_configured" });
   }
 
@@ -119,8 +178,8 @@ export default async function handler(req, res) {
     return send(res, 503, { ok: false, error: "lead_capture_not_configured" });
   }
 
-  if (webhookUrl.protocol !== "https:") {
-    console.error("lead_webhook_requires_https");
+  if (webhookUrl.protocol !== "https:" || webhookUrl.username || webhookUrl.password) {
+    console.error("lead_webhook_invalid_destination");
     return send(res, 503, { ok: false, error: "lead_capture_not_configured" });
   }
 
@@ -132,9 +191,11 @@ export default async function handler(req, res) {
   const pageAttribution = attribution(body.page);
   const now = new Date().toISOString();
   const submittedCurrency = clean(body.currency, 8).toUpperCase();
+  const leadId = randomUUID();
 
   const payload = {
-    schemaVersion: 1,
+    schemaVersion: 2,
+    leadId,
     source: "shalcon_opportunity_estimator",
     createdAt: now,
     contactConsent: true,
@@ -161,7 +222,12 @@ export default async function handler(req, res) {
   try {
     const upstream = await fetch(webhookUrl, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Idempotency-Key": leadId,
+        "X-Shalcon-Webhook-Secret": webhookSecret,
+      },
       body: JSON.stringify(payload),
       signal: AbortSignal.timeout(8000),
       redirect: "error",
