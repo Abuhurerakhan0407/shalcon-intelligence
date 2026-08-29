@@ -38,10 +38,13 @@ A checked box means evidence exists now. Production/public paid acquisition is G
 - [x] Dedicated Supabase table/function/config implementation prepared in repository.
 - [x] Persistence destination revalidates contact/consent/estimator contract and refuses conflicting idempotent replays.
 - [x] Supabase table design enables RLS and revokes browser-role access.
-- [ ] **BLOCKER — dedicated Shalcon Supabase project actually created/configured.**
-- [ ] **BLOCKER — lead table/function/secrets actually deployed.**
-- [ ] **BLOCKER — successful real persistence test completed.**
-- [ ] **BLOCKER — forced real destination failure test proves no false success.**
+- [x] Dedicated Shalcon Supabase project created in `ap-south-1` (`qfsnmjeacwdkbukwxbwz`).
+- [x] Lead table + Edge Function deployed; final raw shared secret is not committed to Git/Supabase source.
+- [x] Real persistence path tested: wrong secret 401, initial write 201, exact replay 200 with `replay:true`, conflicting replay 409.
+- [x] Synthetic QA row removed after test; lead table returned to zero rows.
+- [x] Temporary QA credential rotated out and verified rejected after rotation.
+- [ ] **BLOCKER — deployed Vercel `/api/lead` configured with the final webhook URL/secret and successful end-to-end form persistence verified.**
+- [ ] **BLOCKER — forced deployed Vercel destination failure proves the website never shows false success.**
 
 ## D. Privacy / legal baseline
 - [x] Privacy draft exists.
@@ -73,6 +76,8 @@ A checked box means evidence exists now. Production/public paid acquisition is G
 - [x] Mobile navigation Escape/focus-return semantics implemented.
 - [x] Performance architecture reviewed; WebGL is lazy and skipped for constrained/mobile/save-data/reduced-motion conditions.
 - [x] No critical console/runtime errors observed in tested compiled-artifact browser pass.
+- [x] Supabase security advisor reviewed after schema creation; only intentional INFO for RLS with no policies.
+- [x] Supabase performance advisor reviewed; unused-index INFO expected on new zero-row table.
 - [ ] **BLOCKER — dedicated Shalcon preview deployment exists and current branch is verified on it.**
 - [ ] **BLOCKER — booking/WhatsApp/email + `/api/lead` verified against deployed preview.**
 - [ ] Cross-browser deployed-preview smoke test (Chromium + at least one WebKit/Firefox-class browser where available).
@@ -91,6 +96,7 @@ A checked box means evidence exists now. Production/public paid acquisition is G
 - [x] Healthcare outbound copy framework.
 - [x] Mumbai first-100-account research process.
 - [x] Initial researched healthcare seed list.
+- [x] Personalized Healthcare outreach Batch 01 prepared.
 - [x] Founder-led pipeline operating rhythm.
 - [x] Basic financial/margin control model.
 - [x] Launch-critical SOP index.
@@ -117,13 +123,12 @@ Controlled, low-volume, targeted outreach may start when:
 5. prospect opt-outs are respected;
 6. the website does not pretend failed lead persistence succeeded.
 
-Current status: **TECHNICALLY READY FOR CONTROLLED OUTREACH USING DIRECT BOOKING/CONTACT PATHS.** Do not depend on the estimator lead form until durable persistence is deployed/tested.
+Current status: **TECHNICALLY READY FOR CONTROLLED OUTREACH USING DIRECT BOOKING/CONTACT PATHS.** Supabase persistence exists, but do not depend on the estimator form until the Vercel preview is configured and the complete browser → Vercel → Supabase path is tested.
 
 ## I. Full public / paid-traffic launch gate
 Full public/paid acquisition additionally requires:
 - dedicated Shalcon preview/production deployment verification;
-- durable lead persistence + authenticated destination;
-- successful persistence + forced-failure tests in deployed environment;
+- deployed Vercel → Supabase lead persistence success + forced-failure tests;
 - final privacy/legal identity review;
 - owner-approved commercial/payment setup;
 - final production domain/metadata.
