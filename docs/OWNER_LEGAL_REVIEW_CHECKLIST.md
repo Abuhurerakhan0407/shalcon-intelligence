@@ -3,6 +3,11 @@
 Status date: 31 Aug 2026  
 Purpose: capture owner business decisions before paid/public launch. This is not legal advice and does not replace professional legal review where appropriate.
 
+## Current DPDP timing context
+Government of India / MeitY Gazette notifications dated 13 Nov 2025 use staggered commencement. On 31 Aug 2026, many core private-sector DPDP duties are still before their scheduled commencement dates. The one-year tranche is scheduled for 13 Nov 2026 and the eighteen-month tranche for 13 May 2027, subject to any later amendment/corrigendum/direction.
+
+Shalcon should build toward the notified standard now without marketing a generic “fully DPDP compliant” claim. See `docs/INDIA_DATA_PROTECTION_BASELINE_2026-08-29.md` for the refreshed timing/evidence summary.
+
 ## Fast owner review — no approval is assumed
 When ready, Abu can review these defaults as one decision pack. Until explicit approval/change is recorded, every item remains OPEN.
 
@@ -23,6 +28,7 @@ Fast-path owner response can be recorded later as: `APPROVE DEFAULTS` plus any n
 - Trading name: Shalcon Intelligence
 - Business type: Sole proprietorship
 - Authorized signatory: Abu Hurera Khan — Founder
+- UDYAM/MSME: owner reports obtained 31 Aug 2026; certificate remains private KYC/business-proof material
 
 No owner action required unless these facts change.
 
