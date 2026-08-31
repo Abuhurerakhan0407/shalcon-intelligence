@@ -11,11 +11,13 @@ A live Google Sheets founder-led pipeline already exists:
 - spreadsheet: **Shalcon Intelligence — Sales Pipeline**;
 - spreadsheet ID: `1AhYb8qOAcDhFaaTmrwubsyXmio7TUsHMVaChynuo0CQ`;
 - tab: `Pipeline`;
-- current 31 Aug state: 8 prospects, all `Draft Ready`; 0 sent, 0 replied, 0 discovery.
+- current 31 Aug state: **16 active Healthcare prospects** — 8 `Draft Ready`, 8 `Research Ready`; 0 sent, 0 replied, 0 discovery.
 
 Use that spreadsheet as the operational source of truth for early founder-led sales. Do **not** create a second CRM merely because this document describes a richer future schema.
 
 The current sheet intentionally uses a compact early-stage layout. Expand fields only when real operating needs justify it.
+
+`Research Ready` means the account has enough current public workflow evidence to remain in the research queue, but the recipient/contact route or personalized first-touch draft is not yet fully verified. It is deliberately separate from `Draft Ready` so research inventory cannot be mistaken for authorized/send-ready outreach.
 
 ## 1. Account fields
 | Field | Required | Notes |
@@ -79,18 +81,19 @@ Patient-booking WhatsApp numbers are not default cold first-touch routes.
 Conceptual lifecycle:
 1. `target_identified`
 2. `researched`
-3. `draft_ready`
-4. `contacted`
-5. `replied`
-6. `qualified`
-7. `audit_booked`
-8. `audit_completed`
-9. `proposal_sent`
-10. `negotiation`
-11. `won_onboarding`
-12. `lost`
-13. `nurture`
-14. `do_not_contact`
+3. `research_ready`
+4. `draft_ready`
+5. `contacted`
+6. `replied`
+7. `qualified`
+8. `audit_booked`
+9. `audit_completed`
+10. `proposal_sent`
+11. `negotiation`
+12. `won_onboarding`
+13. `lost`
+14. `nurture`
+15. `do_not_contact`
 
 Current Google Sheet labels are the operational truth. Do not rewrite live rows merely to satisfy this conceptual naming scheme.
 
@@ -152,6 +155,8 @@ For manually researched outbound accounts, use a truthful source such as `manual
 
 ## 9. Useful views as volume grows
 Prioritize:
+- research-ready accounts needing recipient/contact-route verification;
+- draft-ready accounts awaiting owner authorization;
 - active opportunities by next-action date;
 - overdue next actions;
 - contacts without a valid next action;
@@ -169,13 +174,15 @@ Prioritize:
 Always retain raw counts alongside rates. Tiny-sample rates are not market proof.
 
 ## 10. Data-quality rules
-- No active opportunity without a next action + date.
+- No active opportunity without a next action + date once actual outreach/conversation begins.
+- Research-only inventory may have no follow-up date until a real first touch exists.
 - No closed-lost opportunity without loss reason.
 - Public observations remain labeled observations until confirmed in discovery.
 - Prospect language should not be silently replaced with AI interpretations.
 - Estimated volume/ROI values must identify whether prospect-supplied, model-derived or system-verified.
 - Opt-out/do-not-contact overrides cadence.
-- A `Draft Ready` row is not `Contacted`; stage changes only after an actual event.
+- `Research Ready` is not `Draft Ready`.
+- `Draft Ready` is not `Contacted`; stage changes only after an actual event.
 - Historical GitHub research lists are not the live CRM.
 
 ## 11. Upgrade trigger
