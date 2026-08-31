@@ -21,20 +21,22 @@ Sell connected workflows, not isolated AI tools.
 - Never guarantee revenue, conversion, recovery or breakeven.
 - Sensitive professional judgment remains human-controlled.
 - Do not imply a lead was saved unless durable persistence acknowledged it.
+- Owner-reported MSME completion does not mean certificate fields were independently verified.
 
 ## Acquisition rules
 - Default first-touch: targeted email / LinkedIn / manual founder-led outreach.
 - No mass cold WhatsApp strategy.
 - Do not use patient booking WhatsApp numbers for unsolicited outreach.
-- Eight Healthcare drafts exist but remain unsent.
-- Current connected Gmail sender is **not** the approved Shalcon business mailbox; do not send from that account.
-- External sends require owner authorization.
+- Live pipeline: **16 active Healthcare prospects — 15 Draft Ready, 1 Research Ready, 0 sent/replied/discovery.**
+- Draft inventory: 8 Gmail drafts + 7 decision/operations-level LinkedIn drafts; all unsent.
+- Current connected Gmail sender is **not** the approved Shalcon business mailbox; do not send email from that account.
+- All external sends, including LinkedIn, require owner authorization.
 
 ## Repository rules
 - Work only on `shalcon-market-ready-2026`.
 - Do not edit/merge `main` while it contains portfolio work.
 - Do not recreate removed prototype source as active source.
-- Never commit real secrets, KYC material, bank data or machine-local agent settings.
+- Never commit real secrets, MSME certificate fields, KYC material, bank data or machine-local agent settings.
 - Keep CI green and avoid unnecessary deployment-only commits.
 
 ## Technical state — VERIFIED
@@ -53,24 +55,34 @@ Current live runtime:
 - alias: `https://shalcon-intelligence.vercel.app`
 - staging header: `X-Robots-Tag: noindex, nofollow, noarchive` verified live
 
+## Business/payment state
+- MSME/UDYAM: **owner reports obtained 31 Aug 2026**; registration work is closed unless owner/provider reports an issue.
+- Native finance ledger exists: **Shalcon Intelligence — Invoice & Payment Ledger**, spreadsheet ID `1LWV_P9z2bNehYfcz4ieIgncRhY2UvswjmpQaR-XX7lg`.
+- Ledger is intentionally empty until a real invoice exists.
+- Current working invoice seed: `SI-2026-0001`, subject to accountant confirmation before first issuance.
+- Razorpay owner checklist exists in `docs/RAZORPAY_OWNER_CHECKLIST.md`.
+
+## Legal timing
+India DPDP baseline was refreshed 31 Aug 2026. Do not pretend all substantive DPDP duties are already in force: the 13 Nov 2025 Gazette notifications use staggered commencement, with one-year and eighteen-month tranches. See `docs/INDIA_DATA_PROTECTION_BASELINE_2026-08-29.md`.
+
+Do not make generic “100% DPDP compliant/secure” claims.
+
 ## Current owner-controlled gates
 Do not fake completion of these:
-1. final owner/legal review of Privacy, Terms, SOW/DPA risk language;
-2. Razorpay/bank/accounting/KYC readiness;
-3. UDYAM status — **owner has asked agents to leave this untouched until owner provides an update**;
-4. owner purchase/control of final production domain;
-5. correct Shalcon Gmail connection/use before outreach sending;
-6. explicit authorization before first external outreach send;
-7. production webhook-secret rotation immediately before final public launch;
-8. first real qualified audit/pilot and permission-backed proof.
+1. Razorpay KYC + Live activation, settlement bank verification and accountant/tax presentation;
+2. final owner/legal review of Privacy, Terms, SOW/DPA risk language;
+3. owner purchase/control of final production domain;
+4. correct Shalcon Gmail connection/use before email outreach sending;
+5. explicit authorization before any first external outreach send;
+6. production webhook-secret rotation immediately before final public launch;
+7. first real qualified audit/pilot and permission-backed proof.
 
 ## Remaining ChatGPT-safe work
 - eliminate stale project-control documentation;
 - maintain domain/SEO release runbook without purchasing anything;
-- prepare exact owner/legal decision pack without declaring legal approval;
-- keep payment workflow guidance accurate without collecting KYC material;
+- keep payment/invoice/ledger controls accurate without collecting KYC material;
 - keep release evidence coherent;
-- expand/research pipeline only when it does not distract from first controlled batch;
+- keep weak-recipient accounts research-only instead of lowering standards;
 - prepare final cross-browser/domain release QA for execution after domain cutover.
 
 ## Execution behavior
