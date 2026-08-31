@@ -1,9 +1,11 @@
 # Shalcon Intelligence — First Controlled Outreach Batch 01
 
 Status date: 31 Aug 2026  
-Status: **OWNER APPROVED / NOT YET SENT**
+Status: **OWNER APPROVED / PRE-SEND REVALIDATED / NOT YET SENT**
 
 Owner authorization: **APPROVE BATCH 01**, received 31 Aug 2026.
+
+Approved Shalcon business/outreach mailbox: **`shalconintelligence@gmail.com`**. Owner reconfirmed that he controls and has access to this mailbox on 31 Aug 2026.
 
 Purpose: define and execute the first small founder-led outreach sample so Shalcon can start with quality and learn from real responses before scaling.
 
@@ -18,9 +20,20 @@ Before each actual message:
 - the sending channel is authenticated to an owner-approved Shalcon account/profile;
 - after actual send, Sheet stage and Last Touch are updated from the real event.
 
-For Gmail, the approved Shalcon mailbox is **`shalconintelligence@gmail.com`**. The current ChatGPT Gmail connector session is authenticated to a different account, so Gmail prospect sends remain blocked until that connector itself is authenticated to the approved Shalcon mailbox. Owner access to the mailbox does not change the connector session automatically.
+For Gmail, the approved Shalcon mailbox is **`shalconintelligence@gmail.com`**. Owner access to that mailbox is confirmed. The current ChatGPT Gmail connector session still reports a different Gmail account, so Gmail prospect sends remain blocked until the connector itself is authenticated to the approved Shalcon mailbox. The other connected Gmail is not an approved Shalcon sender and must never be used for Shalcon outreach.
 
-This Batch 01 remains intentionally **LinkedIn-first**. Current tool access does not expose an authenticated LinkedIn messaging session, so no LinkedIn prospect has been marked sent until a real message leaves the approved account.
+This Batch 01 remains intentionally **LinkedIn-first**. Current ChatGPT tool access does not expose an authenticated LinkedIn messaging session, so no LinkedIn prospect has been marked sent until a real message leaves an approved owner-controlled profile.
+
+## Pre-send revalidation — 31 Aug 2026
+Rechecked immediately after owner approval:
+
+1. **Tru Smile Multi Specialty Dental Clinic** — official booking page still collects service/date/time and states that the team confirms the requested slot by phone or WhatsApp. Founder/Clinical Director relationship for Dr. Riyaz Quereshi remains supported by the clinic site and public professional profile.
+2. **Sirona Diagnostics** — official site still exposes home-visit booking, callback, WhatsApp/call coordination and reports delivered through WhatsApp/email. Niteen Tulpule's public professional profile still links to Sirona Diagnostics and healthcare operations.
+3. **Neevwellbeing's The Dental Clinic** — official site still identifies Dr. Chandraprabha Kumar as a founder and lists Santacruz, Chembur and Mahim branches with branch-specific contact/WhatsApp routes.
+4. **Shroff Eye Hospital** — official appointment page still lists Bandra and Marine Drive appointment routes and explicitly names Dr. Anand Shroff among consultation doctors. Public Shroff Eye Hospital professional/company presence remains current.
+5. **Vinit Eye Clinic** — official site still exposes Borivali/Mulund consultation context, online/WhatsApp booking and `admin@viniteyeclinic.com`; Dr. Vinit Shah's public professional profile remains tied to Vinit Eye Clinic.
+
+Result: **all five remain eligible for the approved controlled sample.** No opt-out or contradiction was found in the recheck. No message was sent during verification.
 
 ## Batch size
 **5 prospects.**
