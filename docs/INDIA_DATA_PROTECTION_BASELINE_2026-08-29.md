@@ -1,27 +1,40 @@
 # Shalcon Intelligence — India Data Protection Baseline
 
-Research date: 29 Aug 2026
+Research refreshed: 31 Aug 2026
 Scope: operational planning baseline, not legal advice.
-Primary sources reviewed: Government of India / MeitY notifications for the Digital Personal Data Protection Act, 2023 and Digital Personal Data Protection Rules, 2025.
+Primary sources: Government of India / MeitY Gazette notifications for the Digital Personal Data Protection Act, 2023 and Digital Personal Data Protection Rules, 2025.
 
-## 1. Important timing correction
+## 1. Current legal timing — important
 
-Do not write or sell as though every substantive DPDP obligation is already in force today.
+Do not write, sell or contract as though every substantive DPDP obligation is already in force on 31 Aug 2026.
 
-The Central Government's 13 Nov 2025 commencement notification phased the Act. The matching DPDP Rules, 2025 notification also phases commencement:
+The Central Government's Gazette notifications dated 13 Nov 2025 use staggered commencement.
 
-- certain institutional/administrative provisions commenced on publication;
-- Rule 4 is scheduled to commence one year after publication;
-- Rules 3, 5–16, 22 and 23 are scheduled to commence eighteen months after publication;
-- the Act's substantive sections 3–17 are likewise scheduled for eighteen-month commencement under the 13 Nov 2025 notification.
+### Act commencement notification — G.S.R. 843(E), 13 Nov 2025
+The notification brings selected institutional/administrative provisions into force on publication, schedules section 6(9) and section 27(1)(d) for one year after publication, and schedules the main private-sector processing/rights/obligations provisions identified in the notification for eighteen months after publication.
 
-For Shalcon on 29 Aug 2026, this means the framework is enacted/notified and the agency should build toward it, while many core private-sector processing duties are not yet at their scheduled commencement date.
+Operational planning dates from that Gazette date:
+- **13 Nov 2026:** the one-year tranche is scheduled to commence;
+- **13 May 2027:** the eighteen-month tranche is scheduled to commence.
 
-Practical rule: use the notified requirements as the design baseline now; have counsel confirm the exact obligations in force for Shalcon and each client at contract/go-live time.
+### DPDP Rules, 2025 — G.S.R. 846(E), 13 Nov 2025
+- Rules 1, 2 and 17–21: in force from publication;
+- Rule 4: scheduled one year after publication → **13 Nov 2026**;
+- Rules 3, 5–16, 22 and 23: scheduled eighteen months after publication → **13 May 2027**.
+
+Official sources:
+- MeitY DPDP Rules page: https://www.meity.gov.in/documents/act-and-policies/digital-personal-data-protection-rules-2025-gDOxUjMtQWa
+- Act commencement Gazette notification G.S.R. 843(E): MeitY Gazette PDF dated 13 Nov 2025
+- DPDP Rules Gazette notification G.S.R. 846(E): MeitY Gazette PDF dated 13 Nov 2025
+
+### What that means today
+On 31 Aug 2026, the framework is enacted/notified and parts are already operative, but many of the core private-sector processing duties are still before their scheduled commencement date.
+
+**Shalcon operating rule:** design toward the notified full framework now, but never advertise “fully DPDP compliant” merely because the product follows those design principles. Counsel should confirm the provisions actually in force at contract/go-live time and the role/facts of each engagement.
 
 ## 2. What the notified framework means for Shalcon's design
 
-The Act places responsibility on the party determining processing purposes/means (the Data Fiduciary) for processing done on its behalf and contemplates processors being engaged under a valid contract.
+The Act places responsibility on the party determining processing purposes/means (the Data Fiduciary) for processing done on its behalf and contemplates processors being engaged under a valid contract once the relevant provisions are operative.
 
 For Shalcon projects, role allocation must be written per engagement rather than assumed:
 - client will often be the Data Fiduciary for its customer/patient/candidate/lead workflow;
@@ -32,7 +45,7 @@ Do not market a generic sentence such as “DPDP compliant.” Compliance depend
 
 ## 3. Security baseline to build now
 
-The notified 2025 Rules describe minimum reasonable safeguards including appropriate protection measures, access controls, visibility/logging for unauthorized access, business-continuity/back-up measures, processor-contract safeguards, and technical/organizational measures.
+The notified 2025 Rules describe minimum safeguards that become relevant with their scheduled commencement. Shalcon should implement the practical safeguards now rather than waiting for the effective date.
 
 Shalcon baseline:
 - least-privilege system access;
@@ -50,7 +63,7 @@ Shalcon baseline:
 
 ## 4. Personal-data breach readiness
 
-The notified Rules set out affected-person and Board intimation requirements, including a 72-hour detailed update to the Board under Rule 7 once that rule is in force.
+Rule 7's breach-intimation mechanics are in the eighteen-month Rules tranche scheduled for 13 May 2027. The Rules include affected-person notification and Board intimation mechanics, including a 72-hour detailed update to the Board once Rule 7 is in force.
 
 Shalcon should prepare now:
 1. detect and contain;
@@ -66,9 +79,9 @@ Contract language must specify which party owns regulator/data-principal notific
 
 ## 5. Notice and consent design
 
-Rule 3, once commenced, calls for a notice understandable independently of other information, with clear/plain details including an itemized description of personal data and specified purposes, plus a route for exercising rights/withdrawing consent.
+Rule 3 is in the eighteen-month Rules tranche scheduled for 13 May 2027. It calls for notice that is understandable independently of other information, with clear/plain details including an itemized description of personal data and specified purposes, plus a route for rights/withdrawal.
 
-For Shalcon's website audit form, the current product direction is consistent with that trajectory:
+For Shalcon's website audit form, the current product direction intentionally builds toward that standard:
 - request only fields needed for the audit/contact purpose;
 - explain why Shalcon will contact the visitor;
 - capture explicit contact permission;
@@ -76,13 +89,13 @@ For Shalcon's website audit form, the current product direction is consistent wi
 - provide privacy/contact route;
 - avoid sensitive operational/client data in the public form.
 
-Final public notice still needs the final legal identity, production vendors and retention decision.
+The existing public Privacy Notice remains a launch-review draft until owner/legal approval; following the future-rule design direction is not a claim that those future provisions are already enforceable against Shalcon today.
 
 ## 6. Retention
 
-Do not invent one universal retention period yet.
+Do not invent one universal retention period merely to imitate a compliance template.
 
-Create a written schedule by data category and purpose, considering:
+Maintain a written schedule by data category and purpose, considering:
 - active inquiry / prospect follow-up;
 - won/lost sales records;
 - contracts/invoices/accounting records;
@@ -92,11 +105,11 @@ Create a written schedule by data category and purpose, considering:
 - legal preservation requirements;
 - opt-out/suppression records.
 
-The current Shalcon lead schema supports opt-out and operational lifecycle fields so deletion/retention can be applied deliberately later.
+Use `docs/LEAD_RETENTION_RECOMMENDATION.md` as the working business proposal until owner/legal review approves or changes it.
 
 ## 7. Client project data classification gate
 
-Before any production automation receives data, classify the project:
+Before any production automation receives data, classify the project.
 
 ### Low sensitivity
 Business contact / ordinary lead-routing fields.
@@ -129,7 +142,7 @@ Use `docs/DATA_PROCESSING_ADDENDUM_TEMPLATE.md` as the working contract appendix
 
 ## 9. Launch decision
 
-This compliance baseline is not a reason to delay controlled founder-led sales conversations.
+This baseline is not a reason to delay controlled founder-led sales conversations.
 
 Before processing real client personal data in production, require:
 - signed scope/contract;
@@ -139,7 +152,7 @@ Before processing real client personal data in production, require:
 - DPA/processor terms where applicable;
 - final legal review appropriate to the engagement.
 
-## 10. Source-control rule
+## 10. Marketing/source-control rule
 
 Legal/compliance statements in marketing must stay narrow and verifiable. Prefer:
 - “designed with data minimization, access controls and human escalation”
@@ -149,4 +162,12 @@ over:
 - “100% DPDP compliant”
 - “fully compliant with all healthcare/insurance laws”
 
-Those broad claims require engagement-specific legal evidence and should not ship as generic marketing copy.
+Broad claims require engagement-specific legal evidence and should not ship as generic marketing copy.
+
+## 11. Recheck trigger
+
+Recheck this baseline at minimum:
+- immediately before 13 Nov 2026;
+- immediately before 13 May 2027;
+- before first production engagement involving sensitive/consequential personal data;
+- whenever MeitY publishes a relevant corrigendum, amendment, exemption, direction or materially relevant guidance.
