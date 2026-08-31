@@ -1,6 +1,6 @@
 # Shalcon Intelligence — Payment Collection Setup
 
-Status date: 30 Aug 2026
+Status date: 31 Aug 2026
 Owner: Abu Hurera Khan
 Business type: Sole proprietorship trading as Shalcon Intelligence
 GST status supplied by proprietor: Not registered
@@ -21,7 +21,7 @@ Do not build a website payment button or subscription billing flow until actual 
 
 ## 2. Razorpay 2026 onboarding facts checked from official docs
 
-Official Razorpay documentation checked on 30 Aug 2026 says:
+Official Razorpay documentation rechecked on 31 Aug 2026 says:
 - Sole Proprietorship is a supported business type.
 - For Individuals/Proprietorships, CKYC lookup can use the proprietor's Personal PAN + mobile OTP.
 - If CKYC is unavailable, traditional identity verification / DigiLocker / manual ID and Video KYC may be required.
@@ -30,7 +30,7 @@ Official Razorpay documentation checked on 30 Aug 2026 says:
 - If there is no GSTIN, the setup flow provides an “I don't have a GSTIN” option.
 - Additional document choices shown: Shop Establishment Certificate, Import Export Certificate (IEC), or Mobile Postpaid Bill.
 - Bank details are required for settlements; Razorpay may use a ₹1 verification deposit and can request bank proof if verification fails.
-- For sole proprietorship, UBO declaration is not required because the owner is the merchant.
+- Razorpay's 2026 Master KYC FAQ broadly lists UBO declarations among new requirements for registered businesses. The public proprietorship-specific material reviewed does not justify assuming a blanket sole-proprietorship exemption, so follow the live Dashboard request rather than relying on an exemption claim.
 
 Official sources:
 - https://razorpay.com/docs/payments/set-up/?preferred-country=IN
@@ -71,9 +71,10 @@ Do not misclassify the business as “Individual/Unregistered” merely to bypas
 7. Upload the required business proof(s) requested by the Dashboard.
 8. Complete CKYC / Aadhaar / DigiLocker / Video KYC as requested.
 9. Add settlement bank details and complete bank verification.
-10. Submit for activation.
-11. Do not treat Test mode as permission to collect real money; wait for Live activation.
-12. Once Live mode is active, create a small internal/test-safe Payment Link only if Razorpay permits a genuine controlled test; otherwise use the first real client invoice/payment after signed approval.
+10. Complete any additional ownership/authorised-signatory declaration the live Dashboard requests; do not invent or skip a declaration based on a stale checklist.
+11. Submit for activation.
+12. Do not treat Test mode as permission to collect real money; wait for Live activation.
+13. Once Live mode is active, create a small internal/test-safe Payment Link only if Razorpay permits a genuine controlled test; otherwise use the first real client invoice/payment after signed approval.
 
 ## 5. First-client collection process
 
