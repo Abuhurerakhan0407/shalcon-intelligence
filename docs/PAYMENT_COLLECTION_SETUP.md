@@ -7,6 +7,12 @@ GST status supplied by proprietor: Not registered
 
 This is an operational setup checklist, not tax/legal/accounting advice. Confirm invoice/tax treatment with an accountant before the first paid client invoice.
 
+## 0. Current payment-readiness state
+- **UDYAM/MSME: owner-reported obtained on 31 Aug 2026.**
+- The certificate itself has not been stored in this public repository and has not been independently verified here. Keep certificate number/PAN/Aadhaar/QR/KYC data private.
+- Business-proof availability is therefore no longer the known blocker it was earlier.
+- Remaining payment gate: Razorpay KYC/Live activation + settlement-bank verification + accountant/tax presentation.
+
 ## 1. Recommended launch payment stack
 
 **Primary collection method: Razorpay Payment Links.**
@@ -23,58 +29,60 @@ Do not build a website payment button or subscription billing flow until actual 
 
 Official Razorpay documentation rechecked on 31 Aug 2026 says:
 - Sole Proprietorship is a supported business type.
-- For Individuals/Proprietorships, CKYC lookup can use the proprietor's Personal PAN + mobile OTP.
-- If CKYC is unavailable, traditional identity verification / DigiLocker / manual ID and Video KYC may be required.
-- Razorpay's current registered-business document flow asks for at least one required business document plus one additional document.
-- Required business documents shown in the current setup flow: GST certificate OR MSME (UDYAM) Certificate.
-- If there is no GSTIN, the setup flow provides an “I don't have a GSTIN” option.
-- Additional document choices shown: Shop Establishment Certificate, Import Export Certificate (IEC), or Mobile Postpaid Bill.
-- Bank details are required for settlements; Razorpay may use a ₹1 verification deposit and can request bank proof if verification fails.
-- Razorpay's 2026 Master KYC FAQ broadly lists UBO declarations among new requirements for registered businesses. The public proprietorship-specific material reviewed does not justify assuming a blanket sole-proprietorship exemption, so follow the live Dashboard request rather than relying on an exemption claim.
+- Razorpay currently uses CKYC as a fast-track onboarding route where records are available; if identity verification cannot complete through the available route, the live Dashboard may request additional verification such as DigiLocker/manual ID/Video KYC depending on account classification.
+- If there is no GSTIN, current Razorpay setup material provides an “I don't have a GSTIN” path.
+- Bank details are required for settlements and the account must be KYC approved/fully activated before Razorpay settles customer payments.
+- Razorpay may request additional business/category documents or clarifications during review; the live Dashboard request controls.
+- Payment Links can be created and managed from the Dashboard without building a website checkout.
 
 Official sources:
 - https://razorpay.com/docs/payments/set-up/?preferred-country=IN
 - https://razorpay.com/docs/payments/business-types-kyc-documents/?preferred-country=IN
 - https://razorpay.com/docs/payments/faqs/?preferred-country=IN
 - https://razorpay.com/docs/payments/payment-links/
+- https://razorpay.com/docs/payments/settlements/?preferred-country=IN
 
-Razorpay may request additional documents depending on category/risk/review. The Dashboard's current request controls.
+Do not rely on a stale static checklist when the live Razorpay Dashboard asks for different/additional documents.
 
 ## 3. Owner KYC packet to prepare
 
 ### Identity
-- [ ] Abu Hurera Khan PAN available
-- [ ] Aadhaar available and mobile number linked where possible
-- [ ] CKYC mobile OTP route available, or be ready for DigiLocker/Video KYC
+- [ ] Abu Hurera Khan PAN available privately
+- [ ] Aadhaar/authorised-signatory identity route available privately where requested
+- [ ] Mobile/OTP/CKYC or alternate verification route available as requested by Razorpay
 
 ### Business proof
 Because Shalcon is being treated as a sole proprietorship and the proprietor states no GST registration:
-- [ ] UDYAM/MSME certificate available **OR obtain/confirm another Razorpay-accepted required business document if Dashboard permits**
-- [ ] One current additional document available: Shop Establishment Certificate / IEC / Mobile Postpaid Bill as accepted by the live Razorpay flow
+- [x] UDYAM/MSME certificate — **owner reports obtained 31 Aug 2026**
+- [ ] Keep the current certificate file available privately for upload if Razorpay asks for it
+- [ ] Keep any additional business/address document requested by the live Dashboard available privately
 
-Do not misclassify the business as “Individual/Unregistered” merely to bypass proprietorship document checks without confirming that classification is accurate for the business/accounting setup.
+Do not commit or paste the MSME certificate, PAN, Aadhaar, bank proof, OTP or KYC screenshots into the public GitHub repository.
+
+Do not misclassify the business merely to bypass proprietorship document checks; use the classification that accurately represents Shalcon.
 
 ### Bank / settlement
 - [ ] Settlement bank account selected
-- [ ] Account number + IFSC available
-- [ ] Account holder/name compatibility checked against Razorpay onboarding
-- [ ] Cancelled cheque or branch-manager proof available if automated bank verification fails
+- [ ] Account number + IFSC available privately
+- [ ] Account-holder/name compatibility checked against Razorpay onboarding
+- [ ] Cancelled cheque/bank proof available privately if automated verification fails
 
 ## 4. Account setup sequence
 
-1. Create/sign in to Razorpay using the owner-controlled email/mobile.
+1. Create/sign in to Razorpay using owner-controlled email/mobile.
 2. Choose the business type that accurately represents Shalcon's sole-proprietorship setup.
-3. Enter proprietor identity/PAN details.
-4. Enter brand name `Shalcon Intelligence`.
+3. Enter proprietor identity/PAN details privately.
+4. Enter brand/trading name `Shalcon Intelligence`.
 5. Enter business address/details matching the supporting documents.
 6. Select `I don't have a GSTIN` if the live form asks for GSTIN and that remains true.
-7. Upload the required business proof(s) requested by the Dashboard.
-8. Complete CKYC / Aadhaar / DigiLocker / Video KYC as requested.
+7. Upload the UDYAM/MSME certificate when the live Dashboard accepts/requests it as business proof.
+8. Complete CKYC / Aadhaar / DigiLocker / Video KYC or other requested verification.
 9. Add settlement bank details and complete bank verification.
-10. Complete any additional ownership/authorised-signatory declaration the live Dashboard requests; do not invent or skip a declaration based on a stale checklist.
-11. Submit for activation.
-12. Do not treat Test mode as permission to collect real money; wait for Live activation.
-13. Once Live mode is active, create a small internal/test-safe Payment Link only if Razorpay permits a genuine controlled test; otherwise use the first real client invoice/payment after signed approval.
+10. Complete any additional ownership/authorised-signatory declaration requested by the live Dashboard.
+11. Resolve Dashboard clarification requests, if any.
+12. Submit for activation.
+13. Do not treat Test mode as permission to collect real money; wait for Live activation.
+14. Once Live mode is active, verify that a Payment Link can be created with an exact amount/reference and that payment/settlement status can be reconciled.
 
 ## 5. First-client collection process
 
@@ -128,8 +136,8 @@ If GST registration status changes, update all invoice/payment/legal templates b
 - Never put Razorpay API keys in GitHub, email drafts, screenshots or client docs.
 - Use Dashboard Payment Links first; API keys are unnecessary for the initial manual collection workflow.
 - Enable account MFA/2FA where available.
-- Keep bank/KYC documents out of this public repository.
-- Treat PAN/Aadhaar/bank details as owner-controlled private material.
+- Keep MSME/PAN/Aadhaar/bank/KYC documents out of this public repository.
+- Treat identity/bank details as owner-controlled private material.
 - Do not ask a client to send card details directly to Shalcon.
 
 ## 9. Launch gate definition
@@ -140,3 +148,5 @@ Payment readiness becomes PASS when:
 - accountant/tax presentation has been confirmed for the current non-GST-registered state;
 - invoice numbering/ledger is active;
 - a Payment Link can be created and reconciled without exposing secrets.
+
+**Current status:** business proof materially improved because MSME/UDYAM is owner-reported obtained; payment gate is still **IN PROGRESS** until KYC/Live activation, bank verification and accounting presentation are complete.
