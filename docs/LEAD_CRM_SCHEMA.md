@@ -11,13 +11,15 @@ A live Google Sheets founder-led pipeline already exists:
 - spreadsheet: **Shalcon Intelligence — Sales Pipeline**;
 - spreadsheet ID: `1AhYb8qOAcDhFaaTmrwubsyXmio7TUsHMVaChynuo0CQ`;
 - tab: `Pipeline`;
-- current 31 Aug state: **16 active Healthcare prospects** — 8 `Draft Ready`, 8 `Research Ready`; 0 sent, 0 replied, 0 discovery.
+- current 31 Aug state: **16 active Healthcare prospects** — 15 `Draft Ready`, 1 `Research Ready`; 0 sent, 0 replied, 0 discovery.
 
 Use that spreadsheet as the operational source of truth for early founder-led sales. Do **not** create a second CRM merely because this document describes a richer future schema.
 
 The current sheet intentionally uses a compact early-stage layout. Expand fields only when real operating needs justify it.
 
 `Research Ready` means the account has enough current public workflow evidence to remain in the research queue, but the recipient/contact route or personalized first-touch draft is not yet fully verified. It is deliberately separate from `Draft Ready` so research inventory cannot be mistaken for authorized/send-ready outreach.
+
+Current sole `Research Ready` account: **Mumbai Diagnostic Centre**. It remains unpromoted because the currently found public support/corporate/LinkedIn identity evidence does not yet provide a sufficiently clean decision-maker outreach route.
 
 ## 1. Account fields
 | Field | Required | Notes |
