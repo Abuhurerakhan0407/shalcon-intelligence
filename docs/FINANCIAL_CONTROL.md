@@ -1,46 +1,58 @@
 # Shalcon Intelligence — Financial Control
 
-Purpose: prevent the agency from pricing work without knowing delivery cost, support burden and cash exposure.
+Status date: 31 Aug 2026
 
-This is an internal operating model, not accounting or tax advice. Final invoicing, GST, entity and tax treatment should follow the owner's accountant/legal setup.
+Purpose: prevent Shalcon from pricing work without understanding delivery cost, support burden and cash exposure.
 
-## 1. Minimum record per opportunity/project
+This is an internal operating model, not accounting or tax advice. Final invoicing, GST/tax and bookkeeping treatment follow the owner/accountant setup.
 
+## 1. Current approved Healthcare baseline
+For the standard bounded Healthcare Pilot:
+- implementation/setup: **₹39,000**;
+- managed optimization/support: **₹9,000/month** after included stabilization;
+- implementation collection: **50% / 30% / 20%**;
+- third-party/API/message/call/vendor usage: client-paid or separately itemized.
+
+Internal minimum commercial floors and margin controls are internal-only. Never expose them in client-facing SOW/proposals.
+
+Other vertical/custom pricing is scoped after audit unless owner later approves a separate default.
+
+## 2. Minimum record per opportunity/project
 ### Commercial
-- Client
-- Proposal date
-- Implementation fee
-- Recurring support fee
-- Currency
-- Payment schedule
-- Third-party fees included vs client-paid
-- Discount and reason
-- Expected project start
-- Expected go-live
+- client;
+- proposal date/reference;
+- implementation fee;
+- recurring support fee;
+- currency;
+- payment schedule;
+- third-party fees included vs client-paid;
+- discount/exception and reason;
+- expected project start/go-live.
 
 ### Delivery cost assumptions
-- Founder hours — discovery/scoping
-- Founder hours — build/integration
-- Founder hours — QA/UAT
-- Founder hours — training/handover
-- Expected monthly support hours
-- Contractor cost, if any
-- Model/API usage paid by Shalcon
-- Automation platform cost paid by Shalcon
-- Telephony/messaging cost paid by Shalcon
-- Hosting/database cost paid by Shalcon
-- Other project-specific cost
+- founder hours — discovery/scoping;
+- founder hours — build/integration;
+- founder hours — QA/UAT;
+- founder hours — training/handover;
+- expected monthly support hours;
+- contractor cost, if any;
+- model/API usage paid by Shalcon;
+- automation platform cost paid by Shalcon;
+- telephony/messaging cost paid by Shalcon;
+- hosting/database cost paid by Shalcon;
+- other project-specific cost.
 
-## 2. Internal cost basis
-Set an internal hourly cost/value for founder delivery time. This is not the selling rate; it is used to stop apparently profitable projects from hiding excessive labor.
+## 3. Internal cost basis
+Set an internal hourly cost/value for founder delivery time. It is not the selling rate.
 
-Internal delivery cost = founder hours × internal hourly cost + contractor cost + Shalcon-paid third-party costs.
+`internal delivery cost = founder hours × internal hourly cost + contractor cost + Shalcon-paid third-party costs`
 
-## 3. Project contribution
+Use it to expose apparently profitable projects that hide excessive labour.
 
+## 4. Contribution view
 ### Implementation contribution
 Implementation fee collected
-− direct implementation labor cost
+− direct implementation labour cost
 − contractor cost
 − implementation-specific vendor cost
 − refunds/credits
@@ -48,66 +60,70 @@ Implementation fee collected
 
 ### Monthly contribution
 Monthly support fee
-− expected support labor cost
+− support labour cost
 − Shalcon-paid recurring vendor/API cost
 = monthly contribution
 
-Track both amount and percentage. Do not call gross revenue “profit.”
+Track amount and percentage. Do not label gross revenue as profit.
 
-## 4. Commercial guardrails
-Before sending a final proposal, answer:
-- Is the scope bounded enough to estimate effort?
-- Who pays usage/API/vendor fees?
-- Is support capped or defined?
-- Are change requests excluded from fixed scope?
-- Does the payment schedule keep Shalcon cash-positive during delivery?
-- Can the project survive one additional QA/fix cycle without becoming uneconomic?
-- Is any discount tied to a real scope/commercial trade-off?
+## 5. Proposal guardrails
+Before a final proposal:
+- scope bounded enough to estimate effort;
+- vendor/usage payer explicit;
+- support scope defined/capped;
+- change requests outside fixed scope;
+- payment schedule protects delivery cash flow;
+- one extra QA/fix cycle does not make project uneconomic;
+- discount tied to a real scope/commercial trade-off;
+- internal floor/margin notes absent from client-facing export;
+- refund/termination exposure understood.
 
-If not, revise the scope or price before sending.
+If not, revise scope/price before sending.
 
-## 5. Default payment logic
-Working default for implementation projects:
-- 50% to start;
-- 30% when staging is ready for UAT;
-- 20% on production acceptance.
+## 6. Approved Healthcare payment logic
+Standard Healthcare implementation:
+- 50% at signature/start = **₹19,500**;
+- 30% when staging is ready for agreed UAT = **₹11,700**;
+- 20% on production acceptance = **₹7,800**.
 
-This is a commercial starting point only. Final payment terms must match the signed proposal/SOW and owner-approved legal/accounting setup.
+Monthly managed support is billed in advance after included stabilization unless signed SOW changes it.
 
-Do not begin material third-party spend before the relevant client payment clears unless the owner explicitly accepts the risk.
+Do not begin material third-party spend before relevant client funds clear unless owner explicitly accepts the cash risk.
 
-## 6. Recurring support economics
+For non-standard work, payment schedule must be deliberately approved in the SOW rather than copied blindly.
+
+## 7. Recurring support economics
 Every recurring agreement must define:
-- included support window;
-- included optimization/revision allowance;
+- support window;
+- optimization/revision allowance;
 - incident severity handling;
 - response target vs resolution expectation;
 - excluded new workflows/integrations;
 - usage/vendor costs;
 - cancellation/renewal treatment.
 
-Re-estimate the plan after the first 30–60 days using actual support time.
+Re-estimate after first 30–60 days using actual support time.
 
-## 7. Weekly cash view
+## 8. Weekly cash view
 Track:
 - bank cash available for agency operations;
 - invoices issued;
 - invoices due this week;
 - overdue receivables;
-- vendor/API commitments due this week;
-- expected contractor payments;
-- tax reserve/accounting reserve according to professional advice;
+- vendor/API commitments due;
+- contractor payments;
+- tax/accounting reserve per professional advice;
 - net cash committed to active projects.
 
-Do not count unsigned proposals as receivables.
+Unsigned proposals are not receivables.
 
-## 8. Monthly agency view
+## 9. Monthly agency view
 Record:
 - cash collected;
 - implementation revenue;
 - recurring revenue;
-- direct delivery costs;
-- recurring vendor costs;
+- direct delivery cost;
+- recurring vendor cost;
 - refunds/credits;
 - contribution by client;
 - founder delivery hours;
@@ -115,39 +131,37 @@ Record:
 - sales spend;
 - software/tool spend.
 
-The purpose is to find bad economics early, not create vanity revenue charts.
+Purpose: identify bad economics early, not create vanity revenue charts.
 
-## 9. Pricing review triggers
-Reprice or rescope when any of these happen repeatedly:
+## 10. Pricing review triggers
+Reprice/rescope when patterns show:
 - actual build hours exceed estimate by >25%;
 - support hours exceed included allowance;
 - vendor/API costs materially exceed assumption;
 - client delays create repeated remobilization;
 - integration instability creates ongoing manual work;
-- change requests are being absorbed without approval;
-- discounting is required to win every deal.
+- change requests are absorbed without approval;
+- every win requires discounting.
 
-Do not mechanically raise prices from one anomalous project; inspect the cause first.
+Inspect causes before changing prices from one anomalous project.
 
-## 10. Deal approval checklist
-Before owner approval:
+## 11. Deal approval checklist
 - [ ] implementation amount filled;
 - [ ] recurring amount filled where applicable;
 - [ ] payment milestones filled;
 - [ ] third-party costs assigned;
 - [ ] estimated founder hours recorded;
-- [ ] contractor cost recorded;
+- [ ] contractor/vendor costs recorded;
 - [ ] support scope bounded;
 - [ ] change-request rule included;
 - [ ] refund/termination exposure understood;
-- [ ] commercial exceptions highlighted.
+- [ ] commercial exceptions highlighted internally;
+- [ ] client export contains no internal margin/floor notes.
 
-## 11. Evidence for Foundation 22
-Foundation 22 is considered BASIC READY when:
-- every proposal has a cost/effort estimate;
-- every won project has payment milestones;
-- actual delivery/support time is recorded;
-- monthly contribution is reviewed;
-- overdue invoices and vendor commitments are visible.
+## 12. Payment-readiness boundary
+Commercial logic is ready. Actual paid-work readiness still requires owner-controlled Razorpay/bank/accounting setup.
 
-It is not considered mature financial management until the owner/accountant's production bookkeeping, tax and entity process is operating.
+UDYAM is **paused by owner instruction** until Abu provides an update. Do not infer its status here.
+
+## 13. Maturity boundary
+Financial-control process is BASIC READY for first proposals/pilots. It becomes mature only after real projects record estimates vs actual hours, collected cash, support burden and accountant-managed production bookkeeping/tax treatment.
