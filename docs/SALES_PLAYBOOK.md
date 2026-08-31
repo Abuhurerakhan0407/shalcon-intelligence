@@ -142,29 +142,40 @@ Compare scoped cost against the verified operational workflow. If economics do n
 Current source of truth: Google Sheet **Shalcon Intelligence — Sales Pipeline**.
 
 Current 31 Aug state:
-- 8 Healthcare prospects
-- 8 `Draft Ready`
-- 0 sent
-- 0 replied
-- 0 discovery
+- 16 active Healthcare prospects;
+- 15 `Draft Ready`;
+- 1 `Research Ready`;
+- 0 sent;
+- 0 replied;
+- 0 discovery.
+
+Controlled Batch 01 is owner-authorized for these five prospects:
+1. Dr. Riyaz Quereshi — Tru Smile
+2. Niteen Tulpule — Sirona Diagnostics
+3. Dr. Chandraprabha Kumar — Neevwellbeing’s The Dental Clinic
+4. Dr. Anand Shroff — Shroff Eye Hospital
+5. Dr. Vinit Shah — Vinit Eye Clinic
+
+Authorization is not contact evidence. Their rows remain `Draft Ready` until actual messages leave an approved authenticated channel.
 
 Conceptual stages:
 1. Target identified
 2. Researched
-3. Draft Ready
-4. Contacted
-5. Replied
-6. Qualified
-7. Audit booked
-8. Audit completed
-9. Proposal sent
-10. Negotiation
-11. Won / onboarding
-12. Lost — reason captured
-13. Nurture
-14. Do not contact
+3. Research Ready
+4. Draft Ready
+5. Contacted
+6. Replied
+7. Qualified
+8. Audit booked
+9. Audit completed
+10. Proposal sent
+11. Negotiation
+12. Won / onboarding
+13. Lost — reason captured
+14. Nurture
+15. Do not contact
 
-Actual Sheet status changes only after real events. A prepared draft is not `Contacted`.
+Actual Sheet status changes only after real events. A prepared or approved draft is not `Contacted`.
 
 ## 10. Outbound rules
 Default: targeted business email and LinkedIn/manual outreach.
@@ -173,10 +184,12 @@ Before any external send:
 - reverify public observation/contact route;
 - check do-not-contact/opt-out state;
 - use current Google Sheet as send manifest;
-- use an owner-approved Shalcon business sender;
-- obtain explicit owner authorization for the controlled batch.
+- use an owner-approved Shalcon business sender/profile;
+- verify the exact prospect is inside an authorized controlled batch.
 
-Current connected Gmail is not the approved Shalcon mailbox. Do not send from it.
+For Controlled Batch 01, owner authorization is complete. Do not ask for it again.
+
+Approved Shalcon email sender: **`shalconintelligence@gmail.com`**. The current ChatGPT Gmail connector is authenticated to a different account, so do not send Shalcon prospect email from that connector. Current tools also do not expose an authenticated LinkedIn messaging session, so LinkedIn sends must not be marked complete until a real message leaves the approved profile.
 
 Do not use patient-booking WhatsApp numbers for unsolicited first touch. WhatsApp follow-up/outreach requires an appropriate permission/policy basis for the specific communication.
 
@@ -197,7 +210,19 @@ Only after a real first touch and absent suppression:
 
 Stop on opt-out/rejection. Record it.
 
-## 12. Sales KPIs
+## 12. Reply triage
+On a real response:
+- **positive / curious** → mark `Replied`, capture exact stated interest, propose a short workflow-audit call;
+- **asks what Shalcon does** → answer with one relevant workflow, not the full service catalogue;
+- **asks price immediately** → state the bounded Healthcare baseline only if scope seems materially compatible, otherwise say pricing follows the workflow audit;
+- **already solved / not interested** → record reason and stop unless they explicitly invite future follow-up;
+- **wrong person** → ask once for the appropriate operations/business contact if natural; do not pressure;
+- **unsubscribe / stop** → mark `Do Not Contact` immediately;
+- **clinical/patient query** → do not engage as sales lead; redirect to their own clinical/support process if needed.
+
+Do not invent urgency or convert a neutral reply into a qualified opportunity.
+
+## 13. Sales KPIs
 Track raw counts first:
 - researched accounts;
 - draft-ready accounts;
@@ -213,5 +238,5 @@ Track raw counts first:
 
 Do not market these as conversion proof before meaningful real volume exists.
 
-## 13. First-client proof rule
+## 14. First-client proof rule
 Before the first real client result, sell capability + process + synthetic proof honestly. After a pilot, record baseline, timeframe/sample, measured outcome and client permission before publishing any identifiable case-study/result claim.
