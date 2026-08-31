@@ -25,15 +25,15 @@ Buying path: Audit → bounded Pilot → connected System.
 - Trading name: **Shalcon Intelligence**
 - Business type: sole proprietorship
 - Authorized signatory: Abu Hurera Khan — Founder
-- Billing/notices email: `shalconintelligence@gmail.com`
-- **Approved business/outreach sender: `shalconintelligence@gmail.com` — owner reconfirmed 31 Aug 2026**
+- Billing/notices + approved outreach sender: `shalconintelligence@gmail.com`
 - Owner confirms direct access/control of this mailbox.
-- Connected Google Calendar profile independently returns **Shalcon Intelligence / `shalconintelligence@gmail.com`**.
-- Connected Google Drive profile currently returns **Abu hurera Khan / `iamabuhurerakhan@gmail.com`**; the live pipeline and finance ledger are in this owner-controlled Drive workspace. This is usable but must not be mislabeled as the Shalcon business Google account.
-- Connected Gmail profile currently returns **`iafakhan9999@gmail.com`**, which is not authorized for Shalcon prospect outreach.
-- Connector identity map: `docs/GOOGLE_CONNECTOR_IDENTITY_MAP_2026-08-31.md`.
-- GST status supplied by proprietor: not registered
-- **UDYAM/MSME: owner reports obtained on 31 Aug 2026**
+- User-provided ChatGPT Gmail settings screenshot on 31 Aug visibly shows `shalconintelligence@gmail.com` connected.
+- Connected Google Calendar independently returns **Shalcon Intelligence / `shalconintelligence@gmail.com`**.
+- Connected Google Drive currently returns **Abu hurera Khan / `iamabuhurerakhan@gmail.com`**; the live pipeline and finance ledger are in this owner-controlled Drive workspace. This is usable but must not be mislabeled as the Shalcon business Google account.
+- Gmail connector execution currently fails at tool level with `Resource not found`; this is a connector-resolution bug, not an owner mailbox-access problem.
+- GST status supplied by proprietor: not registered.
+- **UDYAM/MSME: owner reports obtained on 31 Aug 2026.**
+- **Owner business legal defaults approved 31 Aug 2026.** This is business approval, not professional legal/counsel sign-off.
 - Preferred contract wording: **“Abu Hurera Khan, sole proprietor trading as Shalcon Intelligence.”**
 
 The MSME certificate itself is private owner material and is not stored in this public repository. Do not request or commit PAN/Aadhaar/OTP/bank/KYC data. Use the owner-controlled certificate directly only where a legitimate private onboarding/accounting process needs it.
@@ -52,13 +52,13 @@ Internal negotiation floors stay internal and must not appear in client document
 - project: `shalcon-intelligence`
 - project ID: `prj_AZBIuv6c0uJmR4AF8SStuzGB2Dzp`
 - production branch: `shalcon-market-ready-2026`
-- runtime deployment: `dpl_FcRYobZDc1NzBhfWMTWdYYmz1JiC`
-- runtime commit: `8f3ee67bb3889e7c05dfd35b27f3d9b361a51166`
+- last independently verified READY deployment before this handoff update: `dpl_9QG2rBdwArU7tUp7wvY5UEDYw4qZ`
+- last independently verified deployed commit before this handoff update: `946094af4ce545ad2b58c87b6b92f9a56f246d15`
 - alias: `https://shalcon-intelligence.vercel.app`
 - global staging header: `X-Robots-Tag: noindex, nofollow, noarchive`
 - Vercel Authentication: enabled during staging
 
-Do not redeploy only to make the runtime SHA match documentation-only commits.
+A previous deployment attempt on green branch head `d6748e8ec25d36a78badd8480ec40dca591d3dbf` was blocked by Vercel `build-rate-limit`. Investigation proved the same Shalcon repo/branch was also triggering legacy portfolio projects `abu_portfolio2` and `abu-hurera-portfolio-v2`. Owner reports those two portfolio Git links were removed on 31 Aug 2026. This commit is the single controlled post-cleanup trigger; verify actual Vercel deployment evidence before claiming the runtime updated.
 
 ### Supabase
 - project: `shalcon-intelligence`
@@ -71,19 +71,22 @@ Do not redeploy only to make the runtime SHA match documentation-only commits.
 Lead capture is verified end-to-end: successful write/replay, conflicting replay rejection, fail-closed destination failure, recovery, and QA-row cleanup were tested. Production webhook credential still needs final rotation immediately before public launch because it was manually transferred during setup.
 
 ## 6. Website / QA state
-Implemented and verified:
+Implemented and verified in source:
 - Healthcare-first flagship positioning
 - unsupported testimonials/metrics removed
 - clearly synthetic demo
 - Opportunity-at-Risk Estimator with editable assumptions/non-guarantee framing
 - booking, WhatsApp, LinkedIn and email routes
 - lead persistence + consent/attribution controls
-- Privacy/Terms drafts
 - accessibility/mobile/reduced-motion fallbacks
 - CSP/security headers
 - CI gates for secrets, dependencies, claims, API/client/demo/Supabase/legal safety, build and compiled artifacts
+- owner-reviewed Privacy/Terms source with approved lead-retention defaults
+- legal CI guard updated after owner approval
 
-Homepage, Privacy and Terms returned HTTP 200 during 31 Aug live checks; staging noindex remained active and the checked prior-day runtime window had no new production error/fatal logs.
+CI #264 passed on `d6748e8ec25d36a78badd8480ec40dca591d3dbf` before this state-update commit.
+
+The last independently checked live staging deployment returned HTTP 200 for Homepage, Privacy and Terms and preserved global `X-Robots-Tag: noindex, nofollow, noarchive`. At that check, live Privacy/Terms still showed the older 30 Aug draft wording because the newer source had not yet deployed. Reverify after this post-cleanup deployment trigger.
 
 Final domain/secret/indexing changes still require deployed Chromium + Firefox/WebKit-class smoke.
 
@@ -92,10 +95,13 @@ Prepared: Privacy, Terms, DPA, SOW, owner legal checklist, data-protection basel
 
 Client SOW and automation-audit templates have pre-send scrub gates. No internal price floor should leak to clients.
 
+### Owner legal decision
+Owner approved the prepared business defaults on 31 Aug 2026, including the operational Privacy/Terms/SOW/DPA positions, 90/180-day public-lead retention defaults, milestone-based cancellation/refund position, Mumbai/Maharashtra/India dispute preference, bounded-liability preference and human control of sensitive decisions.
+
+This closes the **owner business-decision gate**. It does **not** equal professional legal advice or counsel sign-off. Use engagement-specific/professional review where triggered by material health/sensitive-data processing, unusual liability/SLA/refund terms, cross-border processing, or material first-client contract reliance. Never claim generic “100% DPDP compliant/secure.”
+
 ### DPDP timing
 India DPDP baseline was refreshed 31 Aug 2026 against the 13 Nov 2025 Gazette notifications. Do not pretend all substantive duties are already in force. One-year and eighteen-month commencement tranches are scheduled, including major dates **13 Nov 2026** and **13 May 2027**, subject to later legal changes.
-
-Owner/legal review remains open. Never claim generic “100% DPDP compliant/secure.” Sensitive-data engagements require engagement-specific controls/review.
 
 ### MSME
 **No longer a blocker:** owner reports MSME/UDYAM obtained on 31 Aug 2026. Treat this as owner-reported complete; do not claim certificate-field verification unless the private certificate is actually reviewed for a specific legitimate need.
@@ -113,12 +119,13 @@ Verified preparation:
 - approved Healthcare milestone values;
 - current working invoice seed `SI-2026-0001`;
 - no fake invoice rows;
-- KYC/secrets excluded.
+- KYC/secrets excluded;
+- current GST-unregistered invoice wording does not present the document as a GST tax invoice or collect GST.
 
 Payment readiness is now narrowed to:
 - Razorpay KYC + Live activation using accurate proprietorship details and owner-controlled business proof;
 - settlement bank verification;
-- accountant/tax presentation for the current non-GST-registered state;
+- accountant confirmation for invoice numbering/TDS/income-tax/recordkeeping presentation while GST-unregistered;
 - first real Payment Link/payment/settlement reconciliation after Live activation.
 
 ## 8. Live sales state — VERIFIED 31 Aug
@@ -136,15 +143,8 @@ Current live counts:
 - replied: **0**
 - discovery: **0**
 
-### Draft / response-ready inventory
-- 8 earlier personalized Gmail drafts — unsent; full migration backup in `docs/GMAIL_DRAFT_MIGRATION_BACKUP_2026-08-31.md` so switching Gmail accounts cannot strand the work;
-- 7 verified LinkedIn drafts in `docs/HEALTHCARE_OUTREACH_DRAFTS_BATCH_02_2026-08-31.md` — unsent;
-- 4 Batch 01 public-business-inbox email fallback drafts in `docs/OUTREACH_BATCH_01_EMAIL_FALLBACKS_2026-08-31.md` — unsent;
-- 5 prospect-specific synthetic reply maps in `docs/BATCH_01_SYNTHETIC_WORKFLOW_MAPS_2026-08-31.md` — prepared for use only after a relevant prospect asks to see the map or for discovery support;
-- reply/objection/pricing/opt-out/discovery handling in `docs/OUTREACH_REPLY_TO_DISCOVERY_HANDOFF.md`.
-
 ### First controlled Batch 01
-Owner explicitly authorized the exact five-prospect Batch 01 on 31 Aug 2026 with `APPROVE BATCH 01`.
+Owner explicitly authorized the exact five-prospect Batch 01 on 31 Aug 2026 with `APPROVE BATCH 01`. Do not ask for this authorization again.
 
 Authorized prospects:
 1. Dr. Riyaz Quereshi — Tru Smile
@@ -155,30 +155,29 @@ Authorized prospects:
 
 All five recipient/company/public-workflow observations were revalidated after approval.
 
-Authorization is **not** evidence of contact. All five remain `Draft Ready` until a real outbound message leaves an owner-approved authenticated channel. The live Sheet records the authorization and channel fallback in Next Action.
+Authorization is **not** evidence of contact. All five remain `Draft Ready` until a real outbound message leaves an owner-approved authenticated channel.
 
-Email fallbacks are prepared for Tru Smile, Sirona Diagnostics, Shroff Eye Hospital and Vinit Eye Clinic. Neev remains LinkedIn-only because no sufficiently clean public business email was verified; do not use patient-booking WhatsApp for cold outreach.
+Prepared continuity:
+- 8 earlier personalized Gmail drafts, unsent, backed up in `docs/GMAIL_DRAFT_MIGRATION_BACKUP_2026-08-31.md`;
+- 7 verified LinkedIn drafts in `docs/HEALTHCARE_OUTREACH_DRAFTS_BATCH_02_2026-08-31.md`, unsent;
+- 4 Batch 01 public-business-inbox email fallbacks in `docs/OUTREACH_BATCH_01_EMAIL_FALLBACKS_2026-08-31.md`, unsent;
+- 5 prospect-specific synthetic reply maps in `docs/BATCH_01_SYNTHETIC_WORKFLOW_MAPS_2026-08-31.md`;
+- reply/objection/pricing/opt-out/discovery handling in `docs/OUTREACH_REPLY_TO_DISCOVERY_HANDOFF.md`.
+
+Neev remains LinkedIn-only because no sufficiently clean public business email was verified; do not use patient-booking WhatsApp for cold outreach.
 
 Batch 02 additional recipients remain prepared but are not included in Batch 01 authorization:
 - Feriel Palia Jackson — Clinical Diagnostic Centre
 - Dr. Priyank Bajani — Happy Teeth by Dr. Bajani
 
-Sole `Research Ready` account: **Mumbai Diagnostic Centre**. Keep it unpromoted until a sufficiently clean decision-maker/business-development route is verified. Do not use ambiguous support/patient routes or scraped third-party personal data merely to fill the pipeline.
-
-### Email sender control
-- Owner-approved business/outreach mailbox: **`shalconintelligence@gmail.com`**.
-- Owner reconfirmed this exact sender on 31 Aug 2026 and states they have access/control of it.
-- Connected Google Calendar already verifies the correct Shalcon Google account identity.
-- Current ChatGPT Gmail connector session alone is authenticated to a different account (`iafakhan9999@gmail.com`). That connector identity is **not authorized for Shalcon prospect outreach**.
-- The available Gmail send action has no `From`/send-as selector, so ownership of the correct mailbox does not make the stale Gmail connector safe for sending.
-- Several internal connector-verification messages were sent only to `shalconintelligence@gmail.com` while testing the session identity; **no prospect was contacted**. Do not send further connector-test emails.
-- Do not ask the owner to prove mailbox ownership/access again. Re-authenticate the Gmail connector if direct ChatGPT Gmail execution is needed.
+Sole `Research Ready` account: **Mumbai Diagnostic Centre**. Keep it unpromoted until a sufficiently clean decision-maker/business-development route is verified.
 
 ### Channel execution boundary
-- Batch 01 authorization is complete. Do not ask for it again.
-- Gmail execution is blocked only by Gmail connector authentication to the approved Shalcon mailbox.
-- Current available tools do not expose an authenticated LinkedIn messaging session, and plugin discovery found no available LinkedIn messaging plugin, so LinkedIn sends cannot be truthfully marked completed from this environment.
-- Any outreach outside the exact five-prospect Batch 01 still requires separate authorization.
+- Batch 01 authorization is complete.
+- User-provided Gmail settings show `shalconintelligence@gmail.com` connected, but Gmail profile/send actions currently fail at connector layer with `Resource not found`; a prospect send attempt failed before delivery, so **0 prospects were contacted**.
+- Do not ask the owner to prove/reconnect the mailbox again unless visible UI state actually changes.
+- Current available tools do not expose an authenticated LinkedIn messaging session; plugin discovery found no usable LinkedIn messaging plugin.
+- Any outreach outside exact Batch 01 still requires separate authorization.
 
 ### Reply → discovery
 `docs/OUTREACH_REPLY_TO_DISCOVERY_HANDOFF.md` contains response triage, opt-out handling, pricing response, discovery handoff and direct routing to the five prepared synthetic maps.
@@ -189,7 +188,7 @@ Saved discovery scheduling URL: `https://calendar.app.google/HMdDM2iUEuwbaMUEA`.
 Recommended domain: `shalconintelligence.com`; fresh connected check on 31 Aug showed it available at $11.25/year. Alternatives remained `shalcon.io` $30/year and `shalcon.ai` $160/2 years. No purchase made. Recheck and obtain explicit owner approval before purchase.
 
 After ownership:
-1. attach only to correct Vercel project;
+1. attach only to correct Shalcon Vercel project;
 2. verify DNS/TLS/apex-www redirect;
 3. add canonical, absolute OG/Twitter metadata, robots and sitemap;
 4. rotate Vercel→Supabase webhook credential;
@@ -199,38 +198,37 @@ After ownership:
 
 ## 10. Genuine remaining gates
 ### Owner/account-controlled
-1. Re-authenticate ChatGPT Gmail to `shalconintelligence@gmail.com` if ChatGPT is to execute the email fallback sends directly.
-2. Make an authenticated LinkedIn messaging session available if ChatGPT is to execute LinkedIn directly; no available LinkedIn messaging plugin was found in the current environment.
-3. Razorpay KYC / Live activation / settlement bank / accountant-tax readiness.
-4. Final Privacy/Terms/SOW/DPA business-risk/legal review.
-5. Production-domain purchase/control.
+1. Razorpay KYC / Live activation / settlement bank / accountant-tax readiness.
+2. Production-domain purchase/control when explicitly ready to spend.
+3. Authenticated LinkedIn messaging session only if direct LinkedIn execution by ChatGPT is desired.
 
-### ChatGPT after owner gates/channel access
-6. Execute already-authorized Batch 01 through an approved authenticated channel and update pipeline from real send outcomes.
-7. Verify first real Payment Link/invoice/settlement reconciliation.
-8. Domain/canonical/social/robots/sitemap cutover.
-9. Production webhook-secret rotation.
-10. Final deployed browser/domain/API QA.
-11. Deliberate public-indexing cutover.
+Owner legal-business approval, MSME, Batch 01 authorization, mailbox ownership/access, and the requested legacy Vercel Git cleanup are complete at owner-report level and must not be reopened without contrary evidence.
+
+### ChatGPT / system work
+4. Verify this post-cleanup Vercel deployment and live owner-reviewed Privacy/Terms while staging protection remains active.
+5. Retry already-authorized Batch 01 when Gmail write execution resolves; update pipeline only from real sends.
+6. Verify first real Payment Link/invoice/settlement reconciliation after Razorpay Live.
+7. Domain/canonical/social/robots/sitemap cutover after domain ownership.
+8. Production webhook-secret rotation immediately before public release.
+9. Final deployed browser/domain/API QA.
+10. Deliberate public-indexing cutover.
 
 ### Market evidence
-12. First qualified discovery/audit/proposal.
-13. First paid bounded pilot.
-14. Baseline/post-pilot evidence.
-15. Permission-backed case study.
+11. First qualified discovery/audit/proposal.
+12. First paid bounded pilot.
+13. Baseline/post-pilot evidence.
+14. Permission-backed case study.
 
 ## 11. Execution order
-1. Keep runtime protected and CI green.
-2. MSME/UDYAM is complete at owner-report level; use private certificate only where a legitimate private process needs it.
-3. Execute already-authorized Batch 01 as soon as an owner-approved authenticated sending channel is available; do not ask for Batch 01 approval again.
-4. If a Batch 01 prospect asks for more detail, use only that prospect’s prepared synthetic workflow map and keep it explicitly hypothesis-based.
-5. Advance Razorpay KYC/Live + bank/accounting readiness.
-6. Record owner/legal decisions without pretending professional review happened.
-7. Keep Mumbai Diagnostic Centre research-only unless recipient evidence improves.
-8. Purchase/connect final domain only after explicit spend approval.
-9. Rotate integration secret immediately before final public launch.
-10. Run final deployed cross-browser/domain/API QA and deliberately enable public indexing.
-11. Convert controlled outreach → discovery → audit → proposal → bounded pilot → measured proof.
+1. Verify the single post-cleanup Shalcon deployment trigger and keep staging protected.
+2. Execute already-authorized Batch 01 as soon as an approved authenticated sending action works; do not ask for Batch 01 approval again.
+3. If a Batch 01 prospect asks for more detail, use only that prospect’s prepared synthetic workflow map and keep it explicitly hypothesis-based.
+4. Advance Razorpay KYC/Live + bank/accounting readiness.
+5. Keep Mumbai Diagnostic Centre research-only unless recipient evidence improves.
+6. Purchase/connect final domain only after explicit spend approval.
+7. Rotate integration secret immediately before final public launch.
+8. Run final deployed cross-browser/domain/API QA and deliberately enable public indexing.
+9. Convert controlled outreach → discovery → audit → proposal → bounded pilot → measured proof.
 
 ## 12. Truth rules
 - no fabricated metrics/testimonials;
@@ -241,6 +239,7 @@ After ownership:
 - patient-booking WhatsApp is not a default cold channel;
 - no cross-product infrastructure shortcuts;
 - no broad compliance/security claim without evidence;
-- owner-reported MSME completion is not the same as independently verifying certificate fields;
+- owner-reported MSME completion is not independent certificate-field verification;
+- owner legal-business approval is not professional legal approval;
 - Batch 01 is authorized but not sent until actual channel evidence exists;
-- no purchases, KYC actions or legal approvals inferred from preparation alone.
+- no purchases, KYC actions, sends or runtime deployments inferred from preparation alone.
