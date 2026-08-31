@@ -131,26 +131,36 @@ Draft inventory:
 - 8 earlier personalized Gmail drafts — unsent;
 - 7 verified LinkedIn drafts in `docs/HEALTHCARE_OUTREACH_DRAFTS_BATCH_02_2026-08-31.md` — unsent.
 
-Batch 02 recipients:
-- Dr. Anand Shroff — Shroff Eye Hospital
-- Niteen Tulpule — Sirona Diagnostics
-- Dr. Chandraprabha Kumar — Neevwellbeing’s The Dental Clinic
-- Dr. Vinit Shah — Vinit Eye Clinic
-- Dr. Riyaz Quereshi — Tru Smile
+### First controlled Batch 01
+Owner explicitly authorized the exact five-prospect Batch 01 on 31 Aug 2026 with `APPROVE BATCH 01`.
+
+Authorized prospects:
+1. Dr. Riyaz Quereshi — Tru Smile
+2. Niteen Tulpule — Sirona Diagnostics
+3. Dr. Chandraprabha Kumar — Neevwellbeing’s The Dental Clinic
+4. Dr. Anand Shroff — Shroff Eye Hospital
+5. Dr. Vinit Shah — Vinit Eye Clinic
+
+Authorization is **not** evidence of contact. All five remain `Draft Ready` until a real outbound message leaves an owner-approved authenticated channel. The live Sheet records the authorization in Next Action.
+
+Batch 02 additional recipients remain prepared but are not included in Batch 01 authorization:
 - Feriel Palia Jackson — Clinical Diagnostic Centre
 - Dr. Priyank Bajani — Happy Teeth by Dr. Bajani
 
 Sole `Research Ready` account: **Mumbai Diagnostic Centre**. Keep it unpromoted until a sufficiently clean decision-maker/business-development route is verified. Do not use ambiguous support/patient routes or scraped third-party personal data merely to fill the pipeline.
 
-`Draft Ready` does not mean contacted. No external outreach has been sent.
-
 ### Email sender control
 - Owner-approved business/outreach mailbox: **`shalconintelligence@gmail.com`**.
-- Owner reconfirmed this exact sender on 31 Aug 2026.
-- Current ChatGPT Gmail connector session is authenticated to a different account (`iafakhan9999@gmail.com`). That connector identity is **not authorized for Shalcon outreach**.
-- Do not send Shalcon outreach from any Gmail connector unless `Gmail.get_profile()` returns `shalconintelligence@gmail.com` or the owner explicitly approves another Shalcon-controlled sender.
+- Owner reconfirmed this exact sender on 31 Aug 2026 and states they have access to it.
+- Current ChatGPT Gmail connector session is authenticated to a different account (`iafakhan9999@gmail.com`). That connector identity is **not authorized for Shalcon prospect outreach**.
+- A single verification email was sent from the current connector to `shalconintelligence@gmail.com` only to confirm connector behavior; no prospect was contacted.
+- Do not send Shalcon prospect outreach from Gmail unless `Gmail.get_profile()` returns `shalconintelligence@gmail.com` or the owner explicitly approves another Shalcon-controlled sender.
 
-All external outreach, including LinkedIn, still requires explicit owner authorization.
+### Channel execution boundary
+- Batch 01 authorization is complete.
+- Gmail execution is blocked only by connector authentication to the approved Shalcon mailbox.
+- Current available tools do not expose an authenticated LinkedIn messaging session, so LinkedIn sends cannot be truthfully marked completed from this environment.
+- Any outreach outside the exact five-prospect Batch 01 still requires separate authorization.
 
 ## 9. Domain / release
 Recommended domain: `shalconintelligence.com`; last connected check on 31 Aug showed it available at $11.25/year. No purchase made. Recheck and obtain explicit owner approval before purchase.
@@ -168,23 +178,22 @@ After ownership:
 ### Owner-controlled
 1. Razorpay KYC / Live activation / settlement bank / accountant-tax readiness.
 2. Final Privacy/Terms/SOW/DPA business-risk/legal review.
-3. Connect ChatGPT Gmail to `shalconintelligence@gmail.com` before any Gmail send.
-4. Explicit external outreach authorization.
-5. Production-domain purchase/control.
+3. Connect ChatGPT Gmail to `shalconintelligence@gmail.com` before any Gmail prospect send.
+4. Production-domain purchase/control.
 
-### ChatGPT after owner gates
+### ChatGPT after owner gates/channel access
+5. Execute already-authorized Batch 01 through an approved authenticated channel and update pipeline from real send outcomes.
 6. Verify first real Payment Link/invoice/settlement reconciliation.
 7. Domain/canonical/social/robots/sitemap cutover.
 8. Production webhook-secret rotation.
 9. Final deployed browser/domain/API QA.
 10. Deliberate public-indexing cutover.
-11. Controlled send execution + pipeline updates from real outcomes.
 
 ### Market evidence
-12. First qualified discovery/audit/proposal.
-13. First paid bounded pilot.
-14. Baseline/post-pilot evidence.
-15. Permission-backed case study.
+11. First qualified discovery/audit/proposal.
+12. First paid bounded pilot.
+13. Baseline/post-pilot evidence.
+14. Permission-backed case study.
 
 ## 11. Execution order
 1. Keep runtime protected and CI green.
@@ -192,7 +201,7 @@ After ownership:
 3. Advance Razorpay KYC/Live + bank/accounting readiness.
 4. Record owner/legal decisions without pretending professional review happened.
 5. Keep Mumbai Diagnostic Centre research-only unless recipient evidence improves.
-6. Connect ChatGPT Gmail to `shalconintelligence@gmail.com` and obtain explicit send authorization.
+6. Execute already-authorized Batch 01 as soon as an owner-approved authenticated sending channel is available; do not ask for Batch 01 approval again.
 7. Purchase/connect final domain only after explicit spend approval.
 8. Rotate integration secret immediately before final public launch.
 9. Run final deployed cross-browser/domain/API QA and deliberately enable public indexing.
@@ -208,4 +217,5 @@ After ownership:
 - no cross-product infrastructure shortcuts;
 - no broad compliance/security claim without evidence;
 - owner-reported MSME completion is not the same as independently verifying certificate fields;
-- no external sends, purchases, KYC actions or legal approvals inferred from preparation alone.
+- Batch 01 is authorized but not sent until actual channel evidence exists;
+- no purchases, KYC actions or legal approvals inferred from preparation alone.
