@@ -16,7 +16,9 @@ On 31 Aug 2026 the owner disconnected the Shalcon Git repository from both legac
 ## Verification sequence
 1. After the first cleanup pass, `abu-hurera-portfolio-v2` stopped deploying, while `abu_portfolio2` still created deployment `dpl_GsYyGkxJGu2HTURG4FE2KcvJY96m` from Shalcon commit `29dbfe1d9815b4e2c6bbc4334bb8057444d60253`.
 2. The owner then disconnected Git specifically from `abu_portfolio2` as well.
-3. This document commit is the controlled final verification trigger. Do not mark cleanup fully verified until Vercel/GitHub evidence confirms that legacy portfolio contexts no longer create fresh deployments from this commit.
+3. Controlled verification commit `3d74587df016f38f48f051706d277120116e557a` produced only a single generic Vercel status context; neither `Vercel – abu_portfolio2` nor `Vercel – abu-hurera-portfolio-v2` appeared, and no fresh legacy portfolio deployment was observed from that commit.
+
+**Cleanup status: VERIFIED.** The legacy portfolio Git fan-out is no longer an active Shalcon deployment blocker. The remaining Vercel failure on the verification commit was the independent build-rate-limit condition.
 
 ## Guardrail
 Do not reconnect `Abuhurerakhan0407/shalcon-intelligence` to any portfolio Vercel project. Only the dedicated `shalcon-intelligence` Vercel project should react to this branch.
