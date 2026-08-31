@@ -30,7 +30,7 @@ Buying path: Audit → bounded Pilot → connected System.
 - **UDYAM/MSME: owner reports obtained on 31 Aug 2026**
 - Preferred contract wording: **“Abu Hurera Khan, sole proprietor trading as Shalcon Intelligence.”**
 
-The MSME certificate itself is private owner material and is not stored in this public repository. Do not request or commit PAN/Aadhaar/OTP/bank/KYC data. If exact certificate details are later needed for a private onboarding form, use the owner-controlled certificate directly.
+The MSME certificate itself is private owner material and is not stored in this public repository. Do not request or commit PAN/Aadhaar/OTP/bank/KYC data. Use the owner-controlled certificate directly only where a legitimate private onboarding/accounting process needs it.
 
 ## 4. Approved Healthcare commercial baseline
 - ₹39,000 setup/implementation
@@ -81,20 +81,37 @@ Homepage, Privacy and Terms returned HTTP 200 during 31 Aug live checks; staging
 
 Final domain/secret/indexing changes still require deployed Chromium + Firefox/WebKit-class smoke.
 
-## 7. Legal / payment / MSME
-Prepared: Privacy, Terms, DPA, SOW, owner legal checklist, data-protection baseline, retention recommendation, invoice/payment guides.
+## 7. Legal / MSME / payment
+Prepared: Privacy, Terms, DPA, SOW, owner legal checklist, data-protection baseline, retention recommendation, invoice/payment guides and native finance ledger.
 
 Client SOW and automation-audit templates have pre-send scrub gates. No internal price floor should leak to clients.
 
+### DPDP timing
+India DPDP baseline was refreshed 31 Aug 2026 against the 13 Nov 2025 Gazette notifications. Do not pretend all substantive duties are already in force. One-year and eighteen-month commencement tranches are scheduled, including major dates **13 Nov 2026** and **13 May 2027**, subject to later legal changes.
+
 Owner/legal review remains open. Never claim generic “100% DPDP compliant/secure.” Sensitive-data engagements require engagement-specific controls/review.
 
-**MSME/UDYAM is no longer a blocker:** owner reports the registration/certificate was obtained on 31 Aug 2026. Treat this as owner-reported complete; do not claim certificate-field verification unless the private certificate is actually reviewed for a specific need.
+### MSME
+**No longer a blocker:** owner reports MSME/UDYAM obtained on 31 Aug 2026. Treat this as owner-reported complete; do not claim certificate-field verification unless the private certificate is actually reviewed for a specific legitimate need.
 
-Payment readiness is narrowed to:
-- Razorpay KYC/Live activation using accurate proprietorship details and owner-controlled business proof;
+### Finance/payment preparation
+Native Google Sheet: **Shalcon Intelligence — Invoice & Payment Ledger**  
+Spreadsheet ID: `1LWV_P9z2bNehYfcz4ieIgncRhY2UvswjmpQaR-XX7lg`
+
+Verified preparation:
+- India timezone;
+- native invoice table + validation;
+- summary formulas;
+- approved Healthcare milestone values;
+- current working invoice seed `SI-2026-0001`;
+- no fake invoice rows;
+- KYC/secrets excluded.
+
+Payment readiness is now narrowed to:
+- Razorpay KYC + Live activation using accurate proprietorship details and owner-controlled business proof;
 - settlement bank verification;
 - accountant/tax presentation for the current non-GST-registered state;
-- verify first Payment Link + ledger/reconciliation flow after Live activation.
+- first real Payment Link/payment/settlement reconciliation after Live activation.
 
 ## 8. Live sales state — VERIFIED 31 Aug
 Google Sheet: **Shalcon Intelligence — Sales Pipeline**  
@@ -151,23 +168,24 @@ After ownership:
 5. Production-domain purchase/control.
 
 ### ChatGPT after owner gates
-6. Domain/canonical/social/robots/sitemap cutover.
-7. Production webhook-secret rotation.
-8. Final deployed browser/domain/API QA.
-9. Deliberate public-indexing cutover.
-10. Controlled send execution + pipeline updates from real outcomes.
+6. Verify first real Payment Link/invoice/settlement reconciliation.
+7. Domain/canonical/social/robots/sitemap cutover.
+8. Production webhook-secret rotation.
+9. Final deployed browser/domain/API QA.
+10. Deliberate public-indexing cutover.
+11. Controlled send execution + pipeline updates from real outcomes.
 
 ### Market evidence
-11. First qualified discovery/audit/proposal.
-12. First paid bounded pilot.
-13. Baseline/post-pilot evidence.
-14. Permission-backed case study.
+12. First qualified discovery/audit/proposal.
+13. First paid bounded pilot.
+14. Baseline/post-pilot evidence.
+15. Permission-backed case study.
 
 ## 11. Execution order
 1. Keep runtime protected and CI green.
-2. MSME/UDYAM is complete at owner-report level; use the private certificate only where onboarding specifically needs it.
+2. MSME/UDYAM is complete at owner-report level; use private certificate only where a legitimate private process needs it.
 3. Advance Razorpay KYC/Live + bank/accounting readiness.
-4. Reduce owner/legal checklist to explicit decisions and preserve conservative defaults until approved.
+4. Record owner/legal decisions without pretending professional review happened.
 5. Keep Mumbai Diagnostic Centre research-only unless recipient evidence improves.
 6. Connect/use correct Shalcon sender and obtain explicit send authorization.
 7. Purchase/connect final domain only after explicit spend approval.
