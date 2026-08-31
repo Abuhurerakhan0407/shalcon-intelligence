@@ -6,6 +6,20 @@ Purpose: prevent Shalcon from pricing work without understanding delivery cost, 
 
 This is an internal operating model, not accounting or tax advice. Final invoicing, GST/tax and bookkeeping treatment follow the owner/accountant setup.
 
+## 0. Live finance ledger
+Native Google Sheet: **Shalcon Intelligence — Invoice & Payment Ledger**  
+Spreadsheet ID: `1LWV_P9z2bNehYfcz4ieIgncRhY2UvswjmpQaR-XX7lg`
+
+Operating rules:
+- create a ledger row only when a real invoice is actually issued or formally prepared for issuance;
+- do not create fake/example client rows;
+- current next working invoice number is `SI-2026-0001`, subject to accountant confirmation before first paid use;
+- keep PAN, Aadhaar, MSME certificate fields, bank account details, OTPs, API secrets and client card data out of the ledger;
+- invoice/payment references may be stored; secrets may not;
+- cancelled invoice numbers remain recorded as cancelled and are not silently reused.
+
+The ledger currently has no real invoice rows. Its formulas, dropdowns, India timezone, frozen headers and payment-summary structure were verified after native Google Sheets import.
+
 ## 1. Current approved Healthcare baseline
 For the standard bounded Healthcare Pilot:
 - implementation/setup: **₹39,000**;
@@ -92,7 +106,24 @@ Do not begin material third-party spend before relevant client funds clear unles
 
 For non-standard work, payment schedule must be deliberately approved in the SOW rather than copied blindly.
 
-## 7. Recurring support economics
+## 7. Invoice / collection control
+Before issuing an invoice:
+1. signed SOW/written commercial acceptance exists;
+2. milestone and exact amount are due under that agreement;
+3. invoice number is unique and sequential under the accountant-approved convention;
+4. supplier GST status and invoice wording are current;
+5. client legal/billing details are verified;
+6. the invoice contains no internal floor/margin notes;
+7. a ledger row is created with issue/due dates and amount;
+8. if Razorpay is used, Payment Link reference matches the invoice/project reference.
+
+After payment:
+- record payment reference/ID, paid date and amount/status;
+- record settlement date when reconciled to bank;
+- retain invoice/receipt/accounting records according to accountant/legal requirements;
+- do not confuse Razorpay payment confirmation with bank settlement reconciliation.
+
+## 8. Recurring support economics
 Every recurring agreement must define:
 - support window;
 - optimization/revision allowance;
@@ -104,7 +135,7 @@ Every recurring agreement must define:
 
 Re-estimate after first 30–60 days using actual support time.
 
-## 8. Weekly cash view
+## 9. Weekly cash view
 Track:
 - bank cash available for agency operations;
 - invoices issued;
@@ -117,7 +148,7 @@ Track:
 
 Unsigned proposals are not receivables.
 
-## 9. Monthly agency view
+## 10. Monthly agency view
 Record:
 - cash collected;
 - implementation revenue;
@@ -133,7 +164,7 @@ Record:
 
 Purpose: identify bad economics early, not create vanity revenue charts.
 
-## 10. Pricing review triggers
+## 11. Pricing review triggers
 Reprice/rescope when patterns show:
 - actual build hours exceed estimate by >25%;
 - support hours exceed included allowance;
@@ -145,7 +176,7 @@ Reprice/rescope when patterns show:
 
 Inspect causes before changing prices from one anomalous project.
 
-## 11. Deal approval checklist
+## 12. Deal approval checklist
 - [ ] implementation amount filled;
 - [ ] recurring amount filled where applicable;
 - [ ] payment milestones filled;
@@ -158,10 +189,16 @@ Inspect causes before changing prices from one anomalous project.
 - [ ] commercial exceptions highlighted internally;
 - [ ] client export contains no internal margin/floor notes.
 
-## 12. Payment-readiness boundary
-Commercial logic is ready. Actual paid-work readiness still requires owner-controlled Razorpay/bank/accounting setup.
+## 13. Payment-readiness boundary
+Commercial logic, invoice template and native invoice/payment ledger are prepared.
 
-UDYAM is **paused by owner instruction** until Abu provides an update. Do not infer its status here.
+**MSME/UDYAM:** owner reports obtained on 31 Aug 2026; business-proof availability is no longer the known blocker.
 
-## 13. Maturity boundary
-Financial-control process is BASIC READY for first proposals/pilots. It becomes mature only after real projects record estimates vs actual hours, collected cash, support burden and accountant-managed production bookkeeping/tax treatment.
+Actual paid-work collection readiness still requires:
+- Razorpay Live activation (or an explicitly approved alternative collection path);
+- settlement bank verification;
+- accountant confirmation of invoice/tax presentation while Shalcon remains GST-unregistered;
+- first real Payment Link/invoice/settlement reconciliation proof.
+
+## 14. Maturity boundary
+Financial-control process is **BASIC READY** for first proposals and pre-payment preparation. It becomes execution-proven only after real invoices, collections, settlements and project-cost actuals are recorded.
