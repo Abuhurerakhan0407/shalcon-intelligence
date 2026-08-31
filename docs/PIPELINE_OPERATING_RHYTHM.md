@@ -14,17 +14,20 @@ Before any first touch:
 - [ ] prospect exists in current Google Sheets pipeline;
 - [ ] row is `Draft Ready`, not merely `Research Ready`;
 - [ ] public observation/contact route is reverified;
-- [ ] sender is an owner-approved Shalcon business mailbox;
+- [ ] sender/channel identity is appropriate and owner-approved where applicable;
 - [ ] owner has explicitly authorized the controlled send batch;
 - [ ] no prior opt-out/rejection/do-not-contact signal exists.
 
 Current 31 Aug state:
 - 16 active Healthcare prospects in live pipeline;
-- 8 = `Draft Ready`;
-- 8 = `Research Ready`;
+- 15 = `Draft Ready`;
+- 1 = `Research Ready` (Mumbai Diagnostic Centre);
 - 0 sent, 0 replied, 0 discovery;
-- 8 Gmail drafts exist for the `Draft Ready` group;
-- currently connected Gmail is not the approved Shalcon mailbox, therefore **do not send from it**.
+- 8 earlier email drafts exist in Gmail;
+- 7 additional LinkedIn drafts exist in `HEALTHCARE_OUTREACH_DRAFTS_BATCH_02_2026-08-31.md`;
+- currently connected Gmail is not the approved Shalcon mailbox, therefore **do not send email from it**.
+
+`Draft Ready` means copy/contact-route work is prepared. It does **not** mean contact occurred or sending is authorized.
 
 ## 1. Research block
 At validation stage, research 3–5 strong-fit accounts at a time.
@@ -52,6 +55,8 @@ Promote only after:
 - no unsupported internal-performance assumption is included.
 
 Creating a draft does not authorize sending it.
+
+Current hold: Mumbai Diagnostic Centre remains `Research Ready` because available public support/corporate/LinkedIn evidence does not yet provide a sufficiently clean decision-maker outreach route. Do not lower the bar merely to reach 16/16.
 
 ## 3. Draft / first-touch block
 Once send gate is open, send only a small controlled batch. Start with quality, not a daily quota.
