@@ -26,6 +26,7 @@ Buying path: Audit → bounded Pilot → connected System.
 - Business type: sole proprietorship
 - Authorized signatory: Abu Hurera Khan — Founder
 - Billing/notices email: `shalconintelligence@gmail.com`
+- **Approved business/outreach sender: `shalconintelligence@gmail.com` — owner reconfirmed 31 Aug 2026**
 - GST status supplied by proprietor: not registered
 - **UDYAM/MSME: owner reports obtained on 31 Aug 2026**
 - Preferred contract wording: **“Abu Hurera Khan, sole proprietor trading as Shalcon Intelligence.”**
@@ -143,7 +144,11 @@ Sole `Research Ready` account: **Mumbai Diagnostic Centre**. Keep it unpromoted 
 
 `Draft Ready` does not mean contacted. No external outreach has been sent.
 
-Critical email sender control: connected Gmail is not the approved Shalcon mailbox. **Do not send from it.** Email outreach requires `shalconintelligence@gmail.com` or another owner-approved Shalcon sender.
+### Email sender control
+- Owner-approved business/outreach mailbox: **`shalconintelligence@gmail.com`**.
+- Owner reconfirmed this exact sender on 31 Aug 2026.
+- Current ChatGPT Gmail connector session is authenticated to a different account (`iafakhan9999@gmail.com`). That connector identity is **not authorized for Shalcon outreach**.
+- Do not send Shalcon outreach from any Gmail connector unless `Gmail.get_profile()` returns `shalconintelligence@gmail.com` or the owner explicitly approves another Shalcon-controlled sender.
 
 All external outreach, including LinkedIn, still requires explicit owner authorization.
 
@@ -163,7 +168,7 @@ After ownership:
 ### Owner-controlled
 1. Razorpay KYC / Live activation / settlement bank / accountant-tax readiness.
 2. Final Privacy/Terms/SOW/DPA business-risk/legal review.
-3. Correct Shalcon Gmail connection/use.
+3. Connect ChatGPT Gmail to `shalconintelligence@gmail.com` before any Gmail send.
 4. Explicit external outreach authorization.
 5. Production-domain purchase/control.
 
@@ -187,7 +192,7 @@ After ownership:
 3. Advance Razorpay KYC/Live + bank/accounting readiness.
 4. Record owner/legal decisions without pretending professional review happened.
 5. Keep Mumbai Diagnostic Centre research-only unless recipient evidence improves.
-6. Connect/use correct Shalcon sender and obtain explicit send authorization.
+6. Connect ChatGPT Gmail to `shalconintelligence@gmail.com` and obtain explicit send authorization.
 7. Purchase/connect final domain only after explicit spend approval.
 8. Rotate integration secret immediately before final public launch.
 9. Run final deployed cross-browser/domain/API QA and deliberately enable public indexing.
