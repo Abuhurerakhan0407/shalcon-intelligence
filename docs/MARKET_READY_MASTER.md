@@ -1,30 +1,29 @@
 # SHALCON INTELLIGENCE — MARKET READY MASTER
 
-Status date: 29 Aug 2026
-Branch: `shalcon-market-ready-2026`
-Purpose: authoritative operating plan for turning Shalcon Intelligence into a credible, secure, measurable AI automation agency.
+Status date: 31 Aug 2026  
+Branch: `shalcon-market-ready-2026`  
+Purpose: authoritative operating strategy for making Shalcon a credible, secure, measurable AI automation agency without inventing proof or rebuilding finished infrastructure.
+
+Current evidence/status is governed by `docs/LAUNCH_GATE.md`. Fast recovery state is `PROJECT_STATE.md`. Current task order is `docs/EXECUTION_BOARD.md`.
 
 ## 0. Operating rules
-
-1. Do not edit or merge into `main` while it contains Abu's portfolio work.
-2. A checklist item is not evidence. Mark work complete only when a working asset, test, integration, document or measured process exists.
+1. Do not edit/merge Shalcon work into portfolio-contaminated `main`.
+2. A checklist is not evidence. Mark complete only with a working asset, test, integration, document or measured process.
 3. No fabricated client results, testimonials, platform counts, uptime, recovery rates or breakeven promises.
-4. Synthetic demos must remain clearly labeled.
-5. Sell operating systems and measurable workflows, not generic “AI bot” capability lists.
-6. Human judgment remains in the loop for sensitive/consequential medical, insurance and employment decisions.
-7. Do not create/reuse cross-product infrastructure merely to remove a checkbox.
-8. Current release status is governed by `docs/LAUNCH_GATE.md`.
-9. Fast resume state is governed by `PROJECT_STATE.md`.
+4. Synthetic demos remain clearly labeled.
+5. Sell measurable operating workflows, not generic AI-tool lists.
+6. Human judgment remains in the loop for sensitive/consequential medical, insurance, employment, legal or financial decisions.
+7. Do not create/reuse cross-product infrastructure merely to clear a checkbox.
+8. Do not recreate the existing Shalcon Vercel/Supabase stack because old historical text says it is missing.
+9. No external send, purchase, KYC action, legal approval or raw-secret operation is inferred from preparation.
+10. UDYAM work is explicitly paused until Abu provides his update.
 
-## 1. Market research conclusion
+## 1. Market position
+The AI automation agency market is crowded with voice agents, WhatsApp automation, CRM routing, workflow orchestration, qualification, booking and dashboards. Tool names are not differentiation.
 
-The AI automation agency market is crowded with the same surface offer: voice agents, WhatsApp automation, CRM routing, n8n/Make workflows, qualification, booking and dashboards.
-
-Competitor research is recorded in `docs/COMPETITOR_RESEARCH_2026-08-29.md`.
-
-Shalcon cannot differentiate by naming more tools. The defensible launch position is:
-- vertical workflow knowledge;
-- clear audit → pilot → system buying path;
+Shalcon launch position:
+- vertical workflow understanding;
+- Audit → bounded Pilot → connected System buying path;
 - implementation quality;
 - explicit human escalation;
 - honest value modelling;
@@ -32,279 +31,309 @@ Shalcon cannot differentiate by naming more tools. The defensible launch positio
 - good security/data handling;
 - ongoing optimization after launch.
 
-## 2. Positioning
+Category: **AI Operations Systems Partner**.
 
-### Category
-**AI Operations Systems Partner**
+Primary wedge: **Healthcare / clinics**.  
+Secondary: **EdTech / coaching / admissions**.  
+Adjacent supported workflows: Insurance, E-commerce, HR/Recruitment.
 
-### Main promise
-Shalcon designs and deploys systems that capture, qualify, follow up, book, route and update business systems automatically — while escalating the right exceptions to humans.
+Flagship: **AI Front Desk + Lead Operations System**.
 
-### Launch wedge
-Primary: **Healthcare / clinics**
-
-Secondary: **EdTech / coaching / admissions**
-
-Supported adjacent workflows: Insurance, E-commerce, HR/Recruitment.
-
-### Flagship offer
-**AI Front Desk + Lead Operations System**
-
-Core modules:
-1. web / approved messaging inquiry intake;
+Core modules can include:
+1. web/approved messaging intake;
 2. voice workflow where appropriate;
-3. qualification and routing;
+3. qualification/routing;
 4. appointment/demo scheduling;
-5. follow-up and reminders;
+5. approved follow-up/reminders;
 6. CRM/database write-back;
 7. operational events/reporting;
-8. human escalation and safe failure paths.
+8. human escalation + safe failure paths.
 
-## 3. Buying paths
+## 2. Buying paths
+### Workflow audit
+Map current process, bottlenecks, data/integration constraints, human decisions and measurable success criteria. Impact estimates are editable planning assumptions, not verified loss/recovery.
 
-### Audit
-Free automation opportunity audit.
+### Bounded pilot
+One production workflow with explicit scope, dependencies, UAT acceptance criteria, safe fallback and measurement.
 
-Output: current-state workflow, bottleneck map, automation priority, data/integration constraints and an editable impact model.
+### Connected system
+Expand only after workflow fit is demonstrated. Additional channels, branches, integrations, reporting and support are added through written scope changes.
 
-### Pilot
-One bounded production workflow with explicit acceptance criteria and measurement.
+Do not force prospects into generic Starter/Growth/Enterprise package names. Scope from the workflow.
 
-Price after discovery. Third-party/API fees and client responsibilities stated separately.
+## 3. Approved Healthcare commercial baseline
+Owner approved 30 Aug 2026:
+- standard bounded Healthcare Pilot: **₹39,000 implementation/setup**;
+- managed optimization/support after stabilization: **₹9,000/month**;
+- implementation milestones: **50% / 30% / 20%**;
+- third-party/API/message/call/vendor usage: client-paid or separately itemized;
+- 14-day stabilization after acceptance unless SOW changes it.
 
-### System
-Multi-channel operating workflow with integrations, reporting, monitoring and optimization.
+Internal minimum pricing rules live only in internal commercial control documents. They must not appear in client-facing proposals.
 
-Current Starter/Growth/Enterprise figures are indicative planning ranges until owner approves final commercial risk/margins. Never promise fixed breakeven or recovery percentages.
+No other vertical currently has a locked public/default price. EdTech/custom work is scoped and quoted after audit unless owner later approves another default.
 
-## 4. Website / engineering state
+## 4. Website / engineering state — VERIFIED
+Current website includes:
+- Healthcare-first homepage/flagship architecture proof;
+- synthetic deterministic demo scenarios;
+- opportunity-at-risk estimator with visible/editable assumptions and non-guarantee language;
+- booking, WhatsApp, LinkedIn and email paths;
+- conversion/UTM tracking with minimized lead data;
+- Privacy/Terms drafts;
+- accessibility/mobile/reduced-motion improvements;
+- lazy/constrained WebGL behavior;
+- CSP/security headers;
+- Trust-by-Design framing;
+- strict CI/security/claim/build gates.
 
-### Completed and verified in source/CI
-- Shalcon recovered into an isolated branch.
-- Vite 8 + React 18 build chain.
-- Direct runtime dependencies reduced to React, React DOM, Three.js and GSAP.
-- npm security audit gate.
-- runtime dependency-usage guard.
-- marketing-claim regression guard.
-- compiled-artifact secret/claim/performance guard.
-- unsupported old metrics/testimonials removed.
-- Healthcare-first homepage and flagship architecture proof.
-- synthetic deterministic industry demo logic.
-- opportunity-at-risk estimator replacing misleading loss/recovery framing.
-- estimator assumptions visible/editable.
-- booking, WhatsApp and email paths configured.
-- centralized non-sensitive conversion-event layer.
-- privacy/terms drafts.
-- legal drafts kept `noindex` until final review.
-- responsive/readability improvements.
-- keyboard skip link + main landmark.
-- modal focus trap/return and mobile touch-target improvements.
-- mobile/reduced-motion/low-power/save-data WebGL fallback.
-- Vercel security headers.
-- server-side lead validation, consent evidence, attribution minimization, rate limiting and false-success prevention.
-- authenticated/idempotent persistence contract prepared.
-- strict production CI currently green.
+Live staging alias: `https://shalcon-intelligence.vercel.app`
 
-### Still required for deployed release
-- dedicated Shalcon Vercel project/preview;
-- dedicated Shalcon Supabase project;
-- deploy/test lead persistence;
-- deployed browser/contact/API QA;
-- final production domain + canonical/absolute metadata;
-- final legal identity/privacy/terms approval.
+Dedicated Vercel project already exists:
+- project ID: `prj_AZBIuv6c0uJmR4AF8SStuzGB2Dzp`
+- production branch: `shalcon-market-ready-2026`
+- verified runtime commit: `8f3ee67bb3889e7c05dfd35b27f3d9b361a51166`
+- deployment: `dpl_FcRYobZDc1NzBhfWMTWdYYmz1JiC`
+- state: READY / production
+- staging header: `X-Robots-Tag: noindex, nofollow, noarchive` verified live
+- Vercel Authentication: enabled for All Deployments during staging
 
-## 5. Lead capture architecture
+Do not create another Shalcon Vercel project. Do not use `main` as Shalcon production.
 
-Browser → `/api/lead` → authenticated HTTPS webhook → dedicated Shalcon Supabase Edge Function → internal lead table.
+## 5. Lead capture — DEPLOYED / VERIFIED
+Architecture:
+`Browser → Vercel /api/lead → authenticated HTTPS webhook → dedicated Shalcon Supabase Edge Function → public.shalcon_leads`
 
-### Vercel trust boundary
-`/api/lead` currently:
-- accepts POST only;
-- limits body size;
-- uses a honeypot;
-- applies best-effort short-window rate limiting without persisting IP as lead data;
-- validates name/WhatsApp/explicit contact permission;
-- bounds estimator inputs;
-- recalculates opportunity values server-side;
-- strips query/fragment data from retained page/referrer;
-- allowlists UTM source/medium/campaign;
-- requires HTTPS destination and strong shared secret;
-- creates a UUID lead ID and idempotency key;
-- returns success only when the destination succeeds.
-
-### Supabase destination implementation
-Prepared, not deployed:
-- `supabase/sql/create_shalcon_leads.sql`
-- `supabase/functions/shalcon-lead-webhook/index.ts`
-- `supabase/config.toml`
-- `supabase/README.md`
-- `tests/supabase-lead-destination.test.mjs`
-
-Destination design:
-- custom shared-secret authentication before any DB access;
-- schema/source/contact/consent validation;
-- second estimator validation + recomputation at persistence boundary;
+Dedicated Supabase already exists:
+- project: `shalcon-intelligence`
+- ref: `qfsnmjeacwdkbukwxbwz`
+- region: `ap-south-1`
+- Edge Function: `shalcon-lead-webhook`
 - RLS enabled;
-- browser roles revoked;
-- exact replay allowed without duplicate;
-- conflicting same-ID payload rejected rather than overwritten;
-- no full payload/secret logging.
+- `anon` / `authenticated` table access revoked.
 
-Do not point it at Pagevelope, Madrasa ERP or another product database.
+Vercel `/api/lead`:
+- POST-only;
+- body limit + honeypot;
+- bounded input/WhatsApp validation;
+- explicit consent;
+- server-side estimator recomputation;
+- minimized page/referrer;
+- allowlisted UTM attribution;
+- HTTPS destination requirement;
+- shared-secret authentication;
+- UUID/idempotency key;
+- best-effort short-window rate limiting;
+- fail-closed persistence behavior.
 
-## 6. Data protection / compliance baseline
+Production contract verified:
+- wrong secret rejected;
+- first write persisted;
+- exact replay handled without duplicate;
+- conflicting replay rejected;
+- real Vercel→Supabase write succeeded;
+- forced destination failure produced `502 lead_persistence_failed` with no false saved state;
+- destination restored and retested;
+- synthetic QA rows removed.
 
-Do not claim generic “100% DPDP compliant.” Compliance is role-, workflow-, data-, vendor- and time-specific.
+Lead persistence is not a blocker. Remaining hygiene gate: rotate the manually transferred Vercel→Supabase credential immediately before final public/paid launch after infrastructure freeze.
 
-Important timing: the 13 Nov 2025 Government notifications phased commencement of the DPDP Act/Rules. As of 29 Aug 2026, the framework is enacted/notified, but many substantive private-sector processing provisions and Rules are scheduled for later commencement rather than all being in force today.
+## 6. Data protection / legal baseline
+Never claim generic “100% DPDP compliant/secure.” Compliance depends on role, workflow, data, vendors and timing.
 
-Shalcon should nevertheless build toward the notified standard now: data minimization, clear notice/purpose, access controls, reasonable security safeguards, appropriate logs, processor-contract terms, deletion/retention handling and breach readiness.
+Prepared:
+- Privacy draft;
+- Website Terms draft;
+- India data-protection baseline;
+- DPA template;
+- SOW template;
+- owner legal/risk review decision pack;
+- lead-retention recommendation;
+- incident/security/client-access playbooks.
 
-Operational/legal research is in `docs/INDIA_DATA_PROTECTION_BASELINE_2026-08-29.md`.
-Working client appendix is `docs/DATA_PROCESSING_ADDENDUM_TEMPLATE.md`.
+Public demos use synthetic data. Public lead form warns against patient medical information and other sensitive client data.
 
-Before any real client personal data enters production:
-- identify client/Shalcon roles;
-- create field/data map;
+Before real client personal/sensitive data enters a production engagement:
+- identify roles and lawful authority/basis where applicable;
+- define field/data map;
 - approve vendors/integrations;
-- define access, retention and escalation;
-- sign appropriate contract/DPA terms;
+- define access, retention/deletion and escalation;
+- execute appropriate contract/DPA terms;
 - use client-authorized credentials;
-- keep sensitive/consequential decisions human-controlled where required;
-- obtain engagement-specific legal advice when the risk warrants it.
+- keep sensitive professional judgments human-controlled;
+- obtain professional legal review when risk warrants it.
+
+Owner/legal approval of public legal/risk positions is still open.
 
 ## 7. Proof strategy
-
 ### Before real client evidence
 Use capability proof only:
 - synthetic workflow demo;
 - architecture view;
-- test/QA evidence;
+- QA/test evidence;
 - safe failure behavior;
 - integration design;
-- measurable demo properties that are actually observed.
+- measured properties actually observed in demo/test.
 
-Do not turn demo numbers into client-performance claims.
+Never convert synthetic numbers into client-performance claims.
 
-### After a production pilot
-1. record baseline before deployment;
-2. define success metric before build;
+### After a real pilot
+1. capture baseline before deployment;
+2. define success metrics before build;
 3. collect post-launch measurements;
-4. document timeframe/sample size/context;
-5. obtain client permission before publishing name/logo/result;
-6. add approved evidence to `CLAIMS_REGISTER.md`;
-7. only then replace demo proof with a public case study.
+4. document timeframe/sample/context;
+5. validate results with client;
+6. obtain permission before publishing name/logo/result;
+7. add approved evidence to `docs/CLAIMS_REGISTER.md`;
+8. only then create a public case study/result claim.
 
-## 8. Sales machine
-
-Working assets exist for:
+## 8. Sales machine — CURRENT STATE
+Prepared assets:
 - service overview;
 - Healthcare offer;
-- EdTech offer;
+- EdTech secondary offer;
 - discovery/audit questions;
 - qualification scoring;
-- objections/closing;
-- proposal + SOW;
+- objection/closing playbook;
+- client-safe Proposal/SOW with pre-send scrub gate;
 - client onboarding;
 - delivery/UAT;
-- pilot reporting/measurement;
-- financial/margin control;
-- Healthcare outreach copy;
+- measurement/pilot report;
+- financial/margin controls;
+- Healthcare outreach framework;
 - pipeline operating rhythm;
-- initial Mumbai prospect seed list;
+- Mumbai research pool;
 - launch-critical SOP index.
 
-Controlled outbound uses targeted email/LinkedIn/manual research first. WhatsApp is not the default mass cold channel. Prospect observations must be public/supportable and opt-outs must be recorded.
+Live founder-led Google Sheets pipeline:
+- 8 Healthcare prospects;
+- 8 `Draft Ready`;
+- 0 sent;
+- 0 replied;
+- 0 discovery.
 
-## 9. Owner split — target 90/10
+Gmail:
+- 8 personalized first-touch drafts exist;
+- all remain unsent;
+- current connected Gmail sender is not the approved Shalcon mailbox.
 
-### ChatGPT / execution owner
-Research, planning, code, QA, truthful copy, website conversion, estimator, analytics architecture, lead-capture implementation, security controls, documentation, demos, offer sheets, sales collateral, prospecting process, deployment preparation and launch tracking.
+Do not send from the connected non-Shalcon account. Use/connect `shalconintelligence@gmail.com` or another explicitly approved Shalcon sender, and send only after explicit owner authorization.
 
-### Business owner only
-Tasks requiring identity, legal authority, money/account ownership or real human selling:
-- choose/authorize billable infrastructure when required;
-- final legal/business identity;
-- review/sign legal agreements;
-- approve prices/payment/risk limits;
-- complete bank/KYC/GST/accounting/provider ownership actions;
-- authorize real client/system access;
-- attend/close early sales conversations;
-- provide/approve truthful client evidence;
-- approve final domain purchase/ownership where necessary.
+No mass cold WhatsApp. Patient booking WhatsApp numbers are not default unsolicited first-touch channels.
 
-## 10. Current execution status
+## 9. Payment / business setup
+Prepared:
+- invoice template;
+- Razorpay Payment Link operating workflow;
+- ₹19,500 / ₹11,700 / ₹7,800 standard Healthcare implementation milestones;
+- payment reconciliation rules;
+- provider/KYC guidance.
 
-### Sprint 0 — Recovery + truth
-- [x] Isolate Shalcon branch.
-- [x] Recover genuine agency site.
-- [x] Reclassify old 30 foundations.
-- [x] Create claims register.
-- [x] Remove stale duplicate/Claude-era instructions that could reintroduce old claims.
+Owner-controlled remaining payment work:
+- Razorpay KYC/business proof activation;
+- settlement bank verification;
+- accountant/tax/invoice presentation while GST-unregistered.
 
-### Sprint 1 — Website trust + conversion
-- [x] Remove unsupported proof.
-- [x] Reframe demos as synthetic.
-- [x] Fix contact routes.
-- [x] Redesign estimator assumptions/language.
-- [x] Implement secure lead server boundary.
-- [x] Prepare dedicated persistence implementation.
-- [x] Add privacy/terms drafts.
-- [x] Add conversion event architecture.
-- [x] Responsive/accessibility/performance engineering pass.
-- [x] Strict CI/build/artifact gates.
-- [ ] Deploy dedicated preview.
-- [ ] Deploy/test dedicated persistence.
+**UDYAM is paused by owner instruction. Do not continue it until Abu provides an update.**
 
-### Sprint 2 — Flagship proof
-- [x] Healthcare flagship workflow on website.
-- [x] Healthcare architecture proof.
-- [x] Synthetic interactive demo with safety boundaries.
-- [x] EdTech synthetic scenario within the multi-industry demo.
-- [ ] Production pilot evidence (requires client).
+## 10. Domain / public release
+Latest connected recheck 31 Aug 2026:
+- `shalconintelligence.com` available at $11.25/year — recommended;
+- `shalcon.io` $30/year;
+- `shalcon.ai` $160/2 years.
 
-### Sprint 3 — Sales machine
-- [x] Service/offer sheets.
-- [x] Discovery audit system.
-- [x] Proposal/SOW.
-- [x] Objection/close framework.
-- [x] Delivery/onboarding/report templates.
-- [x] CRM schema/process.
-- [x] Healthcare targeting and outreach framework.
-- [x] Initial researched Mumbai seed accounts.
-- [ ] Final owner-approved commercial terms.
-- [ ] Live CRM/pipeline persistence tied to real leads.
+No purchase has been made through this workflow. Purchase requires explicit owner approval.
 
-### Sprint 4 — Launch
-- [x] Domain options researched; exact-brand `.com` recommended if still available at purchase time.
-- [ ] Dedicated preview + deployed QA.
-- [ ] Final production domain release.
-- [ ] First controlled outreach batch.
-- [ ] First qualified audit/proposal.
-- [ ] First paid pilot.
-- [ ] Permission-backed case study.
+After ownership:
+1. attach only to dedicated Shalcon Vercel project;
+2. verify DNS/TLS and canonical host redirect;
+3. add canonical + absolute OG/social metadata + robots + sitemap;
+4. rotate webhook credential;
+5. run final domain/API/cross-browser QA;
+6. deliberately remove Vercel Authentication/noindex only when full public release is approved;
+7. record final release evidence.
 
-## 11. Deferred until evidence/revenue
+## 11. Source-control hardening
+CI is active and green on current branch work.
 
+Current GitHub branch protection/ruleset is not enabled for `shalcon-market-ready-2026`. Adding protection is recommended hardening, not a reason to block founder-led controlled outreach. Connected tooling currently provides read access but no safe protection-write action, so this remains an owner/GitHub-UI action unless tooling changes.
+
+## 12. Owner split — target 90/10
+### ChatGPT/execution
+Research, audits, code, QA, truthful copy, conversion design, estimator, analytics architecture, lead-capture maintenance, security controls, docs, demos, offer sheets, sales collateral, research process, deployment/release preparation and tracking.
+
+### Owner only
+Identity/legal authority/money/account ownership/external representation tasks:
+- legal business approval/signing;
+- bank/KYC/accounting/payment-provider actions;
+- UDYAM update when owner resumes it;
+- production domain purchase/control;
+- correct business-mailbox connection/ownership;
+- authorization of external outreach;
+- real client/system access;
+- sales calls/closing decisions;
+- approval of truthful client evidence;
+- raw production credential rotation when owner authority/secret handling is required.
+
+## 13. Current execution status
+### Recovery / truth
+- [x] isolate Shalcon branch;
+- [x] recover genuine agency site;
+- [x] remove unsupported proof and obsolete preservation instructions;
+- [x] create claims/proof rules.
+
+### Website / infrastructure
+- [x] website/trust/conversion engineering;
+- [x] dedicated Vercel project deployed;
+- [x] dedicated Supabase destination deployed;
+- [x] end-to-end persistence QA;
+- [x] staging noindex + Authentication protection;
+- [x] live HTTP/API/header checks;
+- [x] control/runbook documentation reconciled;
+- [ ] final domain/public-release cross-browser QA after owner-controlled cutover.
+
+### Sales / commercial
+- [x] owner-approved Healthcare commercial baseline;
+- [x] sales/delivery/legal/payment assets prepared;
+- [x] 8-prospect live pipeline;
+- [x] 8 first-touch drafts prepared;
+- [ ] correct Shalcon Gmail sender connected/used;
+- [ ] explicit first-send authorization;
+- [ ] first qualified audit/proposal;
+- [ ] first paid pilot.
+
+### Business / release owner gates
+- [ ] UDYAM update — paused;
+- [ ] Razorpay/bank/accounting readiness;
+- [ ] owner/legal review;
+- [ ] final domain purchase/control;
+- [ ] final production credential rotation;
+- [ ] deliberate public-indexing release.
+
+### Proof
+- [ ] first production pilot baseline;
+- [ ] measured client result;
+- [ ] permission-backed case study.
+
+## 14. Deferred until evidence/revenue
 Do not block launch on:
 - hiring;
-- partnerships;
+- partner programs;
 - broad international expansion;
-- five mature standalone SaaS products;
-- complex authority/content programs;
+- multiple mature standalone SaaS products;
+- large authority/content machinery;
 - large internal automation suite;
 - exit planning.
 
-## 12. Release standard
-
-Shalcon is market-ready when a prospect can:
-1. understand the operating problem/offer quickly;
-2. see real proof or an explicitly labeled synthetic demo;
+## 15. Market-ready standard
+Shalcon is ready for a controlled prospect conversation when a prospect can:
+1. understand the problem/offer quickly;
+2. see real capability proof or clearly synthetic demo;
 3. estimate value without misleading guarantees;
-4. book/contact without broken links;
+4. book/contact without broken paths;
 5. submit a lead that is durably stored;
-6. understand the next step;
+6. understand next step;
 7. see credible privacy/security boundaries;
 8. receive a professional audit/proposal/onboarding flow.
 
-Anything beyond that is optimization, evidence-building or scale—not a reason to keep polishing forever.
+Those technical/commercial preparation conditions are substantially satisfied. Remaining work is now mostly owner-controlled release/payment/legal/sender gates plus real market evidence—not endless website polishing.
