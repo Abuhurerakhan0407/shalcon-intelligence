@@ -3,7 +3,7 @@
 Status date: 31 Aug 2026
 Status: **DRAFTS ONLY — DO NOT SEND WITHOUT OWNER AUTHORIZATION**
 
-Purpose: prepare founder-level first touches for research-ready Healthcare accounts where a current public professional LinkedIn route is supported.
+Purpose: prepare founder-level first touches for research-ready Healthcare accounts where a current public professional route is supported.
 
 Rules:
 - these drafts are not evidence of contact;
@@ -100,7 +100,28 @@ Would the short synthetic workflow be useful to see?
 
 ---
 
-# Pre-send gate for all four
+## 5. Tru Smile Multi Specialty Dental Clinic — Dr. Riyaz Quereshi
+
+**Channel:** LinkedIn  
+**Public recipient evidence:** official Tru Smile site identifies Dr. Riyaz Quereshi as founder and Clinical Director; his current public LinkedIn profile is active and shows a strong health-tech/informatics background.  
+**Public workflow observation:** Tru Smile already has a structured appointment process and public evidence of active clinic technology use. This makes a generic “replace your booking/chatbot” pitch inappropriate.
+
+### Draft
+Hi Dr. Quereshi — I noticed Tru Smile already has a fairly structured appointment setup, so I wouldn’t suggest replacing the booking layer you already use.
+
+The narrower workflow I’d test is what happens around it: preserving the original service/date/time intent through staff confirmation, no-response follow-up and final operational status without duplicating the context between channels.
+
+Shalcon builds that orchestration layer around existing systems, while keeping all clinical decisions with the dental team.
+
+If useful, I can send the short synthetic workflow rather than a generic AI demo.
+
+— Abu, Shalcon Intelligence
+
+**Why this angle:** explicitly respects the existing structured appointment system and Dr. Quereshi’s technology background; pitches orchestration rather than pretending the clinic needs a basic chatbot.
+
+---
+
+# Pre-send gate for all five
 - [ ] public profile still resolves and identity/company relationship still matches;
 - [ ] public workflow observation still resolves;
 - [ ] no opt-out/rejection exists in live pipeline;
