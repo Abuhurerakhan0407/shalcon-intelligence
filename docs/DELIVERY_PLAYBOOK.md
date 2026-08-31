@@ -1,139 +1,197 @@
 # Shalcon Intelligence — Delivery Playbook
 
-## Delivery principle
-Build the smallest production workflow that solves the agreed operational problem, prove it through acceptance tests, then expand. Do not automate unclear processes just because a tool makes it possible.
+Status date: 31 Aug 2026
 
-## 1. Handoff from sales
-Before kickoff, sales must provide:
-- signed proposal/SOW;
+## Delivery principle
+Build the smallest production workflow that solves the agreed operational problem, prove it through acceptance tests, then expand. Do not automate unclear processes simply because a tool makes it possible.
+
+## 1. Sales → delivery handoff gate
+Before kickoff, delivery must have:
+- signed/accepted proposal/SOW;
+- applicable start-payment condition satisfied or an explicit owner-approved exception;
 - confirmed decision maker;
-- workflow diagram or notes;
+- workflow owner;
+- current workflow notes/diagram based on client-confirmed facts;
 - systems/integrations in scope;
-- excluded use cases;
-- data sensitivity notes;
-- acceptance criteria;
-- target timeline;
-- third-party costs/dependencies;
-- named client owners for access and UAT.
+- explicit exclusions;
+- data sensitivity/role notes;
+- applicable DPA/data-processing/security terms completed before real personal/sensitive data access;
+- testable acceptance criteria;
+- target implementation window + client dependencies;
+- third-party cost ownership;
+- named client access owner and UAT approver.
+
+For the standard Healthcare Pilot, normal start payment is 50% = ₹19,500 unless the signed SOW deliberately changes it.
+
+Do not begin material delivery merely because a prospect verbally says yes.
 
 ## 2. Kickoff checklist
 - Confirm business outcome and workflow owner.
-- Re-read scope aloud in plain language.
-- Confirm channels and integrations.
-- Confirm what AI may answer vs must escalate.
-- Confirm hours/availability assumptions.
+- Re-read scope/exclusions in plain language.
+- Confirm channels/integrations.
+- Confirm what automation may handle vs must escalate.
+- Confirm client operating hours/availability assumptions where relevant.
 - Confirm fallback when an integration is unavailable.
 - Confirm test environment/data.
-- Confirm who approves production release.
-- Confirm success measures and baseline.
+- Confirm production release approver.
+- Confirm baseline + success measures.
+- Confirm support/stabilization boundaries.
+- Confirm vendor/account/cost ownership.
 
 ## 3. Access policy
-Never request passwords in chat, email or public forms.
-Prefer delegated access, scoped API keys, test accounts and least privilege.
-Document who granted access, what it can do and when it should be revoked.
-Do not copy real sensitive client data into demos unless explicitly required, authorized and protected.
+Never request passwords in ordinary chat, email or public forms.
+
+Prefer:
+- delegated roles;
+- scoped API/service accounts;
+- OAuth/provider invites;
+- test/sandbox accounts;
+- least privilege.
+
+Document who granted access, permitted actions and revocation/rotation owner without recording secret values in ordinary project notes.
+
+Do not copy real sensitive client data into demos. Production sensitive-data access occurs only when required, authorized, appropriately protected and covered by the engagement-specific review.
 
 ## 4. Build stages
-
 ### A. Workflow definition
-Produce current-state and future-state flow.
-Identify states, triggers, decisions, integrations, human handoffs and error paths.
+Produce client-confirmed current-state and proposed future-state flow. Identify states, triggers, decisions, integrations, human handoffs, retries and error paths.
 
 ### B. Prototype
-Use synthetic/test data.
-Validate conversation design and business logic before connecting production systems.
+Use synthetic/test data. Validate conversation/business logic and escalation before production systems/data.
 
 ### C. Integration
-Connect only approved systems.
-Use environment-specific credentials.
-Add logging and visible failure behavior.
+Connect only approved systems using environment-specific credentials. Add logging, idempotency/duplicate protection where needed and visible failure behavior.
 
 ### D. Test
-Run happy path, invalid input, timeout, duplicate submission, upstream outage, handoff, retry and permission tests.
+Run applicable:
+- happy path;
+- invalid/missing input;
+- timeout/upstream failure;
+- duplicate/replay;
+- permission/access denial;
+- human handoff;
+- retry/fallback;
+- data-minimization/logging checks.
 
 ### E. UAT
-Client executes agreed acceptance scenarios.
-Record pass/fail and unresolved items.
+Client executes agreed acceptance scenarios. Record pass/fail/evidence and distinguish in-scope defects from change requests.
 
 ### F. Go-live
-Confirm rollback/fallback.
-Release during agreed window.
-Monitor first real events.
+Before production approval:
+- UAT pass/accepted exceptions recorded;
+- rollback/fallback ready;
+- production access reviewed;
+- data/retention/incident ownership confirmed;
+- applicable payment milestone condition satisfied;
+- client production approver explicitly says go.
+
+Release during agreed window and monitor first real events.
 
 ### G. Stabilization
-Review incidents, missed intents, routing errors and user confusion.
-Make agreed stabilization fixes before expansion.
+Review incidents, missed intents, routing errors, user confusion and support burden. Make agreed stabilization fixes before expanding scope.
+
+Standard Healthcare baseline includes 14 days of stabilization after acceptance unless SOW changes it.
 
 ## 5. Healthcare guardrails
-Public-facing healthcare automations should not diagnose, prescribe, interpret symptoms as clinical advice or pretend to replace a clinician.
-Sensitive or urgent intents should be routed using client-approved rules and emergency language.
-Use synthetic patient data for public demos.
-Collect only fields required by the agreed workflow.
+Healthcare automation remains operational by default, not clinical.
 
-## 6. Error handling standard
-Every external integration requires:
+Do not automate final:
+- diagnosis;
+- treatment recommendation;
+- emergency medical judgment;
+- prescription/medication decisions;
+- interpretation of medical reports;
+- other clinical decisions requiring authorized professional judgment.
+
+Urgent/sensitive intents use client-approved routing/escalation language and human ownership. Do not let a generative model independently decide an emergency disposition unless an appropriately reviewed, explicitly scoped system exists.
+
+Public demos use synthetic patient data. Production collects only fields genuinely required for the agreed workflow.
+
+## 6. Error-handling standard
+Every material external integration needs:
 - timeout;
 - explicit failure state;
 - retry strategy where safe;
-- duplicate protection where relevant;
-- human-visible alert for important failure;
-- structured log entry;
-- no false success message.
+- duplicate/idempotency control where relevant;
+- human-visible alert for important failures;
+- structured/minimized logging;
+- no false success;
+- documented manual fallback for business-critical steps.
 
-## 7. UAT template
-
+## 7. UAT minimum pattern
 | Test | Expected result | Status | Evidence |
 |---|---|---|---|
-| New inquiry | Workflow receives record |  |  |
-| Required intake | Required fields collected |  |  |
-| Qualification | Correct branch selected |  |  |
-| Booking/routing | Correct destination updated |  |  |
-| Follow-up | Correct sequence triggered |  |  |
-| Human escalation | Staff notified with context |  |  |
-| Integration outage | User sees safe fallback |  |  |
-| Duplicate input | No duplicate operational action |  |  |
-| Reporting | Expected event recorded |  |  |
+| New inquiry/request | Workflow receives valid record |  |  |
+| Required intake | Required approved fields collected |  |  |
+| Routing | Correct destination/path selected |  |  |
+| Booking/write-back | Expected system record/action occurs |  |  |
+| Follow-up | Only agreed condition triggers sequence |  |  |
+| Human escalation | Staff notified with approved/minimum context |  |  |
+| Integration outage | Safe fallback/error appears; no false success |  |  |
+| Duplicate/replay | No unintended duplicate operational action |  |  |
+| Access denial | Failure handled safely |  |  |
+| Reporting | Expected event/status recorded |  |  |
+| Sensitive/unsupported request | Correct human/safe boundary |  |  |
 
-## 8. Launch report
-Each go-live report should contain:
+Client-specific Appendix A in the SOW controls final acceptance cases.
+
+## 8. Go-live report
+Each release report should contain:
 - version/date;
 - workflow diagram;
 - integrations;
 - tested scenarios;
-- known limitations;
-- credentials/access owner list (never secrets themselves);
+- accepted limitations;
+- access owners (never secret values);
 - support path;
-- rollback/fallback path;
+- rollback/fallback;
 - baseline metrics;
+- retention/offboarding notes where relevant;
 - next review date.
 
 ## 9. Post-launch measurement
-Choose metrics that match the workflow, for example:
+Use workflow-relevant measures, for example:
 - response latency;
-- percentage of inquiries fully captured;
-- qualification completion;
-- bookings/routed outcomes;
+- intake completion;
+- routing/booking completion;
 - follow-up completion;
 - escalation rate;
 - error rate;
 - staff touches per inquiry;
 - opt-outs/complaints.
 
-Never turn these into public marketing claims without verification and permission.
+Record metric definition/source/timeframe. Never publish as client proof without validation and permission through `CLAIMS_REGISTER.md`.
 
 ## 10. Change requests
-A change is out of scope when it adds a new channel, integration, major workflow branch, data source, role/permission model, report, automation objective or materially changes acceptance criteria.
-Small bug fixes inside agreed acceptance criteria are not change requests.
+Out of scope when adding materially new:
+- channel;
+- integration;
+- workflow branch/objective;
+- data source;
+- role/permission model;
+- reporting requirement;
+- acceptance criteria.
+
+In-scope bug fixes against agreed acceptance criteria are not change requests.
+
+Never absorb repeated extra scope merely to avoid a commercial conversation.
 
 ## 11. Incident priority
-P0 — security/privacy incident or harmful incorrect action: disable affected path immediately.
-P1 — core workflow unavailable: fallback + urgent repair.
-P2 — partial function degraded: repair in agreed support window.
-P3 — cosmetic/minor improvement: backlog.
+- **P0:** security/privacy issue or harmful incorrect action → disable/contain affected path immediately.
+- **P1:** core workflow unavailable → fallback + urgent repair.
+- **P2:** partial degradation → repair within agreed support handling.
+- **P3:** cosmetic/minor improvement → backlog/change process.
+
+Follow `INCIDENT_RESPONSE_PLAYBOOK.md` for incident handling.
 
 ## 12. Offboarding
-- export agreed client-owned configuration/data;
-- revoke Shalcon access;
-- rotate shared credentials if any were used;
-- document shutdown/transfer steps;
-- retain/delete records according to agreement and applicable obligations.
+- export/handover agreed client-owned configuration/data;
+- revoke Shalcon access not required for contracted support;
+- rotate shared credentials where appropriate;
+- document shutdown/transfer;
+- retain/delete data according to agreement/applicable obligations;
+- close unused environments/webhooks/tokens;
+- preserve only necessary business/legal records.
+
+## 13. Delivery proof boundary
+A successful internal test or synthetic demo is not a client result. First-client delivery evidence requires real UAT/production records, a defined baseline/post period and client validation. Public use additionally requires permission.
