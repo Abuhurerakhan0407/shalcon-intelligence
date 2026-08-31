@@ -10,7 +10,7 @@ Fast recovery handoff. Strategy: `docs/MARKET_READY_MASTER.md`. Release evidence
 - Work only on `shalcon-market-ready-2026` unless the repository is deliberately repaired later.
 - Do not recreate removed prototype files or already-deployed Vercel/Supabase infrastructure because an old note says it is missing.
 - Do not commit secrets, KYC documents, bank data or machine-local agent settings.
-- Current branch is not protected by a GitHub branch-protection/ruleset. Protection is recommended hardening; connected tooling currently exposes read state but not a safe write action.
+- Current branch-protection status could not be read through the connected GitHub integration (`403 Resource not accessible by integration`). Treat branch protection as unverified hardening, not as a launch-complete control. Do not claim it is enabled.
 
 ## 2. Positioning
 Category: **AI Operations Systems Partner**.
@@ -132,7 +132,7 @@ Prepared:
 - `docs/INDIA_DATA_PROTECTION_BASELINE_2026-08-29.md`
 - `docs/LEAD_RETENTION_RECOMMENDATION.md`
 
-The SOW now has a mandatory pre-send scrub gate and no longer contains Shalcon’s internal minimum price floor in client-facing commercial text.
+The SOW and automation-audit templates have mandatory pre-send scrub gates. Shalcon’s internal minimum price floor is not present in client-facing commercial text.
 
 Owner/legal review remains open. Do not market a generic “100% DPDP compliant/secure” claim. Real sensitive-data engagements require engagement-specific review.
 
@@ -147,15 +147,20 @@ Payment readiness remains owner-controlled:
 **UDYAM is intentionally PAUSED. Abu explicitly said to leave UDYAM/MSME untouched until he provides an update. Do not ask, infer, mark complete or continue UDYAM work meanwhile.**
 
 ## 11. Sales state
-Live Google Sheets founder-led pipeline exists with eight Healthcare prospects.
+Live Google Sheets founder-led pipeline contains **16 active Healthcare prospects**.
 
 Current state:
+- `Research Ready`: 8
 - `Draft Ready`: 8
 - sent: 0
 - replied: 0
 - discovery: 0
 
-Eight personalized Gmail drafts exist and remain unsent. Copy has been re-reviewed for public-observation grounding, synthetic-demo framing and clinical/human escalation.
+`Research Ready` is a deliberate pre-draft state: current public workflow evidence exists, but the decision-maker/contact route and/or personalized first-touch draft still needs verification. It must never be counted as send-ready.
+
+The 8 newly researched accounts recorded on 31 Aug are: Shroff Eye Hospital, Clinical Diagnostic Centre (CDC), Happy Teeth by Dr. Bajani, Tru Smile Multi Specialty Dental Clinic, Neevwellbeing’s The Dental Clinic, Sirona Diagnostics, Vinit Eye Clinic and Mumbai Diagnostic Centre. Generic/support/patient-booking routes are explicitly not assumed to be decision-maker channels.
+
+Eight personalized Gmail drafts exist for the earlier `Draft Ready` accounts and remain unsent. Copy has been re-reviewed for public-observation grounding, synthetic-demo framing and clinical/human escalation.
 
 Critical sender control: connected Gmail currently belongs to a non-Shalcon mailbox. **Do not send from it.** Connect/use `shalconintelligence@gmail.com` or another owner-approved Shalcon sender before outreach.
 
@@ -189,20 +194,22 @@ After ownership: attach only to the dedicated Shalcon Vercel project, verify DNS
 10. Deliberately remove staging Authentication/noindex and verify production indexing.
 
 ### Market evidence
-11. First qualified discovery/audit/proposal.
-12. First paid bounded pilot.
-13. Baseline/post-pilot evidence.
-14. Permission-backed case study.
+11. Verify recipient routes and prepare first-touch drafts for the 8 `Research Ready` accounts.
+12. First qualified discovery/audit/proposal.
+13. First paid bounded pilot.
+14. Baseline/post-pilot evidence.
+15. Permission-backed case study.
 
 ## 14. Next execution order
 1. Keep current runtime staging-protected and CI green.
 2. Do not touch UDYAM until Abu updates it.
-3. Resolve owner/legal + Razorpay/bank/accounting readiness.
-4. Connect correct Shalcon sender and obtain explicit first-send authorization.
-5. Purchase/connect final domain only after explicit cost approval.
-6. Rotate integration secret immediately before final public launch.
-7. Run final deployed cross-browser/domain/API QA and deliberately enable public indexing.
-8. Convert controlled outreach → discovery → audit → proposal → bounded pilot → measured permission-backed proof.
+3. Continue public research/contact-route verification for `Research Ready` Healthcare accounts without sending.
+4. Resolve owner/legal + Razorpay/bank/accounting readiness.
+5. Connect correct Shalcon sender and obtain explicit first-send authorization.
+6. Purchase/connect final domain only after explicit cost approval.
+7. Rotate integration secret immediately before final public launch.
+8. Run final deployed cross-browser/domain/API QA and deliberately enable public indexing.
+9. Convert controlled outreach → discovery → audit → proposal → bounded pilot → measured permission-backed proof.
 
 ## 15. Truth rules
 - no fabricated metrics/testimonials;
@@ -210,6 +217,7 @@ After ownership: attach only to the dedicated Shalcon Vercel project, verify DNS
 - synthetic demos never presented as client deployments;
 - sensitive professional judgment remains human-controlled;
 - no mass cold WhatsApp;
+- no patient-booking WhatsApp used as default cold first touch;
 - no cross-product infrastructure shortcuts;
 - no broad compliance/security claim without evidence and engagement-specific basis;
 - no external sends, purchases, KYC actions or legal approvals inferred from preparation alone.
