@@ -9,7 +9,14 @@ Label: **Discovery Call — Abu Hurera**
 Planned duration: **20 minutes**  
 Meeting method: **Google Meet**
 
-Before placing the link in a live prospect reply, open/test it from a public/visitor context. The link/settings were previously created, but public access and current slot availability were not independently reverified in this execution block.
+Connected Google Calendar now independently returns **Shalcon Intelligence / `shalconintelligence@gmail.com`**, confirming the correct business Google account is available in ChatGPT. However, the public booking-page URL itself has not been independently opened from a visitor/browser context in the current execution environment. Recheck public access before placing the link in a live prospect reply.
+
+## Batch 01 map continuity
+Five prospect-specific synthetic workflow maps are already prepared in:
+
+`docs/BATCH_01_SYNTHETIC_WORKFLOW_MAPS_2026-08-31.md`
+
+They cover Tru Smile, Sirona Diagnostics, Neevwellbeing’s The Dental Clinic, Shroff Eye Hospital and Vinit Eye Clinic. Each map is a public-observation hypothesis, not a client audit. If a Batch 01 prospect asks to see the map, use **only that prospect’s map**, label it synthetic/hypothesis, and ask them to correct anything that does not match their internal reality.
 
 ## Rule zero
 A reply is not automatically a qualified opportunity.
@@ -33,7 +40,7 @@ Suggested response:
 >
 > I’ll keep the discussion operational; clinical decisions stay with your team.
 
-Before sending: recheck booking link + current availability.
+Before sending: recheck the public booking link + current availability.
 
 ## 2. “Send me more information”
 Do not send the entire service catalogue.
@@ -42,9 +49,9 @@ Suggested response:
 
 > Sure. The specific idea I had in mind is keeping the original enquiry context intact through routing, staff confirmation, eligible follow-up and final status, rather than introducing another standalone chatbot.
 >
-> I can send a one-page workflow map based only on the public flow I saw. If it looks relevant, we can then compare it with how the process actually works internally.
+> I mapped a one-page synthetic version based only on the public flow I saw. I’m treating it as a hypothesis, so please correct anything that doesn’t match how your internal process actually works.
 
-If they accept, prepare the one-page map from public facts and clearly label assumptions/questions.
+For an authorized Batch 01 prospect, use the matching prebuilt section in `docs/BATCH_01_SYNTHETIC_WORKFLOW_MAPS_2026-08-31.md`. Do not send maps for other prospects or imply the map is based on private/internal knowledge.
 
 ## 3. “What exactly do you automate?”
 Suggested response:
@@ -119,6 +126,7 @@ When an actual booking exists:
 Before the call prepare only:
 - public workflow observations;
 - exact claims/hypotheses to validate;
+- matching Batch 01 synthetic map if relevant;
 - discovery questions from `DISCOVERY_AUDIT_TEMPLATE.md`;
 - blank qualification score;
 - no pre-filled pain/volume/budget assumptions.
@@ -133,4 +141,4 @@ Create a proposal only when current-state facts, proposed scope, human boundarie
 Use `PROPOSAL_SOW_TEMPLATE.md`; pass its pre-send scrub gate.
 
 ## Evidence rule
-The first real reply, objection, booking and discovery notes become market evidence. Keep their wording accurate and private unless publishing permission exists. Never convert a polite reply into a performance claim.
+The first real reply, objection, booking and discovery notes become market evidence. Keep their wording accurate and private unless publishing permission exists. Never convert a polite reply, synthetic map or public observation into a performance claim.
