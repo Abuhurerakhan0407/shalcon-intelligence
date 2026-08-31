@@ -9,10 +9,11 @@ Fast handoff: `PROJECT_STATE.md`
 
 ## Operating rules
 - ChatGPT continues reversible, non-owner-dependent work without asking for cosmetic approval.
-- Abu is needed for legal acceptance, purchases, KYC/bank actions, sensitive credentials, external sending, real-client access, and final business decisions.
-- “Prepared” is not “live.” “Live” requires deployed evidence.
+- Abu is needed for legal acceptance, purchases, KYC/bank actions, sensitive credentials, external account/channel access, real-client access, and final business decisions.
+- “Prepared” is not “live.” “Live” requires deployed or real-event evidence.
 - Do not recreate already-finished infrastructure because an older note says it is missing.
 - MSME/UDYAM is owner-reported complete; keep certificate/KYC material private and use it only where onboarding specifically needs it.
+- **Controlled Batch 01 is already owner-authorized. Do not ask for that approval again.**
 
 ## Current readiness
 
@@ -24,10 +25,11 @@ Fast handoff: `PROJECT_STATE.md`
 | Lead persistence | VERIFIED END-TO-END | ChatGPT |
 | Privacy / Terms / DPA / SOW | PREPARED; final review open | Abu / legal |
 | MSME / UDYAM | OWNER-REPORTED COMPLETE | Abu |
-| Payment workflow | BUSINESS PROOF AVAILABLE; Razorpay/bank/accounting open | Abu |
+| Payment workflow | LEDGER READY; Razorpay/bank/accounting open | Abu |
 | Domain / SEO cutover | PREPARED; purchase/control open | Abu then ChatGPT |
-| Healthcare outreach | 15 Draft Ready / 1 Research Ready / UNSENT | Abu + ChatGPT |
-| Correct Gmail sender | BLOCKED; connected Gmail is not Shalcon mailbox | Abu |
+| Healthcare outreach | BATCH 01 AUTHORIZED / CHANNEL-BLOCKED / UNSENT | Abu account access + ChatGPT execution |
+| Approved Gmail sender | `shalconintelligence@gmail.com`; connector not authenticated to it | Abu connection |
+| LinkedIn direct execution | No authenticated messaging tool/session available | Abu account/session if needed |
 | First real client proof | NOT YET | Joint |
 
 ## P0 — Launch-critical
@@ -77,6 +79,7 @@ Fast handoff: `PROJECT_STATE.md`
 - [x] Healthcare Pilot default approved: ₹39,000 setup + ₹9,000/month.
 - [x] 50/30/20 implementation milestones approved.
 - [x] Invoice template and payment-link workflow prepared.
+- [x] Native Invoice & Payment Ledger created with `SI-2026-0001` working seed and no fake invoice rows.
 - [x] Razorpay onboarding guidance rechecked/hardened.
 - [x] **UDYAM/MSME — owner reports obtained 31 Aug 2026.**
 - [ ] Razorpay KYC / Live activation owner-complete.
@@ -85,7 +88,7 @@ Fast handoff: `PROJECT_STATE.md`
 - [ ] First Payment Link + invoice-ledger reconciliation flow verified after Live activation.
 
 ### Domain / public release
-- [x] `shalconintelligence.com` recommended and last rechecked available at $11.25/year on 31 Aug 2026.
+- [x] `shalconintelligence.com` recommended and fresh recheck still available at $11.25/year on 31 Aug 2026.
 - [x] Domain/SEO cutover runbook exists.
 - [x] Staging canonical/indexing safeguards documented.
 - [ ] Owner purchases/controls final domain.
@@ -101,22 +104,29 @@ Fast handoff: `PROJECT_STATE.md`
 - [x] Proposal/SOW and objection/close playbook.
 - [x] Onboarding, delivery/UAT, measurement/reporting and financial-control assets.
 - [x] Live Google Sheets sales pipeline.
+- [x] Reply-to-discovery handoff prepared.
 
 ### Healthcare outbound inventory
 - [x] 16 active Healthcare prospects in live pipeline.
 - [x] 15 are `Draft Ready`.
 - [x] 1 remains deliberately `Research Ready` because recipient evidence is too ambiguous.
 - [x] Eight personalized Gmail drafts prepared and reviewed.
+- [x] All 8 legacy Gmail drafts backed up before account migration.
 - [x] Seven decision/operations-level LinkedIn drafts prepared and reviewed in Batch 02.
+- [x] Exact five-prospect Controlled Batch 01 selected.
+- [x] **Owner explicitly authorized Controlled Batch 01 on 31 Aug 2026.**
+- [x] Four Batch 01 public-business-inbox email fallbacks prepared; Neev remains LinkedIn-only.
+- [x] Live Sheet Next Action records Batch 01 authorization and channel fallback state.
 - [x] Copy uses public workflow observations and synthetic-demo/human-control framing.
-- [ ] Connect/use approved Shalcon business Gmail account for email sends.
-- [ ] Owner explicitly authorizes controlled external send.
-- [ ] Send first small batch, then update pipeline statuses from actual outcomes.
+- [ ] Authenticate ChatGPT Gmail to `shalconintelligence@gmail.com` before email execution.
+- [ ] Make an authenticated LinkedIn messaging session available if ChatGPT is expected to execute LinkedIn directly.
+- [ ] Send first approved Batch 01 messages through a real approved channel, then update pipeline statuses from actual outcomes.
 - [ ] Run follow-up/reply/discovery cadence based on actual responses.
 
 ## P2 — Proof
 - [x] Synthetic Healthcare proof.
 - [x] Production pilot baseline/reporting template.
+- [ ] First real outbound message.
 - [ ] First qualified audit.
 - [ ] First proposal.
 - [ ] First paid pilot.
@@ -128,12 +138,11 @@ Do not spend launch energy on hiring systems, partner programs, broad internatio
 
 ## Next execution order
 1. Keep CI/release evidence coherent and staging protected.
-2. MSME/UDYAM is complete at owner-report level; use private certificate only when an onboarding form actually needs it.
+2. Execute already-authorized Controlled Batch 01 as soon as an approved authenticated channel is available; **no repeat approval question**.
 3. Advance Razorpay KYC/Live, bank and accounting readiness.
-4. Reduce legal review to explicit owner decisions and keep conservative defaults until approved.
+4. Complete explicit owner/legal decisions and professional review where appropriate.
 5. Keep the single weak-recipient prospect research-only; do not lower evidence standards.
-6. Connect correct Shalcon Gmail and obtain explicit send authorization.
-7. Buy/connect final domain only after explicit cost approval.
-8. Rotate integration secret immediately before final public launch.
-9. Run final deployed cross-browser/domain QA and deliberately enable public indexing.
-10. Convert outreach → audit → proposal → bounded pilot → permission-backed evidence.
+6. Buy/connect final domain only after explicit cost approval.
+7. Rotate integration secret immediately before final public launch.
+8. Run final deployed cross-browser/domain QA and deliberately enable public indexing.
+9. Convert outreach → audit → proposal → bounded pilot → permission-backed evidence.
