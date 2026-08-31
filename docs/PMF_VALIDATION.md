@@ -1,167 +1,179 @@
 # Shalcon Intelligence — PMF Validation Framework
 
-Purpose: validate whether the Healthcare-first offer deserves more sales/marketing investment using real behavior, not surveys or founder optimism.
+Status date: 31 Aug 2026
 
-Shalcon is an agency/service business at this stage. “PMF” here means repeatable evidence that a defined customer segment has an important workflow problem, will engage with the offer, will pay for a bounded implementation, and receives enough value to continue/expand/refer.
+Purpose: validate whether the Healthcare-first offer deserves more sales/marketing investment using real behaviour, not surveys, synthetic demos or founder optimism.
 
-## 1. Primary hypothesis
-For Mumbai/India clinics with meaningful inbound inquiry volume and manual multi-channel coordination, an **AI Front Desk + Lead Operations System** can be a valuable paid implementation when it improves measurable intake/routing/follow-up operations while preserving human control for sensitive/clinical cases.
+Shalcon is an agency/service business at this stage. “PMF” here means repeatable evidence that a defined customer segment has an important workflow problem, engages with the offer, pays for a bounded implementation and receives enough value to continue/expand/refer.
 
-This is a hypothesis until prospect/client evidence supports it.
+## 1. Current evidence state
+**PMF maturity: State 0 — Hypothesis, operationally ready to test State 1.**
 
-## 2. Validation funnel
+Current real-market counts:
+- Healthcare prospects in live pipeline: 8;
+- Draft Ready: 8;
+- first touches sent: 0;
+- replies: 0;
+- discovery/audits: 0;
+- proposals: 0;
+- paid pilots: 0.
 
+Therefore there is no message-fit, problem-fit, willingness-to-pay or client-result evidence yet.
+
+The technical/sales system is prepared. Testing waits on:
+- approved Shalcon sender mailbox;
+- explicit owner send authorization.
+
+## 2. Primary hypothesis
+For Mumbai/India clinics with meaningful inbound inquiry volume and repeated multi-channel coordination, an **AI Front Desk + Lead Operations System** may be valuable when it measurably improves intake/routing/follow-up operations while preserving human control for sensitive/clinical cases.
+
+This remains a hypothesis until real prospect/client evidence supports it.
+
+## 3. Validation funnel
 ### Stage A — Message fit
-Evidence:
-- researched target accepts/replies to the problem framing;
-- replies discuss the workflow rather than generic AI curiosity;
-- common objections can be categorized;
-- at least some qualified prospects agree to an audit.
+Strong evidence:
+- researched targets reply to the workflow framing;
+- replies discuss operating problems rather than generic AI curiosity;
+- common objections become categorizable;
+- qualified prospects agree to workflow audits.
 
-Weak signal:
-- likes/impressions;
-- generic “interesting” replies;
-- founder network compliments.
+Weak/non-evidence:
+- social likes/impressions;
+- synthetic demo engagement;
+- generic compliments;
+- prepared drafts that were never sent.
 
 ### Stage B — Problem fit
 Evidence from audits:
-- workflow exists repeatedly across several target accounts;
-- pain is important enough for decision-maker attention;
-- current process has measurable operational friction;
-- client can identify a workflow owner and desired improvement;
-- automation is technically/legally plausible.
+- materially similar workflow repeats across target accounts;
+- problem earns decision-maker attention;
+- operational friction can be described/measured;
+- workflow owner and desired improvement are identifiable;
+- automation is technically/legal-operationally plausible.
 
 ### Stage C — Willingness to pay
 Strong evidence:
 - qualified proposal accepted;
 - start payment received;
-- buyer accepts bounded scope, client responsibilities and third-party costs.
+- buyer accepts bounded scope, responsibilities and vendor costs.
 
 Weak evidence:
-- “send pricing”;
+- `send pricing`;
 - unpaid pilot interest;
-- verbal enthusiasm with no decision path.
+- verbal enthusiasm without decision path.
 
 ### Stage D — Delivery value
 Evidence:
 - agreed UAT passes;
-- operational target improves or the pilot reveals a defensible economic reason to continue;
+- measured operational target improves or pilot produces a defensible reason to continue;
 - workflow is actually used;
-- support burden remains commercially viable;
-- client wants continuation/expansion or another workflow.
+- delivery/support burden remains commercially viable;
+- client chooses continuation/expansion.
 
 ### Stage E — Repeatability
 Evidence across multiple clients:
-- same core problem repeats within the chosen segment;
-- similar discovery questions/scoping method works;
-- implementation reuses meaningful architecture/SOPs without copy-pasting unsafe assumptions;
-- pricing covers delivery/support effort;
-- outbound/referrals consistently produce qualified opportunities.
+- core problem repeats in the segment;
+- similar discovery/scoping works;
+- architecture/SOPs are reusable without unsafe assumptions;
+- pricing covers real delivery/support effort;
+- acquisition repeatedly produces qualified opportunities.
 
-## 3. Minimum evidence dashboard
-Track weekly:
+## 4. Minimum evidence dashboard
+Track raw counts:
 - target accounts researched;
-- first contacts;
-- delivered messages;
+- Draft Ready;
+- first contacts actually sent;
+- delivered/bounced where known;
 - replies;
 - positive/problem-relevant replies;
-- audits booked;
-- audits attended;
+- audits booked/attended;
 - qualified audits;
 - proposals;
 - proposals accepted;
-- start payments received;
+- start payments;
 - pilots launched;
 - pilots passing acceptance;
-- clients continuing/expanding;
+- continuation/expansion;
 - referrals;
-- lost reasons;
+- losses/reasons;
 - implementation hours vs estimate;
 - monthly support hours vs assumption.
 
-## 4. Early thresholds — decision aids, not universal benchmarks
-Do not declare PMF from a tiny sample. Use these as internal prompts for investigation:
+Current Google Sheet is the source of truth for early sales counts. A draft is not a sent contact.
+
+## 5. Early diagnostic thresholds — not market benchmarks
+Do not declare PMF from tiny samples.
 
 ### Message concern
-After at least ~30–50 well-researched contacts in one coherent segment/message, near-zero relevant replies suggests list quality, problem framing, channel or offer needs revision before volume scales.
+After roughly 30–50 genuinely well-researched first contacts in one coherent segment/message, near-zero relevant replies is a reason to inspect list quality, problem framing, channel and offer before scaling.
 
 ### Audit concern
-If relevant replies occur but qualified audits do not, CTA/trust/problem urgency may be weak.
+Relevant replies with few/no qualified audits may indicate CTA, trust or problem urgency weakness.
 
 ### Commercial concern
-If qualified audits consistently refuse every economically viable paid scope, reassess price, scope, buyer type or problem priority.
+If qualified audits consistently refuse every economically viable scope, reassess buyer type, scope, price or problem priority.
 
 ### Delivery concern
-If pilots require far more custom work/support than priced, the offer is not operationally repeatable even if clients like it.
+If pilots require much more bespoke work/support than priced, offer is not operationally repeatable even if clients like it.
 
-These are internal diagnostic thresholds, not claims about market averages.
+These are internal investigation triggers, not claims about industry averages.
 
-## 5. Learning taxonomy
-Tag every loss/objection primarily as one of:
-- no problem/low priority;
+## 6. Learning taxonomy
+Tag primary objection/loss:
+- no problem / low priority;
 - wrong stakeholder;
 - timing;
 - budget/economics;
 - trust/proof;
 - privacy/compliance;
 - integration/access;
-- AI reliability concern;
-- internal build preference;
-- incumbent tool/process sufficient;
+- AI reliability;
+- internal-build preference;
+- incumbent process sufficient;
 - scope too broad;
 - no decision/ghosted;
-- other — exact language.
+- other — preserve exact useful language.
 
-Do not collapse everything into “price.”
+Do not reduce all losses to `price`.
 
-## 6. Pivot rules
+## 7. Pivot rules
 Do not change vertical after a handful of rejections.
 
-Consider changing the **message** when:
-- the same misunderstood framing repeats;
-- prospects react to a different operational problem than the one being pitched.
+Change **message** when repeated prospect reactions show misunderstanding or a stronger adjacent problem.
 
-Consider changing the **offer boundary** when:
-- audits repeatedly expose one smaller workflow with clearer urgency;
-- broader systems create unnecessary buying friction.
+Change **offer boundary** when audits repeatedly reveal a smaller/more urgent workflow.
 
-Consider changing the **segment** when:
-- one clinic subtype repeatedly shows stronger volume/access/decision signals.
+Change **segment** when a clinic subtype repeatedly shows stronger volume/access/decision signals.
 
-Consider changing the **vertical** only when a meaningful, high-quality sample shows weak problem/paid demand while another segment has materially stronger evidence.
+Change **vertical** only after a meaningful high-quality sample shows weak paid problem demand while another segment shows materially stronger evidence.
 
-## 7. Proof promotion rule
-A client result moves from private pilot report to public case-study candidate only when:
-- metric definition is stable;
-- baseline/post source is preserved;
-- timeframe/sample are known;
-- confounders are recorded;
-- client approves publication;
-- wording is registered in `CLAIMS_REGISTER.md`.
+## 8. Proof promotion
+A private pilot result becomes a public case-study candidate only when:
+- metric definition stable;
+- baseline/post source preserved;
+- timeframe/sample known;
+- confounders recorded;
+- client validates result;
+- publication permission obtained;
+- approved wording entered in `CLAIMS_REGISTER.md`.
 
-## 8. PMF maturity states
+## 9. PMF maturity states
+- **State 0 — Hypothesis:** no meaningful sales evidence.
+- **State 1 — Problem signal:** several qualified prospects describe materially similar pain.
+- **State 2 — Paid signal:** multiple qualified buyers accept/pay for coherent scope.
+- **State 3 — Delivery signal:** paid projects pass UAT and produce useful outcomes sustainably.
+- **State 4 — Repeatability signal:** same segment/offer repeatedly converts/delivers without bespoke reinvention.
+- **State 5 — Expansion signal:** continuation, expansion, referrals and recurring revenue occur without heavy founder persuasion.
 
-### State 0 — Hypothesis
-No meaningful sales evidence.
+Do not call Shalcon `PMF achieved` before evidence reaches repeatability territory.
 
-### State 1 — Problem signal
-Several qualified prospects describe materially similar workflow pain.
+## 10. Immediate evidence goal
+Once correct sender + authorization are available:
+1. send a small subset of current 8 Draft Ready prospects;
+2. record real delivery/reply language;
+3. qualify only real interest;
+4. run workflow audit;
+5. propose bounded Healthcare Pilot where fit exists;
+6. measure conversion and delivery honestly.
 
-### State 2 — Paid signal
-Multiple qualified buyers accept/pay for a coherent pilot or system scope.
-
-### State 3 — Delivery signal
-Paid projects pass UAT and produce useful operational outcomes at sustainable delivery effort.
-
-### State 4 — Repeatability signal
-The same segment/offer repeatedly converts and delivers without bespoke reinvention every time.
-
-### State 5 — Expansion signal
-Continuation, expansion, referrals and recurring revenue appear without heavy founder persuasion.
-
-Do not call Shalcon “product-market fit achieved” before evidence reaches at least repeatability territory.
-
-## 9. Current status
-**State 0 → ready to test State 1.**
-
-Targeting, outreach copy, audit process, proposal, delivery framework and measurement templates are ready. Real prospect/client execution data has not yet earned a stronger PMF claim.
+Until first send occurs, more prospect-copy polishing does not advance PMF evidence.
