@@ -15,7 +15,10 @@ Status values:
 | SOP | Status | Source / note |
 |---|---|---|
 | Target-account research | READY | `HEALTHCARE_GTM_100_ACCOUNTS.md` |
-| Healthcare outreach copy/process | READY | `OUTREACH_COPY_HEALTHCARE.md`, Batch 02 drafts; actual send still requires approved channel + owner authorization |
+| Healthcare outreach copy/process | READY | `OUTREACH_COPY_HEALTHCARE.md`, Batch 02 drafts |
+| Controlled Batch 01 | OWNER-AUTHORIZED / UNSENT | `OUTREACH_FIRST_CONTROLLED_BATCH_01_2026-08-31.md`; five exact prospects authorized 31 Aug 2026; do not ask for this approval again |
+| Batch 01 email fallbacks | READY / UNSENT | `OUTREACH_BATCH_01_EMAIL_FALLBACKS_2026-08-31.md`; use only from `shalconintelligence@gmail.com` after public inbox recheck |
+| Reply → discovery handoff | READY | `OUTREACH_REPLY_TO_DISCOVERY_HANDOFF.md`; positive reply, pricing, wrong-person, opt-out and discovery transitions |
 | Live prospect tracking | VERIFIED | Google Sheets founder-led pipeline; 15 `Draft Ready`, 1 `Research Ready`, 0 sent/replied/discovery |
 | Discovery / automation audit | READY | `DISCOVERY_AUDIT_TEMPLATE.md` |
 | Qualification | READY | `SALES_PLAYBOOK.md` |
@@ -80,16 +83,29 @@ Status values:
 | Public indexing enablement | BLOCKED UNTIL RELEASE | deliberate final action only |
 
 ## Outreach control
-Current outreach capability is prepared, but sending is not an automatic SOP step.
+Current outreach capability is prepared and the exact five-prospect Controlled Batch 01 is already owner-authorized.
 
-Before first external message:
+Before each Batch 01 message:
 1. verify current prospect/contact route;
 2. use current Google Sheets pipeline as send manifest;
-3. for email, confirm approved Shalcon sender mailbox;
-4. obtain explicit owner send authorization for the exact controlled batch/channel;
-5. send controlled low-volume batch;
-6. update actual status/follow-up from real outcome;
-7. record opt-out/rejection immediately.
+3. verify row is still `Draft Ready` with no suppression signal;
+4. use an owner-approved authenticated business channel;
+5. run final truth/safety read;
+6. send only after the real channel session is available;
+7. update actual status/follow-up from real outcome;
+8. record opt-out/rejection immediately.
+
+Batch 01 does **not** require another approval. Any prospect outside the exact five-person Batch 01 requires separate authorization.
+
+Email-specific rule:
+- approved sender is `shalconintelligence@gmail.com`;
+- owner states they have access;
+- current ChatGPT Gmail connector is still authenticated to another account and must not be used for Shalcon prospect email.
+
+LinkedIn-specific rule:
+- Batch 01 is LinkedIn-first;
+- current available tools do not expose an authenticated LinkedIn messaging session;
+- do not mark a LinkedIn message sent without a real outbound event.
 
 Historical research issues are not send manifests.
 
