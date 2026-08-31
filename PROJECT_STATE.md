@@ -27,6 +27,8 @@ Buying path: Audit → bounded Pilot → connected System.
 - Authorized signatory: Abu Hurera Khan — Founder
 - Billing/notices email: `shalconintelligence@gmail.com`
 - **Approved business/outreach sender: `shalconintelligence@gmail.com` — owner reconfirmed 31 Aug 2026**
+- Owner confirms direct access/control of this mailbox.
+- Connected Google Calendar profile independently returns **Shalcon Intelligence / `shalconintelligence@gmail.com`**.
 - GST status supplied by proprietor: not registered
 - **UDYAM/MSME: owner reports obtained on 31 Aug 2026**
 - Preferred contract wording: **“Abu Hurera Khan, sole proprietor trading as Shalcon Intelligence.”**
@@ -127,10 +129,12 @@ Current live counts:
 - replied: **0**
 - discovery: **0**
 
-### Draft inventory
+### Draft / response-ready inventory
 - 8 earlier personalized Gmail drafts — unsent; full migration backup in `docs/GMAIL_DRAFT_MIGRATION_BACKUP_2026-08-31.md` so switching Gmail accounts cannot strand the work;
 - 7 verified LinkedIn drafts in `docs/HEALTHCARE_OUTREACH_DRAFTS_BATCH_02_2026-08-31.md` — unsent;
-- 4 Batch 01 public-business-inbox email fallback drafts in `docs/OUTREACH_BATCH_01_EMAIL_FALLBACKS_2026-08-31.md` — unsent.
+- 4 Batch 01 public-business-inbox email fallback drafts in `docs/OUTREACH_BATCH_01_EMAIL_FALLBACKS_2026-08-31.md` — unsent;
+- 5 prospect-specific synthetic reply maps in `docs/BATCH_01_SYNTHETIC_WORKFLOW_MAPS_2026-08-31.md` — prepared for use only after a relevant prospect asks to see the map or for discovery support;
+- reply/objection/pricing/opt-out/discovery handling in `docs/OUTREACH_REPLY_TO_DISCOVERY_HANDOFF.md`.
 
 ### First controlled Batch 01
 Owner explicitly authorized the exact five-prospect Batch 01 on 31 Aug 2026 with `APPROVE BATCH 01`.
@@ -141,6 +145,8 @@ Authorized prospects:
 3. Dr. Chandraprabha Kumar — Neevwellbeing’s The Dental Clinic
 4. Dr. Anand Shroff — Shroff Eye Hospital
 5. Dr. Vinit Shah — Vinit Eye Clinic
+
+All five recipient/company/public-workflow observations were revalidated after approval.
 
 Authorization is **not** evidence of contact. All five remain `Draft Ready` until a real outbound message leaves an owner-approved authenticated channel. The live Sheet records the authorization and channel fallback in Next Action.
 
@@ -154,21 +160,23 @@ Sole `Research Ready` account: **Mumbai Diagnostic Centre**. Keep it unpromoted 
 
 ### Email sender control
 - Owner-approved business/outreach mailbox: **`shalconintelligence@gmail.com`**.
-- Owner reconfirmed this exact sender on 31 Aug 2026 and states they have access to it.
-- Current ChatGPT Gmail connector session is authenticated to a different account (`iafakhan9999@gmail.com`). That connector identity is **not authorized for Shalcon prospect outreach**.
+- Owner reconfirmed this exact sender on 31 Aug 2026 and states they have access/control of it.
+- Connected Google Calendar already verifies the correct Shalcon Google account identity.
+- Current ChatGPT Gmail connector session alone is authenticated to a different account (`iafakhan9999@gmail.com`). That connector identity is **not authorized for Shalcon prospect outreach**.
+- The available Gmail send action has no `From`/send-as selector, so ownership of the correct mailbox does not make the stale Gmail connector safe for sending.
 - Several internal connector-verification messages were sent only to `shalconintelligence@gmail.com` while testing the session identity; **no prospect was contacted**. Do not send further connector-test emails.
-- Do not send Shalcon prospect outreach from Gmail unless `Gmail.get_profile()` returns `shalconintelligence@gmail.com` or the owner explicitly approves another Shalcon-controlled sender.
+- Do not ask the owner to prove mailbox ownership/access again. Re-authenticate the Gmail connector if direct ChatGPT Gmail execution is needed.
 
 ### Channel execution boundary
 - Batch 01 authorization is complete. Do not ask for it again.
-- Gmail execution is blocked only by connector authentication to the approved Shalcon mailbox.
+- Gmail execution is blocked only by Gmail connector authentication to the approved Shalcon mailbox.
 - Current available tools do not expose an authenticated LinkedIn messaging session, and plugin discovery found no available LinkedIn messaging plugin, so LinkedIn sends cannot be truthfully marked completed from this environment.
 - Any outreach outside the exact five-prospect Batch 01 still requires separate authorization.
 
 ### Reply → discovery
-`docs/OUTREACH_REPLY_TO_DISCOVERY_HANDOFF.md` contains response triage, opt-out handling, pricing response, and discovery handoff.
+`docs/OUTREACH_REPLY_TO_DISCOVERY_HANDOFF.md` contains response triage, opt-out handling, pricing response, discovery handoff and direct routing to the five prepared synthetic maps.
 
-Saved discovery scheduling URL exists in project history, but a public fetch attempt in this execution environment did not independently validate it. Recheck the live visitor booking page before including it in a prospect reply; do not infer public availability from the saved URL alone.
+Saved discovery scheduling URL: `https://calendar.app.google/HMdDM2iUEuwbaMUEA`. The correct Shalcon Calendar account is connected, but a public visitor-context fetch was not independently completed in this environment. Recheck public access before including the link in a live prospect reply.
 
 ## 9. Domain / release
 Recommended domain: `shalconintelligence.com`; fresh connected check on 31 Aug showed it available at $11.25/year. Alternatives remained `shalcon.io` $30/year and `shalcon.ai` $160/2 years. No purchase made. Recheck and obtain explicit owner approval before purchase.
@@ -184,7 +192,7 @@ After ownership:
 
 ## 10. Genuine remaining gates
 ### Owner/account-controlled
-1. Authenticate ChatGPT Gmail to `shalconintelligence@gmail.com` if ChatGPT is to execute the email fallback sends.
+1. Re-authenticate ChatGPT Gmail to `shalconintelligence@gmail.com` if ChatGPT is to execute the email fallback sends directly.
 2. Make an authenticated LinkedIn messaging session available if ChatGPT is to execute LinkedIn directly; no available LinkedIn messaging plugin was found in the current environment.
 3. Razorpay KYC / Live activation / settlement bank / accountant-tax readiness.
 4. Final Privacy/Terms/SOW/DPA business-risk/legal review.
@@ -208,18 +216,19 @@ After ownership:
 1. Keep runtime protected and CI green.
 2. MSME/UDYAM is complete at owner-report level; use private certificate only where a legitimate private process needs it.
 3. Execute already-authorized Batch 01 as soon as an owner-approved authenticated sending channel is available; do not ask for Batch 01 approval again.
-4. Advance Razorpay KYC/Live + bank/accounting readiness.
-5. Record owner/legal decisions without pretending professional review happened.
-6. Keep Mumbai Diagnostic Centre research-only unless recipient evidence improves.
-7. Purchase/connect final domain only after explicit spend approval.
-8. Rotate integration secret immediately before final public launch.
-9. Run final deployed cross-browser/domain/API QA and deliberately enable public indexing.
-10. Convert controlled outreach → discovery → audit → proposal → bounded pilot → measured proof.
+4. If a Batch 01 prospect asks for more detail, use only that prospect’s prepared synthetic workflow map and keep it explicitly hypothesis-based.
+5. Advance Razorpay KYC/Live + bank/accounting readiness.
+6. Record owner/legal decisions without pretending professional review happened.
+7. Keep Mumbai Diagnostic Centre research-only unless recipient evidence improves.
+8. Purchase/connect final domain only after explicit spend approval.
+9. Rotate integration secret immediately before final public launch.
+10. Run final deployed cross-browser/domain/API QA and deliberately enable public indexing.
+11. Convert controlled outreach → discovery → audit → proposal → bounded pilot → measured proof.
 
 ## 12. Truth rules
 - no fabricated metrics/testimonials;
 - no guaranteed revenue/recovery/breakeven claims;
-- synthetic demos are never client deployments;
+- synthetic demos/maps are never client deployments or evidence of client pain;
 - sensitive professional judgment remains human-controlled;
 - no mass cold WhatsApp;
 - patient-booking WhatsApp is not a default cold channel;
