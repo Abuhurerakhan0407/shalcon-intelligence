@@ -118,7 +118,7 @@ Gates include:
 - production build;
 - compiled artifact secret/claim/performance budgets.
 
-Current reconciled branch work is passing GitHub Actions CI. Prior browser QA passed desktop/mobile containment, estimator interaction/failure handling, focus behavior, touch targets and no critical runtime errors in tested artifacts.
+Current reconciled branch work must remain passing GitHub Actions CI. Prior browser QA passed desktop/mobile containment, estimator interaction/failure handling, focus behavior, touch targets and no critical runtime errors in tested artifacts.
 
 Remaining release QA: final deployed Chromium + Firefox/WebKit-class smoke after final domain, secret and public-indexing changes.
 
@@ -149,24 +149,29 @@ Payment readiness remains owner-controlled:
 ## 11. Sales state
 Live Google Sheets founder-led pipeline contains **16 active Healthcare prospects**.
 
-Current state:
-- `Research Ready`: 8
-- `Draft Ready`: 8
-- sent: 0
-- replied: 0
-- discovery: 0
+Current state verified from the live Sheet:
+- `Research Ready`: **3**
+- `Draft Ready`: **13**
+- sent: **0**
+- replied: **0**
+- discovery: **0**
 
 `Research Ready` is a deliberate pre-draft state: current public workflow evidence exists, but the decision-maker/contact route and/or personalized first-touch draft still needs verification. It must never be counted as send-ready.
 
-The 8 newly researched accounts recorded on 31 Aug are: Shroff Eye Hospital, Clinical Diagnostic Centre (CDC), Happy Teeth by Dr. Bajani, Tru Smile Multi Specialty Dental Clinic, Neevwellbeing’s The Dental Clinic, Sirona Diagnostics, Vinit Eye Clinic and Mumbai Diagnostic Centre. Generic/support/patient-booking routes are explicitly not assumed to be decision-maker channels.
+The remaining `Research Ready` accounts are:
+- Clinical Diagnostic Centre (CDC);
+- Happy Teeth by Dr. Bajani;
+- Mumbai Diagnostic Centre.
 
-Eight personalized Gmail drafts exist for the earlier `Draft Ready` accounts and remain unsent. Copy has been re-reviewed for public-observation grounding, synthetic-demo framing and clinical/human escalation.
+Five of the 31 Aug research additions now have founder/decision-level LinkedIn drafts in `docs/HEALTHCARE_OUTREACH_DRAFTS_BATCH_02_2026-08-31.md`: Shroff Eye Hospital / Dr. Anand Shroff, Tru Smile / Dr. Riyaz Quereshi, Neevwellbeing / Dr. Chandraprabha Kumar, Sirona Diagnostics / Niteen Tulpule, and Vinit Eye Clinic / Dr. Vinit Shah.
 
-Critical sender control: connected Gmail currently belongs to a non-Shalcon mailbox. **Do not send from it.** Connect/use `shalconintelligence@gmail.com` or another owner-approved Shalcon sender before outreach.
+The earlier eight personalized Gmail drafts also remain unsent. Therefore `Draft Ready = 13` does **not** mean 13 Gmail drafts: 8 are Gmail drafts and 5 are repo-stored LinkedIn drafts.
 
-External outreach still requires explicit owner authorization.
+Critical sender control: connected Gmail currently belongs to a non-Shalcon mailbox. **Do not send from it.** Connect/use `shalconintelligence@gmail.com` or another owner-approved Shalcon sender before email outreach.
 
-Historical GitHub Healthcare research issue #27 is a research pool, not the live send manifest. Use current Google Sheet + Gmail state before any send.
+External outreach on any channel still requires explicit owner authorization.
+
+Historical GitHub Healthcare research issue #27 is a research pool, not the live send manifest. Use current Google Sheet + current draft assets before any send.
 
 ## 12. Domain / SEO
 Latest connected 31 Aug recheck:
@@ -194,7 +199,7 @@ After ownership: attach only to the dedicated Shalcon Vercel project, verify DNS
 10. Deliberately remove staging Authentication/noindex and verify production indexing.
 
 ### Market evidence
-11. Verify recipient routes and prepare first-touch drafts for the 8 `Research Ready` accounts.
+11. Continue recipient-route research for the 3 remaining `Research Ready` accounts without lowering verification standards.
 12. First qualified discovery/audit/proposal.
 13. First paid bounded pilot.
 14. Baseline/post-pilot evidence.
@@ -203,7 +208,7 @@ After ownership: attach only to the dedicated Shalcon Vercel project, verify DNS
 ## 14. Next execution order
 1. Keep current runtime staging-protected and CI green.
 2. Do not touch UDYAM until Abu updates it.
-3. Continue public research/contact-route verification for `Research Ready` Healthcare accounts without sending.
+3. Continue public research/contact-route verification for the 3 `Research Ready` Healthcare accounts without sending.
 4. Resolve owner/legal + Razorpay/bank/accounting readiness.
 5. Connect correct Shalcon sender and obtain explicit first-send authorization.
 6. Purchase/connect final domain only after explicit cost approval.
