@@ -127,9 +127,10 @@ Current live counts:
 - replied: **0**
 - discovery: **0**
 
-Draft inventory:
-- 8 earlier personalized Gmail drafts — unsent;
-- 7 verified LinkedIn drafts in `docs/HEALTHCARE_OUTREACH_DRAFTS_BATCH_02_2026-08-31.md` — unsent.
+### Draft inventory
+- 8 earlier personalized Gmail drafts — unsent; full migration backup in `docs/GMAIL_DRAFT_MIGRATION_BACKUP_2026-08-31.md` so switching Gmail accounts cannot strand the work;
+- 7 verified LinkedIn drafts in `docs/HEALTHCARE_OUTREACH_DRAFTS_BATCH_02_2026-08-31.md` — unsent;
+- 4 Batch 01 public-business-inbox email fallback drafts in `docs/OUTREACH_BATCH_01_EMAIL_FALLBACKS_2026-08-31.md` — unsent.
 
 ### First controlled Batch 01
 Owner explicitly authorized the exact five-prospect Batch 01 on 31 Aug 2026 with `APPROVE BATCH 01`.
@@ -141,7 +142,9 @@ Authorized prospects:
 4. Dr. Anand Shroff — Shroff Eye Hospital
 5. Dr. Vinit Shah — Vinit Eye Clinic
 
-Authorization is **not** evidence of contact. All five remain `Draft Ready` until a real outbound message leaves an owner-approved authenticated channel. The live Sheet records the authorization in Next Action.
+Authorization is **not** evidence of contact. All five remain `Draft Ready` until a real outbound message leaves an owner-approved authenticated channel. The live Sheet records the authorization and channel fallback in Next Action.
+
+Email fallbacks are prepared for Tru Smile, Sirona Diagnostics, Shroff Eye Hospital and Vinit Eye Clinic. Neev remains LinkedIn-only because no sufficiently clean public business email was verified; do not use patient-booking WhatsApp for cold outreach.
 
 Batch 02 additional recipients remain prepared but are not included in Batch 01 authorization:
 - Feriel Palia Jackson — Clinical Diagnostic Centre
@@ -153,17 +156,22 @@ Sole `Research Ready` account: **Mumbai Diagnostic Centre**. Keep it unpromoted 
 - Owner-approved business/outreach mailbox: **`shalconintelligence@gmail.com`**.
 - Owner reconfirmed this exact sender on 31 Aug 2026 and states they have access to it.
 - Current ChatGPT Gmail connector session is authenticated to a different account (`iafakhan9999@gmail.com`). That connector identity is **not authorized for Shalcon prospect outreach**.
-- A single verification email was sent from the current connector to `shalconintelligence@gmail.com` only to confirm connector behavior; no prospect was contacted.
+- Several internal connector-verification messages were sent only to `shalconintelligence@gmail.com` while testing the session identity; **no prospect was contacted**. Do not send further connector-test emails.
 - Do not send Shalcon prospect outreach from Gmail unless `Gmail.get_profile()` returns `shalconintelligence@gmail.com` or the owner explicitly approves another Shalcon-controlled sender.
 
 ### Channel execution boundary
-- Batch 01 authorization is complete.
+- Batch 01 authorization is complete. Do not ask for it again.
 - Gmail execution is blocked only by connector authentication to the approved Shalcon mailbox.
-- Current available tools do not expose an authenticated LinkedIn messaging session, so LinkedIn sends cannot be truthfully marked completed from this environment.
+- Current available tools do not expose an authenticated LinkedIn messaging session, and plugin discovery found no available LinkedIn messaging plugin, so LinkedIn sends cannot be truthfully marked completed from this environment.
 - Any outreach outside the exact five-prospect Batch 01 still requires separate authorization.
 
+### Reply → discovery
+`docs/OUTREACH_REPLY_TO_DISCOVERY_HANDOFF.md` contains response triage, opt-out handling, pricing response, and discovery handoff.
+
+Saved discovery scheduling URL exists in project history, but a public fetch attempt in this execution environment did not independently validate it. Recheck the live visitor booking page before including it in a prospect reply; do not infer public availability from the saved URL alone.
+
 ## 9. Domain / release
-Recommended domain: `shalconintelligence.com`; last connected check on 31 Aug showed it available at $11.25/year. No purchase made. Recheck and obtain explicit owner approval before purchase.
+Recommended domain: `shalconintelligence.com`; fresh connected check on 31 Aug showed it available at $11.25/year. Alternatives remained `shalcon.io` $30/year and `shalcon.ai` $160/2 years. No purchase made. Recheck and obtain explicit owner approval before purchase.
 
 After ownership:
 1. attach only to correct Vercel project;
@@ -175,33 +183,34 @@ After ownership:
 7. deliberately remove staging auth/noindex only when public release is approved.
 
 ## 10. Genuine remaining gates
-### Owner-controlled
-1. Razorpay KYC / Live activation / settlement bank / accountant-tax readiness.
-2. Final Privacy/Terms/SOW/DPA business-risk/legal review.
-3. Connect ChatGPT Gmail to `shalconintelligence@gmail.com` before any Gmail prospect send.
-4. Production-domain purchase/control.
+### Owner/account-controlled
+1. Authenticate ChatGPT Gmail to `shalconintelligence@gmail.com` if ChatGPT is to execute the email fallback sends.
+2. Make an authenticated LinkedIn messaging session available if ChatGPT is to execute LinkedIn directly; no available LinkedIn messaging plugin was found in the current environment.
+3. Razorpay KYC / Live activation / settlement bank / accountant-tax readiness.
+4. Final Privacy/Terms/SOW/DPA business-risk/legal review.
+5. Production-domain purchase/control.
 
 ### ChatGPT after owner gates/channel access
-5. Execute already-authorized Batch 01 through an approved authenticated channel and update pipeline from real send outcomes.
-6. Verify first real Payment Link/invoice/settlement reconciliation.
-7. Domain/canonical/social/robots/sitemap cutover.
-8. Production webhook-secret rotation.
-9. Final deployed browser/domain/API QA.
-10. Deliberate public-indexing cutover.
+6. Execute already-authorized Batch 01 through an approved authenticated channel and update pipeline from real send outcomes.
+7. Verify first real Payment Link/invoice/settlement reconciliation.
+8. Domain/canonical/social/robots/sitemap cutover.
+9. Production webhook-secret rotation.
+10. Final deployed browser/domain/API QA.
+11. Deliberate public-indexing cutover.
 
 ### Market evidence
-11. First qualified discovery/audit/proposal.
-12. First paid bounded pilot.
-13. Baseline/post-pilot evidence.
-14. Permission-backed case study.
+12. First qualified discovery/audit/proposal.
+13. First paid bounded pilot.
+14. Baseline/post-pilot evidence.
+15. Permission-backed case study.
 
 ## 11. Execution order
 1. Keep runtime protected and CI green.
 2. MSME/UDYAM is complete at owner-report level; use private certificate only where a legitimate private process needs it.
-3. Advance Razorpay KYC/Live + bank/accounting readiness.
-4. Record owner/legal decisions without pretending professional review happened.
-5. Keep Mumbai Diagnostic Centre research-only unless recipient evidence improves.
-6. Execute already-authorized Batch 01 as soon as an owner-approved authenticated sending channel is available; do not ask for Batch 01 approval again.
+3. Execute already-authorized Batch 01 as soon as an owner-approved authenticated sending channel is available; do not ask for Batch 01 approval again.
+4. Advance Razorpay KYC/Live + bank/accounting readiness.
+5. Record owner/legal decisions without pretending professional review happened.
+6. Keep Mumbai Diagnostic Centre research-only unless recipient evidence improves.
 7. Purchase/connect final domain only after explicit spend approval.
 8. Rotate integration secret immediately before final public launch.
 9. Run final deployed cross-browser/domain/API QA and deliberately enable public indexing.
