@@ -1,160 +1,171 @@
 # Shalcon Intelligence — Founder-led Pipeline Operating Rhythm
 
-Purpose: turn Foundations 11–12 into a repeatable weekly sales process without optimizing for spam volume.
+Status date: 31 Aug 2026
 
-Primary wedge: Healthcare / clinics in Mumbai Metropolitan Region.
-Primary first-contact channels: targeted email and LinkedIn/manual outreach.
+Purpose: run a small, evidence-led Healthcare sales process without optimizing for spam volume.
 
-## Daily operating block
+Primary wedge: Healthcare / clinics in Mumbai Metropolitan Region.  
+Primary first-contact channels: targeted business email and LinkedIn/manual outreach.
 
-### 1. Research — 30 to 45 minutes
-Target 3–5 accounts/day at the beginning.
+## 0. Send gate — required
+Research/draft work can continue before this gate. External sending cannot.
+
+Before any first touch:
+- [ ] prospect exists in current Google Sheets pipeline;
+- [ ] public observation/contact route is reverified;
+- [ ] sender is an owner-approved Shalcon business mailbox;
+- [ ] owner has explicitly authorized the controlled send batch;
+- [ ] no prior opt-out/rejection/do-not-contact signal exists.
+
+Current 31 Aug state:
+- 8 Healthcare prospects in live pipeline;
+- all 8 = `Draft Ready`;
+- 0 sent, 0 replied, 0 discovery;
+- 8 Gmail drafts exist;
+- currently connected Gmail is not the approved Shalcon mailbox, therefore **do not send from it**.
+
+## 1. Research block
+At validation stage, research 3–5 strong-fit accounts at a time.
+
 For each account record:
 - business + location;
 - public website/profile;
-- decision-maker/contact when publicly available;
+- decision-maker/contact when publicly supported;
 - inquiry/booking path;
 - one observable workflow signal;
-- likely fit tier;
+- likely fit/priority;
+- source URL;
 - next action.
 
-Do not invent internal problems from public observations.
+Do not infer internal problems from public observations.
 
-### 2. New outreach — 20 to 30 minutes
-Send 3–5 genuinely researched first messages while message-market fit is still being learned.
+## 2. Draft / first-touch block
+Once send gate is open, send only a small controlled batch. Start with quality, not a daily quota.
 
-Each message must contain:
-- one specific observation;
-- one possible workflow friction framed as a hypothesis;
-- one concrete automation operating path;
-- one small CTA.
+Each first message should contain:
+- one specific public observation;
+- one possible workflow friction framed as a hypothesis, not fact;
+- one concrete operating-path idea;
+- one small CTA;
+- synthetic-demo framing where a demo is referenced.
 
-No fake personalization and no unsupported ROI number.
+No fake personalization, unsupported ROI, fabricated delay/revenue claims or patient-booking WhatsApp cold outreach.
 
-### 3. Follow-ups — 15 minutes
-Work only records where a follow-up is due.
-Cadence:
+## 3. Follow-ups
+Only records with a due follow-up and no suppression signal are eligible.
+
+Suggested early cadence, adjustable from real responses:
 - Day 3 — useful workflow observation;
 - Day 7 — concise follow-up;
 - Day 14 — relevant synthetic demo/architecture asset;
 - Day 30 — close the loop.
 
-Stop after opt-out or clear rejection.
+Stop immediately on opt-out, explicit rejection, invalid recipient, or a clear request not to contact.
 
-### 4. Pipeline hygiene — 10 minutes
-Every active record must have:
-- stage;
-- last contact date;
+## 4. Pipeline hygiene
+Every active record should have:
+- stage/status;
+- last touch date;
 - next action;
-- next action date;
+- next action/follow-up date;
 - owner;
-- opt-out status;
-- note from latest interaction.
+- source/contact route;
+- opt-out/do-not-contact state;
+- concise latest-interaction note.
 
-No next action = not an active opportunity.
+No next action means it should not be treated as an actively worked opportunity.
 
-## Weekly target while validating the offer
-Do not jump to mass volume.
+## Current live source of truth
+Use Google Sheet **Shalcon Intelligence — Sales Pipeline** as the living founder-led pipeline.
 
+Do not create a second competing CRM until actual volume proves the spreadsheet insufficient.
+
+Historical GitHub seed/batch files are research/copy libraries, not current send-state evidence.
+
+## First four weeks after send gate opens
 ### Week 1
-- research 20–25 strong-fit accounts;
-- contact 10–15;
-- capture reply language and objections;
-- validate booking/contact path after every website change.
+- send a controlled subset of the already-verified draft-ready prospects;
+- record delivery/replies/objections;
+- verify booking/contact path;
+- avoid scaling before observing message quality.
 
 ### Week 2
-- finish Tier-A first contacts;
-- execute due follow-ups;
-- book/complete audits;
-- update offer language from real conversations.
+- execute only due follow-ups;
+- book/complete audits from genuine interest;
+- update message/offer language from repeated prospect evidence, not one comment.
 
 ### Week 3
-Review by segment and message:
-- delivery rate;
-- reply rate;
-- positive reply rate;
-- audits booked;
-- audits attended;
-- qualified opportunities;
-- dominant objections.
-
-Only then decide whether to increase volume.
-
-### Week 4
-Scale the best-performing account type/message modestly while retaining manual quality control.
-
-## Pipeline stages
-1. Target identified
-2. Researched
-3. Contacted
-4. Replied
-5. Qualified
-6. Audit booked
-7. Audit completed
-8. Proposal sent
-9. Negotiation
-10. Won — onboarding
-11. Lost — reason captured
-12. Nurture
-13. Do not contact
-
-## Exit criteria by stage
-
-### Researched → Contacted
-Requires one specific public observation and a valid first-contact path.
-
-### Replied → Qualified
-Requires evidence that the workflow/problem could be meaningful and a relevant stakeholder is engaged.
-
-### Qualified → Audit booked
-Requires agreement to map the current workflow.
-
-### Audit completed → Proposal
-Requires the proposal handoff gate in `DISCOVERY_AUDIT_TEMPLATE.md`.
-
-### Proposal → Won
-Requires commercial agreement, signed/accepted scope where appropriate, and start-payment condition satisfied.
-
-## Weekly scorecard
-Track raw counts first:
-- accounts researched;
+Review raw counts first:
 - first contacts sent;
-- follow-ups sent;
+- delivered/bounced where known;
 - replies;
 - positive replies;
-- audits booked;
-- audits attended;
+- audits booked/attended;
 - qualified opportunities;
-- proposals;
-- wins;
-- losses;
-- opt-outs;
-- bounces/invalid contacts.
+- dominant objections;
+- opt-outs.
 
-Then calculate conversion rates. Do not over-interpret percentages from tiny samples.
+Then calculate rates. Do not over-interpret tiny samples.
+
+### Week 4
+If a segment/message shows credible positive signal, modestly increase volume while retaining manual verification.
+
+## Stage model
+Conceptual lifecycle:
+1. Target identified
+2. Researched
+3. Draft Ready
+4. Contacted
+5. Replied
+6. Qualified
+7. Audit booked
+8. Audit completed
+9. Proposal sent
+10. Negotiation
+11. Won / onboarding
+12. Lost — reason captured
+13. Nurture
+14. Do not contact
+
+The current Google Sheet labels control actual operational status. Do not rewrite historical rows merely to match this conceptual list.
+
+## Exit criteria
+### Researched → Draft Ready
+Requires a supportable public observation and a verified first-contact route.
+
+### Draft Ready → Contacted
+Requires send gate PASS plus actual external send.
+
+### Replied → Qualified
+Requires evidence from the prospect that the workflow/opportunity may be meaningful and a relevant stakeholder is engaged.
+
+### Qualified → Audit booked
+Requires agreement to map the real workflow.
+
+### Audit completed → Proposal
+Requires proposal-handoff criteria in `DISCOVERY_AUDIT_TEMPLATE.md`.
+
+### Proposal → Won
+Requires commercial agreement, accepted scope and applicable start-payment condition.
 
 ## Learning log
-For every meaningful response, capture exact prospect language for:
-- problem description;
-- current workaround;
-- trust concern;
-- integration concern;
-- pricing concern;
-- timing concern;
-- desired outcome.
+Capture useful prospect language around:
+- problem/current workaround;
+- trust/integration concern;
+- pricing/timing concern;
+- desired outcome;
+- reason for no-fit/loss.
 
-Review weekly and update outreach/site copy only when a pattern appears. One prospect comment is evidence, not automatically a market truth.
+One response is evidence. A repeated pattern becomes a stronger basis for changing positioning, product scope or outreach.
 
 ## Stop rules
-Pause or change the campaign when:
-- bounce/invalid-contact rate indicates poor list quality;
-- recipients describe the messaging as irrelevant/spammy;
-- no positive signal appears after a meaningful sample of well-researched accounts;
-- the dominant objection exposes an offer/scope problem;
-- website/contact infrastructure is broken;
-- Shalcon cannot currently deliver the workflow being marketed.
+Pause/change campaign when:
+- bounce/invalid-contact rate suggests poor data quality;
+- prospects repeatedly describe messaging as irrelevant/spammy;
+- no positive signal appears after a meaningful sample of well-researched contacts;
+- dominant objection exposes offer/scope mismatch;
+- booking/contact infrastructure breaks;
+- Shalcon cannot deliver the workflow being marketed.
 
-## Foundation evidence
-Foundation 11 (Lead Generation) is process-ready when the target criteria, account record and weekly operating rhythm exist.
-Foundation 12 (Outbound) is process-ready when approved copy, cadence, opt-out handling and measurement exist.
-They become execution-proven only after real outreach produces recorded delivery/reply/audit data.
+## Proof boundary
+Lead-generation/outbound process is prepared. It becomes execution-proven only after real sends produce recorded delivery/reply/audit data. Until then, do not claim outbound conversion performance.
