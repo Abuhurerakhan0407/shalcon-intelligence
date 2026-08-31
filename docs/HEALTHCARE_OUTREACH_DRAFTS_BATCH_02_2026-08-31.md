@@ -3,7 +3,7 @@
 Status date: 31 Aug 2026
 Status: **DRAFTS ONLY — DO NOT SEND WITHOUT OWNER AUTHORIZATION**
 
-Purpose: prepare founder-level first touches for research-ready Healthcare accounts where a current public professional route is supported.
+Purpose: prepare decision-maker or operations-level first touches for research-ready Healthcare accounts where a current public professional route is supported.
 
 Rules:
 - these drafts are not evidence of contact;
@@ -121,7 +121,49 @@ If useful, I can send the short synthetic workflow rather than a generic AI demo
 
 ---
 
-# Pre-send gate for all five
+## 6. Clinical Diagnostic Centre — Feriel Palia Jackson
+
+**Channel:** LinkedIn  
+**Public recipient evidence:** public LinkedIn profile ties Feriel Palia Jackson to Clinical Diagnostic Centre and describes operations-management/strategic-planning experience. Public corporate records identify Feriel Jackson Palia as a designated partner of CDC Healthcare Services LLP.  
+**Public workflow observation:** CDC operates multiple Mumbai diagnostic locations and serves individual, corporate, immigration/visa and other diagnostic workflows.
+
+### Draft
+Hi Feriel — I was looking at CDC’s multi-location diagnostic setup and the mix of individual, corporate and other appointment workflows.
+
+One operations layer I’d test is whether the first request can preserve centre + service/context through intake, routing, confirmation and final status, rather than introducing another patient-facing booking tool.
+
+Shalcon builds that kind of intake-to-operations orchestration, with anything medical or sensitive staying with the appropriate staff.
+
+I can send a short synthetic workflow map if useful.
+
+— Abu, Shalcon Intelligence
+
+**Why this angle:** operations-level recipient; focuses on multi-location/request coordination rather than diagnostic decisions or unsupported claims about current inefficiency.
+
+---
+
+## 7. Happy Teeth by Dr. Bajani — Dr. Priyank Bajani
+
+**Channel:** LinkedIn  
+**Public recipient evidence:** official clinic site identifies Dr. Priyank D. Bajani as founder and documents three suburban Mumbai branches; a public LinkedIn profile matches his name, Mumbai location and dental education.  
+**Public workflow observation:** three branches with branch-specific hours and phone-based appointment coordination.
+
+### Draft
+Hi Dr. Bajani — I noticed Happy Teeth has grown across three Mumbai branches, with different branch hours and appointment routes.
+
+For a setup like that, one workflow worth testing is capturing the preferred branch + consultation intent once, then carrying it through scheduling, staff follow-up and final booking status without changing the clinical side of the practice.
+
+That’s the kind of front-desk operations workflow Shalcon builds, while leaving every treatment and clinical decision with the dental team.
+
+Happy to share the short synthetic flow if useful.
+
+— Abu, Shalcon Intelligence
+
+**Why this angle:** founder + multi-branch evidence is supported; avoids treating the public phone numbers as a cold outreach destination.
+
+---
+
+# Pre-send gate for all seven
 - [ ] public profile still resolves and identity/company relationship still matches;
 - [ ] public workflow observation still resolves;
 - [ ] no opt-out/rejection exists in live pipeline;
