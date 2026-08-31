@@ -27,9 +27,10 @@ Buying path: Audit → bounded Pilot → connected System.
 - Authorized signatory: Abu Hurera Khan — Founder
 - Billing/notices email: `shalconintelligence@gmail.com`
 - GST status supplied by proprietor: not registered
+- **UDYAM/MSME: owner reports obtained on 31 Aug 2026**
 - Preferred contract wording: **“Abu Hurera Khan, sole proprietor trading as Shalcon Intelligence.”**
 
-Do not ask for these facts again unless owner/accounting/legal review changes them.
+The MSME certificate itself is private owner material and is not stored in this public repository. Do not request or commit PAN/Aadhaar/OTP/bank/KYC data. If exact certificate details are later needed for a private onboarding form, use the owner-controlled certificate directly.
 
 ## 4. Approved Healthcare commercial baseline
 - ₹39,000 setup/implementation
@@ -80,16 +81,20 @@ Homepage, Privacy and Terms returned HTTP 200 during 31 Aug live checks; staging
 
 Final domain/secret/indexing changes still require deployed Chromium + Firefox/WebKit-class smoke.
 
-## 7. Legal / payment / UDYAM
+## 7. Legal / payment / MSME
 Prepared: Privacy, Terms, DPA, SOW, owner legal checklist, data-protection baseline, retention recommendation, invoice/payment guides.
 
 Client SOW and automation-audit templates have pre-send scrub gates. No internal price floor should leak to clients.
 
 Owner/legal review remains open. Never claim generic “100% DPDP compliant/secure.” Sensitive-data engagements require engagement-specific controls/review.
 
-Payment readiness still requires owner-controlled Razorpay KYC/business proof, settlement bank verification and accountant/tax presentation.
+**MSME/UDYAM is no longer a blocker:** owner reports the registration/certificate was obtained on 31 Aug 2026. Treat this as owner-reported complete; do not claim certificate-field verification unless the private certificate is actually reviewed for a specific need.
 
-**UDYAM/MSME is intentionally PAUSED. Do not ask, infer, complete or continue it until Abu provides his update.**
+Payment readiness is narrowed to:
+- Razorpay KYC/Live activation using accurate proprietorship details and owner-controlled business proof;
+- settlement bank verification;
+- accountant/tax presentation for the current non-GST-registered state;
+- verify first Payment Link + ledger/reconciliation flow after Live activation.
 
 ## 8. Live sales state — VERIFIED 31 Aug
 Google Sheet: **Shalcon Intelligence — Sales Pipeline**  
@@ -139,33 +144,36 @@ After ownership:
 
 ## 10. Genuine remaining gates
 ### Owner-controlled
-1. UDYAM update — paused.
-2. Razorpay KYC / settlement bank / accountant-tax readiness.
-3. Final Privacy/Terms/SOW/DPA business-risk/legal review.
-4. Correct Shalcon Gmail connection/use.
-5. Explicit external outreach authorization.
-6. Production-domain purchase/control.
+1. Razorpay KYC / Live activation / settlement bank / accountant-tax readiness.
+2. Final Privacy/Terms/SOW/DPA business-risk/legal review.
+3. Correct Shalcon Gmail connection/use.
+4. Explicit external outreach authorization.
+5. Production-domain purchase/control.
 
 ### ChatGPT after owner gates
-7. Domain/canonical/social/robots/sitemap cutover.
-8. Production webhook-secret rotation.
-9. Final deployed browser/domain/API QA.
-10. Deliberate public-indexing cutover.
-11. Controlled send execution + pipeline updates from real outcomes.
+6. Domain/canonical/social/robots/sitemap cutover.
+7. Production webhook-secret rotation.
+8. Final deployed browser/domain/API QA.
+9. Deliberate public-indexing cutover.
+10. Controlled send execution + pipeline updates from real outcomes.
 
 ### Market evidence
-12. First qualified discovery/audit/proposal.
-13. First paid bounded pilot.
-14. Baseline/post-pilot evidence.
-15. Permission-backed case study.
+11. First qualified discovery/audit/proposal.
+12. First paid bounded pilot.
+13. Baseline/post-pilot evidence.
+14. Permission-backed case study.
 
 ## 11. Execution order
 1. Keep runtime protected and CI green.
-2. Leave UDYAM untouched until owner update.
-3. Keep Mumbai Diagnostic Centre research-only unless recipient evidence improves.
-4. Await owner/legal/payment/sender/send/domain gates while avoiding fake busywork.
-5. After authorization, execute a small controlled outreach batch and record real outcomes.
-6. Convert positive reply → discovery → audit → proposal → bounded pilot → measured proof.
+2. MSME/UDYAM is complete at owner-report level; use the private certificate only where onboarding specifically needs it.
+3. Advance Razorpay KYC/Live + bank/accounting readiness.
+4. Reduce owner/legal checklist to explicit decisions and preserve conservative defaults until approved.
+5. Keep Mumbai Diagnostic Centre research-only unless recipient evidence improves.
+6. Connect/use correct Shalcon sender and obtain explicit send authorization.
+7. Purchase/connect final domain only after explicit spend approval.
+8. Rotate integration secret immediately before final public launch.
+9. Run final deployed cross-browser/domain/API QA and deliberately enable public indexing.
+10. Convert controlled outreach → discovery → audit → proposal → bounded pilot → measured proof.
 
 ## 12. Truth rules
 - no fabricated metrics/testimonials;
@@ -176,4 +184,5 @@ After ownership:
 - patient-booking WhatsApp is not a default cold channel;
 - no cross-product infrastructure shortcuts;
 - no broad compliance/security claim without evidence;
+- owner-reported MSME completion is not the same as independently verifying certificate fields;
 - no external sends, purchases, KYC actions or legal approvals inferred from preparation alone.
