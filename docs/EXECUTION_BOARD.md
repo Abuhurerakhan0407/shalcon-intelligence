@@ -1,185 +1,133 @@
 # Shalcon Intelligence — Execution Board
 
-Status date: 29 Aug 2026
+Status date: 31 Aug 2026
 Operating split target: **ChatGPT ~90% / Abu ~10%**.
 
-This is the action board. Strategy belongs in `MARKET_READY_MASTER.md`; release blockers belong in `LAUNCH_GATE.md`.
+Strategy: `docs/MARKET_READY_MASTER.md`  
+Release evidence/blockers: `docs/LAUNCH_GATE.md`  
+Fast handoff: `PROJECT_STATE.md`
 
-## Rules
+## Operating rules
+- ChatGPT continues reversible, non-owner-dependent work without asking for cosmetic approval.
+- Abu is needed for legal acceptance, purchases, KYC/bank actions, sensitive credentials, external sending, real-client access, and final business decisions.
+- “Prepared” is not “live.” “Live” requires deployed evidence.
+- Do not recreate already-finished infrastructure because an older note says it is missing.
+- UDYAM work is paused until Abu provides his update.
 
-- ChatGPT continues every task that can be performed safely through connected tools/code/research without asking for unnecessary approval.
-- Abu is pulled in only for identity, legal authority, billable account creation, money/KYC, irreversible external business decisions, real client access, or human sales conversations.
-- “Prepared” is not “live.” Infrastructure is complete only after deployed verification.
-- Do not work on deferred scale theatre while launch-critical work is open.
+## Current readiness
 
-## Current readiness view
-
-| Area | Working status | Owner now |
+| Area | Status | Owner now |
 |---|---|---|
-| Repository / engineering safety | Strong / green CI | ChatGPT |
-| Website truth + positioning | Strong | ChatGPT |
-| Website conversion UX | Strong, deployment pending | ChatGPT |
-| Lead persistence code | Prepared, project deployment blocked | Abu → ChatGPT |
-| Preview deployment | Prepared, dedicated project missing | Abu/tool boundary → ChatGPT |
-| Sales assets | Strong | ChatGPT |
-| Commercial recommendation | Prepared, approval pending | Abu |
-| Privacy/data-processing drafts | Strong draft, approval pending | Abu/legal review |
-| Payment path | Recommended, account/KYC pending | Abu |
-| Prospecting system | Ready | ChatGPT |
-| Real sales evidence | Not started | Abu + ChatGPT |
-| Permission-backed case study | Not possible before pilot | Joint |
+| Repository / CI | GREEN | ChatGPT |
+| Website positioning / truth | READY | ChatGPT |
+| Live Shalcon deployment | READY / staging-protected | ChatGPT |
+| Lead persistence | VERIFIED END-TO-END | ChatGPT |
+| Privacy / Terms / DPA / SOW | PREPARED; final review open | Abu / legal |
+| Payment workflow | PREPARED; KYC/bank/accounting open | Abu |
+| UDYAM | PAUSED pending owner update | Abu |
+| Domain / SEO cutover | PREPARED; purchase/control open | Abu then ChatGPT |
+| Healthcare outreach | 8 verified drafts, UNSENT | Abu + ChatGPT |
+| Correct outreach sender | BLOCKED; connected Gmail is not Shalcon mailbox | Abu |
+| First real client proof | NOT YET | Joint |
 
-Overall market-readiness estimate should not hide the evidence gap: the agency has a substantial operating system and launch stack, but it is not a proven agency until real prospects/pilots produce evidence.
+## P0 — Launch-critical
 
-# P0 — Launch-critical
+### Repository / release safety
+- [x] Shalcon isolated on `shalcon-market-ready-2026`.
+- [x] Portfolio-contaminated `main` excluded from Shalcon work.
+- [x] CI production-build/security/claim/performance gates exist and pass.
+- [x] Current agent/project-state documentation reconciled with deployed reality.
+- [ ] GitHub branch protection/ruleset for the market-ready branch. Connected GitHub tooling currently exposes read-only protection state, so this remains an owner/UI action unless tooling changes.
 
-## 1. Source control / truth
+### Website / deployment
+- [x] Healthcare-first flagship and Audit → Pilot → System positioning.
+- [x] Unsupported proof/testimonials removed.
+- [x] Synthetic demo and estimator limitations clear.
+- [x] Booking / WhatsApp / email paths implemented.
+- [x] Accessibility/mobile/reduced-motion safeguards implemented and previously smoke-tested.
+- [x] Dedicated Shalcon Vercel project exists.
+- [x] Correct branch deployed.
+- [x] Global staging `X-Robots-Tag: noindex, nofollow, noarchive` verified live.
+- [x] Live homepage / Privacy / Terms HTTP and security-header checks passed.
+- [ ] Final deployed Chromium + Firefox/WebKit-class release smoke after final domain/public-release changes.
 
-| Task | Status | Owner |
-|---|---|---|
-| Isolate Shalcon from portfolio `main` | DONE | ChatGPT |
-| Recover real Shalcon site | DONE | ChatGPT |
-| Remove duplicate legacy source | DONE | ChatGPT |
-| Remove obsolete Claude-era build brief | DONE | ChatGPT |
-| Claims register | DONE | ChatGPT |
-| Truth regression guard | DONE | ChatGPT |
-| Repo secret leakage guard | DONE | ChatGPT |
-| Dependency/security gates | DONE | ChatGPT |
+### Lead persistence
+- [x] Dedicated Supabase project exists in `ap-south-1`.
+- [x] Schema, RLS/browser-role denial and Edge Function deployed.
+- [x] Authenticated Vercel webhook configured.
+- [x] Wrong-secret, first-write, replay and conflict behavior tested.
+- [x] Real Vercel → Supabase write tested.
+- [x] Forced destination failure tested fail-closed.
+- [x] Destination restored and retested.
+- [x] Synthetic QA rows removed.
+- [ ] Rotate the manually transferred production webhook credential immediately before final public launch; prove new works and old fails.
 
-## 2. Website / positioning
+### Legal / data handling
+- [x] Privacy draft.
+- [x] Website Terms draft.
+- [x] DPA template.
+- [x] Proposal/SOW template.
+- [x] India data-protection baseline research.
+- [x] Lead-retention recommendation.
+- [x] Owner identity inserted.
+- [ ] Owner/legal review of Privacy/Terms/SOW/DPA risk language.
+- [ ] Engagement-specific role/data/security/retention review before processing real sensitive client data.
 
-| Task | Status | Owner |
-|---|---|---|
-| Healthcare-first flagship | DONE | ChatGPT |
-| Audit → Pilot → System positioning | DONE | ChatGPT |
-| Remove unsupported client proof | DONE | ChatGPT |
-| Synthetic demo labeling | DONE | ChatGPT |
-| Deterministic safety-aware demo flows | DONE | ChatGPT |
-| Healthcare architecture proof | DONE | ChatGPT |
-| Trust-by-design section | DONE IN SOURCE | ChatGPT |
-| Opportunity estimator redesign | DONE | ChatGPT |
-| Conversion tracking architecture | DONE | ChatGPT |
-| Booking / WhatsApp / email routes | DONE IN SOURCE | ChatGPT |
-| Accessibility / mobile / reduced-motion work | DONE IN SOURCE + prior artifact QA | ChatGPT |
-| Security headers | DONE | ChatGPT |
-| Latest strict CI after all current changes | VERIFY AFTER QUEUE | ChatGPT |
-| Dedicated deployed preview | BLOCKED — no Shalcon Vercel project | ChatGPT after safe project target exists |
-| Deployed cross-browser/contact/API QA | WAITING ON PREVIEW | ChatGPT |
+### Commercial / payment
+- [x] Healthcare Pilot default approved: ₹39,000 setup + ₹9,000/month.
+- [x] 50/30/20 implementation milestones approved.
+- [x] Invoice template and payment-link workflow prepared.
+- [x] Razorpay onboarding guidance rechecked/hardened.
+- [ ] UDYAM — intentionally paused pending owner update.
+- [ ] Razorpay KYC / settlement bank / accounting-tax presentation owner-ready.
 
-## 3. Lead persistence
+### Domain / public release
+- [x] `shalconintelligence.com` recommended and last rechecked available at $11.25/year on 31 Aug 2026.
+- [x] Domain/SEO cutover runbook exists.
+- [x] Staging canonical/indexing safeguards documented.
+- [ ] Owner purchases/controls final domain.
+- [ ] Attach domain to correct Vercel project and verify DNS/TLS.
+- [ ] Add final canonical, absolute OG/social metadata, robots and sitemap.
+- [ ] Remove staging auth/noindex only in deliberate final release.
 
-| Task | Status | Owner |
-|---|---|---|
-| Harden `/api/lead` | DONE | ChatGPT |
-| Require authenticated webhook | DONE | ChatGPT |
-| Idempotency contract | DONE | ChatGPT |
-| Require `{ok:true, leadId}` acknowledgement | DONE | ChatGPT |
-| Cross-site/media-type rejection | DONE | ChatGPT |
-| Supabase table design | DONE IN REPO | ChatGPT |
-| Supabase Edge Function | DONE IN REPO | ChatGPT |
-| RLS/browser-role denial | DONE IN DESIGN | ChatGPT |
-| Destination estimator revalidation | DONE | ChatGPT |
-| Static persistence safety tests | DONE | ChatGPT |
-| Choose/authorize Supabase organization/cost | **OWNER BLOCKER** | **Abu** |
-| Create dedicated Shalcon Supabase project | WAITING ON OWNER BLOCKER | ChatGPT/tool after Abu authorization |
-| Apply schema | WAITING | ChatGPT |
-| Set Edge Function webhook secret | WAITING / account-secret step | Abu + ChatGPT where tool permits |
-| Deploy Edge Function | WAITING | ChatGPT |
-| Configure Vercel webhook URL/secret | WAITING ON PROJECT | Abu + ChatGPT where tool permits |
-| Real success/replay/conflict/failure tests | WAITING | ChatGPT |
+## P1 — Revenue engine
 
-## 4. Legal / data handling
+### Sales system
+- [x] Discovery/qualification framework.
+- [x] Audit report template.
+- [x] Proposal/SOW and objection/close playbook.
+- [x] Onboarding, delivery/UAT, measurement/reporting and financial-control assets.
+- [x] Live Google Sheets sales pipeline.
 
-| Task | Status | Owner |
-|---|---|---|
-| Privacy draft | DONE | ChatGPT |
-| Website terms draft | DONE | ChatGPT |
-| Draft pages noindex | DONE | ChatGPT |
-| Current India DPDP timing research | DONE | ChatGPT |
-| Data-processing baseline | DONE | ChatGPT |
-| DPA template | DONE | ChatGPT |
-| Client access/security checklist | DONE | ChatGPT |
-| Incident response playbook | DONE | ChatGPT |
-| Final legal/business identity | **OWNER BLOCKER** | **Abu** |
-| Professional/owner legal review | OWNER BLOCKER | Abu / adviser |
-| Replace draft/noindex with approved production legal pages | WAITING ON REVIEW | ChatGPT |
+### Healthcare Batch 01
+- [x] Eight verified prospects in pipeline.
+- [x] Eight personalized Gmail drafts prepared and reviewed.
+- [x] All eight remain `Draft Ready`; sent/replied/discovery counts remain zero.
+- [x] Copy uses public workflow observations and synthetic-demo framing.
+- [ ] Connect/use approved Shalcon business Gmail account.
+- [ ] Owner explicitly authorizes controlled send.
+- [ ] Send first batch, then update pipeline statuses.
+- [ ] Run follow-up/reply/discovery cadence based on actual responses.
 
-## 5. Commercial / payment
+## P2 — Proof
+- [x] Synthetic Healthcare proof.
+- [x] Production pilot baseline/reporting template.
+- [ ] First qualified audit.
+- [ ] First proposal.
+- [ ] First paid pilot.
+- [ ] Baseline/post-pilot evidence.
+- [ ] Permission-backed case study.
 
-| Task | Status | Owner |
-|---|---|---|
-| Market pricing research | DONE | ChatGPT |
-| Commercial V1 recommendation | DONE | ChatGPT |
-| Recommended Healthcare Pilot: ₹39k setup + ₹9k/mo | READY FOR APPROVAL | Abu |
-| Scope floors/exclusions/risk limits | DONE | ChatGPT |
-| Payment milestone model 50/30/20 | DONE | ChatGPT |
-| Razorpay-first / Stripe-nonblocking recommendation | DONE | ChatGPT |
-| Final pricing/risk approval | **OWNER BLOCKER FOR PAID WORK** | **Abu** |
-| Bank / payment provider / KYC / GST-accounting setup | OWNER BLOCKER | Abu |
-| Operational payment-link/invoice workflow | WAITING ON ACCOUNT SETUP | ChatGPT |
+## Deliberately deferred
+Do not spend launch energy on hiring systems, partner programs, broad international expansion, large-scale content machinery, or multiple mature SaaS products before first-client evidence.
 
-# P1 — Revenue engine
-
-## 6. Audit / sales system
-
-| Task | Status | Owner |
-|---|---|---|
-| Discovery call framework | DONE | ChatGPT |
-| Qualification score | DONE | ChatGPT |
-| Client-facing audit report template | DONE | ChatGPT |
-| Proposal/SOW | DONE | ChatGPT |
-| Objection/close playbook | DONE | ChatGPT |
-| Onboarding template | DONE | ChatGPT |
-| Delivery/UAT | DONE | ChatGPT |
-| Measurement/reporting | DONE | ChatGPT |
-| Financial control | DONE BASIC | ChatGPT |
-| SOP index | DONE | ChatGPT |
-
-## 7. Healthcare acquisition
-
-| Task | Status | Owner |
-|---|---|---|
-| ICP / targeting rules | DONE | ChatGPT |
-| First-100 process | DONE | ChatGPT |
-| Initial Mumbai seed accounts | DONE | ChatGPT |
-| Email/LinkedIn sequences | DONE | ChatGPT |
-| Prospect personalization rules | DONE | ChatGPT |
-| Pipeline stages/operating rhythm | DONE | ChatGPT |
-| Expand Tier-A researched list | NEXT SAFE TASK | ChatGPT |
-| First controlled outreach batch | READY AFTER FINAL TARGET/CONTACT QA | Abu sends/participates; ChatGPT prepares |
-| Reply triage + follow-ups | AFTER OUTREACH | ChatGPT + Abu |
-| Discovery calls | AFTER POSITIVE REPLIES | Abu, with ChatGPT prep |
-
-# P2 — Proof
-
-## 8. First pilot
-
-| Task | Status | Owner |
-|---|---|---|
-| Synthetic Healthcare proof | DONE | ChatGPT |
-| Synthetic EdTech proof | DONE | ChatGPT |
-| Production pilot baseline template | DONE | ChatGPT |
-| Select first real pilot | NOT YET POSSIBLE | Abu + ChatGPT |
-| Scope production access/data | WAITING ON CLIENT | ChatGPT + Abu/client |
-| Build/integrate pilot | WAITING ON CLIENT | ChatGPT where tools/access permit |
-| UAT/go-live | WAITING | Joint |
-| Measure outcome | WAITING | ChatGPT + client data |
-| Client permission for publication | WAITING | Abu |
-| Case study | WAITING | ChatGPT |
-
-# P3 — Deliberately deferred
-
-Do not spend launch energy on:
-- hiring systems;
-- partner/channel programs;
-- international entity/tax expansion;
-- broad multi-team agency ops;
-- five mature SaaS products;
-- elaborate content-authority machinery;
-- exit strategy.
-
-## Next handoff trigger
-
-ChatGPT should keep executing P0/P1 safe tasks until the next step requires an owner action.
-
-The first likely hard owner action is **authorizing a dedicated Shalcon Supabase project in the connected organization after seeing its cost**. Do not ask for unrelated decisions before that is the actual blocking dependency.
+## Next execution order
+1. Keep CI/release evidence coherent and staging protected.
+2. Finish safe domain/legal/payment preparation without purchases/KYC/legal acceptance.
+3. Wait for Abu's UDYAM update; do not alter UDYAM state meanwhile.
+4. Resolve owner/legal and Razorpay/bank/accounting gates.
+5. Connect correct Shalcon Gmail and obtain explicit send authorization.
+6. Buy/connect final domain only after explicit cost approval.
+7. Rotate integration secret immediately before final public launch.
+8. Run final deployed cross-browser/domain QA and deliberately enable public indexing.
+9. Convert outreach → audit → proposal → bounded pilot → permission-backed evidence.
