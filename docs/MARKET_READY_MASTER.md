@@ -16,7 +16,8 @@ Current evidence/status is governed by `docs/LAUNCH_GATE.md`. Fast recovery stat
 7. Do not create/reuse cross-product infrastructure merely to clear a checkbox.
 8. Do not recreate the existing Shalcon Vercel/Supabase stack because old historical text says it is missing.
 9. No external send, purchase, KYC action, legal approval or raw-secret operation is inferred from preparation.
-10. UDYAM work is explicitly paused until Abu provides his update.
+10. **MSME/UDYAM is owner-reported obtained on 31 Aug 2026.** Keep certificate/KYC details private; do not reopen registration work unless the owner reports a correction or a provider raises an issue.
+11. Owner-reported completion is not independent verification of certificate fields.
 
 ## 1. Market position
 The AI automation agency market is crowded with voice agents, WhatsApp automation, CRM routing, workflow orchestration, qualification, booking and dashboards. Tool names are not differentiation.
@@ -96,9 +97,9 @@ Dedicated Vercel project already exists:
 - deployment: `dpl_FcRYobZDc1NzBhfWMTWdYYmz1JiC`
 - state: READY / production
 - staging header: `X-Robots-Tag: noindex, nofollow, noarchive` verified live
-- Vercel Authentication: enabled for All Deployments during staging
+- Vercel Authentication: enabled during staging
 
-Do not create another Shalcon Vercel project. Do not use `main` as Shalcon production.
+Do not create another Shalcon Vercel project. Do not use `main` as Shalcon production. Documentation-only branch commits do not require redeployment merely to synchronize SHA labels.
 
 ## 5. Lead capture — DEPLOYED / VERIFIED
 Architecture:
@@ -139,12 +140,18 @@ Production contract verified:
 Lead persistence is not a blocker. Remaining hygiene gate: rotate the manually transferred Vercel→Supabase credential immediately before final public/paid launch after infrastructure freeze.
 
 ## 6. Data protection / legal baseline
-Never claim generic “100% DPDP compliant/secure.” Compliance depends on role, workflow, data, vendors and timing.
+Never claim generic “100% DPDP compliant/secure.” Compliance depends on role, workflow, data, vendors and the law actually in force at the relevant time.
+
+The India baseline was refreshed 31 Aug 2026 against MeitY/Gazette notifications dated 13 Nov 2025. DPDP commencement is staggered:
+- a one-year tranche is scheduled for **13 Nov 2026**;
+- many core private-sector Act duties and Rules are scheduled in the eighteen-month tranche for **13 May 2027**.
+
+Design toward the notified full framework now, but do not misrepresent future-scheduled duties as already operative.
 
 Prepared:
 - Privacy draft;
 - Website Terms draft;
-- India data-protection baseline;
+- current India data-protection baseline;
 - DPA template;
 - SOW template;
 - owner legal/risk review decision pack;
@@ -189,52 +196,50 @@ Never convert synthetic numbers into client-performance claims.
 
 ## 8. Sales machine — CURRENT STATE
 Prepared assets:
-- service overview;
-- Healthcare offer;
+- service/Healthcare offer;
 - EdTech secondary offer;
-- discovery/audit questions;
-- qualification scoring;
-- objection/closing playbook;
+- discovery/audit/qualification/objection/close assets;
 - client-safe Proposal/SOW with pre-send scrub gate;
-- client onboarding;
-- delivery/UAT;
-- measurement/pilot report;
+- client onboarding/delivery/UAT/measurement/pilot-report system;
 - financial/margin controls;
-- Healthcare outreach framework;
-- pipeline operating rhythm;
-- Mumbai research pool;
+- Healthcare outreach framework + pipeline rhythm;
+- live Google Sheets pipeline;
 - launch-critical SOP index.
 
-Live founder-led Google Sheets pipeline:
-- 8 Healthcare prospects;
-- 8 `Draft Ready`;
-- 0 sent;
-- 0 replied;
-- 0 discovery.
+Live founder-led pipeline:
+- **16 active Healthcare prospects**;
+- **15 `Draft Ready`**;
+- **1 `Research Ready`** — Mumbai Diagnostic Centre, deliberately unpromoted due ambiguous decision-maker/business-development evidence;
+- **0 sent**;
+- **0 replied**;
+- **0 discovery**.
 
-Gmail:
-- 8 personalized first-touch drafts exist;
-- all remain unsent;
-- current connected Gmail sender is not the approved Shalcon mailbox.
+Draft inventory:
+- 8 personalized Gmail drafts — unsent;
+- 7 verified decision/operations-level LinkedIn drafts — unsent.
 
-Do not send from the connected non-Shalcon account. Use/connect `shalconintelligence@gmail.com` or another explicitly approved Shalcon sender, and send only after explicit owner authorization.
+Connected Gmail currently resolves to `iafakhan9999@gmail.com`, not the approved Shalcon mailbox. **Do not send email from it.** Email outreach requires `shalconintelligence@gmail.com` or another explicitly approved Shalcon sender.
 
-No mass cold WhatsApp. Patient booking WhatsApp numbers are not default unsolicited first-touch channels.
+All external outreach, including LinkedIn, requires explicit owner authorization. No mass cold WhatsApp. Patient booking WhatsApp numbers are not default unsolicited first-touch channels.
 
 ## 9. Payment / business setup
-Prepared:
+Prepared and current:
+- owner-reported MSME/UDYAM business proof;
 - invoice template;
 - Razorpay Payment Link operating workflow;
-- ₹19,500 / ₹11,700 / ₹7,800 standard Healthcare implementation milestones;
-- payment reconciliation rules;
-- provider/KYC guidance.
+- minimal owner Razorpay activation checklist;
+- ₹19,500 / ₹11,700 / ₹7,800 Healthcare implementation milestones;
+- native Google Sheet **Shalcon Intelligence — Invoice & Payment Ledger** (`1LWV_P9z2bNehYfcz4ieIgncRhY2UvswjmpQaR-XX7lg`);
+- working next invoice seed `SI-2026-0001`, subject to accountant confirmation before first issuance;
+- payment/settlement reconciliation rules.
+
+The finance ledger is empty by design until a real invoice exists. Do not create fake invoice rows or store KYC/secrets there.
 
 Owner-controlled remaining payment work:
-- Razorpay KYC/business proof activation;
+- Razorpay KYC + Live activation;
 - settlement bank verification;
-- accountant/tax/invoice presentation while GST-unregistered.
-
-**UDYAM is paused by owner instruction. Do not continue it until Abu provides an update.**
+- accountant confirmation of non-GST invoice/tax presentation;
+- first real Payment Link/payment/settlement reconciliation after Live activation.
 
 ## 10. Domain / public release
 Latest connected recheck 31 Aug 2026:
@@ -242,7 +247,7 @@ Latest connected recheck 31 Aug 2026:
 - `shalcon.io` $30/year;
 - `shalcon.ai` $160/2 years.
 
-No purchase has been made through this workflow. Purchase requires explicit owner approval.
+No purchase has been made through this workflow. Purchase requires explicit owner approval and a fresh availability/price recheck.
 
 After ownership:
 1. attach only to dedicated Shalcon Vercel project;
@@ -256,17 +261,17 @@ After ownership:
 ## 11. Source-control hardening
 CI is active and green on current branch work.
 
-Current GitHub branch protection/ruleset is not enabled for `shalcon-market-ready-2026`. Adding protection is recommended hardening, not a reason to block founder-led controlled outreach. Connected tooling currently provides read access but no safe protection-write action, so this remains an owner/GitHub-UI action unless tooling changes.
+Branch protection/ruleset for `shalcon-market-ready-2026` is **unverified** because the connected GitHub integration returns `403 Resource not accessible by integration` on the protection endpoint. Do not claim protection is enabled. This remains recommended hardening, not a blocker for controlled founder-led outreach while branch discipline is maintained.
 
 ## 12. Owner split — target 90/10
 ### ChatGPT/execution
-Research, audits, code, QA, truthful copy, conversion design, estimator, analytics architecture, lead-capture maintenance, security controls, docs, demos, offer sheets, sales collateral, research process, deployment/release preparation and tracking.
+Research, audits, code, QA, truthful copy, conversion design, estimator, analytics architecture, lead-capture maintenance, security controls, docs, demos, offer sheets, sales collateral, research process, finance-ledger structure, deployment/release preparation and tracking.
 
 ### Owner only
 Identity/legal authority/money/account ownership/external representation tasks:
 - legal business approval/signing;
 - bank/KYC/accounting/payment-provider actions;
-- UDYAM update when owner resumes it;
+- private MSME certificate use where a legitimate provider requests it;
 - production domain purchase/control;
 - correct business-mailbox connection/ownership;
 - authorization of external outreach;
@@ -295,17 +300,20 @@ Identity/legal authority/money/account ownership/external representation tasks:
 ### Sales / commercial
 - [x] owner-approved Healthcare commercial baseline;
 - [x] sales/delivery/legal/payment assets prepared;
-- [x] 8-prospect live pipeline;
-- [x] 8 first-touch drafts prepared;
-- [ ] correct Shalcon Gmail sender connected/used;
+- [x] 16-prospect live Healthcare pipeline;
+- [x] 15 prospects Draft Ready / 1 Research Ready;
+- [x] 15 first-touch drafts prepared across Gmail + LinkedIn;
+- [ ] correct Shalcon Gmail sender connected/used for email;
 - [ ] explicit first-send authorization;
 - [ ] first qualified audit/proposal;
 - [ ] first paid pilot.
 
 ### Business / release owner gates
-- [ ] UDYAM update — paused;
-- [ ] Razorpay/bank/accounting readiness;
+- [x] MSME/UDYAM — owner-reported obtained;
+- [ ] Razorpay Live / bank / accounting readiness;
 - [ ] owner/legal review;
+- [ ] correct email sender connection;
+- [ ] explicit outreach authorization;
 - [ ] final domain purchase/control;
 - [ ] final production credential rotation;
 - [ ] deliberate public-indexing release.
@@ -336,4 +344,4 @@ Shalcon is ready for a controlled prospect conversation when a prospect can:
 7. see credible privacy/security boundaries;
 8. receive a professional audit/proposal/onboarding flow.
 
-Those technical/commercial preparation conditions are substantially satisfied. Remaining work is now mostly owner-controlled release/payment/legal/sender gates plus real market evidence—not endless website polishing.
+Those technical/commercial preparation conditions are substantially satisfied. Remaining work is now mostly owner-controlled payment/legal/sender/send/domain gates plus real market evidence—not endless website polishing.
