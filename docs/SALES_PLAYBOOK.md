@@ -1,58 +1,60 @@
 # Shalcon Intelligence — Sales Playbook
 
-Status: Working market-ready playbook. Commercial ranges remain provisional until owner approval.
+Status date: 31 Aug 2026  
+Status: working market-ready playbook. Standard Healthcare commercial baseline is owner-approved; other vertical/custom pricing remains scoped after audit.
 
 ## 1. Primary offer
-
 ### AI Front Desk + Lead Operations System
-A connected workflow that can capture inbound inquiries, collect required fields, qualify intent, route or book, run follow-ups, write status back to a CRM/database, and escalate exceptions to a human.
+A connected workflow that can capture inbound inquiries, collect approved fields, qualify intent, route/book, run approved follow-up, write status back to a CRM/database and escalate exceptions to humans.
 
-Lead vertical: Healthcare / clinics.
-Secondary vertical: EdTech / coaching / admissions.
+Lead vertical: Healthcare / clinics.  
+Secondary vertical: EdTech / coaching / admissions.  
 Other supported workflows: Insurance, E-commerce, HR/Recruitment.
 
-Shalcon sells the business operating path, not isolated tools.
+Shalcon sells the operating path, not isolated tools.
 
 ## 2. Ideal Healthcare client
+Prioritize clinics, diagnostic centres, specialty practices and multi-location operators where discovery confirms meaningful repeated intake/routing/follow-up work.
 
-Prioritize clinics, diagnostic centers, telemedicine operators and multi-doctor practices where:
-- inbound inquiries arrive through WhatsApp, calls, website forms or social channels;
-- staff manually answer repeated questions;
-- booking/follow-up quality depends heavily on receptionist availability;
-- leads are copied between WhatsApp, spreadsheets, calendars or CRMs;
-- management cannot clearly see inquiry source, response status and outcome;
-- there is enough monthly inquiry volume for workflow automation to matter.
+Useful public signals for research:
+- multiple booking/contact channels;
+- multiple branches/services;
+- visible appointment/home-collection paths;
+- structured online booking plus staff handoff.
 
-Disqualify or defer when:
-- they want automated diagnosis or medical advice;
-- they refuse human escalation for sensitive cases;
-- they cannot identify a repeatable workflow;
-- they expect guaranteed revenue outcomes;
-- they require integrations for which they cannot provide lawful access/authorization.
+These are signals, not proof of internal pain.
 
-## 3. Free automation audit
+Disqualify/defer when:
+- autonomous diagnosis/medical advice is expected;
+- human escalation for sensitive cases is refused;
+- no repeatable workflow exists;
+- guaranteed revenue outcomes are expected;
+- required integrations cannot be lawfully/technically authorized;
+- economics do not justify automation.
 
+## 3. Workflow audit
 Goal: diagnose one valuable workflow and quantify operational friction without promising revenue recovery.
 
-### Discovery questions
+Discovery questions:
 1. Where do new inquiries arrive today?
 2. Roughly how many arrive on a normal day/week?
-3. What does the first staff member need to ask before they can act?
-4. What requests are repetitive?
-5. What requests must always go to a human?
-6. How are appointments currently booked?
-7. How are no-response prospects followed up?
-8. Where is the final status stored?
-9. Which tools are already in use?
-10. What breaks most often?
+3. What must staff ask before acting?
+4. What requests repeat?
+5. What must always go to a human?
+6. How are appointments/requests booked or routed?
+7. How are eligible no-response prospects followed up?
+8. Where is final status stored?
+9. Which tools are already used?
+10. What breaks or creates duplicate work most often?
 11. What response-time target matters operationally?
-12. What information is sensitive and should never enter a general automation path?
-13. Who owns approval for messaging, CRM and calendar access?
-14. What would make a 30-day pilot clearly successful?
+12. What information is sensitive and should stay outside general automation?
+13. Who approves messaging, CRM/calendar access and data handling?
+14. What measurable result would make a bounded pilot successful?
+
+Do not populate answers from public assumptions.
 
 ## 4. Qualification score
-
-Score each 0–2.
+Score each 0–2:
 - Repetition: none / moderate / high
 - Volume: low / useful / high
 - Business impact: unclear / meaningful / critical
@@ -61,144 +63,155 @@ Score each 0–2.
 - Decision access: none / indirect / decision maker
 - Timeline: someday / quarter / now
 
-10–14 = priority opportunity.
-7–9 = nurture or narrower pilot.
+10–14 = priority opportunity.  
+7–9 = nurture or narrower pilot.  
 0–6 = do not force the sale.
 
-## 5. Recommended commercial structure
+Score is an internal aid, not a prospect-facing certainty.
 
-Do not promise recovery percentages or breakeven dates.
+## 5. Commercial structure
+Do not promise recovery percentages, breakeven dates or business outcomes.
 
-### Starter / Pilot
-Indicative setup: ₹25,000–₹40,000
-Indicative support/optimization: ₹8,000–₹12,000/month
-Use when one workflow can prove value quickly.
+### Standard bounded Healthcare Pilot — OWNER APPROVED
+- **₹39,000 implementation/setup**
+- **₹9,000/month managed optimization/support** after included stabilization
+- implementation collection: **50% / 30% / 20%**
+- third-party/API/message/call/vendor usage: client-paid or separately itemized
+- standard included stabilization: 14 days after acceptance unless SOW changes it
 
-### Growth
-Indicative setup: ₹75,000–₹1,20,000
-Indicative support/optimization: ₹25,000–₹40,000/month
-Use when multiple channels, CRM integration and several automation steps are required.
+Use only when scope materially matches the approved bounded Healthcare Pilot.
 
-### Enterprise
-Indicative setup: ₹2,00,000–₹5,00,000
-Indicative support/optimization: ₹75,000–₹1,50,000/month
-Use when multiple departments, advanced integrations, governance, reporting or higher operational complexity exist.
+### Expanded Healthcare / other verticals
+Scope and quote after audit. Do not force old generic Starter/Growth/Enterprise tiers into a proposal. Additional branches, channels, voice, multiple CRMs, migrations, governance or materially higher support requirements trigger a custom scope/quote.
 
-Final scope, timeline, price, third-party costs and support obligations belong in the signed SOW.
+Internal commercial floors/margin rules live in internal commercial controls. Never expose them in a client-facing proposal.
+
+Final scope, timeline, price, third-party costs and support obligations belong in signed/accepted SOW.
 
 ## 6. Proposal structure
-
-1. Current workflow
-2. Observed bottlenecks
+1. Client-confirmed current workflow
+2. Confirmed bottlenecks/handoffs
 3. Proposed future workflow
 4. Included channels/integrations
 5. Human escalation rules
-6. Data handled / excluded
+6. Data handled/excluded
 7. Deliverables
-8. Acceptance criteria
+8. Acceptance/UAT criteria
 9. Client responsibilities
-10. Implementation timeline
+10. Implementation plan/dependencies
 11. Commercial terms
 12. Third-party costs
-13. Support and change-request policy
+13. Support/change-control policy
 14. Security/data-processing assumptions
 15. Measurement plan
 16. Next step
 
+Use `PROPOSAL_SOW_TEMPLATE.md` and pass its pre-send scrub gate. No bracketed placeholders, example assumptions or internal commercial notes may remain in the client export.
+
 ## 7. Acceptance criteria examples
-
-Use testable criteria, not vague promises.
-
-Examples:
-- test inquiry is received by workflow;
-- required intake fields are collected;
-- approved intent is routed to correct destination;
-- booking request creates expected calendar/CRM record;
-- no-response test triggers configured follow-up;
+Use testable delivery criteria, not vague promises:
+- test inquiry reaches workflow;
+- required intake fields collected;
+- approved intent routes correctly;
+- booking/request creates expected record;
+- configured follow-up triggers under agreed conditions;
 - escalation condition creates human handoff;
-- failed integration produces visible error/alert;
-- reporting event is logged;
-- client successfully completes agreed UAT scenarios.
+- integration failure creates safe fallback/visible error;
+- reporting/write-back event logged;
+- client completes agreed UAT scenarios.
+
+Acceptance is about contracted delivery, not guaranteed revenue or customer behaviour.
 
 ## 8. Objection handling
-
 ### “We already have WhatsApp.”
-The offer is not WhatsApp itself. The value is the operating path behind it: intake, qualification, booking, follow-up, CRM updates and escalation.
+The offer is not WhatsApp itself. It is the operating path behind it: intake, routing/booking, approved follow-up, system updates and escalation.
 
 ### “AI makes mistakes.”
-Correct. The workflow should define confidence limits, approved responses and human escalation rather than pretending every request should be automated.
+Correct. Define approved content, deterministic rules where appropriate, confidence limits and human escalation rather than pretending every request should be automated.
 
 ### “Can you guarantee revenue?”
-No. Shalcon can guarantee agreed deliverables and acceptance criteria in the contract, not customer behavior or revenue. We measure agreed operational and conversion indicators after launch.
+No. Shalcon commits to agreed deliverables/acceptance criteria. Business outcomes are measured after launch, not guaranteed.
 
 ### “Why not just use ChatGPT?”
-A chat model is one component. A production workflow also needs data rules, integrations, permissions, routing, logging, fallbacks, monitoring and ownership.
+A model is one component. Production operation also needs data rules, integrations, permissions, routing, logging, fallbacks, monitoring and ownership.
 
 ### “This looks expensive.”
-Compare the project against the cost and operational burden of the specific manual workflow. If the economics do not make sense after the audit, do not automate it yet.
+Compare scoped cost against the verified operational workflow. If economics do not justify it after audit, do not automate yet.
 
-## 9. CRM stages
+## 9. CRM / pipeline
+Current source of truth: Google Sheet **Shalcon Intelligence — Sales Pipeline**.
 
+Current 31 Aug state:
+- 8 Healthcare prospects
+- 8 `Draft Ready`
+- 0 sent
+- 0 replied
+- 0 discovery
+
+Conceptual stages:
 1. Target identified
-2. Contacted
-3. Replied
-4. Qualified
-5. Audit booked
-6. Audit completed
-7. Proposal sent
-8. Negotiation
-9. Won — onboarding
-10. Lost — reason captured
-11. Nurture
+2. Researched
+3. Draft Ready
+4. Contacted
+5. Replied
+6. Qualified
+7. Audit booked
+8. Audit completed
+9. Proposal sent
+10. Negotiation
+11. Won / onboarding
+12. Lost — reason captured
+13. Nurture
+14. Do not contact
 
-Required fields:
-- account;
-- contact name/role;
-- source;
-- vertical;
-- workflow pain;
-- current tools;
-- estimated volume;
-- next action date;
-- last contact date;
-- stage;
-- loss reason if closed-lost.
+Actual Sheet status changes only after real events. A prepared draft is not `Contacted`.
 
 ## 10. Outbound rules
+Default: targeted business email and LinkedIn/manual outreach.
 
-Default channels: targeted email and LinkedIn. WhatsApp outbound only where lawful permission/opt-in exists or applicable policy permits the specific communication.
+Before any external send:
+- reverify public observation/contact route;
+- check do-not-contact/opt-out state;
+- use current Google Sheet as send manifest;
+- use an owner-approved Shalcon business sender;
+- obtain explicit owner authorization for the controlled batch.
+
+Current connected Gmail is not the approved Shalcon mailbox. Do not send from it.
+
+Do not use patient-booking WhatsApp numbers for unsolicited first touch. WhatsApp follow-up/outreach requires an appropriate permission/policy basis for the specific communication.
 
 Message structure:
-- one observation about their workflow/business;
-- one likely operational friction;
-- one concrete automation idea;
-- low-friction CTA: “Worth mapping for 15 minutes?”
+- one public observation;
+- one possible friction framed as a hypothesis;
+- one concrete workflow idea;
+- low-friction CTA.
 
-Do not lead with AI buzzwords, tool lists or fake ROI numbers.
+No buzzword dump, fake personalization, unsupported ROI or artificial urgency.
 
 ## 11. Follow-up cadence
+Only after a real first touch and absent suppression:
+- Day 3: useful workflow observation;
+- Day 7: concise check-in;
+- Day 14: relevant synthetic demo/architecture asset;
+- Day 30: close loop.
 
-Day 0: personalized outreach
-Day 3: useful follow-up with one workflow idea
-Day 7: concise check-in
-Day 14: proof/demo asset relevant to their vertical
-Day 30: close loop / permission to reconnect later
-
-Stop when asked. Record opt-outs.
+Stop on opt-out/rejection. Record it.
 
 ## 12. Sales KPIs
-
-Track:
+Track raw counts first:
 - researched accounts;
-- contacts reached;
-- delivery/bounce rate;
-- positive replies;
-- audits booked;
-- audits attended;
+- draft-ready accounts;
+- first contacts sent;
+- delivered/bounced where known;
+- replies / positive replies;
+- audits booked/attended;
 - qualified opportunities;
-- proposals sent;
-- wins;
-- average sales cycle;
-- reason lost.
+- proposals;
+- wins/losses;
+- loss reasons;
+- opt-outs.
 
-Do not optimize vanity outreach volume before reply quality and qualification quality are understood.
+Do not market these as conversion proof before meaningful real volume exists.
+
+## 13. First-client proof rule
+Before the first real client result, sell capability + process + synthetic proof honestly. After a pilot, record baseline, timeframe/sample, measured outcome and client permission before publishing any identifiable case-study/result claim.
