@@ -49,7 +49,7 @@ Lead capture itself is **PASS / VERIFIED**. Do not recreate the project because 
 ## D. Privacy / legal baseline
 - [x] Privacy draft exists.
 - [x] Website Terms draft exists.
-- [x] Draft legal pages remain intentionally noindex until approved.
+- [x] Draft legal pages remain intentionally noindex during staging.
 - [x] Public form warns against sensitive client-data submission.
 - [x] Demo uses synthetic data.
 - [x] India data-protection timing/baseline research exists.
@@ -58,8 +58,11 @@ Lead capture itself is **PASS / VERIFIED**. Do not recreate the project because 
 - [x] Owner identity/billing/signatory details inserted into contracting materials.
 - [x] Practical lead-retention recommendation prepared.
 - [x] Owner legal/risk review consolidated into one explicit decision pack.
-- [ ] **BLOCKER — owner/legal review of production Privacy/Terms and core SOW/DPA risk positions complete.**
-- [ ] **BLOCKER FOR REAL CLIENT PERSONAL DATA — engagement-specific role/data/security/retention review complete where applicable.**
+- [x] **OWNER BUSINESS DECISION GATE — PASS 31 Aug 2026.** Abu approved the recommended Privacy/Terms/SOW/DPA/refund/dispute/data-processing/liability business defaults. This is owner approval, not fabricated professional legal review.
+- [ ] **BLOCKER FOR REAL CLIENT MATERIAL PERSONAL/HEALTH DATA — engagement-specific role/data/security/retention/DPA review complete where applicable.**
+- [ ] Professional counsel review remains recommended before material first-client contract reliance, unusual liability/SLA/refund terms, material sensitive-data processing or representing documents as counsel-approved.
+
+The owner should not be asked to re-approve the same defaults unless the terms materially change.
 
 ## E. Technical QA / deployment
 - [x] Strict GitHub Actions CI is green on the reconciled market-ready branch.
@@ -95,10 +98,13 @@ Documentation/runbook commits after the runtime commit do not require redeployme
 - [x] Healthcare outbound framework and research process prepared.
 - [x] Live Google Sheets founder-led sales pipeline exists.
 - [x] **15 Healthcare prospects are `Draft Ready`; 1 remains deliberately `Research Ready`.**
-- [x] Eight personalized first-touch Gmail drafts exist, remain unsent, and are backed up for migration before changing Gmail account connection.
+- [x] Eight personalized first-touch Gmail drafts exist, remain unsent, and are backed up for migration.
 - [x] Seven additional verified decision/operations-level LinkedIn drafts exist in Batch 02 and remain unsent.
 - [x] Exact five-prospect Controlled Batch 01 is owner-authorized.
+- [x] All five Batch 01 public observations revalidated after approval.
 - [x] Four public-business-inbox email fallbacks for Batch 01 are prepared; Neev remains LinkedIn-only because no clean business email was verified.
+- [x] Four Batch 01 fallback inboxes were freshly reverified on official clinic websites immediately before attempted execution on 31 Aug 2026.
+- [x] Five prospect-specific synthetic workflow maps prepared for positive replies/discovery support.
 - [x] Reply → discovery handoff exists for positive, neutral, pricing, wrong-person, rejection and opt-out responses.
 - [x] Draft copy uses public-observation grounding, synthetic-demo framing and human clinical escalation.
 - [x] Owner-approved Healthcare Pilot default: ₹39,000 setup + ₹9,000/month, 50/30/20 milestones, client-paid/separately-itemized vendor usage.
@@ -143,27 +149,34 @@ Authorized prospects only:
 
 Any prospect outside this exact list requires separate authorization.
 
-### Channel execution
-- [ ] **Gmail channel blocker — approved sender is `shalconintelligence@gmail.com`, but current ChatGPT Gmail connector is authenticated to another account. Do not use that connector for prospect outreach.**
-- [ ] **LinkedIn channel blocker — Batch 01 is LinkedIn-first, but current available tools do not expose an authenticated LinkedIn messaging session.**
+### Gmail execution evidence
+- [x] Owner confirms access/control of `shalconintelligence@gmail.com`.
+- [x] User-provided ChatGPT Gmail settings screenshot on 31 Aug visibly shows `shalconintelligence@gmail.com` as the connected Gmail account.
+- [x] Approved sender remains `shalconintelligence@gmail.com`.
+- [ ] **TOOL EXECUTION BLOCKER — connector registry exposes Gmail profile/send actions, but both `get_profile` and `send_email` currently fail with `Resource not found` at execution time.** This is a connector/tool-resolution failure, not evidence that the owner lacks access or that the Gmail UI is connected to the wrong account.
 
-Four Batch 01 email fallback drafts are ready for Tru Smile, Sirona Diagnostics, Shroff Eye Hospital and Vinit Eye Clinic once Gmail is authenticated to `shalconintelligence@gmail.com`. Neev remains LinkedIn-only; do not use patient-booking WhatsApp as a fallback.
+No prospect email was sent by the failed calls. Do not mark any row `Sent` until a successful real outbound event exists. Do not ask the owner to reconnect/prove the mailbox again unless the UI actually changes.
 
-Current status: **AUTHORIZED / CHANNEL-BLOCKED / UNSENT.** Fifteen prospects remain `Draft Ready`; one remains `Research Ready`; sent/replied/discovery counts remain zero.
+### LinkedIn execution
+- [ ] **LinkedIn tool blocker — current available tools do not expose an authenticated LinkedIn messaging session, and plugin discovery found no usable LinkedIn messaging plugin.**
+
+Four Batch 01 email fallback drafts remain executable the moment the Gmail write action resolves. Neev remains LinkedIn-only; do not use patient-booking WhatsApp as a fallback.
+
+Current status: **AUTHORIZED / REVALIDATED / TOOL-BLOCKED / UNSENT.** Fifteen prospects remain `Draft Ready`; one remains `Research Ready`; sent/replied/discovery counts remain zero.
 
 Authorization is not market evidence. Update a row to `Sent` only after a real outbound event.
 
 ## I. Full public / paid-traffic launch gate
 Still required:
-- owner/legal review of public legal pages and applicable client terms;
 - Razorpay Live activation, bank settlement verification and accounting presentation;
 - owner purchase/control of final production domain;
 - final canonical/social/robots/sitemap configuration;
 - production webhook-secret rotation after infrastructure freeze;
 - final deployed domain/API/cross-browser QA;
-- deliberate removal of staging Authentication/noindex protections.
+- deliberate removal of staging Authentication/noindex protections;
+- engagement-specific legal/data review before material real-client sensitive-data processing where applicable.
 
-MSME/UDYAM is no longer on this blocker list at owner-report level.
+Owner business legal defaults and MSME/UDYAM are no longer on the generic blocker list.
 
 ## J. Domain / SEO
 - [x] Exact-brand options researched through connected Vercel account.
@@ -184,5 +197,6 @@ MSME/UDYAM is no longer on this blocker list at owner-report level.
 - Checked means evidence exists now; it does not mean Shalcon has mature real-client proof.
 - Historical research issues are not the live send manifest; the current Google Sheet + approved batch docs control send state.
 - Owner-reported MSME completion is not independent verification of certificate fields.
+- Owner business approval of legal defaults is not professional legal advice or counsel sign-off.
 - Controlled Batch 01 is authorized but remains unsent until an approved authenticated channel produces a real outbound event.
-- No purchase, KYC action, legal approval or secret rotation may be inferred from preparation alone.
+- No purchase, KYC action, professional legal approval or secret rotation may be inferred from preparation alone.
