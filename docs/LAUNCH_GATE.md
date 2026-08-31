@@ -1,12 +1,12 @@
 # Shalcon Intelligence — Production Launch Gate
 
-Status date: 30 Aug 2026
+Status date: 31 Aug 2026
 
 A checked box means evidence exists now. Production/public paid acquisition is GO only when every explicit **BLOCKER** is PASS. Controlled founder-led outreach has a narrower gate in Section H.
 
 ## A. Source control
 - [x] Shalcon work isolated from portfolio-contaminated `main`.
-- [x] Dedicated market-ready branch exists.
+- [x] Dedicated market-ready branch exists: `shalcon-market-ready-2026`.
 - [x] Old duplicate prototype files removed from active branch.
 - [x] Obsolete Claude-era build brief removed from active branch.
 - [x] Local agent/deployment/secret files ignored.
@@ -41,11 +41,11 @@ A checked box means evidence exists now. Production/public paid acquisition is G
 - [x] Dedicated Shalcon Supabase project created in `ap-south-1` (`qfsnmjeacwdkbukwxbwz`).
 - [x] Lead table + Edge Function deployed; raw shared secret is not committed to Git/Supabase source.
 - [x] Direct destination contract tested: wrong secret 401, initial write 201, exact replay 200 with `replay:true`, conflicting replay 409.
-- [x] Dedicated Vercel project configured with the authenticated Supabase webhook destination.
-- [x] Real deployed Vercel → Supabase persistence test completed: `/api/lead` returned 201 and the row was stored with consent, attribution and server-computed estimator values.
-- [x] Forced real destination failure completed: Supabase verifier was intentionally invalidated, `/api/lead` returned 502 `lead_persistence_failed`, and no additional row was stored.
+- [x] Dedicated Vercel project configured with authenticated Supabase webhook destination.
+- [x] Real deployed Vercel → Supabase persistence test completed: `/api/lead` returned 201 and row stored with consent, attribution and server-computed estimator values.
+- [x] Forced real destination failure completed: Supabase verifier intentionally invalidated, `/api/lead` returned 502 `lead_persistence_failed`, and no extra row was stored.
 - [x] Production verifier restored and re-tested: `/api/lead` returned 201 again.
-- [x] All synthetic integration QA rows deleted after testing; lead table returned to zero rows.
+- [x] All synthetic integration QA rows deleted; lead table currently contains zero rows.
 
 ## D. Privacy / legal baseline
 - [x] Privacy draft exists.
@@ -59,7 +59,8 @@ A checked box means evidence exists now. Production/public paid acquisition is G
 - [x] Marketing rule prohibits broad unsupported “fully compliant” claims.
 - [x] Owner-supplied legal/business identity inserted into website legal drafts and client contracting templates: Abu Hurera Khan, sole proprietor trading as Shalcon Intelligence.
 - [x] Billing/notices email, proprietor GST status and authorized signatory details recorded in contracting templates.
-- [ ] **BLOCKER — owner/legal review of production terms/privacy complete.**
+- [x] Practical lead-retention recommendation prepared in `docs/LEAD_RETENTION_RECOMMENDATION.md`.
+- [ ] **BLOCKER — owner/legal review of production Privacy/Terms and risk language complete.**
 - [ ] **BLOCKER FOR REAL CLIENT PERSONAL DATA — engagement-specific role/data/security/retention review completed where applicable.**
 
 ## E. Technical QA
@@ -78,15 +79,15 @@ A checked box means evidence exists now. Production/public paid acquisition is G
 - [x] Mobile navigation Escape/focus-return semantics implemented.
 - [x] Performance architecture reviewed; WebGL is lazy and skipped for constrained/mobile/save-data/reduced-motion conditions.
 - [x] No critical console/runtime errors observed in tested compiled-artifact browser pass.
-- [x] Supabase security advisor reviewed after schema creation; only intentional INFO for RLS with no policies.
+- [x] Supabase security advisor reviewed; only intentional INFO for server-only RLS-with-no-policy model.
 - [x] Supabase performance advisor reviewed; unused-index INFO expected on new zero-row table.
-- [x] Dedicated Shalcon Vercel production deployment exists and is verified as branch `shalcon-market-ready-2026`, commit `9a32577ec4b339b5b71482ae41cc2726f00bab80`.
-- [x] Vercel production build completed successfully with Vite 8.2.2.
+- [x] Correct Shalcon Vercel production deployment exists from `shalcon-market-ready-2026`.
 - [x] Live homepage, privacy, terms and `/api/lead` method behavior verified through Vercel.
-- [x] Live `/api/lead` success and forced-failure behavior verified against the real Supabase destination.
-- [x] Runtime 502/401 observed during QA is explained by the intentional destination-failure test; production destination was restored and re-tested successfully.
-- [x] Latest robots-header source commit passes the full GitHub Actions gate: secret scan, Vercel config, dependency audit, truth guard, lead tests, production build and compiled-artifact checks.
-- [ ] Deployed-site cross-browser visual smoke test (Chromium + at least one Firefox/WebKit-class browser where available).
+- [x] Live `/api/lead` success and forced-failure behavior verified against real Supabase destination.
+- [x] Runtime 502/401 during QA explained by intentional destination-failure testing; destination restored and re-tested successfully.
+- [x] Latest GitHub branch head `5a91c066304018d7e8638930183404b27a93540a` passed GitHub Actions CI.
+- [x] Global staging robots response header successfully deployed. Current production deployment `dpl_FcRYobZDc1NzBhfWMTWdYYmz1JiC`, commit `8f3ee67bb3889e7c05dfd35b27f3d9b361a51166`, is READY and serves `X-Robots-Tag: noindex, nofollow, noarchive` on `https://shalcon-intelligence.vercel.app`.
+- [ ] **BLOCKER BEFORE FINAL PUBLIC RELEASE — deployed cross-browser visual smoke test (Chromium + Firefox/WebKit-class where available) after final domain/release changes.**
 
 ## F. Sales readiness
 - [x] Sales playbook.
@@ -103,12 +104,14 @@ A checked box means evidence exists now. Production/public paid acquisition is G
 - [x] Mumbai first-100-account research process.
 - [x] Initial researched healthcare seed list.
 - [x] Personalized Healthcare outreach Batch 01 prepared.
-- [x] Two Tier-A first-touch emails with verified professional addresses saved as Gmail drafts; not sent.
+- [x] Live Google Sheets sales pipeline exists with controlled stages/priorities and eight verified `Draft Ready` Healthcare prospects.
+- [x] Eight verified Healthcare first-touch Gmail drafts exist and remain unsent.
 - [x] Founder-led pipeline operating rhythm.
 - [x] Basic financial/margin control model.
 - [x] Launch-critical SOP index.
 - [x] Owner-approved Healthcare Pilot commercial default: ₹39,000 setup + ₹9,000/month, client-paid/separately-itemized vendor usage, 50/30/20 milestones.
-- [ ] **BLOCKER FOR PAID WORK — payment/KYC/bank/accounting collection path owner-ready.**
+- [x] Invoice template and payment-collection setup/runbook prepared.
+- [ ] **BLOCKER FOR PAID WORK — UDYAM/Razorpay KYC/bank/accounting collection path owner-ready.**
 
 ## G. Proof readiness
 - [x] Healthcare flagship workflow explained on website.
@@ -128,27 +131,31 @@ Controlled, low-volume, targeted outreach may start when:
 3. no unsupported marketing claim remains;
 4. outbound copy references only public observations;
 5. prospect opt-outs are respected;
-6. the website does not pretend failed lead persistence succeeded.
+6. website/API does not pretend failed lead persistence succeeded.
 
-Current status: **TECHNICALLY READY FOR CONTROLLED, LOW-VOLUME FOUNDER-LED HEALTHCARE OUTREACH.** The deployed estimator persistence path has been proven end-to-end and under forced failure. Draft emails remain unsent pending the owner's explicit send instruction.
+Current status: **TECHNICALLY READY FOR CONTROLLED, LOW-VOLUME FOUNDER-LED HEALTHCARE OUTREACH.** Eight drafts are prepared but remain unsent. Sending still requires the owner's explicit authorization.
 
 ## I. Full public / paid-traffic launch gate
 Full public/paid acquisition still requires:
-- final owner/legal review of privacy/terms and applicable client legal templates;
-- payment/KYC/bank/accounting collection readiness;
-- final production domain/metadata;
+- final owner/legal review of Privacy/Terms and applicable client legal templates;
+- UDYAM/Razorpay KYC/bank/accounting collection readiness;
+- owner purchase/control of final production domain and final canonical/social/robots/sitemap configuration;
 - production webhook-secret rotation after final infrastructure freeze;
-- staging robots-header deployment and verification before unprotecting/indexing the site;
-- final deployed release QA after those changes.
+- final deployed release QA after domain/secret/public-indexing changes.
 
 ## J. Domain / SEO
-- [x] Exact-brand domain options researched through connected registrar/deployment account.
-- [x] `shalconintelligence.com` recommended if still available when purchased.
-- [x] Pre-launch global robots response-header patch committed in `vercel.json`; latest source value is `X-Robots-Tag: noindex, nofollow, noarchive` at commit `1caa3b2b362966366f3eeab76b63d665fbcf43b6`.
-- [x] Vercel Authentication enabled for All Deployments as an interim staging-protection control.
-- [ ] **BLOCKER BEFORE UNPROTECTED STAGING/PUBLIC RELEASE — robots-header patch must successfully deploy. Vercel Hobby build-rate limiting is currently rejecting new deployments; verified live build `9a32577` still contains homepage `index,follow`.**
-- [ ] **BLOCKER FOR FINAL DOMAIN RELEASE — owner controls/approves final domain.**
-- [ ] Canonical URL, sitemap and absolute social metadata finalized after domain ownership/connection.
+- [x] Exact-brand domain options researched through connected Vercel account.
+- [x] Rechecked 31 Aug 2026: `shalconintelligence.com` available at $11.25/year; `shalcon.io` $30/year; `shalcon.ai` $160/2 years.
+- [x] `shalconintelligence.com` recommended.
+- [x] Global staging response header `X-Robots-Tag: noindex, nofollow, noarchive` is live on current production alias.
+- [x] Vercel Authentication remains enabled for All Deployments as staging protection.
+- [x] Domain + SEO release runbook exists at `docs/DOMAIN_RELEASE_RUNBOOK.md`.
+- [ ] **BLOCKER FOR FINAL DOMAIN RELEASE — owner purchases/controls the final domain.**
+- [ ] Canonical URL, sitemap, absolute OG/social metadata and final indexability change completed after domain ownership and legal/payment release approval.
 
-## K. Evidence discipline
-A checked box means an asset/test exists now. It does not mean sales/delivery/compliance is mature. Operational claims become proven only through real prospect/client execution and permission-backed evidence.
+## K. Credential rotation
+- [x] Rotation runbook exists at `docs/WEBHOOK_SECRET_ROTATION_RUNBOOK.md`.
+- [ ] **BLOCKER BEFORE FINAL PUBLIC/PAID LAUNCH — rotate the manually transferred Vercel → Supabase webhook credential, prove new secret works, prove old secret is rejected, clean synthetic QA row, and record evidence without exposing the raw secret.**
+
+## L. Evidence discipline
+A checked box means an asset/test exists now. It does not mean sales/delivery/compliance is mature. Operational/client-result claims become proven only through real prospect/client execution and permission-backed evidence.
