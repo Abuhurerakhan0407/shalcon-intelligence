@@ -1,89 +1,103 @@
 # Shalcon Intelligence — Lead Magnet Release
 
+Status date: 31 Aug 2026
+
 Primary inbound asset: **Opportunity-at-Risk Estimator + Free Automation Audit**.
 
-The estimator is not a revenue-loss calculator and must not be marketed as proof that a visitor is losing or will recover a specific amount.
+The estimator is a planning model, not proof that a visitor is losing or will recover a specific amount.
 
 ## 1. Visitor promise
 A visitor can:
 1. choose an industry starting preset;
 2. replace assumptions with their own inquiry/conversion/value inputs;
 3. see the mathematical opportunity-at-risk scenario;
-4. understand the formula and limitations;
+4. understand formula/limitations;
 5. request a free workflow audit;
-6. use WhatsApp or booking as a fallback/direct path.
+6. use booking/WhatsApp direct paths where appropriate.
 
 ## 2. Required trust language
-The public experience must state:
+Public experience must state:
 - presets are starting assumptions, not benchmarks;
 - output is a planning estimate;
-- output is not guaranteed loss or recovery;
-- final implementation scope/pricing depends on audit;
-- contact information is stored only after explicit consent;
-- sensitive client/patient/candidate/policy data should not be submitted through the public form.
+- output is not guaranteed loss/recovery;
+- final implementation scope/pricing depends on audit/SOW;
+- contact information is stored only after explicit contact consent;
+- sensitive patient/client/candidate/claim/password/card information should not be submitted through the public form.
 
-## 3. Capture contract
-The lead endpoint must store only after the persistence destination acknowledges success.
+## 3. Capture contract — VERIFIED
+The lead endpoint stores only after the persistence destination acknowledges durable success.
 
-Required lead fields:
-- timestamp;
-- source;
-- name;
-- normalized WhatsApp number;
+Server/destination contract includes:
+- timestamp/source;
+- name + normalized WhatsApp;
 - company/business;
-- selected industry;
-- selected indicative package;
-- currency;
-- estimator assumptions;
+- selected industry/service/package context;
+- currency + estimator assumptions;
 - server-recomputed estimator output;
 - contact-consent status/time/version;
-- page path;
-- UTM attribution fields where present;
-- referrer path/origin without unnecessary query data.
+- minimized page/referrer;
+- allowlisted UTM source/medium/campaign;
+- server-generated lead ID + idempotency key.
 
-Do not store browser-supplied calculated outputs as authoritative values.
+Browser-supplied calculated output is not authoritative.
 
-## 4. Failure behavior
-If persistence is missing or fails:
-- do not show “request saved”;
-- show an explicit failure state;
-- keep booking/WhatsApp fallbacks available;
-- emit the non-sensitive failure event for diagnostics;
-- never mark the record as a lead in sales reporting unless it actually exists in the destination.
+## 4. Failure behavior — VERIFIED
+If persistence fails:
+- no false `request saved` state;
+- explicit failure returned;
+- booking/WhatsApp alternatives remain available;
+- non-sensitive failure diagnostics may be emitted;
+- sales reporting does not count a lead that was not durably stored.
+
+A real forced destination-verifier failure was tested: Vercel returned `502 lead_persistence_failed` and no extra database row was created. Destination was restored and successful persistence retested.
 
 ## 5. Release checklist
-- [x] Estimator formula uses inquiry volume × delayed/missed rate × likely conversion × average conversion value.
-- [x] Assumptions are editable and visibly disclosed.
-- [x] Unsupported recovery/breakeven promises removed.
-- [x] Consent checkbox exists.
-- [x] Honeypot exists.
-- [x] Server input bounds and WhatsApp normalization exist.
-- [x] Server recomputes estimator values.
-- [x] Failed persistence fails closed.
-- [x] Automated safety tests cover client/server contract.
-- [x] WhatsApp fallback exists.
-- [x] Booking fallback exists.
-- [ ] Dedicated durable Shalcon persistence destination configured.
-- [ ] Successful real persistence test recorded.
-- [ ] Forced real destination failure test recorded.
-- [ ] Production/preview deployment verified end to end.
+- [x] estimator formula and assumptions visible/editable;
+- [x] unsupported recovery/breakeven promises removed;
+- [x] explicit consent checkbox;
+- [x] honeypot;
+- [x] server input bounds + WhatsApp normalization;
+- [x] server recomputes estimator values;
+- [x] failed persistence fails closed;
+- [x] automated client/server safety tests;
+- [x] booking/WhatsApp fallbacks;
+- [x] dedicated Shalcon Supabase destination deployed;
+- [x] RLS/browser-role access restrictions verified;
+- [x] successful real Vercel→Supabase persistence test recorded;
+- [x] exact replay/conflicting replay behavior verified;
+- [x] forced real destination failure test recorded;
+- [x] destination restored/retested;
+- [x] synthetic QA rows removed;
+- [x] dedicated Shalcon Vercel deployment verified;
+- [x] live staging noindex protection verified;
+- [x] live homepage/privacy/terms and `/api/lead` method smoke verified.
 
-## 6. Promotion gate
-The estimator can be shown as a demo/planning tool before persistence is live, but do not drive paid traffic or depend on the form for lead acquisition until the four unchecked release items above are complete.
+## 6. Current promotion gate
+Lead magnet/persistence itself is **LIVE AND VERIFIED IN STAGING**.
 
-Controlled founder-led outbound may still use the booking/WhatsApp paths while the lead-form infrastructure is being finalized, provided the recipient has a clear working contact path.
+Do not confuse this with full public/paid launch approval. Broad public/paid acquisition still waits for:
+- owner/legal review;
+- payment/bank/accounting readiness;
+- final production domain ownership/cutover;
+- final webhook credential rotation;
+- final cross-browser/domain/API QA;
+- deliberate removal of staging Authentication/noindex.
 
-## 7. Inbound content angles
-Safe angles:
-- “Map the cost-sensitive steps in your inquiry workflow.”
-- “Estimate the value attached to delayed follow-up using your own assumptions.”
-- “See which part of intake, routing or follow-up is worth automating first.”
+Controlled founder-led outreach is a separate gate and currently waits on the approved Shalcon sender + explicit owner send authorization.
+
+## 7. Safe inbound content angles
+Use:
+- `Map the cost-sensitive steps in your inquiry workflow.`
+- `Estimate the value attached to delayed follow-up using your own assumptions.`
+- `See which part of intake, routing or follow-up is worth automating first.`
 
 Avoid:
-- “See exactly how much money you are losing.”
-- “Recover X% with AI.”
-- “Guaranteed ROI.”
-- fake benchmark-based urgency.
+- `See exactly how much money you are losing.`
+- `Recover X% with AI.`
+- `Guaranteed ROI.`
+- fake benchmark urgency.
 
 ## 8. Foundation 13 status
-Foundation 13 is **IMPLEMENTED BUT RELEASE-BLOCKED**: the lead magnet and safe capture boundary exist; durable production persistence and deployed end-to-end verification are still required before it is considered fully live.
+Foundation 13 is **VERIFIED / STAGING-LIVE**. Estimator, safe capture boundary, durable persistence, failure behavior and deployment are proven.
+
+Remaining release blockers are broader business/public-release gates—not missing lead-magnet infrastructure.
