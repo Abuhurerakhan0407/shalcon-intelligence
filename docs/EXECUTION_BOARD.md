@@ -9,11 +9,12 @@ Fast handoff: `PROJECT_STATE.md`
 
 ## Operating rules
 - ChatGPT continues reversible, non-owner-dependent work without asking for cosmetic approval.
-- Abu is needed for legal acceptance, purchases, KYC/bank actions, sensitive credentials, external account/channel access, real-client access, and final business decisions.
+- Abu is needed for purchases, KYC/bank actions, sensitive credentials, real-client access, material contract decisions, and final business decisions.
 - “Prepared” is not “live.” “Live” requires deployed or real-event evidence.
 - Do not recreate already-finished infrastructure because an older note says it is missing.
 - MSME/UDYAM is owner-reported complete; keep certificate/KYC material private and use it only where onboarding specifically needs it.
 - **Controlled Batch 01 is already owner-authorized. Do not ask for that approval again.**
+- **Owner legal/business defaults are approved. Do not ask Abu to re-approve them unless the proposed terms materially change.**
 
 ## Current readiness
 
@@ -23,13 +24,13 @@ Fast handoff: `PROJECT_STATE.md`
 | Website positioning / truth | READY | ChatGPT |
 | Live Shalcon deployment | READY / staging-protected | ChatGPT |
 | Lead persistence | VERIFIED END-TO-END | ChatGPT |
-| Privacy / Terms / DPA / SOW | PREPARED; final review open | Abu / legal |
+| Privacy / Terms / DPA / SOW | OWNER BUSINESS DEFAULTS APPROVED; engagement-specific/pro counsel review still applies where risk triggers | ChatGPT + counsel when triggered |
 | MSME / UDYAM | OWNER-REPORTED COMPLETE | Abu |
 | Payment workflow | LEDGER READY; Razorpay/bank/accounting open | Abu |
 | Domain / SEO cutover | PREPARED; purchase/control open | Abu then ChatGPT |
-| Healthcare outreach | BATCH 01 AUTHORIZED / CHANNEL-BLOCKED / UNSENT | Abu account access + ChatGPT execution |
-| Approved Gmail sender | `shalconintelligence@gmail.com`; connector not authenticated to it | Abu connection |
-| LinkedIn direct execution | No authenticated messaging tool/session available | Abu account/session if needed |
+| Healthcare outreach | BATCH 01 AUTHORIZED / REVALIDATED / TOOL-BLOCKED / UNSENT | ChatGPT when connector write resolves |
+| Approved Gmail sender | `shalconintelligence@gmail.com`; UI screenshot shows it connected, but Gmail profile/send tool calls currently return `Resource not found` | Tool/connector resolution |
+| LinkedIn direct execution | No authenticated messaging tool/session available | Account/session if direct execution is required |
 | First real client proof | NOT YET | Joint |
 
 ## P0 — Launch-critical
@@ -72,19 +73,21 @@ Fast handoff: `PROJECT_STATE.md`
 - [x] India data-protection baseline research.
 - [x] Lead-retention recommendation.
 - [x] Owner identity inserted.
-- [ ] Owner/legal review of Privacy/Terms/SOW/DPA risk language.
-- [ ] Engagement-specific role/data/security/retention review before processing real sensitive client data.
+- [x] **Owner business defaults approved 31 Aug 2026** for Privacy/Terms/SOW/DPA, refund/cancellation, Mumbai dispute preference, bounded-liability preference and data-processing/human-control positions.
+- [ ] Engagement-specific role/data/security/retention/DPA review before processing material real sensitive client data.
+- [ ] Professional counsel review when triggered by a material first-client contract, unusual liability/SLA/refund terms, material sensitive-data/cross-border processing, or if documents are to be represented as counsel-approved.
 
 ### Commercial / payment
 - [x] Healthcare Pilot default approved: ₹39,000 setup + ₹9,000/month.
 - [x] 50/30/20 implementation milestones approved.
-- [x] Invoice template and payment-link workflow prepared.
+- [x] Commercial invoice template and payment-link workflow prepared.
 - [x] Native Invoice & Payment Ledger created with `SI-2026-0001` working seed and no fake invoice rows.
 - [x] Razorpay onboarding guidance rechecked/hardened.
+- [x] CBIC invoice position rechecked: while unregistered, Shalcon must not issue a GST tax invoice or collect GST; ordinary commercial invoice wording now used.
 - [x] **UDYAM/MSME — owner reports obtained 31 Aug 2026.**
 - [ ] Razorpay KYC / Live activation owner-complete.
 - [ ] Settlement bank verification complete.
-- [ ] Accountant/tax presentation confirmed for current non-GST-registered state.
+- [ ] Accountant confirms numbering/TDS/income-tax/recordkeeping presentation for current non-GST-registered state.
 - [ ] First Payment Link + invoice-ledger reconciliation flow verified after Live activation.
 
 ### Domain / public release
@@ -105,6 +108,7 @@ Fast handoff: `PROJECT_STATE.md`
 - [x] Onboarding, delivery/UAT, measurement/reporting and financial-control assets.
 - [x] Live Google Sheets sales pipeline.
 - [x] Reply-to-discovery handoff prepared.
+- [x] Five Batch 01 prospect-specific synthetic workflow maps prepared for positive replies/discovery support.
 
 ### Healthcare outbound inventory
 - [x] 16 active Healthcare prospects in live pipeline.
@@ -115,11 +119,14 @@ Fast handoff: `PROJECT_STATE.md`
 - [x] Seven decision/operations-level LinkedIn drafts prepared and reviewed in Batch 02.
 - [x] Exact five-prospect Controlled Batch 01 selected.
 - [x] **Owner explicitly authorized Controlled Batch 01 on 31 Aug 2026.**
+- [x] All five Batch 01 recipient/company/public-workflow observations revalidated after approval.
 - [x] Four Batch 01 public-business-inbox email fallbacks prepared; Neev remains LinkedIn-only.
-- [x] Live Sheet Next Action records Batch 01 authorization and channel fallback state.
+- [x] Four fallback inboxes freshly reverified on official clinic sites immediately before attempted send.
+- [x] User-provided ChatGPT Gmail UI screenshot shows `shalconintelligence@gmail.com` connected.
+- [x] Live Sheet Next Action records Batch 01 authorization state.
 - [x] Copy uses public workflow observations and synthetic-demo/human-control framing.
-- [ ] Authenticate ChatGPT Gmail to `shalconintelligence@gmail.com` before email execution.
-- [ ] Make an authenticated LinkedIn messaging session available if ChatGPT is expected to execute LinkedIn directly.
+- [ ] **Gmail connector write bug:** registry exposes profile/send actions but execution currently returns `Resource not found`; no email actually left. Retry only when the connector action resolves; do not ask Abu to prove/reconnect the mailbox again unless UI state changes.
+- [ ] Make an authenticated LinkedIn messaging session available if direct LinkedIn execution becomes possible/required.
 - [ ] Send first approved Batch 01 messages through a real approved channel, then update pipeline statuses from actual outcomes.
 - [ ] Run follow-up/reply/discovery cadence based on actual responses.
 
@@ -138,9 +145,9 @@ Do not spend launch energy on hiring systems, partner programs, broad internatio
 
 ## Next execution order
 1. Keep CI/release evidence coherent and staging protected.
-2. Execute already-authorized Controlled Batch 01 as soon as an approved authenticated channel is available; **no repeat approval question**.
+2. Retry the already-authorized Batch 01 only when the Gmail write action actually resolves or a real approved LinkedIn execution path becomes available; **no repeat approval question and no fake send state**.
 3. Advance Razorpay KYC/Live, bank and accounting readiness.
-4. Complete explicit owner/legal decisions and professional review where appropriate.
+4. Keep engagement-specific/professional legal review tied to actual risk instead of reopening already-approved owner defaults.
 5. Keep the single weak-recipient prospect research-only; do not lower evidence standards.
 6. Buy/connect final domain only after explicit cost approval.
 7. Rotate integration secret immediately before final public launch.
