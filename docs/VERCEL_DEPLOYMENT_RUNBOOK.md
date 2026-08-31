@@ -1,121 +1,115 @@
 # Shalcon Intelligence — Vercel Deployment Runbook
 
-Status: deployment-ready procedure; dedicated Shalcon Vercel project not yet created/bound.
+Status date: 31 Aug 2026  
+Status: **dedicated Shalcon Vercel project exists and current staging runtime is verified. Do not create a replacement project.**
 
 ## 1. Isolation rule
-Do not deploy Shalcon into an Abu portfolio project or another product project.
+- Dedicated Vercel project: `shalcon-intelligence`
+- Project ID: `prj_AZBIuv6c0uJmR4AF8SStuzGB2Dzp`
+- Production branch: `shalcon-market-ready-2026`
+- Current staging alias: `https://shalcon-intelligence.vercel.app`
+- Do not deploy Shalcon into any portfolio or other product project.
+- Do not switch production back to repository `main` while `main` contains portfolio work.
 
-The existing GitHub repository's `main` branch currently contains portfolio work, so a Vercel project created from this repository must explicitly use `shalcon-market-ready-2026` as its production branch until Shalcon has a dedicated repository/default branch.
+## 2. Current verified runtime
+- Deployment ID: `dpl_FcRYobZDc1NzBhfWMTWdYYmz1JiC`
+- Runtime commit: `8f3ee67bb3889e7c05dfd35b27f3d9b361a51166`
+- State: READY / production
+- Global staging response header verified live: `X-Robots-Tag: noindex, nofollow, noarchive`
+- Owner enabled Vercel Authentication for All Deployments during staging.
+- Homepage, Privacy and Terms have been rechecked live with HTTP 200 and expected security/staging headers.
 
-Never assume Vercel will choose the correct branch automatically.
+Newer branch commits may update documentation without changing the deployed runtime. Do not redeploy merely to synchronize documentation SHAs.
 
-## 2. New project configuration
-Create one Vercel project dedicated to Shalcon.
+## 3. Build contract
+Current app contract:
+- Framework: Vite
+- Install: `npm ci` or platform equivalent
+- Build: `npm run build`
+- Output: `dist`
+- Production branch: `shalcon-market-ready-2026`
 
-Recommended project name: `shalcon-intelligence` if available.
+Before any release-changing deployment:
+- GitHub CI green;
+- dependency/security gate green;
+- marketing-claim guard green;
+- lead safety tests green;
+- production build green;
+- compiled artifact security/performance gate green;
+- `vercel.json` valid.
 
-Required settings:
-- Framework: Vite / auto-detected.
-- Install: `npm ci` or platform equivalent.
-- Build: `npm run build`.
-- Output: `dist`.
-- Node: 22-compatible runtime/build environment.
-- Production branch: `shalcon-market-ready-2026` while repository `main` remains portfolio content.
+Do not bypass a red gate merely to obtain a deployment.
 
-Do not connect a custom domain until preview verification passes.
-
-## 3. Environment variables
-Required server-side production/preview values after lead persistence exists:
+## 4. Production environment contract
+Required server-side values:
 - `LEAD_WEBHOOK_URL`
 - `LEAD_WEBHOOK_SECRET`
 
 Rules:
-- never prefix either with `VITE_`;
-- do not expose values to browser/client builds;
-- use separate preview/production destinations or secrets if environments need isolation;
-- rotate the secret if accidentally logged/exposed.
+- never prefix with `VITE_`;
+- never expose values in frontend code, screenshots, issues or client docs;
+- never paste raw secrets into GitHub;
+- rotate the current shared credential immediately before final public/paid launch because the working setup credential was manually transferred during setup;
+- after rotation, prove the new secret succeeds and the old secret is rejected.
 
-## 4. Pre-deployment source gate
-Before deploying a commit:
-- current branch CI is green;
-- npm security audit gate passes;
-- marketing claim guard passes;
-- lead safety tests pass;
-- production build passes;
-- compiled-artifact security/performance gate passes;
-- `vercel.json` validates.
+## 5. Lead-persistence verification — already completed
+The current Vercel route has been verified against the dedicated Supabase destination:
+- valid deployed lead write → success + durable row;
+- destination replay/idempotency behavior verified;
+- conflicting replay rejected;
+- intentionally invalid destination verifier → Vercel returned `502 lead_persistence_failed` and did not pretend the lead was saved;
+- destination restored and successful write retested;
+- synthetic QA rows removed afterward.
 
-Do not bypass a red gate just to obtain a preview URL.
+Do not rerun destructive/failure injection casually. Repeat only when a release-changing integration modification requires it.
 
-## 5. Preview verification — no lead destination yet
-A preview can be created before persistence is configured to verify fail-closed behavior.
+## 6. Staging protection
+Until final public release:
+- keep Vercel Authentication enabled;
+- keep global `X-Robots-Tag: noindex, nofollow, noarchive`;
+- do not set the temporary `.vercel.app` hostname as canonical;
+- keep draft legal pages intentionally protected;
+- avoid redeploy-only commits when Vercel Hobby rate limiting is active.
 
-Expected result:
-- site renders correctly;
-- booking/WhatsApp/email work;
-- estimator works;
-- audit form submission receives a safe `lead_capture_not_configured` failure;
-- UI does **not** show saved confirmation;
-- direct booking/WhatsApp fallback remains visible.
+## 7. Final domain cutover
+Only after owner controls the final domain and legal/payment gates are ready:
+1. attach the final domain to project `prj_AZBIuv6c0uJmR4AF8SStuzGB2Dzp` only;
+2. verify DNS ownership and TLS;
+3. choose canonical apex/www host and make the alternate redirect in one hop;
+4. add final canonical URL, absolute OG/Twitter metadata, `robots.txt` and `sitemap.xml`;
+5. rotate the Vercel→Supabase webhook credential;
+6. run final API/contact/browser smoke tests;
+7. remove staging Authentication/noindex only as a deliberate public-release action;
+8. verify final indexability from the real production hostname;
+9. record final release commit + deployment ID in `docs/LAUNCH_GATE.md` and `PROJECT_STATE.md`.
 
-This preview is not ready for paid traffic.
-
-## 6. Preview verification — with lead destination
-After environment variables are configured:
-1. submit synthetic lead;
-2. verify exactly one durable row exists;
-3. verify schema v2 fields + consent evidence;
-4. verify idempotency behavior at destination;
-5. deliberately fail/disable persistence and submit again;
-6. verify website displays failure, not success;
-7. restore persistence and retest;
-8. verify no secret in page source/client bundle/browser-visible variables;
-9. verify booking, WhatsApp and email;
-10. verify privacy + terms pages;
-11. review function/runtime logs for unhandled errors.
-
-## 7. Browser QA on deployed preview
-Minimum:
+## 8. Final browser/release QA
+Minimum after the final domain/secret/indexing change:
 - Chromium desktop;
-- Chromium/mobile responsive viewport;
-- one additional browser engine/class where tooling permits;
-- keyboard-only estimator modal;
-- reduced-motion mode;
-- constrained/mobile fallback (no decorative WebGL load on small screens);
-- form error/success/fallback states.
+- Chromium mobile viewport;
+- Firefox/WebKit-class engine where available;
+- keyboard-only estimator/modal flow;
+- reduced-motion behavior;
+- mobile/constrained WebGL fallback;
+- form success/failure/fallback state;
+- booking, WhatsApp, email and legal links;
+- CSP/security headers;
+- canonical/robots/sitemap/social metadata;
+- runtime error log check.
 
-Record the preview deployment/commit used for the release decision.
+## 9. Rollback
+Before public promotion, identify the last known-good deployment.
 
-## 8. Security headers
-`vercel.json` currently defines the baseline headers. Verify them on the deployed URL, not just JSON syntax.
+If release regresses:
+- restore/rollback to last known-good deployment instead of debugging under live traffic;
+- preserve backward compatibility of lead-persistence contract where possible;
+- keep staging/noindex protections if rollback returns site to pre-public state;
+- document root cause before re-promotion.
 
-Check at minimum:
-- CSP;
-- `X-Content-Type-Options`;
-- `X-Frame-Options` / frame-ancestors behavior;
-- Referrer Policy;
-- Permissions Policy.
-
-If a required production analytics/integration domain is added later, update CSP narrowly; do not replace it with a wildcard.
-
-## 9. Domain cutover
-Only after preview gate passes:
-1. add the approved Shalcon production domain;
-2. choose canonical host (`www` vs apex);
-3. redirect the non-canonical host consistently;
-4. update canonical/OG metadata to the production URL;
-5. generate/finalize sitemap using that host;
-6. verify HTTPS;
-7. rerun contact + estimator tests on the real domain;
-8. verify search metadata/robots.
-
-## 10. Rollback
-Before first production promotion, identify the last known-good deployment.
-
-If production regresses:
-- restore/rollback to the last known-good deployment rather than debugging live under traffic;
-- keep lead persistence schema backward-compatible with the previous website contract where possible;
-- document incident/root cause before re-promoting.
-
-## 11. Current blocker
-The connected Vercel account does not currently expose a dedicated Shalcon project through the available project list. Creating/binding the correct project must not risk another project or the portfolio. This remains an owner/account-level deployment step until a dedicated project can be explicitly created/selected.
+## 10. Current blockers
+Vercel project creation is **not** a blocker anymore. Remaining Vercel-related release work is intentionally gated by:
+- final production domain ownership/control;
+- final legal/payment release approval;
+- production webhook-secret rotation;
+- final deployed cross-browser/domain/API QA;
+- deliberate removal of staging protections for public launch.
