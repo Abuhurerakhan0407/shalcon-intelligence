@@ -95,11 +95,14 @@ Documentation/runbook commits after the runtime commit do not require redeployme
 - [x] Healthcare outbound framework and research process prepared.
 - [x] Live Google Sheets founder-led sales pipeline exists.
 - [x] **15 Healthcare prospects are `Draft Ready`; 1 remains deliberately `Research Ready`.**
-- [x] Eight personalized first-touch Gmail drafts exist and remain unsent.
+- [x] Eight personalized first-touch Gmail drafts exist, remain unsent, and are backed up for migration before changing Gmail account connection.
 - [x] Seven additional verified decision/operations-level LinkedIn drafts exist in Batch 02 and remain unsent.
+- [x] Exact five-prospect Controlled Batch 01 is owner-authorized.
+- [x] Four public-business-inbox email fallbacks for Batch 01 are prepared; Neev remains LinkedIn-only because no clean business email was verified.
+- [x] Reply → discovery handoff exists for positive, neutral, pricing, wrong-person, rejection and opt-out responses.
 - [x] Draft copy uses public-observation grounding, synthetic-demo framing and human clinical escalation.
 - [x] Owner-approved Healthcare Pilot default: ₹39,000 setup + ₹9,000/month, 50/30/20 milestones, client-paid/separately-itemized vendor usage.
-- [x] Invoice/payment-link operating workflow prepared.
+- [x] Invoice/payment-link operating workflow + native finance ledger prepared.
 - [x] SOW client-facing template no longer exposes Shalcon internal price-floor information.
 - [x] **UDYAM/MSME owner reports obtained 31 Aug 2026.** Certificate remains private owner material; do not publish or commit KYC fields.
 - [ ] **BLOCKER FOR PAID WORK — Razorpay KYC/Live activation + settlement bank + accountant/tax collection path owner-ready.**
@@ -128,11 +131,27 @@ Technically eligible when:
 
 All technical conditions above are currently satisfied.
 
-Additional send-control conditions:
-- [ ] **Correct email sender required for Gmail outreach — currently connected Gmail is not the approved Shalcon business mailbox.**
-- [ ] **Owner explicitly authorizes first external send, including any LinkedIn outreach.**
+### Authorization
+- [x] **Controlled Batch 01 explicitly owner-authorized on 31 Aug 2026 with `APPROVE BATCH 01`. Do not ask for this approval again.**
 
-Current status: **TECHNICALLY READY, OPERATIONALLY UNSENT.** Fifteen prospects are `Draft Ready`; one remains `Research Ready`; sent/replied/discovery counts remain zero.
+Authorized prospects only:
+1. Dr. Riyaz Quereshi — Tru Smile
+2. Niteen Tulpule — Sirona Diagnostics
+3. Dr. Chandraprabha Kumar — Neevwellbeing’s The Dental Clinic
+4. Dr. Anand Shroff — Shroff Eye Hospital
+5. Dr. Vinit Shah — Vinit Eye Clinic
+
+Any prospect outside this exact list requires separate authorization.
+
+### Channel execution
+- [ ] **Gmail channel blocker — approved sender is `shalconintelligence@gmail.com`, but current ChatGPT Gmail connector is authenticated to another account. Do not use that connector for prospect outreach.**
+- [ ] **LinkedIn channel blocker — Batch 01 is LinkedIn-first, but current available tools do not expose an authenticated LinkedIn messaging session.**
+
+Four Batch 01 email fallback drafts are ready for Tru Smile, Sirona Diagnostics, Shroff Eye Hospital and Vinit Eye Clinic once Gmail is authenticated to `shalconintelligence@gmail.com`. Neev remains LinkedIn-only; do not use patient-booking WhatsApp as a fallback.
+
+Current status: **AUTHORIZED / CHANNEL-BLOCKED / UNSENT.** Fifteen prospects remain `Draft Ready`; one remains `Research Ready`; sent/replied/discovery counts remain zero.
+
+Authorization is not market evidence. Update a row to `Sent` only after a real outbound event.
 
 ## I. Full public / paid-traffic launch gate
 Still required:
@@ -163,6 +182,7 @@ MSME/UDYAM is no longer on this blocker list at owner-report level.
 
 ## L. Evidence discipline
 - Checked means evidence exists now; it does not mean Shalcon has mature real-client proof.
-- Historical research issues are not the live send manifest; the current Google Sheet + drafts control send state.
+- Historical research issues are not the live send manifest; the current Google Sheet + approved batch docs control send state.
 - Owner-reported MSME completion is not independent verification of certificate fields.
-- No purchase, external send, KYC action, legal approval or secret rotation may be inferred from preparation alone.
+- Controlled Batch 01 is authorized but remains unsent until an approved authenticated channel produces a real outbound event.
+- No purchase, KYC action, legal approval or secret rotation may be inferred from preparation alone.
