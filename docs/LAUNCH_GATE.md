@@ -14,7 +14,7 @@ A checked box means evidence exists now. Full public/paid acquisition is GO only
 - [x] Runtime dependency-usage guard exists.
 - [x] Compiled-artifact security/performance gate exists.
 - [x] Current control/runbook documentation reconciled with deployed reality.
-- [ ] Recommended hardening: GitHub branch protection/ruleset for `shalcon-market-ready-2026`. Current connected tooling can read protection state but cannot safely write it; this is not a launch blocker while disciplined branch control continues.
+- [ ] Recommended hardening: GitHub branch protection/ruleset for `shalcon-market-ready-2026`. Current connected integration cannot verify/manage it (`403` on protection read); this is not a launch blocker while disciplined branch control continues.
 
 ## B. Positioning / truth
 - [x] Healthcare-first flagship offer leads homepage.
@@ -94,14 +94,15 @@ Documentation/runbook commits after the runtime commit do not require redeployme
 - [x] Financial-control, incident/security and SOP assets prepared.
 - [x] Healthcare outbound framework and research process prepared.
 - [x] Live Google Sheets founder-led sales pipeline exists.
-- [x] Eight Healthcare prospects are currently `Draft Ready`.
+- [x] **15 Healthcare prospects are `Draft Ready`; 1 remains deliberately `Research Ready`.**
 - [x] Eight personalized first-touch Gmail drafts exist and remain unsent.
-- [x] Draft copy re-reviewed for public-observation grounding, synthetic-demo framing and human clinical escalation.
+- [x] Seven additional verified decision/operations-level LinkedIn drafts exist in Batch 02 and remain unsent.
+- [x] Draft copy uses public-observation grounding, synthetic-demo framing and human clinical escalation.
 - [x] Owner-approved Healthcare Pilot default: ₹39,000 setup + ₹9,000/month, 50/30/20 milestones, client-paid/separately-itemized vendor usage.
 - [x] Invoice/payment-link operating workflow prepared.
 - [x] SOW client-facing template no longer exposes Shalcon internal price-floor information.
-- [ ] **BLOCKER FOR PAID WORK — Razorpay KYC/settlement bank/accounting collection path owner-ready.**
-- [ ] **UDYAM — PAUSED by owner instruction pending owner update; do not advance or infer status.**
+- [x] **UDYAM/MSME owner reports obtained 31 Aug 2026.** Certificate remains private owner material; do not publish or commit KYC fields.
+- [ ] **BLOCKER FOR PAID WORK — Razorpay KYC/Live activation + settlement bank + accountant/tax collection path owner-ready.**
 
 ## G. Proof readiness
 - [x] Healthcare flagship workflow explained publicly without claiming client deployment.
@@ -128,21 +129,22 @@ Technically eligible when:
 All technical conditions above are currently satisfied.
 
 Additional send-control conditions:
-- [ ] **Correct sender required — currently connected Gmail is not the approved Shalcon business mailbox.**
-- [ ] **Owner explicitly authorizes first external send.**
+- [ ] **Correct email sender required for Gmail outreach — currently connected Gmail is not the approved Shalcon business mailbox.**
+- [ ] **Owner explicitly authorizes first external send, including any LinkedIn outreach.**
 
-Current status: **TECHNICALLY READY, OPERATIONALLY UNSENT.** Eight drafts remain `Draft Ready`; sent/replied/discovery counts remain zero.
+Current status: **TECHNICALLY READY, OPERATIONALLY UNSENT.** Fifteen prospects are `Draft Ready`; one remains `Research Ready`; sent/replied/discovery counts remain zero.
 
 ## I. Full public / paid-traffic launch gate
 Still required:
 - owner/legal review of public legal pages and applicable client terms;
-- Razorpay/bank/accounting readiness;
-- UDYAM update when owner resumes that work;
+- Razorpay Live activation, bank settlement verification and accounting presentation;
 - owner purchase/control of final production domain;
 - final canonical/social/robots/sitemap configuration;
 - production webhook-secret rotation after infrastructure freeze;
 - final deployed domain/API/cross-browser QA;
 - deliberate removal of staging Authentication/noindex protections.
+
+MSME/UDYAM is no longer on this blocker list at owner-report level.
 
 ## J. Domain / SEO
 - [x] Exact-brand options researched through connected Vercel account.
@@ -161,5 +163,6 @@ Still required:
 
 ## L. Evidence discipline
 - Checked means evidence exists now; it does not mean Shalcon has mature real-client proof.
-- Historical research issues are not the live send manifest; the current Google Sheet + Gmail drafts control send state.
+- Historical research issues are not the live send manifest; the current Google Sheet + drafts control send state.
+- Owner-reported MSME completion is not independent verification of certificate fields.
 - No purchase, external send, KYC action, legal approval or secret rotation may be inferred from preparation alone.
