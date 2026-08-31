@@ -1,17 +1,23 @@
-# Dedicated Shalcon Vercel Deployment Trigger
+# Dedicated Shalcon Vercel Deployment Trigger — HISTORICAL RECORD
 
-Date: 30 Aug 2026
+Date: 30 Aug 2026  
+Status updated: 31 Aug 2026
 
-Dedicated Vercel project:
+**Historical only. Do not use this file to trigger another deployment.**
+
+This file records the one-time correction after the first Vercel import incorrectly deployed repository `main`, which contained Abu portfolio code.
+
+Dedicated Shalcon Vercel project:
 - project: `shalcon-intelligence`
-- Vercel project id: `prj_AZBIuv6c0uJmR4AF8SStuzGB2Dzp`
-- linked GitHub repo: `Abuhurerakhan0407/shalcon-intelligence`
-- tracked production branch: `shalcon-market-ready-2026`
+- project ID: `prj_AZBIuv6c0uJmR4AF8SStuzGB2Dzp`
+- linked repo: `Abuhurerakhan0407/shalcon-intelligence`
+- production branch: `shalcon-market-ready-2026`
 
-The initial Vercel deployment came from GitHub `main`, which currently contains Abu portfolio code and is therefore not accepted as a Shalcon deployment.
+The branch correction and environment setup were completed. A valid Shalcon runtime is now deployed and staging-protected.
 
-The production branch has now been corrected to `shalcon-market-ready-2026`, and the required lead-persistence environment variables have been configured in Vercel by the owner.
+Current verified runtime evidence is maintained in:
+- `PROJECT_STATE.md`
+- `docs/LAUNCH_GATE.md`
+- `docs/VERCEL_DEPLOYMENT_RUNBOOK.md`
 
-This commit intentionally retriggers Vercel from the correct Shalcon branch after that environment setup.
-
-Do not treat any deployment from `main` as Shalcon production. Verify the deployment metadata reports `githubCommitRef = shalcon-market-ready-2026` before release QA or promotion.
+Do not treat deployments from `main` as Shalcon production. Do not create a redeploy-only commit because this historical trigger file exists.
