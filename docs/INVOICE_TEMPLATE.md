@@ -1,6 +1,6 @@
 # Shalcon Intelligence — Invoice Template
 
-> Working operational template. Confirm tax/accounting treatment before first paid use. Current proprietor-supplied status on 30 Aug 2026: **Not registered for GST**.
+> Working operational template. Confirm tax/accounting treatment before first paid use. Current proprietor-supplied status on 31 Aug 2026: **Not registered for GST**. MSME/UDYAM is owner-reported obtained, but the certificate number/QR/PAN-linked details should remain private unless a legitimate invoice/accounting requirement is confirmed.
 
 ## Seller
 **Abu Hurera Khan**  
@@ -15,11 +15,13 @@ GST status: **Not registered**
 
 > This document is **not a GST tax invoice** while the supplier remains unregistered for GST. Do not collect or separately charge GST unless registration status changes and the invoice process is updated.
 
-**Invoice No.:** SI-[FY]-[####]  
+**Invoice No.:** SI-2026-[####]  
 **Invoice Date:** [DD MMM YYYY]  
 **Due Date:** [DD MMM YYYY]  
 **Project / SOW:** [PROJECT NAME / SOW REFERENCE]  
 **Payment milestone:** [50% Start / 30% UAT-ready / 20% Production acceptance / Monthly support / Other]
+
+Current ledger seed: `SI-2026-0001`. Confirm the numbering convention with the accountant before issuing the first paid invoice; once issuance begins, never silently reuse or renumber issued/cancelled invoice numbers.
 
 ## Bill To
 **Client legal name:** [CLIENT LEGAL NAME]  
@@ -54,14 +56,17 @@ Third-party/API/message/call/vendor costs are client-paid or separately itemized
 **Payment link/reference:** [LINK OR REFERENCE — do not place API secrets here]  
 **Razorpay payment ID after payment:** [ ]  
 **Paid date:** [ ]  
-**Status:** DRAFT / ISSUED / PART-PAID / PAID / OVERDUE / CANCELLED
+**Status:** DRAFT / ISSUED / PARTIALLY PAID / PAID / CANCELLED
+
+Operational overdue status may be derived in the finance ledger from the due date; it does not need to replace the actual invoice status.
 
 ## Notes
 - This invoice relates to the written proposal/SOW referenced above.
 - Business outcomes such as revenue, conversion or appointment volume are not guaranteed unless separately written and approved in the signed agreement.
 - Third-party usage charges are excluded unless expressly listed above.
 - Shalcon must not collect a GST amount while it remains unregistered; if registration status changes, update the invoice process before the next invoice.
-- Accountant review remains required before first paid use, including financial-year numbering, income-tax/TDS handling where relevant, and record retention.
+- Do not expose private MSME/PAN/Aadhaar/bank/KYC identifiers merely because they exist; include only identifiers an accountant/legal requirement says belong on the invoice.
+- Accountant review remains required before first paid use, including numbering convention, income-tax/TDS handling where relevant, and record retention.
 
 ## Authorized by
 **Abu Hurera Khan**  
@@ -70,16 +75,21 @@ Sole proprietor trading as Shalcon Intelligence
 
 ---
 
-## Internal ledger fields — do not send as part of client invoice unless needed
-- Invoice number: [ ]
-- Client: [ ]
-- SOW/proposal ref: [ ]
-- Invoice date: [ ]
-- Due date: [ ]
-- Amount: [ ]
-- Payment-link reference: [ ]
-- Payment ID: [ ]
-- Paid date: [ ]
-- Settlement date: [ ]
-- Status: [ ]
-- Notes: [ ]
+## Internal ledger — source of truth for collection status
+Native Google Sheet: **Shalcon Intelligence — Invoice & Payment Ledger**  
+Spreadsheet ID: `1LWV_P9z2bNehYfcz4ieIgncRhY2UvswjmpQaR-XX7lg`
+
+After a real invoice is issued, record at minimum:
+- Invoice number;
+- Client;
+- Project/SOW reference;
+- Issue date;
+- Due date;
+- Currency/amount;
+- Status;
+- Payment method/reference;
+- Paid date;
+- Settlement date;
+- concise notes.
+
+Do not create fake prospect invoice rows and do not store secrets/KYC material in the ledger.
