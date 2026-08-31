@@ -1,69 +1,77 @@
 # Shalcon Intelligence — Supabase Lead Destination
 
-Status: **implementation prepared, not deployed**.
+Status date: 31 Aug 2026  
+Status: **deployed and verified in the dedicated Shalcon project. Do not create another project.**
 
-This directory contains the dedicated Shalcon lead-persistence implementation. It must be deployed only to a separate Shalcon Supabase project, never Pagevelope, Madrasa ERP, or another product database.
+## Production destination
+- project: `shalcon-intelligence`
+- project ref: `qfsnmjeacwdkbukwxbwz`
+- region: `ap-south-1`
+- table: `public.shalcon_leads`
+- Edge Function: `shalcon-lead-webhook`
+- RLS: enabled
+- `anon` / `authenticated`: direct table access revoked
+
+This directory is the source/reference for the existing production lead destination. Never deploy it into Pagevelope, Madrasa ERP or another product database.
 
 ## Files
-
-- `sql/create_shalcon_leads.sql` — reviewed implementation SQL. It is intentionally not named as a migration yet because the final migration filename must be generated against the dedicated project/tooling rather than invented in advance.
-- `functions/shalcon-lead-webhook/index.ts` — server-to-server webhook called only by the Vercel `/api/lead` route.
-- `config.toml` — disables platform JWT verification for this one external-webhook function because the function performs custom shared-secret authentication before database access.
-
-## Current Supabase pattern
-
-Verified against current Supabase documentation on 29 Aug 2026:
-
-- new Edge Functions can use `@supabase/server`;
-- external/signed webhooks use `auth: 'none'` with `verify_jwt = false` and must authenticate the caller inside the function;
-- `ctx.supabaseAdmin` is available for privileged database work and bypasses RLS;
-- Edge Functions receive Supabase project URL and secret-key configuration from platform-managed environment variables;
-- custom production secrets such as `SHALCON_LEAD_WEBHOOK_SECRET` must be stored in Edge Function secrets, never source control.
+- `sql/create_shalcon_leads.sql` — source SQL matching the dedicated Shalcon lead-table contract.
+- `functions/shalcon-lead-webhook/index.ts` — server-to-server webhook called by Vercel `/api/lead`.
+- `config.toml` — disables platform JWT verification for this external webhook because the function performs its own strong shared-secret authentication before database access.
 
 ## Security contract
-
-The destination requires all of the following before writing:
-
+Before writing, the destination requires:
 1. POST request;
-2. configured shared secret at least 24 characters;
+2. configured shared secret of sufficient strength;
 3. matching `X-Shalcon-Webhook-Secret`;
-4. JSON body within the size limit;
+4. bounded JSON body;
 5. UUID `Idempotency-Key` matching body `leadId`;
-6. schema version 2;
+6. supported schema version;
 7. expected source identifier;
 8. valid consent evidence;
-9. normalized contact fields;
+9. normalized/bounded contact fields;
 10. bounded estimator inputs;
-11. opportunity values that exactly match the destination's own recomputation.
+11. derived opportunity values matching destination recomputation.
 
-The table has RLS enabled and all privileges revoked from `anon` and `authenticated`. The browser never talks directly to the table.
+The browser never talks directly to the lead table.
 
 ## Idempotency
+A hash of the immutable normalized payload protects replay integrity.
 
-A SHA-256 hash of the immutable normalized payload is stored with each lead.
-
+Verified behavior:
 - first valid write → `201`, one row inserted;
-- exact retry with same `leadId` and same normalized payload → `200`, no duplicate;
-- same `leadId` with different payload → `409`, existing row is not overwritten.
+- exact retry with same `leadId` + payload → `200`, no duplicate;
+- same `leadId` with conflicting payload → `409`, existing row not overwritten.
 
-This is deliberately safer than an unrestricted upsert.
+## Production verification already completed
+- wrong webhook secret rejected;
+- valid first write persisted;
+- exact replay handled without duplicate;
+- conflicting replay rejected;
+- real Vercel `/api/lead` → Supabase write succeeded;
+- consent/attribution/server-computed estimator values verified;
+- intentional verifier failure caused Vercel `502 lead_persistence_failed` and no false saved state;
+- verifier restored and success retested;
+- browser roles confirmed unable to read/write lead table;
+- security/performance advisors reviewed;
+- synthetic QA rows removed.
 
-## Deployment sequence once the owner authorizes a dedicated project
+Do not rerun forced production-failure testing casually. Repeat it only when a material persistence change requires evidence.
 
-1. Create/confirm the dedicated Shalcon Supabase project.
-2. Apply the SQL to that project through the connected Supabase tooling.
-3. Run Supabase security + performance advisors and fix anything material.
-4. Set `SHALCON_LEAD_WEBHOOK_SECRET` in the project's Edge Function secrets.
-5. Deploy `shalcon-lead-webhook` with JWT verification disabled **only because custom webhook authentication is implemented**.
-6. Put the deployed function URL into Vercel as `LEAD_WEBHOOK_URL`.
-7. Put the matching secret into Vercel as `LEAD_WEBHOOK_SECRET`.
-8. Submit one synthetic lead and verify exactly one row.
-9. Replay the same lead ID and verify no duplicate.
-10. Test wrong secret, mismatched idempotency key and tampered opportunity totals.
-11. Force database/function failure and confirm the website never shows a false saved state.
-12. Confirm `anon` and `authenticated` cannot read or write the lead table.
-13. Perform one synthetic correction/deletion workflow.
+## Secrets
+Production uses a destination-side `SHALCON_LEAD_WEBHOOK_SECRET` matched by Vercel `LEAD_WEBHOOK_SECRET`; Vercel also stores `LEAD_WEBHOOK_URL`.
 
-## Owner-only step
+Never put raw values in Git, browser code, screenshots, issues, logs or client documents.
 
-The implementation does not need redesign. The remaining owner dependency is authorization of the Supabase organization/project cost and later setting/approving production secrets/infrastructure where connector access cannot do so directly.
+The current working shared credential was manually transferred during initial setup. It must be rotated immediately before final public/paid launch after infrastructure freeze.
+
+Rotation acceptance:
+1. new secret succeeds end-to-end;
+2. old secret is rejected;
+3. synthetic rotation-test data is deleted;
+4. no raw secret appears in recorded evidence.
+
+## Maintenance rule
+Do not recreate schema/project/function from scratch during normal continuation. Treat `docs/SUPABASE_LEAD_DESTINATION_SPEC.md`, `docs/LEAD_CAPTURE_SETUP.md`, `docs/WEBHOOK_SECRET_ROTATION_RUNBOOK.md`, `docs/LAUNCH_GATE.md` and `PROJECT_STATE.md` as current operating references.
+
+Any future schema/API change must preserve or deliberately version the Vercel↔Supabase contract and rerun the applicable safety tests before public release.
