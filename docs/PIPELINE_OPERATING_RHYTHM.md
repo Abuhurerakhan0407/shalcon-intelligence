@@ -12,16 +12,18 @@ Research/draft work can continue before this gate. External sending cannot.
 
 Before any first touch:
 - [ ] prospect exists in current Google Sheets pipeline;
+- [ ] row is `Draft Ready`, not merely `Research Ready`;
 - [ ] public observation/contact route is reverified;
 - [ ] sender is an owner-approved Shalcon business mailbox;
 - [ ] owner has explicitly authorized the controlled send batch;
 - [ ] no prior opt-out/rejection/do-not-contact signal exists.
 
 Current 31 Aug state:
-- 8 Healthcare prospects in live pipeline;
-- all 8 = `Draft Ready`;
+- 16 active Healthcare prospects in live pipeline;
+- 8 = `Draft Ready`;
+- 8 = `Research Ready`;
 - 0 sent, 0 replied, 0 discovery;
-- 8 Gmail drafts exist;
+- 8 Gmail drafts exist for the `Draft Ready` group;
 - currently connected Gmail is not the approved Shalcon mailbox, therefore **do not send from it**.
 
 ## 1. Research block
@@ -37,9 +39,21 @@ For each account record:
 - source URL;
 - next action.
 
+Use `Research Ready` when the business/workflow is sufficiently supported to remain in the active research queue but the recipient/contact route or first-touch draft is not yet fully verified.
+
 Do not infer internal problems from public observations.
 
-## 2. Draft / first-touch block
+## 2. Research Ready → Draft Ready
+Promote only after:
+- public workflow observation rechecked;
+- intended recipient/contact route has a reasonable business-development basis;
+- patient-booking/support inbox is not silently treated as a decision-maker route;
+- personalized first-touch copy is grounded in public facts;
+- no unsupported internal-performance assumption is included.
+
+Creating a draft does not authorize sending it.
+
+## 3. Draft / first-touch block
 Once send gate is open, send only a small controlled batch. Start with quality, not a daily quota.
 
 Each first message should contain:
@@ -51,7 +65,7 @@ Each first message should contain:
 
 No fake personalization, unsupported ROI, fabricated delay/revenue claims or patient-booking WhatsApp cold outreach.
 
-## 3. Follow-ups
+## 4. Follow-ups
 Only records with a due follow-up and no suppression signal are eligible.
 
 Suggested early cadence, adjustable from real responses:
@@ -62,18 +76,21 @@ Suggested early cadence, adjustable from real responses:
 
 Stop immediately on opt-out, explicit rejection, invalid recipient, or a clear request not to contact.
 
-## 4. Pipeline hygiene
+## 5. Pipeline hygiene
+For research-only rows, keep a concrete next verification action. Once actual outreach begins, every active opportunity should also have last-touch and next-follow-up dates.
+
 Every active record should have:
 - stage/status;
-- last touch date;
 - next action;
-- next action/follow-up date;
 - owner;
 - source/contact route;
-- opt-out/do-not-contact state;
-- concise latest-interaction note.
+- concise evidence/notes;
+- opt-out/do-not-contact state where relevant.
 
-No next action means it should not be treated as an actively worked opportunity.
+Contacted opportunities additionally require:
+- last touch date;
+- next action/follow-up date;
+- latest-interaction note.
 
 ## Current live source of truth
 Use Google Sheet **Shalcon Intelligence — Sales Pipeline** as the living founder-led pipeline.
@@ -84,7 +101,7 @@ Historical GitHub seed/batch files are research/copy libraries, not current send
 
 ## First four weeks after send gate opens
 ### Week 1
-- send a controlled subset of the already-verified draft-ready prospects;
+- send a controlled subset of the verified `Draft Ready` prospects;
 - record delivery/replies/objections;
 - verify booking/contact path;
 - avoid scaling before observing message quality.
@@ -114,24 +131,28 @@ If a segment/message shows credible positive signal, modestly increase volume wh
 Conceptual lifecycle:
 1. Target identified
 2. Researched
-3. Draft Ready
-4. Contacted
-5. Replied
-6. Qualified
-7. Audit booked
-8. Audit completed
-9. Proposal sent
-10. Negotiation
-11. Won / onboarding
-12. Lost — reason captured
-13. Nurture
-14. Do not contact
+3. Research Ready
+4. Draft Ready
+5. Contacted
+6. Replied
+7. Qualified
+8. Audit booked
+9. Audit completed
+10. Proposal sent
+11. Negotiation
+12. Won / onboarding
+13. Lost — reason captured
+14. Nurture
+15. Do not contact
 
-The current Google Sheet labels control actual operational status. Do not rewrite historical rows merely to match this conceptual list.
+The current Google Sheet labels control actual operational status.
 
 ## Exit criteria
-### Researched → Draft Ready
-Requires a supportable public observation and a verified first-contact route.
+### Researched → Research Ready
+Requires a supportable public workflow observation and a concrete contact-route verification task.
+
+### Research Ready → Draft Ready
+Requires recipient/contact-route verification plus personalized copy that passes truth/safety review.
 
 ### Draft Ready → Contacted
 Requires send gate PASS plus actual external send.
@@ -149,14 +170,9 @@ Requires proposal-handoff criteria in `DISCOVERY_AUDIT_TEMPLATE.md`.
 Requires commercial agreement, accepted scope and applicable start-payment condition.
 
 ## Learning log
-Capture useful prospect language around:
-- problem/current workaround;
-- trust/integration concern;
-- pricing/timing concern;
-- desired outcome;
-- reason for no-fit/loss.
+Capture useful prospect language around problem/current workaround, trust/integration concern, pricing/timing concern, desired outcome and reason for no-fit/loss.
 
-One response is evidence. A repeated pattern becomes a stronger basis for changing positioning, product scope or outreach.
+One response is evidence. A repeated pattern becomes a stronger basis for changing positioning, scope or outreach.
 
 ## Stop rules
 Pause/change campaign when:
