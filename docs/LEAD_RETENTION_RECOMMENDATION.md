@@ -1,10 +1,11 @@
-# Shalcon Intelligence — Lead Retention Recommendation
+# Shalcon Intelligence — Lead Retention Policy Default
 
-Status date: 30 Aug 2026
+Status date: 31 Aug 2026  
+Owner business decision: **APPROVED 31 Aug 2026**
 
-Purpose: practical default for the public audit/lead form. This is a business recommendation for owner/legal review, not a claim that one retention period is legally mandatory in every case.
+Purpose: practical default for the public audit/lead form. This is an owner-approved business policy, not a claim that one retention period is legally mandatory in every case. Engagement-specific/legal/accounting requirements can override the default where appropriate.
 
-## Recommended public-lead retention
+## Approved public-lead retention
 
 ### New / unqualified inquiry
 Default: **90 days** from last meaningful interaction.
@@ -37,12 +38,11 @@ Contract, invoice, payment and accounting records follow applicable accounting/t
 5. Record aggregate deletion count/date rather than copying deleted payloads into logs.
 6. If a person requests deletion/correction, handle the request sooner subject to legitimate record-retention obligations.
 
-## Owner decision before final Privacy Notice
-Recommended choice:
-- 90 days new/unqualified
-- 180 days closed-lost/no-response
-- active opportunities while active
-- minimal opt-out suppression record
-- accounting/client records per applicable obligations
+## Approved default summary
+- 90 days new/unqualified;
+- 180 days closed-lost/no-response;
+- active opportunities while active;
+- minimal opt-out suppression record;
+- accounting/client records per applicable obligations.
 
-If approved, update the Privacy Notice from vague “reasonably needed” language to this plain retention policy or an appropriately reviewed equivalent.
+Do not ask the owner to re-approve these defaults unless the retention model materially changes.
