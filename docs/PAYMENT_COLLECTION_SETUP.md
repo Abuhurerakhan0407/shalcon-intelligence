@@ -10,8 +10,24 @@ This is an operational setup checklist, not tax/legal/accounting advice. Confirm
 ## 0. Current payment-readiness state
 - **UDYAM/MSME: owner-reported obtained on 31 Aug 2026.**
 - The certificate itself has not been stored in this public repository and has not been independently verified here. Keep certificate number/PAN/Aadhaar/QR/KYC data private.
-- Business-proof availability is therefore no longer the known blocker it was earlier.
-- Remaining payment gate: Razorpay KYC/Live activation + settlement-bank verification + accountant/tax presentation.
+- Business-proof availability is no longer the known blocker it was earlier.
+- **Invoice/payment ledger: ACTIVE and empty, ready for first real invoice.**
+- Remaining payment gate: Razorpay KYC/Live activation + settlement-bank verification + accountant/tax presentation + first real Payment Link/settlement reconciliation.
+
+### Live finance ledger
+Native Google Sheet: **Shalcon Intelligence — Invoice & Payment Ledger**  
+Spreadsheet ID: `1LWV_P9z2bNehYfcz4ieIgncRhY2UvswjmpQaR-XX7lg`
+
+Verified after import:
+- India timezone;
+- frozen working headers;
+- native invoice table;
+- currency/status/payment-method validation;
+- invoiced/collected/outstanding summary formulas;
+- milestone setup values for the approved Healthcare baseline;
+- no fake invoice rows.
+
+Current working next invoice number: `SI-2026-0001`, subject to accountant confirmation before first issuance.
 
 ## 1. Recommended launch payment stack
 
@@ -98,26 +114,29 @@ Third-party/API/message/call/vendor charges are client-paid or separately itemiz
 For every payment:
 1. signed proposal/SOW or written acceptance exists;
 2. issue the invoice/payment request with a unique invoice/reference number;
-3. create Razorpay Payment Link for the exact due milestone;
-4. include client name + project + invoice/reference in the Payment Link description/reference;
-5. record link creation date, due date and status;
-6. when paid, record Razorpay payment ID, paid date and amount;
+3. create/update the real invoice row in the native finance ledger;
+4. create Razorpay Payment Link for the exact due milestone;
+5. include client name + project + invoice/reference in the Payment Link description/reference;
+6. when paid, record payment ID/reference, paid date, amount/status;
 7. send receipt/paid confirmation;
-8. reconcile against bank settlement and invoice ledger.
+8. reconcile against bank settlement and record settlement date.
 
-## 6. Invoice numbering recommendation
+Do not create a fake/test client invoice merely to make the ledger look used.
 
-Use a simple sequential scheme:
+## 6. Invoice numbering
+
+Current working sequential scheme:
 
 `SI-2026-0001`
 `SI-2026-0002`
 `SI-2026-0003`
 
 Rules:
-- never reuse an invoice number;
-- cancelled invoices remain in the ledger with status `CANCELLED` rather than disappearing;
+- confirm the convention with the accountant before first issuance;
+- after issuance begins, never reuse an invoice number;
+- cancelled invoices remain in the ledger with status `Cancelled` rather than disappearing;
 - payment links use the same invoice/reference number where possible;
-- maintain one ledger containing invoice number, client, date, amount, status, payment ID and settlement date.
+- the native finance ledger is the operational record for invoice/payment/settlement status.
 
 ## 7. GST / tax guard
 
@@ -136,7 +155,7 @@ If GST registration status changes, update all invoice/payment/legal templates b
 - Never put Razorpay API keys in GitHub, email drafts, screenshots or client docs.
 - Use Dashboard Payment Links first; API keys are unnecessary for the initial manual collection workflow.
 - Enable account MFA/2FA where available.
-- Keep MSME/PAN/Aadhaar/bank/KYC documents out of this public repository.
+- Keep MSME/PAN/Aadhaar/bank/KYC documents out of this public repository and finance ledger.
 - Treat identity/bank details as owner-controlled private material.
 - Do not ask a client to send card details directly to Shalcon.
 
@@ -147,6 +166,15 @@ Payment readiness becomes PASS when:
 - settlement bank account is verified;
 - accountant/tax presentation has been confirmed for the current non-GST-registered state;
 - invoice numbering/ledger is active;
-- a Payment Link can be created and reconciled without exposing secrets.
+- a real Payment Link/invoice flow can be reconciled through payment and settlement without exposing secrets.
 
-**Current status:** business proof materially improved because MSME/UDYAM is owner-reported obtained; payment gate is still **IN PROGRESS** until KYC/Live activation, bank verification and accounting presentation are complete.
+Current checklist:
+- [x] MSME/business proof available at owner-report level
+- [x] Invoice template prepared
+- [x] Native invoice/payment ledger active
+- [ ] Razorpay KYC/Live activation
+- [ ] Settlement bank verified
+- [ ] Accountant/tax presentation confirmed
+- [ ] First real Payment Link/payment/settlement reconciliation verified
+
+**Current status: IN PROGRESS.** The remaining items are owner/account/provider-dependent, not missing internal infrastructure.
