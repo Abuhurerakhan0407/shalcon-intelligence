@@ -12,7 +12,7 @@ Fast handoff: `PROJECT_STATE.md`
 - Abu is needed for legal acceptance, purchases, KYC/bank actions, sensitive credentials, external sending, real-client access, and final business decisions.
 - “Prepared” is not “live.” “Live” requires deployed evidence.
 - Do not recreate already-finished infrastructure because an older note says it is missing.
-- UDYAM work is paused until Abu provides his update.
+- MSME/UDYAM is owner-reported complete; keep certificate/KYC material private and use it only where onboarding specifically needs it.
 
 ## Current readiness
 
@@ -23,11 +23,11 @@ Fast handoff: `PROJECT_STATE.md`
 | Live Shalcon deployment | READY / staging-protected | ChatGPT |
 | Lead persistence | VERIFIED END-TO-END | ChatGPT |
 | Privacy / Terms / DPA / SOW | PREPARED; final review open | Abu / legal |
-| Payment workflow | PREPARED; KYC/bank/accounting open | Abu |
-| UDYAM | PAUSED pending owner update | Abu |
+| MSME / UDYAM | OWNER-REPORTED COMPLETE | Abu |
+| Payment workflow | BUSINESS PROOF AVAILABLE; Razorpay/bank/accounting open | Abu |
 | Domain / SEO cutover | PREPARED; purchase/control open | Abu then ChatGPT |
-| Healthcare outreach | 8 verified drafts, UNSENT | Abu + ChatGPT |
-| Correct outreach sender | BLOCKED; connected Gmail is not Shalcon mailbox | Abu |
+| Healthcare outreach | 15 Draft Ready / 1 Research Ready / UNSENT | Abu + ChatGPT |
+| Correct Gmail sender | BLOCKED; connected Gmail is not Shalcon mailbox | Abu |
 | First real client proof | NOT YET | Joint |
 
 ## P0 — Launch-critical
@@ -37,7 +37,7 @@ Fast handoff: `PROJECT_STATE.md`
 - [x] Portfolio-contaminated `main` excluded from Shalcon work.
 - [x] CI production-build/security/claim/performance gates exist and pass.
 - [x] Current agent/project-state documentation reconciled with deployed reality.
-- [ ] GitHub branch protection/ruleset for the market-ready branch. Connected GitHub tooling currently exposes read-only protection state, so this remains an owner/UI action unless tooling changes.
+- [ ] GitHub branch protection/ruleset for the market-ready branch. Connected GitHub integration cannot verify/manage protection (`403` on protection read), so this remains unverified hardening rather than a launch blocker.
 
 ### Website / deployment
 - [x] Healthcare-first flagship and Audit → Pilot → System positioning.
@@ -78,8 +78,11 @@ Fast handoff: `PROJECT_STATE.md`
 - [x] 50/30/20 implementation milestones approved.
 - [x] Invoice template and payment-link workflow prepared.
 - [x] Razorpay onboarding guidance rechecked/hardened.
-- [ ] UDYAM — intentionally paused pending owner update.
-- [ ] Razorpay KYC / settlement bank / accounting-tax presentation owner-ready.
+- [x] **UDYAM/MSME — owner reports obtained 31 Aug 2026.**
+- [ ] Razorpay KYC / Live activation owner-complete.
+- [ ] Settlement bank verification complete.
+- [ ] Accountant/tax presentation confirmed for current non-GST-registered state.
+- [ ] First Payment Link + invoice-ledger reconciliation flow verified after Live activation.
 
 ### Domain / public release
 - [x] `shalconintelligence.com` recommended and last rechecked available at $11.25/year on 31 Aug 2026.
@@ -99,14 +102,16 @@ Fast handoff: `PROJECT_STATE.md`
 - [x] Onboarding, delivery/UAT, measurement/reporting and financial-control assets.
 - [x] Live Google Sheets sales pipeline.
 
-### Healthcare Batch 01
-- [x] Eight verified prospects in pipeline.
+### Healthcare outbound inventory
+- [x] 16 active Healthcare prospects in live pipeline.
+- [x] 15 are `Draft Ready`.
+- [x] 1 remains deliberately `Research Ready` because recipient evidence is too ambiguous.
 - [x] Eight personalized Gmail drafts prepared and reviewed.
-- [x] All eight remain `Draft Ready`; sent/replied/discovery counts remain zero.
-- [x] Copy uses public workflow observations and synthetic-demo framing.
-- [ ] Connect/use approved Shalcon business Gmail account.
-- [ ] Owner explicitly authorizes controlled send.
-- [ ] Send first batch, then update pipeline statuses.
+- [x] Seven decision/operations-level LinkedIn drafts prepared and reviewed in Batch 02.
+- [x] Copy uses public workflow observations and synthetic-demo/human-control framing.
+- [ ] Connect/use approved Shalcon business Gmail account for email sends.
+- [ ] Owner explicitly authorizes controlled external send.
+- [ ] Send first small batch, then update pipeline statuses from actual outcomes.
 - [ ] Run follow-up/reply/discovery cadence based on actual responses.
 
 ## P2 — Proof
@@ -123,11 +128,12 @@ Do not spend launch energy on hiring systems, partner programs, broad internatio
 
 ## Next execution order
 1. Keep CI/release evidence coherent and staging protected.
-2. Finish safe domain/legal/payment preparation without purchases/KYC/legal acceptance.
-3. Wait for Abu's UDYAM update; do not alter UDYAM state meanwhile.
-4. Resolve owner/legal and Razorpay/bank/accounting gates.
-5. Connect correct Shalcon Gmail and obtain explicit send authorization.
-6. Buy/connect final domain only after explicit cost approval.
-7. Rotate integration secret immediately before final public launch.
-8. Run final deployed cross-browser/domain QA and deliberately enable public indexing.
-9. Convert outreach → audit → proposal → bounded pilot → permission-backed evidence.
+2. MSME/UDYAM is complete at owner-report level; use private certificate only when an onboarding form actually needs it.
+3. Advance Razorpay KYC/Live, bank and accounting readiness.
+4. Reduce legal review to explicit owner decisions and keep conservative defaults until approved.
+5. Keep the single weak-recipient prospect research-only; do not lower evidence standards.
+6. Connect correct Shalcon Gmail and obtain explicit send authorization.
+7. Buy/connect final domain only after explicit cost approval.
+8. Rotate integration secret immediately before final public launch.
+9. Run final deployed cross-browser/domain QA and deliberately enable public indexing.
+10. Convert outreach → audit → proposal → bounded pilot → permission-backed evidence.
