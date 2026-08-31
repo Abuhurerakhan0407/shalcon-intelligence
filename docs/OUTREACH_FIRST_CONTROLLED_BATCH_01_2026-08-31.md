@@ -1,22 +1,26 @@
 # Shalcon Intelligence — First Controlled Outreach Batch 01
 
 Status date: 31 Aug 2026  
-Status: **PREPARED / NOT AUTHORIZED / NOT SENT**
+Status: **OWNER APPROVED / NOT YET SENT**
 
-Purpose: define the first small founder-led outreach sample so Shalcon can start with quality and learn from real responses before scaling.
+Owner authorization: **APPROVE BATCH 01**, received 31 Aug 2026.
+
+Purpose: define and execute the first small founder-led outreach sample so Shalcon can start with quality and learn from real responses before scaling.
 
 ## Hard send gate
-Nothing in this file authorizes outreach.
+Owner authorization for this exact five-prospect Batch 01 is complete.
 
-Before any message:
-- owner explicitly authorizes the external batch/channel;
+Before each actual message:
 - recipient profile/company relationship is rechecked immediately before send;
 - public workflow observation still resolves;
 - live Google Sheet row is still `Draft Ready` and has no opt-out/rejection;
 - exact draft gets one final truth/safety read;
+- the sending channel is authenticated to an owner-approved Shalcon account/profile;
 - after actual send, Sheet stage and Last Touch are updated from the real event.
 
-For email, a correct Shalcon mailbox is additionally required. This Batch 01 is intentionally **LinkedIn-first** because current connected Gmail is not the approved Shalcon business mailbox.
+For Gmail, the approved Shalcon mailbox is **`shalconintelligence@gmail.com`**. The current ChatGPT Gmail connector session is authenticated to a different account, so Gmail prospect sends remain blocked until that connector itself is authenticated to the approved Shalcon mailbox. Owner access to the mailbox does not change the connector session automatically.
+
+This Batch 01 remains intentionally **LinkedIn-first**. Current tool access does not expose an authenticated LinkedIn messaging session, so no LinkedIn prospect has been marked sent until a real message leaves the approved account.
 
 ## Batch size
 **5 prospects.**
@@ -63,7 +67,7 @@ Reason: large enough to get first qualitative signal across Healthcare subsegmen
 ## Not in first batch
 - Clinical Diagnostic Centre — draft ready, hold for Batch 02/next sample.
 - Happy Teeth by Dr. Bajani — draft ready, hold for Batch 02/next sample.
-- Eight earlier email-draft accounts — hold until approved Shalcon Gmail sender is connected.
+- Eight earlier email-draft accounts — hold until ChatGPT Gmail is authenticated to `shalconintelligence@gmail.com`.
 - Mumbai Diagnostic Centre — remains `Research Ready`; do not contact until decision-maker/business-development route becomes clean enough.
 
 ## What to record after each actual send
@@ -89,4 +93,4 @@ After a small real sample, improve messaging from repeated evidence—not from h
 ## Draft source of truth
 `docs/HEALTHCARE_OUTREACH_DRAFTS_BATCH_02_2026-08-31.md`
 
-Until owner authorization exists, Batch 01 is planning evidence only, **not market evidence**.
+Owner approval is real authorization for this exact Batch 01. It does **not** convert unsent drafts into market evidence. Only real sends/replies/discovery outcomes count.
