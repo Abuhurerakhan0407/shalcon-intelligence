@@ -1,106 +1,77 @@
 # SHALCON INTELLIGENCE — AGENT CONTEXT
 
-Read `PROJECT_STATE.md` first for the current implementation handoff and `docs/MARKET_READY_MASTER.md` for strategy. Do not treat older phase notes or the legacy 30-foundations HTML as proof of completion.
+Read `PROJECT_STATE.md` first for current implementation state, `docs/LAUNCH_GATE.md` for release evidence/blockers, and `docs/MARKET_READY_MASTER.md` for strategy. Older phase notes and legacy prototype files are historical only.
 
-## Company
+## Company / offer
 Shalcon Intelligence is an AI automation agency / AI Operations Systems Partner.
 
 Primary launch wedge: **Healthcare / clinics**.
 Secondary: **EdTech / coaching / admissions**.
-Other supported workflows: Insurance, E-commerce, HR/Recruitment.
+Adjacent supported workflows: Insurance, E-commerce, HR/Recruitment.
 
-## Flagship offer
-**AI Front Desk + Lead Operations System**
+Flagship: **AI Front Desk + Lead Operations System** — intake, approved qualification, routing/booking, permission-aware follow-up, CRM/database write-back, operational reporting and human escalation.
 
-The operating path can include:
-- inbound intake;
-- approved qualification;
-- routing / booking;
-- permission-aware follow-up;
-- CRM/database write-back;
-- operational reporting;
-- human escalation.
-
-Sell the connected business workflow, not isolated AI tools.
-
-## Positioning rule
-Shalcon should win on vertical understanding, implementation quality, honest proof, clear human-control boundaries, measurement and reliable integrations — not generic “24/7 AI” claims.
+Sell connected workflows, not isolated AI tools.
 
 ## Truth rules
-- Never invent client metrics, platform counts, uptime or testimonials.
-- `src/data/content.js` is editable when market truth requires it; it is no longer “frozen.”
+- Never invent client metrics, uptime, testimonials or proof.
 - Public demos are synthetic unless verified otherwise.
-- Numeric client-result claims require evidence and permission recorded in `docs/CLAIMS_REGISTER.md`.
-- The Opportunity-at-Risk Estimator is a planning model, not a verified loss/recovery calculator.
-- Do not promise guaranteed revenue, conversion, recovery or breakeven.
-- Do not imply a lead was saved unless the persistence destination actually acknowledged the write.
+- Numeric client-result claims require evidence + permission in `docs/CLAIMS_REGISTER.md`.
+- Opportunity-at-Risk Estimator is a planning model, not verified loss/recovery.
+- Never guarantee revenue, conversion, recovery or breakeven.
+- Sensitive professional judgment remains human-controlled.
+- Do not imply a lead was saved unless durable persistence acknowledged it.
 
-## Sensitive-workflow rule
-Healthcare, insurance, HR and other sensitive workflows require explicit human escalation and data-minimization design. Do not position general AI automation as autonomous professional judgment.
+## Acquisition rules
+- Default first-touch: targeted email / LinkedIn / manual founder-led outreach.
+- No mass cold WhatsApp strategy.
+- Do not use patient booking WhatsApp numbers for unsolicited outreach.
+- Eight Healthcare drafts exist but remain unsent.
+- Current connected Gmail sender is **not** the approved Shalcon business mailbox; do not send from that account.
+- External sends require owner authorization.
 
-## Acquisition rule
-Default first-contact channels are targeted email and LinkedIn/manual prospecting. Do not build or recommend mass cold WhatsApp outreach. WhatsApp follow-up should be permission-aware / prospect-initiated as applicable.
+## Repository rules
+- Work only on `shalcon-market-ready-2026`.
+- Do not edit/merge `main` while it contains portfolio work.
+- Do not recreate removed prototype source as active source.
+- Never commit real secrets, KYC material, bank data or machine-local agent settings.
+- Keep CI green and avoid unnecessary deployment-only commits.
 
-## Repository rule
-- Work on `shalcon-market-ready-2026`.
-- Do not edit/merge `main` while it contains Abu portfolio work.
-- Do not re-create removed `source/` prototype files as active source.
-- Do not commit real environment secrets or machine-local agent permission settings.
+## Technical state — VERIFIED
+Stack: Vite 8, React 18, Tailwind v4, Three.js, GSAP/ScrollTrigger, Vercel `/api/lead`, dedicated Supabase persistence.
 
-## Technical stack
-- Vite 8
-- React 18
-- Tailwind v4
-- Three.js imperative scene
-- GSAP/ScrollTrigger
-- Vercel `/api/lead` server route
+Lead path is live and verified:
+Browser → Vercel `/api/lead` → authenticated HTTPS webhook → dedicated Shalcon Supabase.
 
-Direct runtime dependencies are intentionally kept minimal. Do not add a framework/library unless the shipped app actually needs it.
+Verified behaviors include successful durable write, replay handling, conflict rejection, fail-closed persistence behavior and restored production destination. Synthetic QA rows were cleaned.
 
-## Performance rules
-- First paint must not depend on WebGL.
-- Decorative Three.js remains lazy/conditional.
-- Small-screen, reduced-motion, low-memory, low-CPU and Save-Data users keep the CSS fallback.
-- Preserve keyboard/focus behavior and 44px mobile touch targets.
-- Keep compiled-artifact size/security gate green.
+Current live runtime:
+- Vercel project: `prj_AZBIuv6c0uJmR4AF8SStuzGB2Dzp`
+- branch: `shalcon-market-ready-2026`
+- deployed runtime commit: `8f3ee67bb3889e7c05dfd35b27f3d9b361a51166`
+- deployment: `dpl_FcRYobZDc1NzBhfWMTWdYYmz1JiC`
+- alias: `https://shalcon-intelligence.vercel.app`
+- staging header: `X-Robots-Tag: noindex, nofollow, noarchive` verified live
 
-## Lead-capture contract
-The browser sends audit requests only to `/api/lead`.
+## Current owner-controlled gates
+Do not fake completion of these:
+1. final owner/legal review of Privacy, Terms, SOW/DPA risk language;
+2. Razorpay/bank/accounting/KYC readiness;
+3. UDYAM status — **owner has asked agents to leave this untouched until owner provides an update**;
+4. owner purchase/control of final production domain;
+5. correct Shalcon Gmail connection/use before outreach sending;
+6. explicit authorization before first external outreach send;
+7. production webhook-secret rotation immediately before final public launch;
+8. first real qualified audit/pilot and permission-backed proof.
 
-The server:
-- validates + bounds inputs;
-- requires contact consent;
-- recalculates estimator outputs itself;
-- minimizes URLs/attribution;
-- requires HTTPS persistence;
-- requires `LEAD_WEBHOOK_SECRET`;
-- sends authenticated server-to-server webhook requests;
-- generates `leadId` and matching `Idempotency-Key`;
-- applies basic abuse controls;
-- fails closed when durable persistence fails.
-
-Required production env:
-- `LEAD_WEBHOOK_URL`
-- `LEAD_WEBHOOK_SECRET`
-
-Current blocker: dedicated Shalcon persistence has not been deployed yet. See `docs/SUPABASE_LEAD_DESTINATION_SPEC.md`.
-
-## Market-ready status
-Working launch assets exist for:
-- positioning/offer;
-- website + synthetic demo;
-- discovery/qualification;
-- objections/closing;
-- proposal/SOW;
-- onboarding;
-- delivery/UAT;
-- reporting/measurement;
-- basic financial controls;
-- pipeline cadence/outreach;
-- claims control;
-- lead destination specification.
-
-Items requiring owner authority/account access remain blockers: dedicated billable infrastructure creation, final legal/business identity/review, commercial/payment approval and real client evidence.
+## Remaining ChatGPT-safe work
+- eliminate stale project-control documentation;
+- maintain domain/SEO release runbook without purchasing anything;
+- prepare exact owner/legal decision pack without declaring legal approval;
+- keep payment workflow guidance accurate without collecting KYC material;
+- keep release evidence coherent;
+- expand/research pipeline only when it does not distract from first controlled batch;
+- prepare final cross-browser/domain release QA for execution after domain cutover.
 
 ## Execution behavior
-Do not stop for cosmetic approvals. Keep improving safe, reversible, non-owner-dependent work until a real credential, cost, legal-authority, payment/KYC or business-decision dependency is reached.
+Do not stop for cosmetic approvals. Continue reversible, non-owner-dependent work until a real credential, legal authority, purchase, KYC, external send, or client-data decision is required.
