@@ -8,15 +8,16 @@ Primary wedge: Healthcare / clinics in Mumbai Metropolitan Region.
 Primary first-contact channels: targeted business email and LinkedIn/manual outreach.
 
 ## 0. Send gate — required
-Research/draft work can continue before this gate. External sending cannot.
+Research/draft work can continue before this gate. External sending requires a real approved channel event.
 
 Before any first touch:
 - [ ] prospect exists in current Google Sheets pipeline;
 - [ ] row is `Draft Ready`, not merely `Research Ready`;
 - [ ] public observation/contact route is reverified;
 - [ ] sender/channel identity is appropriate and owner-approved where applicable;
-- [ ] owner has explicitly authorized the controlled send batch;
 - [ ] no prior opt-out/rejection/do-not-contact signal exists.
+
+For the exact five-prospect **Controlled Batch 01**, owner authorization is already complete as of 31 Aug 2026. Do not ask for that authorization again.
 
 Current 31 Aug state:
 - 16 active Healthcare prospects in live pipeline;
@@ -25,9 +26,11 @@ Current 31 Aug state:
 - 0 sent, 0 replied, 0 discovery;
 - 8 earlier email drafts exist in Gmail;
 - 7 additional LinkedIn drafts exist in `HEALTHCARE_OUTREACH_DRAFTS_BATCH_02_2026-08-31.md`;
-- currently connected Gmail is not the approved Shalcon mailbox, therefore **do not send email from it**.
+- approved Shalcon email sender is `shalconintelligence@gmail.com`;
+- current ChatGPT Gmail connector is authenticated to another account, therefore **do not send prospect email from that connector**;
+- current tools do not expose an authenticated LinkedIn messaging session, therefore do not mark LinkedIn outreach sent until a real message leaves the approved profile.
 
-`Draft Ready` means copy/contact-route work is prepared. It does **not** mean contact occurred or sending is authorized.
+`Draft Ready` means copy/contact-route work is prepared. It does **not** mean contact occurred.
 
 ## 1. Research block
 At validation stage, research 3–5 strong-fit accounts at a time.
@@ -54,12 +57,14 @@ Promote only after:
 - personalized first-touch copy is grounded in public facts;
 - no unsupported internal-performance assumption is included.
 
-Creating a draft does not authorize sending it.
+Creating a draft does not authorize or prove a send.
 
 Current hold: Mumbai Diagnostic Centre remains `Research Ready` because available public support/corporate/LinkedIn evidence does not yet provide a sufficiently clean decision-maker outreach route. Do not lower the bar merely to reach 16/16.
 
 ## 3. Draft / first-touch block
-Once send gate is open, send only a small controlled batch. Start with quality, not a daily quota.
+Once an approved authenticated sending channel is available, execute Controlled Batch 01 first. Start with quality, not a daily quota.
+
+Batch 01 authorization source: `docs/OUTREACH_FIRST_CONTROLLED_BATCH_01_2026-08-31.md`.
 
 Each first message should contain:
 - one specific public observation;
@@ -104,9 +109,9 @@ Do not create a second competing CRM until actual volume proves the spreadsheet 
 
 Historical GitHub seed/batch files are research/copy libraries, not current send-state evidence.
 
-## First four weeks after send gate opens
+## First four weeks after first real send
 ### Week 1
-- send a controlled subset of the verified `Draft Ready` prospects;
+- execute the already-authorized Batch 01 through an owner-approved authenticated channel;
 - record delivery/replies/objections;
 - verify booking/contact path;
 - avoid scaling before observing message quality.
@@ -160,7 +165,7 @@ Requires a supportable public workflow observation and a concrete contact-route 
 Requires recipient/contact-route verification plus personalized copy that passes truth/safety review.
 
 ### Draft Ready → Contacted
-Requires send gate PASS plus actual external send.
+Requires an approved authenticated channel plus actual external send. For Controlled Batch 01, owner authorization is already satisfied.
 
 ### Replied → Qualified
 Requires evidence from the prospect that the workflow/opportunity may be meaningful and a relevant stakeholder is engaged.
@@ -189,4 +194,4 @@ Pause/change campaign when:
 - Shalcon cannot deliver the workflow being marketed.
 
 ## Proof boundary
-Lead-generation/outbound process is prepared. It becomes execution-proven only after real sends produce recorded delivery/reply/audit data. Until then, do not claim outbound conversion performance.
+Lead-generation/outbound process is prepared and Batch 01 is authorized. It becomes execution-proven only after real sends produce recorded delivery/reply/audit data. Until then, do not claim outbound conversion performance.
