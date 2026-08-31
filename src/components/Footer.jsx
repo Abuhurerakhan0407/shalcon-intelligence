@@ -42,8 +42,8 @@ export default function Footer({ onBookCall, onWhatsApp, onLinkedIn, onEmail }) 
               { label: "WhatsApp Us", action: onWhatsApp },
               { label: "Email Us", action: onEmail },
             ].map((item) => <button key={item.label} className="footer-link" onClick={item.action}>{item.label}</button>)}
-            <a className="footer-link" href="/privacy.html" target="_blank" rel="noreferrer">Privacy</a>
-            <a className="footer-link" href="/terms.html" target="_blank" rel="noreferrer">Terms</a>
+            <a className="footer-link" href="/privacy.html" target="_blank" rel="noreferrer">Privacy Notice</a>
+            <a className="footer-link" href="/terms.html" target="_blank" rel="noreferrer">Website Terms</a>
           </div>
         </div>
 
