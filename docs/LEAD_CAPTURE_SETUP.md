@@ -1,73 +1,62 @@
 # Shalcon Intelligence — Lead Capture Setup
 
-## Current behavior
+Status date: 31 Aug 2026  
+Status: **configured and verified end-to-end in the dedicated Shalcon infrastructure.**
+
+## Current production behavior
 The website submits automation-audit requests to `/api/lead`.
 
-The server returns success only after the configured persistence destination returns a successful HTTP response. If persistence is unavailable, invalid or failing, the visitor receives an explicit failure and is offered direct WhatsApp / calendar paths. The website must never display a false “saved” confirmation.
+The server returns success only after the configured persistence destination returns an explicit durable-success acknowledgement. If persistence is unavailable, invalid or failing, the visitor receives a failure state and direct contact alternatives remain available. The website must never display a false “saved” confirmation.
+
+Current path:
+`Browser → Vercel /api/lead → authenticated HTTPS webhook → dedicated Shalcon Supabase Edge Function → public.shalcon_leads`
+
+Dedicated Supabase project ref: `qfsnmjeacwdkbukwxbwz` (`ap-south-1`).
 
 ## Required production environment
-
 ### `LEAD_WEBHOOK_URL`
-Server-side **HTTPS** endpoint that accepts JSON POST requests.
+Server-side HTTPS URL for the deployed `shalcon-lead-webhook` Edge Function.
 
 ### `LEAD_WEBHOOK_SECRET`
-Generated shared secret of at least 24 characters. The Vercel function sends it only in the server-to-server `X-Shalcon-Webhook-Secret` header.
+Strong shared secret sent only server-to-server in `X-Shalcon-Webhook-Secret`.
 
-Never expose either value in browser code. Do not place webhook credentials in the URL itself.
-
-The persistence destination must reject requests whose shared-secret header does not match its configured value.
+Never expose either value in browser code, URLs, screenshots, issues or Git.
 
 ## Server trust boundary
-Browser-derived totals are **not trusted**.
+Browser-derived totals are not trusted.
 
-The server:
-- validates and normalizes the WhatsApp number to digits only;
+The Vercel route:
+- validates and normalizes WhatsApp to digits only;
 - requires explicit contact consent;
 - bounds estimator inputs;
-- recalculates opportunity-at-risk values itself;
-- strips query strings/fragments from stored page/referrer URLs;
-- allowlists only `utm_source`, `utm_medium`, and `utm_campaign` for attribution;
-- rejects non-HTTPS or credential-bearing persistence URLs;
-- requires an authenticated shared-secret webhook;
-- generates a unique `leadId` for each accepted persistence attempt;
-- sends that same ID as the `Idempotency-Key` header;
-- applies a best-effort short-window IP rate limit before calling persistence;
-- does not persist or log the client IP as lead data;
-- fails closed when persistence fails.
+- recalculates opportunity-at-risk values server-side;
+- strips query strings/fragments from stored page/referrer;
+- allowlists `utm_source`, `utm_medium`, `utm_campaign` attribution only;
+- rejects unsafe/non-HTTPS persistence configuration;
+- requires authenticated shared-secret delivery;
+- generates a unique `leadId` and matching `Idempotency-Key`;
+- applies best-effort short-window IP rate limiting;
+- does not store IP as lead data merely for that limiter;
+- fails closed when durable persistence fails.
 
-The in-memory rate limit is defense in depth, not a replacement for destination/WAF abuse controls because serverless instances do not share one guaranteed global memory space.
+The in-memory rate limiter is defense in depth, not a globally shared serverless WAF.
 
 ## Persisted payload — schema v2
-- `schemaVersion` = `2`
-- `leadId` — server-generated UUID
-- `source` = `shalcon_opportunity_estimator`
-- `createdAt`
-- `contactConsent` = `true`
-- `contactConsentAt`
-- `contactConsentVersion` = `website-audit-contact-v1`
-- `name`
-- `whatsapp` — normalized digits only
-- `company`
-- `industry`
-- `packageName`
-- `currency` — INR/USD only; otherwise blank
-- `inquiries`
-- `missPercent`
-- `conversionRate`
-- `avgTxn`
-- `estimatedDailyOpportunityAtRisk`
-- `estimatedMonthlyOpportunityAtRisk`
-- `estimatedYearlyOpportunityAtRisk`
-- `page` — origin + pathname only
-- `referrer` — origin + pathname only
-- `utmSource`
-- `utmMedium`
-- `utmCampaign`
+Contract includes:
+- `schemaVersion = 2`;
+- server-generated `leadId`;
+- source + timestamps;
+- consent evidence;
+- bounded name/WhatsApp/company/industry/package fields;
+- currency and estimator assumptions;
+- server-computed daily/monthly/yearly opportunity-at-risk estimates;
+- minimized page/referrer;
+- allowlisted UTM attribution.
 
-Estimator fields are planning assumptions and must never be described as verified financial loss, guaranteed recovery, or actual client performance.
+Estimator values are planning assumptions. They are not verified financial loss, guaranteed recovery or client performance.
 
 ## Opportunity calculation
-When every required numeric input is valid, the server calculates:
+When every required numeric input is valid:
 
 `daily = inquiries × (missPercent / 100) × (conversionRate / 100) × avgTxn`
 
@@ -75,44 +64,50 @@ Then:
 - monthly = daily × 30
 - yearly = daily × 365
 
-If any required numeric input is invalid or outside the approved bound, the stored derived opportunity values are `null` rather than fabricated.
+Invalid/out-of-bound required inputs produce `null` derived values rather than fabricated numbers.
 
-## Destination requirements
-The final destination must:
-1. require and verify `X-Shalcon-Webhook-Secret`;
-2. use `leadId` / `Idempotency-Key` to prevent duplicate storage where supported;
-3. persist the request durably;
-4. return non-2xx on failure;
-5. preserve `createdAt` and consent evidence;
-6. preserve source/attribution fields;
-7. restrict access to authorized Shalcon operators;
-8. support deletion/correction workflows;
-9. avoid collecting unnecessary sensitive data;
-10. provide a clear way to record contact opt-out;
-11. document retention and deletion policy;
-12. apply its own abuse/rate controls as needed;
-13. avoid silently coercing failed writes into successful HTTP responses.
+## Destination contract
+The deployed destination must continue to:
+1. verify `X-Shalcon-Webhook-Secret`;
+2. require matching `leadId` / `Idempotency-Key`;
+3. durably persist first writes;
+4. treat exact replay idempotently;
+5. reject conflicting replay rather than overwriting protected data;
+6. return non-2xx on failure;
+7. preserve consent/source/attribution evidence;
+8. restrict browser-role access;
+9. support correction/deletion/opt-out operations;
+10. avoid unnecessary sensitive data;
+11. fail rather than silently converting a failed write into success.
 
-## Production verification
-Before launch:
-1. configure both server-side environment variables;
-2. send a request with the wrong webhook secret directly to the destination and confirm rejection;
-3. submit a synthetic test lead through the website;
-4. confirm the persisted record matches schema v2;
-5. confirm `leadId` matches the server `Idempotency-Key` received by the destination;
-6. verify server-computed opportunity values match submitted assumptions;
-7. verify query strings/fragments are not retained in page/referrer;
-8. verify the UI shows success only after persistence;
-9. force destination failure and verify the UI does **not** show success;
-10. confirm WhatsApp and booking fallbacks work;
-11. confirm neither secret appears in browser source/network configuration;
-12. test correction/deletion handling;
-13. document retention and authorized operators.
+## Completed production verification
+Evidence completed before this status was marked verified:
+- wrong destination secret rejected;
+- valid synthetic write persisted exactly once;
+- exact replay handled without duplicate;
+- conflicting replay rejected;
+- server-computed estimator values persisted correctly;
+- minimized attribution/page fields verified;
+- real Vercel→Supabase write succeeded;
+- forced destination verifier failure caused Vercel `502 lead_persistence_failed` and no false saved state;
+- destination restored and successful write retested;
+- synthetic QA rows removed;
+- browser roles denied direct lead-table access;
+- security/performance advisor findings reviewed.
 
 ## Automated safety coverage
-CI tests cover method restrictions, body limits, malformed payloads, consent, WhatsApp validation, honeypot behavior, persistence configuration, webhook-secret strength, HTTPS/credential restrictions, server-side opportunity calculation, idempotency headers, URL minimization, invalid estimator inputs, best-effort IP rate limiting and upstream failure handling.
+CI covers method restrictions, body limits, malformed payloads, consent, WhatsApp validation, honeypot behavior, persistence configuration, webhook-secret strength, HTTPS/credential restrictions, server-side opportunity calculation, idempotency headers, URL minimization, invalid estimator inputs, best-effort IP rate limiting and upstream failure handling.
+
+## Maintenance / release rules
+Do not recreate the Supabase project or point this endpoint at another product database.
+
+After any material API/persistence change, repeat the minimum contract tests and clean synthetic records.
+
+Before final public/paid launch:
+- rotate the manually transferred Vercel→Supabase shared credential;
+- prove the new secret succeeds and the old one fails;
+- remove any synthetic rotation-test row;
+- record final evidence in `docs/LAUNCH_GATE.md` and `PROJECT_STATE.md`.
 
 ## Current launch status
-**BLOCKED** until a dedicated Shalcon persistence destination is configured and the production verification above passes.
-
-Do not point this endpoint at another product's production database merely because it already exists.
+Lead capture itself is **PASS / VERIFIED**. Remaining launch blockers are external to this setup: final legal/payment/domain gates, final production secret rotation, and final release QA/public-indexing cutover.
