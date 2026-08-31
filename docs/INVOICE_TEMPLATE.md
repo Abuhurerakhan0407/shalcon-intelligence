@@ -1,6 +1,6 @@
-# Shalcon Intelligence — Invoice Template
+# Shalcon Intelligence — Commercial Invoice Template
 
-> Working operational template. Confirm tax/accounting treatment before first paid use. Current proprietor-supplied status on 31 Aug 2026: **Not registered for GST**. MSME/UDYAM is owner-reported obtained, but the certificate number/QR/PAN-linked details should remain private unless a legitimate invoice/accounting requirement is confirmed.
+> Working operational template. Current proprietor-supplied status on 31 Aug 2026: **Not registered for GST**. CBIC guidance rechecked 31 Aug 2026 confirms that an unregistered supplier cannot issue a GST tax invoice or collect GST; an ordinary commercial invoice may be used. Accountant confirmation is still required before first paid use for numbering, TDS/income-tax handling and recordkeeping. MSME/UDYAM is owner-reported obtained, but certificate number/QR/PAN-linked details remain private unless a legitimate accounting/client requirement is confirmed.
 
 ## Seller
 **Abu Hurera Khan**  
@@ -11,9 +11,9 @@ GST status: **Not registered**
 
 ---
 
-# INVOICE
+# COMMERCIAL INVOICE
 
-> This document is **not a GST tax invoice** while the supplier remains unregistered for GST. Do not collect or separately charge GST unless registration status changes and the invoice process is updated.
+> **Non-GST-registered supplier. This is not a GST tax invoice. No GST is charged or collected.** If Shalcon later becomes GST-registered, the invoice process must be updated before issuing the next invoice.
 
 **Invoice No.:** SI-2026-[####]  
 **Invoice Date:** [DD MMM YYYY]  
@@ -38,7 +38,7 @@ Current ledger seed: `SI-2026-0001`. Confirm the numbering convention with the a
 | [Optional separately approved item] | [ ] | ₹[ ] | ₹[ ] |
 
 **Subtotal:** ₹[ ]  
-**GST:** **Not charged — supplier currently not GST-registered**  
+**GST:** **₹0 — not charged; supplier currently not GST-registered**  
 **Total due:** **₹[ ]**
 
 ## Approved Healthcare Pilot milestone reference
@@ -64,7 +64,8 @@ Operational overdue status may be derived in the finance ledger from the due dat
 - This invoice relates to the written proposal/SOW referenced above.
 - Business outcomes such as revenue, conversion or appointment volume are not guaranteed unless separately written and approved in the signed agreement.
 - Third-party usage charges are excluded unless expressly listed above.
-- Shalcon must not collect a GST amount while it remains unregistered; if registration status changes, update the invoice process before the next invoice.
+- No GST amount is included or collected while Shalcon remains unregistered.
+- Do not label this document a GST tax invoice or include a supplier GSTIN while none exists.
 - Do not expose private MSME/PAN/Aadhaar/bank/KYC identifiers merely because they exist; include only identifiers an accountant/legal requirement says belong on the invoice.
 - Accountant review remains required before first paid use, including numbering convention, income-tax/TDS handling where relevant, and record retention.
 
