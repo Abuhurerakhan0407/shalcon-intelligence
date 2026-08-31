@@ -15,7 +15,7 @@ Current evidence/status is governed by `docs/LAUNCH_GATE.md`. Fast recovery stat
 6. Human judgment remains in the loop for sensitive/consequential medical, insurance, employment, legal or financial decisions.
 7. Do not create/reuse cross-product infrastructure merely to clear a checkbox.
 8. Do not recreate the existing Shalcon Vercel/Supabase stack because old historical text says it is missing.
-9. No external send, purchase, KYC action, legal approval or raw-secret operation is inferred from preparation.
+9. No external send, purchase, KYC action, legal approval or raw-secret operation is inferred from preparation. **Controlled Batch 01 is separately and explicitly owner-authorized; authorization still is not send evidence.**
 10. **MSME/UDYAM is owner-reported obtained on 31 Aug 2026.** Keep certificate/KYC details private; do not reopen registration work unless the owner reports a correction or a provider raises an issue.
 11. Owner-reported completion is not independent verification of certificate fields.
 
@@ -203,6 +203,10 @@ Prepared assets:
 - client onboarding/delivery/UAT/measurement/pilot-report system;
 - financial/margin controls;
 - Healthcare outreach framework + pipeline rhythm;
+- controlled Batch 01 authorization record;
+- Batch 01 email fallbacks for four publicly verified business inboxes;
+- reply-to-discovery handoff;
+- migration backup of the 8 legacy Gmail drafts before account reconnect;
 - live Google Sheets pipeline;
 - launch-critical SOP index.
 
@@ -215,12 +219,25 @@ Live founder-led pipeline:
 - **0 discovery**.
 
 Draft inventory:
-- 8 personalized Gmail drafts — unsent;
-- 7 verified decision/operations-level LinkedIn drafts — unsent.
+- 8 personalized legacy Gmail drafts — unsent and backed up in `GMAIL_DRAFT_MIGRATION_BACKUP_2026-08-31.md`;
+- 7 verified decision/operations-level LinkedIn drafts — unsent;
+- 4 email fallback variants for the already-authorized Batch 01 — unsent.
 
-Connected Gmail currently resolves to `iafakhan9999@gmail.com`, not the approved Shalcon mailbox. **Do not send email from it.** Email outreach requires `shalconintelligence@gmail.com` or another explicitly approved Shalcon sender.
+### Controlled Batch 01 — OWNER AUTHORIZED / UNSENT
+Authorized on 31 Aug 2026 with `APPROVE BATCH 01`:
+1. Dr. Riyaz Quereshi — Tru Smile
+2. Niteen Tulpule — Sirona Diagnostics
+3. Dr. Chandraprabha Kumar — Neevwellbeing’s The Dental Clinic
+4. Dr. Anand Shroff — Shroff Eye Hospital
+5. Dr. Vinit Shah — Vinit Eye Clinic
 
-All external outreach, including LinkedIn, requires explicit owner authorization. No mass cold WhatsApp. Patient booking WhatsApp numbers are not default unsolicited first-touch channels.
+Do not ask for Batch 01 authorization again. Authorization does not change a prospect to `Sent`; only an actual outbound event does.
+
+Approved Shalcon email sender: **`shalconintelligence@gmail.com`**. Owner states they have access to that mailbox. Current ChatGPT Gmail connector still authenticates to another account, so **do not send prospect email from the current connector**. Four Batch 01 public-business-inbox email fallbacks are ready once the correct Shalcon Gmail account is connected. Neev remains LinkedIn-only because no clean public business email was verified; do not use patient-booking WhatsApp as a cold fallback.
+
+Current available tools do not expose an authenticated LinkedIn messaging session. Therefore Batch 01 is authorized but remains unsent until a real approved channel session is available.
+
+No mass cold WhatsApp. Patient booking WhatsApp numbers are not default unsolicited first-touch channels.
 
 ## 9. Payment / business setup
 Prepared and current:
@@ -265,7 +282,7 @@ Branch protection/ruleset for `shalcon-market-ready-2026` is **unverified** beca
 
 ## 12. Owner split — target 90/10
 ### ChatGPT/execution
-Research, audits, code, QA, truthful copy, conversion design, estimator, analytics architecture, lead-capture maintenance, security controls, docs, demos, offer sheets, sales collateral, research process, finance-ledger structure, deployment/release preparation and tracking.
+Research, audits, code, QA, truthful copy, conversion design, estimator, analytics architecture, lead-capture maintenance, security controls, docs, demos, offer sheets, sales collateral, research process, finance-ledger structure, deployment/release preparation, approved-batch execution when authenticated channels are available, reply triage and tracking.
 
 ### Owner only
 Identity/legal authority/money/account ownership/external representation tasks:
@@ -274,7 +291,7 @@ Identity/legal authority/money/account ownership/external representation tasks:
 - private MSME certificate use where a legitimate provider requests it;
 - production domain purchase/control;
 - correct business-mailbox connection/ownership;
-- authorization of external outreach;
+- authorization for outreach outside already-approved batches;
 - real client/system access;
 - sales calls/closing decisions;
 - approval of truthful client evidence;
@@ -303,17 +320,22 @@ Identity/legal authority/money/account ownership/external representation tasks:
 - [x] 16-prospect live Healthcare pipeline;
 - [x] 15 prospects Draft Ready / 1 Research Ready;
 - [x] 15 first-touch drafts prepared across Gmail + LinkedIn;
+- [x] Controlled Batch 01 explicitly owner-authorized;
+- [x] four Batch 01 email fallback drafts prepared;
+- [x] old-account Gmail drafts backed up for migration;
+- [x] reply-to-discovery handoff prepared;
 - [ ] correct Shalcon Gmail sender connected/used for email;
-- [ ] explicit first-send authorization;
+- [ ] first real Batch 01 outbound message;
 - [ ] first qualified audit/proposal;
 - [ ] first paid pilot.
 
 ### Business / release owner gates
 - [x] MSME/UDYAM — owner-reported obtained;
+- [x] Batch 01 outreach authorization;
 - [ ] Razorpay Live / bank / accounting readiness;
 - [ ] owner/legal review;
 - [ ] correct email sender connection;
-- [ ] explicit outreach authorization;
+- [ ] authenticated LinkedIn session if ChatGPT is expected to execute LinkedIn directly;
 - [ ] final domain purchase/control;
 - [ ] final production credential rotation;
 - [ ] deliberate public-indexing release.
@@ -344,4 +366,4 @@ Shalcon is ready for a controlled prospect conversation when a prospect can:
 7. see credible privacy/security boundaries;
 8. receive a professional audit/proposal/onboarding flow.
 
-Those technical/commercial preparation conditions are substantially satisfied. Remaining work is now mostly owner-controlled payment/legal/sender/send/domain gates plus real market evidence—not endless website polishing.
+Those technical/commercial preparation conditions are substantially satisfied. Remaining work is now mostly owner-controlled payment/legal/sender/domain gates plus actual channel execution and real market evidence—not endless website polishing.
