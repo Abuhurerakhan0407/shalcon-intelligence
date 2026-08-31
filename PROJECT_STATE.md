@@ -29,6 +29,9 @@ Buying path: Audit → bounded Pilot → connected System.
 - **Approved business/outreach sender: `shalconintelligence@gmail.com` — owner reconfirmed 31 Aug 2026**
 - Owner confirms direct access/control of this mailbox.
 - Connected Google Calendar profile independently returns **Shalcon Intelligence / `shalconintelligence@gmail.com`**.
+- Connected Google Drive profile currently returns **Abu hurera Khan / `iamabuhurerakhan@gmail.com`**; the live pipeline and finance ledger are in this owner-controlled Drive workspace. This is usable but must not be mislabeled as the Shalcon business Google account.
+- Connected Gmail profile currently returns **`iafakhan9999@gmail.com`**, which is not authorized for Shalcon prospect outreach.
+- Connector identity map: `docs/GOOGLE_CONNECTOR_IDENTITY_MAP_2026-08-31.md`.
 - GST status supplied by proprietor: not registered
 - **UDYAM/MSME: owner reports obtained on 31 Aug 2026**
 - Preferred contract wording: **“Abu Hurera Khan, sole proprietor trading as Shalcon Intelligence.”**
@@ -101,6 +104,8 @@ Owner/legal review remains open. Never claim generic “100% DPDP compliant/secu
 Native Google Sheet: **Shalcon Intelligence — Invoice & Payment Ledger**  
 Spreadsheet ID: `1LWV_P9z2bNehYfcz4ieIgncRhY2UvswjmpQaR-XX7lg`
 
+This ledger currently resides in the owner-controlled Google Drive identity `iamabuhurerakhan@gmail.com`. Do not migrate or duplicate it merely to unify connector accounts unless the owner explicitly asks.
+
 Verified preparation:
 - India timezone;
 - native invoice table + validation;
@@ -120,6 +125,8 @@ Payment readiness is now narrowed to:
 Google Sheet: **Shalcon Intelligence — Sales Pipeline**  
 Spreadsheet ID: `1AhYb8qOAcDhFaaTmrwubsyXmio7TUsHMVaChynuo0CQ`  
 Tab: `Pipeline`
+
+This Sheet currently resides in the owner-controlled Google Drive identity `iamabuhurerakhan@gmail.com`.
 
 Current live counts:
 - active Healthcare prospects: **16**
