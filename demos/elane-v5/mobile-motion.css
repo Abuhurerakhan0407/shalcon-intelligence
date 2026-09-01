@@ -1,0 +1,104 @@
+@media (max-width:900px){
+html{scroll-behavior:auto}
+body{overflow-x:hidden}
+.hero{height:180svh}
+.hero-stage{position:sticky;top:0;height:100svh;overflow:hidden}
+.hero-media{will-change:transform,clip-path}
+.hero-white{left:16px;right:16px;bottom:15svh;top:auto;transform:none;will-change:transform,opacity}
+.hero-white h1 b{font-size:clamp(72px,22vw,108px)}
+.hero-dark{left:16px;right:16px;top:auto;bottom:8svh;width:auto;opacity:0;will-change:transform,opacity}
+.hero-dark h2{font-size:clamp(56px,15vw,78px)}
+.hero-dark .hero-note{width:min(78vw,360px);font-size:11px;margin-top:22px}
+.hero-meta,.scroll-mark{display:none}
+
+.belief{height:180svh}
+.belief-stage{position:sticky;top:0;height:100svh;padding:9svh 16px;overflow:hidden}
+.belief-copy{font-size:clamp(46px,12.7vw,69px);width:100%;margin-top:9svh;line-height:.94}
+.belief-copy .w{opacity:.12}
+.belief-portrait{right:16px;bottom:4svh;width:46vw;height:66vw;clip-path:inset(100% 0 0 0);will-change:transform,clip-path}
+.belief-note{left:16px;bottom:5svh;width:43vw;font-size:10px;opacity:0}
+.repeat{display:none}
+
+.rituals{height:380svh;position:relative;background:var(--ink)}
+.ritual-stage{position:sticky;top:0;height:100svh;overflow:hidden}
+.ritual-head{display:flex;top:76px;left:16px;right:16px;font-size:7px;z-index:40}
+.ritual-ghost{display:none}
+.ritual-dots{display:flex;right:16px;bottom:18px;z-index:40}
+.ritual-dots i{width:24px}
+.ritual-panel{position:absolute;inset:0;display:block;min-height:0;padding:0;clip-path:none!important;transform:translate3d(0,100%,0);overflow:hidden;background:var(--ink);will-change:transform}
+.ritual-panel.first{transform:translate3d(0,0,0)}
+.ritual-panel figure{position:absolute;inset:0;height:100%;margin:0;z-index:0}
+.ritual-panel figure:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,10,8,.08) 26%,rgba(12,10,8,.26) 48%,rgba(12,10,8,.92) 88%)}
+.ritual-panel figure img{transform:scale(1.08);will-change:transform}
+.ritual-copy{position:absolute;z-index:6;left:16px;right:16px;bottom:7svh;padding:0;display:block;color:var(--paper)}
+.ritual-copy h2{font-size:clamp(68px,19vw,100px);line-height:.76;margin:12px 0 18px;max-width:92vw}
+.ritual-copy p{width:min(88vw,410px);font-size:10px;line-height:1.65;color:rgba(255,255,255,.68)}
+.ritual-copy a{margin-top:16px}
+
+.interlude{height:155svh}
+.interlude-stage{position:sticky;top:0;height:100svh;overflow:hidden}
+.interlude-stage figure{width:52vw;height:70vw;left:24vw;top:15svh;clip-path:inset(12% 0 12% 0);will-change:transform,clip-path}
+.interlude-lines{width:calc(100% - 32px)}
+.interlude-lines p{font-size:clamp(56px,15.5vw,82px);line-height:.8;opacity:.08;will-change:transform,opacity}
+.interlude-stage>span{left:16px;bottom:5svh;font-size:16px}
+
+.finder{padding:110px 16px 120px;overflow:hidden}
+.finder-grid{grid-template-columns:1fr;gap:44px}
+.finder-left h2{font-size:clamp(56px,15.5vw,82px);margin:24px 0 30px}
+.mood{height:54px}
+.finder-right{min-height:74svh;overflow:hidden}
+.finder-right figure{clip-path:inset(10% 0 10% 0);will-change:clip-path,transform}
+.finder-result{padding:130px 20px 22px}
+.finder-result h3{font-size:clamp(46px,12vw,66px)}
+
+.process{height:360svh;background:var(--paper)}
+.process-stage{position:sticky;top:0;height:100svh;display:block;overflow:hidden;background:var(--paper)}
+.process-media{display:block;position:absolute;left:0;right:0;top:0;height:57svh;overflow:hidden}
+.process-shot{position:absolute;inset:0;display:block;clip-path:none!important;transform:translate3d(0,100%,0);will-change:transform}
+.process-shot.first{transform:translate3d(0,0,0)}
+.process-shot img{transform:scale(1.07);will-change:transform}
+.process-copy{position:absolute;z-index:8;left:0;right:0;bottom:0;height:46svh;padding:24px 16px max(22px,env(safe-area-inset-bottom));display:flex;flex-direction:column;justify-content:space-between;background:var(--paper);box-shadow:0 -18px 50px rgba(23,21,18,.05)}
+.step-wrap{position:relative;height:27svh}
+.process-step{position:absolute;left:0;right:0;bottom:0;padding:0;border:0;opacity:0;transform:translateY(52px);will-change:transform,opacity}
+.process-step.first{opacity:1;transform:none}
+.process-step h3{font-size:clamp(48px,13.5vw,72px);line-height:.86;margin:12px 0 14px}
+.process-step p{font-size:10px;line-height:1.6;width:min(88vw,390px);margin:0}
+.process-index{display:grid;margin-top:12px}
+
+.space{height:180svh}
+.space-stage{position:sticky;top:0;height:100svh;padding:9svh 16px;overflow:hidden}
+.space-stage h2{font-size:clamp(60px,17vw,90px);width:100%;line-height:.8}
+.space-shot.a{width:64vw;height:78vw;right:14px;bottom:4svh}
+.space-shot.b{width:47vw;height:56vw;right:44vw;bottom:3svh}
+.space-shot.c{width:38vw;height:46vw;right:6vw;top:29svh}
+.space-stage>p{left:16px;width:42vw;bottom:7svh;font-size:9px}
+
+.stories{height:260svh;background:var(--light)}
+.stories-stage{position:sticky;top:0;height:100svh;overflow:hidden;padding:9svh 16px}
+.stories-head{margin:0;display:flex}
+.story{position:absolute;left:16px;right:16px;top:50%;transform:translateY(-42%);opacity:0;padding:0;border:0;will-change:transform,opacity}
+.story.first{opacity:1;transform:translateY(-50%)}
+.story-label{font-size:8px;margin-bottom:24px}
+.story blockquote{font-size:clamp(45px,12.5vw,66px);line-height:.95}
+.story>span{margin-top:24px}
+.stories-line{display:block;left:16px;right:16px;bottom:7svh}
+
+.faq{padding:110px 16px;grid-template-columns:1fr;gap:42px;overflow:hidden}
+.faq-head h2{font-size:clamp(56px,15.5vw,82px)}
+.faq-list details{will-change:transform,opacity}
+.book{padding:105px 16px;grid-template-columns:1fr;gap:50px;overflow:hidden}
+.book-copy h2{font-size:clamp(64px,18vw,94px)}
+.book form{will-change:transform,opacity}
+footer{padding:28px 16px 90px}
+.mobile-book{display:flex}
+}
+
+@media (max-width:900px) and (prefers-reduced-motion:reduce){
+.hero,.belief,.rituals,.interlude,.process,.space,.stories{height:auto!important}
+.hero-stage,.belief-stage,.ritual-stage,.interlude-stage,.process-stage,.space-stage,.stories-stage{position:relative!important;height:auto!important;min-height:100svh}
+.ritual-panel,.process-shot,.story{position:relative!important;transform:none!important;opacity:1!important}
+.ritual-panel:not(.first),.process-shot:not(.first){display:block!important}
+.ritual-panel figure,.process-media{position:relative!important;height:58svh!important}
+.ritual-copy,.process-copy{position:relative!important;height:auto!important}
+.story{top:auto!important;left:auto!important;right:auto!important;padding:56px 0!important}
+}
