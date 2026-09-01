@@ -1,0 +1,76 @@
+/* ÉLANE V8 — targeted refinement only: finder, space, testimonials, mobile CTA */
+
+/* 03 / Finder: compact, scannable, no clipped heading */
+.finder{padding:15vh 4vw 17vh;background:var(--light);overflow:hidden;scroll-margin-top:76px}
+.finder-grid{max-width:1380px;margin:auto;display:grid;grid-template-columns:.78fr 1.22fr;gap:7vw;align-items:start}
+.finder-left{padding-top:1vh}
+.finder-left h2{font:400 clamp(58px,6.8vw,106px)/.86 var(--serif);letter-spacing:-.055em;margin:26px 0 38px;max-width:610px}
+.moods{display:grid;grid-template-columns:1fr 1fr;gap:8px;border:0}
+.mood{height:48px;width:100%;border:1px solid var(--line);border-radius:999px;background:transparent;text-align:left;padding:0 15px;color:var(--muted);font-size:9px;cursor:pointer;transition:background .28s,color .28s,border-color .28s,transform .28s}
+.mood:hover{transform:translateY(-1px)}
+.mood.active{color:var(--paper);background:var(--ink);border-color:var(--ink);padding-left:15px}
+.finder-right{position:relative;overflow:hidden;aspect-ratio:4/4.7;min-height:0;background:#d9cec5}
+.finder-right figure{position:absolute;inset:0;margin:0;overflow:hidden;will-change:transform}
+.finder-right img{filter:saturate(.72);transition:opacity .28s,transform .6s cubic-bezier(.2,.8,.2,1)}
+.finder-result{padding:150px 28px 28px;background:linear-gradient(180deg,transparent,rgba(10,8,7,.72))}
+.finder-result h3{font-size:clamp(46px,4.8vw,72px);margin:11px 0 9px}
+.finder-result p{font-size:10px;line-height:1.7;max-width:400px}
+
+/* 05 / Space: reserve top half for typography; images live only in lower image field */
+.space{height:225vh}
+.space-stage{padding:10vh 4vw 6vh}
+.space-stage h2{font-size:clamp(70px,8.4vw,136px);width:min(760px,65vw);margin-top:22px}
+.space-shot.a{left:52vw;right:auto;top:49vh;bottom:auto;width:27vw;height:31vw;z-index:4}
+.space-shot.b{left:27vw;right:auto;top:61vh;bottom:auto;width:23vw;height:27vw;z-index:5}
+.space-shot.c{left:71vw;right:auto;top:35vh;bottom:auto;width:17vw;height:20vw;z-index:3}
+.space-stage>p{left:4vw;top:48vh;bottom:auto;width:290px;font-size:10px;line-height:1.75}
+
+/* 06 / Guest notes: restrained looping testimonial cards */
+.testimonials{padding:12vh 0 13vh;background:var(--light);overflow:hidden;scroll-margin-top:76px}
+.testimonials-head{display:flex;justify-content:space-between;align-items:end;padding:0 4vw 24px;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.testimonials-title{padding:0 4vw 44px}
+.testimonials-title h2{font:400 clamp(54px,6.5vw,102px)/.88 var(--serif);letter-spacing:-.055em;max-width:720px;margin:0}
+.testimonials-marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.testimonials-track{display:flex;gap:16px;width:max-content;padding:2px 0;animation:elaneGuestLoop 28s linear infinite;will-change:transform}
+.testimonial-card{width:min(390px,82vw);min-height:280px;display:flex;flex-direction:column;justify-content:space-between;padding:26px 26px 24px;border:1px solid var(--line);border-radius:14px;background:#f7f4ef;flex:0 0 auto}
+.testimonial-card small{display:block;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.testimonial-card blockquote{margin:28px 0 30px;font:400 clamp(30px,3vw,42px)/1.02 var(--serif);letter-spacing:-.04em}
+.testimonial-card p{margin:0;font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.testimonials:hover .testimonials-track{animation-play-state:paused}
+@keyframes elaneGuestLoop{from{transform:translate3d(0,0,0)}to{transform:translate3d(calc(-50% - 8px),0,0)}}
+
+/* Keep legacy story DOM only for the existing motion engine; never render it. */
+.legacy-stories{display:none!important;height:0!important;min-height:0!important;overflow:hidden!important}
+
+@media(max-width:900px){
+  .finder{padding:104px 16px 124px;scroll-margin-top:66px}
+  .finder-grid{grid-template-columns:1fr;gap:34px}
+  .finder-left h2{font-size:clamp(52px,14.5vw,72px);line-height:.88;margin:22px 0 28px;max-width:90vw}
+  .moods{grid-template-columns:1fr 1fr;gap:8px}
+  .mood{height:46px;padding:0 13px;font-size:9px}
+  .mood.active{padding-left:13px}
+  .finder-right{min-height:0;aspect-ratio:4/5;margin-top:2px}
+  .finder-result{padding:118px 20px 23px}
+  .finder-result h3{font-size:clamp(43px,11.6vw,60px)}
+  .finder-result p{font-size:10px;max-width:84vw}
+
+  .space{height:205svh}
+  .space-stage{padding:10svh 16px 6svh}
+  .space-stage h2{font-size:clamp(58px,16vw,84px);line-height:.82;width:92vw;max-width:92vw;margin-top:20px}
+  .space-stage>p{left:16px;top:36svh;bottom:auto;width:37vw;font-size:8.5px;line-height:1.65}
+  .space-shot.a{left:42vw;right:auto;top:53svh;bottom:auto;width:54vw;height:58vw}
+  .space-shot.b{left:7vw;right:auto;top:62svh;bottom:auto;width:40vw;height:48vw}
+  .space-shot.c{left:61vw;right:auto;top:41svh;bottom:auto;width:32vw;height:36vw}
+
+  .testimonials{padding:10svh 0 12svh;scroll-margin-top:66px}
+  .testimonials-head{padding:0 16px 20px}
+  .testimonials-title{padding:0 16px 30px}
+  .testimonials-title h2{font-size:clamp(44px,12.5vw,62px);line-height:.92;max-width:88vw}
+  .testimonials-track{gap:12px;animation-duration:24s}
+  .testimonial-card{width:78vw;min-height:250px;padding:22px 20px 20px;border-radius:12px}
+  .testimonial-card blockquote{font-size:clamp(26px,7.5vw,34px);margin:24px 0 28px}
+  .testimonials-marquee{-webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}
+
+  /* The previous full-width bar obscured content in every screenshot. */
+  .mobile-book{left:auto!important;right:14px!important;bottom:max(14px,env(safe-area-inset-bottom))!important;width:152px!important;height:46px!important;border-radius:999px!important;box-shadow:0 8px 28px rgba(23,21,18,.16)!important}
+}
