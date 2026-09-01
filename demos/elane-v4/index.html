@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f2eee8">
+<title>ÉLANE — Salon & Spa</title>
+<meta name="description" content="Fictional luxury salon and spa concept. Sample content only.">
+<link rel="preconnect" href="https://images.pexels.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="is-loading">
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-top"><span>ÉLANE / SALON + SPA</span><span>MMXXVI</span></div>
+  <div class="loader-name"><span>ÉLANE</span></div>
+  <div class="loader-bottom"><span>Beauty, unhurried.</span><span id="loaderCount">00</span></div>
+</div>
+<div class="scroll-progress"><i id="scrollProgress"></i></div>
+<div class="cursor" id="cursor"></div>
+<header class="nav" id="nav">
+  <a class="brand" href="#top">ÉLANE</a>
+  <nav><a href="#rituals">Rituals</a><a href="#process">Process</a><a href="#space">Space</a><a class="nav-book magnetic" href="#book">Book a visit ↗</a></nav>
+</header>
+<main id="top">
+  <section class="hero" id="hero">
+    <div class="hero-stage">
+      <div class="hero-media" id="heroMedia">
+        <img id="heroImage" src="https://images.pexels.com/photos/3992876/pexels-photo-3992876.jpeg?auto=compress&cs=tinysrgb&w=1800&q=84" alt="Hair stylist working with a client" fetchpriority="high">
+        <div class="hero-shade"></div>
+      </div>
+      <div class="hero-title" aria-label="Beauty, unhurried.">
+        <div class="hero-line"><span>Beauty,</span></div>
+        <div class="hero-line hero-line-italic"><span>unhurried.</span></div>
+      </div>
+      <div class="hero-kicker">Private salon · restorative spa · Bandra</div>
+      <div class="hero-detail">
+        <p>Precision salon work and restorative rituals, with enough time to listen before we begin.</p>
+        <a class="text-link magnetic" href="#book">Reserve your time ↗</a>
+      </div>
+      <div class="hero-meta">Mumbai / 10:00—21:00<br>By appointment</div>
+      <div class="scroll-hint"><span>Scroll</span><i></i></div>
+    </div>
+  </section>
+
+  <section class="belief" id="belief">
+    <div class="belief-stage">
+      <div class="section-code">01 / POINT OF VIEW</div>
+      <p class="belief-copy" id="beliefCopy">Beauty should feel less like being processed and more like being paid attention to.</p>
+      <figure class="belief-image image-reveal">
+        <img src="https://images.pexels.com/photos/7755679/pexels-photo-7755679.jpeg?auto=compress&cs=tinysrgb&w=1000&q=80" alt="Personal salon consultation" loading="lazy">
+      </figure>
+      <p class="belief-note">We listen first. Then we cut, colour, treat or restore. The result is quieter, more personal, and easier to live with.</p>
+    </div>
+  </section>
+
+  <section class="rituals" id="rituals">
+    <div class="ritual-stage">
+      <div class="ritual-top"><span>02 / SIGNATURE RITUALS</span><span id="ritualCount">01 — 04</span></div>
+      <div class="ritual-stack">
+        <article class="ritual-panel is-active" data-label="Hair atelier">
+          <div class="ritual-copy">
+            <span class="ritual-number">01</span>
+            <h2>Atelier<br><em>Cut.</em></h2>
+            <p>Consultation, wash, precision cut and a finish designed for how your hair actually moves.</p>
+            <div class="ritual-meta"><span>60 minutes</span><span>from ₹1,800</span></div>
+          </div>
+          <figure class="ritual-media"><img src="https://images.pexels.com/photos/7755166/pexels-photo-7755166.jpeg?auto=compress&cs=tinysrgb&w=1500&q=82" alt="Hair atelier" loading="lazy"></figure>
+        </article>
+        <article class="ritual-panel" data-label="Skin studio">
+          <div class="ritual-copy">
+            <span class="ritual-number">02</span>
+            <h2>Skin<br><em>Reset.</em></h2>
+            <p>A barrier-conscious facial with sculpting massage, hydration and calm rather than aggressive treatment.</p>
+            <div class="ritual-meta"><span>75 minutes</span><span>from ₹3,400</span></div>
+          </div>
+          <figure class="ritual-media"><img src="https://images.pexels.com/photos/3998000/pexels-photo-3998000.jpeg?auto=compress&cs=tinysrgb&w=1500&q=82" alt="Skin ritual" loading="lazy"></figure>
+        </article>
+        <article class="ritual-panel" data-label="Body room">
+          <div class="ritual-copy">
+            <span class="ritual-number">03</span>
+            <h2>Quiet<br><em>Body.</em></h2>
+            <p>Warm oils, deliberate pressure and enough silence for your shoulders to stop keeping score.</p>
+            <div class="ritual-meta"><span>90 minutes</span><span>from ₹3,900</span></div>
+          </div>
+          <figure class="ritual-media"><img src="https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg?auto=compress&cs=tinysrgb&w=1500&q=82" alt="Body massage ritual" loading="lazy"></figure>
+        </article>
+        <article class="ritual-panel" data-label="Occasion atelier">
+          <div class="ritual-copy">
+            <span class="ritual-number">04</span>
+            <h2>Event<br><em>Atelier.</em></h2>
+            <p>Skin prep, hair and soft-glam finishing composed as one appointment, not three rushed services.</p>
+            <div class="ritual-meta"><span>120 minutes</span><span>from ₹6,500</span></div>
+          </div>
+          <figure class="ritual-media"><img src="https://images.pexels.com/photos/3993449/pexels-photo-3993449.jpeg?auto=compress&cs=tinysrgb&w=1500&q=82" alt="Event styling" loading="lazy"></figure>
+        </article>
+      </div>
+      <div class="ritual-label" id="ritualLabel">Hair atelier</div>
+      <div class="ritual-bars" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
+    </div>
+  </section>
+
+  <section class="word-scene" aria-label="ÉLANE values">
+    <div class="word-track" id="wordTrack"><span>TIME</span><i>·</i><span>TOUCH</span><i>·</i><span>ATTENTION</span><i>·</i><span>RITUAL</span><i>·</i><span>TIME</span><i>·</i><span>TOUCH</span></div>
+    <p>Luxury is not more things. It is more attention.</p>
+  </section>
+
+  <section class="finder" id="finder">
+    <div class="finder-grid">
+      <div class="finder-copy">
+        <span class="section-code">03 / FIND YOUR RITUAL</span>
+        <h2>How do you want to <em>leave?</em></h2>
+        <p>Choose a feeling. We’ll give you a starting point—then tailor it in person.</p>
+      </div>
+      <div class="finder-ui">
+        <div class="moods" id="moods">
+          <button class="mood active" data-key="reset">Reset</button>
+          <button class="mood" data-key="glow">Glowy</button>
+          <button class="mood" data-key="polished">Polished</button>
+          <button class="mood" data-key="restored">Restored</button>
+        </div>
+        <div class="finder-result">
+          <div class="finder-result-text">
+            <span>Your match</span>
+            <h3 id="resultName">The Quiet Reset</h3>
+            <p id="resultDesc">Aromatherapy back-and-scalp ritual with warm oils and a slow finishing treatment.</p>
+            <div><b id="resultTime">75 min</b><b id="resultPrice">₹3,200</b></div>
+          </div>
+          <figure><img id="resultImage" src="https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg?auto=compress&cs=tinysrgb&w=900&q=80" alt="Recommended ritual" loading="lazy"></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process" id="process">
+    <div class="process-stage">
+      <div class="process-media">
+        <img class="process-image active" src="https://images.pexels.com/photos/7755679/pexels-photo-7755679.jpeg?auto=compress&cs=tinysrgb&w=1500&q=80" alt="Consultation" loading="lazy">
+        <img class="process-image" src="https://images.pexels.com/photos/3997379/pexels-photo-3997379.jpeg?auto=compress&cs=tinysrgb&w=1500&q=80" alt="Salon treatment" loading="lazy">
+        <img class="process-image" src="https://images.pexels.com/photos/3997989/pexels-photo-3997989.jpeg?auto=compress&cs=tinysrgb&w=1500&q=80" alt="Spa treatment" loading="lazy">
+        <img class="process-image" src="https://images.pexels.com/photos/5240740/pexels-photo-5240740.jpeg?auto=compress&cs=tinysrgb&w=1500&q=80" alt="Finishing ritual" loading="lazy">
+      </div>
+      <div class="process-copy">
+        <span class="section-code">04 / YOUR VISIT</span>
+        <div class="process-steps">
+          <article class="process-step active"><span>01</span><h3>We listen.</h3><p>Your goals, sensitivities, habits and what you absolutely do not want.</p></article>
+          <article class="process-step"><span>02</span><h3>We tailor.</h3><p>Products, pressure, tone, finish and pace are adapted to you.</p></article>
+          <article class="process-step"><span>03</span><h3>We protect the pause.</h3><p>No stylist juggling three chairs. No therapist racing the next booking.</p></article>
+          <article class="process-step"><span>04</span><h3>You leave with clarity.</h3><p>Simple aftercare, what to repeat and when you actually need to return.</p></article>
+        </div>
+      </div>
+      <div class="process-progress"><i id="processBar"></i></div>
+    </div>
+  </section>
+
+  <section class="space" id="space">
+    <div class="space-stage">
+      <div class="space-heading"><span class="section-code">05 / THE SPACE</span><h2>A little quieter than <em>Mumbai.</em></h2></div>
+      <figure class="space-img s1"><img src="https://images.pexels.com/photos/3992876/pexels-photo-3992876.jpeg?auto=compress&cs=tinysrgb&w=1200&q=80" alt="Salon space" loading="lazy"></figure>
+      <figure class="space-img s2"><img src="https://images.pexels.com/photos/3997989/pexels-photo-3997989.jpeg?auto=compress&cs=tinysrgb&w=1000&q=80" alt="Skin studio" loading="lazy"></figure>
+      <figure class="space-img s3"><img src="https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg?auto=compress&cs=tinysrgb&w=1000&q=80" alt="Spa ritual" loading="lazy"></figure>
+      <p class="space-note">Warm light. Natural texture. Private treatment rooms. Good coffee. Nothing fighting for your attention.</p>
+    </div>
+  </section>
+
+  <section class="proof">
+    <span class="section-code">06 / GUEST NOTES</span>
+    <blockquote>“It felt less like an appointment and more like someone pressed <em>pause</em> on the city for ninety minutes.”</blockquote>
+    <div class="proof-foot"><span>Sample guest note</span><span>Fictional demo content</span></div>
+  </section>
+
+  <section class="book" id="book">
+    <div class="book-left">
+      <span class="section-code">07 / RESERVATIONS</span>
+      <h2>Your time.<br><em>Reserved.</em></h2>
+      <p>Sample booking flow. A production build can connect to WhatsApp, Fresha, Google Calendar or a custom CRM.</p>
+      <div class="book-meta"><span>Bandra West, Mumbai</span><span>10 AM — 9 PM</span><span>Private appointments</span></div>
+    </div>
+    <form class="book-form" id="bookForm">
+      <label><span>Your name</span><input required placeholder="Sara Khan"></label>
+      <label><span>Mobile</span><input required inputmode="tel" placeholder="+91 98xxxxxx"></label>
+      <div class="book-choice"><span>Choose your ritual</span><div class="chips"><button type="button" class="chip active">Hair</button><button type="button" class="chip">Skin</button><button type="button" class="chip">Spa</button><button type="button" class="chip">Occasion</button></div></div>
+      <button class="submit magnetic" type="submit">Request appointment ↗</button>
+      <p class="form-note" id="formNote">Demo only — production would submit this to the salon.</p>
+    </form>
+  </section>
+</main>
+<footer><a class="brand" href="#top">ÉLANE</a><span>Salon + Spa · Fictional sample</span><span>Concept / 2026</span></footer>
+<a class="mobile-book" href="#book">Book a visit ↗</a>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.8/dist/lenis.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
