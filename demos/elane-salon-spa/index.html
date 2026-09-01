@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#f4efe9" />
+<title>ÉLANE — Salon & Spa</title>
+<meta name="description" content="Sample luxury salon and spa website concept for client outreach." />
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Abuhurerakhan0407/shalcon-intelligence@salon-spa-sample/demos/elane-salon-spa/style.css">
+</head>
+<body>
+<header class="container nav">
+  <a class="brand" href="#top"><strong>ÉLANE</strong><span>Salon & Spa</span></a>
+  <nav class="navlinks" aria-label="Primary navigation">
+    <a href="#services">Services</a><a href="#studio">Studio</a><a href="#rituals">Rituals</a><a href="#visit">Visit</a>
+    <button class="btn btn-primary js-book">Book a visit</button>
+  </nav>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <div>
+        <div class="eyebrow">Salon craft · Spa calm · Bandra</div>
+        <h1 class="display hero-title">Look polished.<em>Feel lighter.</em></h1>
+        <p class="hero-sub">A modern salon and spa concept built around thoughtful hair, skin and body rituals — without rushed chairs, crowded counters or one-size-fits-all treatments.</p>
+        <div class="hero-actions"><button class="btn btn-primary js-book">Reserve your time ↗</button><a class="btn btn-ghost" href="#services">Explore treatments</a></div>
+      </div>
+      <div class="hero-meta">
+        <div><b>4.9 / 5</b>sample guest rating</div>
+        <div><b>10–9</b>open daily</div>
+        <div><b>1:1</b>consultation-first care</div>
+      </div>
+    </div>
+    <div class="hero-media">
+      <img src="https://images.unsplash.com/photo-1781450090585-1a511b7066d9?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=72&w=1800" alt="Modern hair salon interior with styling chairs and mirrors" fetchpriority="high" decoding="async">
+      <div class="hero-badge"><div><strong>Quiet-hour appointments</strong><small>Weekdays · 11 AM — 2 PM</small></div><div class="availability"><span class="icon-dot"></span> slots open</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="ribbon"><div class="container ribbon-inner"><span>Hair Atelier</span><i>✦</i><span>Skin Studio</span><i>✦</i><span>Spa Rituals</span><i>✦</i><span>Occasion Styling</span></div></div>
+
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-head"><div><div class="eyebrow">01 · Services</div><h2 class="display">One studio.<br>Four ways to reset.</h2></div><p>Instead of a giant menu, treatments are grouped by what clients actually come in for: hair, skin, body and occasion-ready finishing.</p></div>
+    <div class="service-tabs" role="tablist" aria-label="Service categories">
+      <button class="tab active" data-service="hair">Hair atelier</button><button class="tab" data-service="skin">Skin studio</button><button class="tab" data-service="spa">Spa rituals</button><button class="tab" data-service="occasion">Occasion</button>
+    </div>
+    <div class="services-layout">
+      <div class="service-panel" id="servicePanel">
+        <div><div class="service-top"><div class="service-num" id="serviceNum">01 · Hair Atelier</div><span class="muted" id="serviceTime">45–150 min</span></div><h3 id="serviceTitle">Hair that still feels like you.</h3><p id="serviceCopy">Precision cuts, dimensional colour, gloss rituals and restorative care. Every appointment starts with texture, routine and maintenance — not a catalogue photo.</p></div>
+        <div class="service-list" id="serviceList"><div><b>Cut + finish</b><small>from ₹1,800</small></div><div><b>Gloss + tone</b><small>from ₹2,400</small></div><div><b>Balayage</b><small>from ₹5,500</small></div><div><b>Repair ritual</b><small>from ₹2,200</small></div></div>
+      </div>
+      <div class="service-image"><img id="serviceImage" src="https://images.unsplash.com/photo-1634449571010-02389ed0f9b0?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=72&w=1400" alt="Hair wash treatment in a salon" loading="lazy" decoding="async"><div class="caption" id="serviceCaption">Hair · consultation first</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="container finder">
+    <div><div class="eyebrow" style="color:#d7a4ad">02 · Treatment finder</div><h2 class="display">Not sure what to <em>book?</em></h2><p>Pick how you want to feel. This tiny interaction can become a WhatsApp lead qualifier or full booking assistant for a real salon.</p></div>
+    <div class="quiz-card">
+      <div class="quiz-label">What do you need today?</div>
+      <h3>Choose your mood.</h3>
+      <div class="quiz-options"><button class="qopt active" data-rec="reset">I need a reset</button><button class="qopt" data-rec="glow">More glow</button><button class="qopt" data-rec="hair">Hair rescue</button><button class="qopt" data-rec="event">Event ready</button></div>
+      <div class="recommend"><small>ÉLANE recommends</small><strong id="recTitle">The ÉLANE Escape</strong><span id="recCopy">90-minute body massage + express facial + scalp ritual. Slow, restorative, no overthinking.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="studio">
+  <div class="container">
+    <div class="section-head"><div><div class="eyebrow">03 · The studio</div><h2 class="display">Beauty spaces should<br>feel beautiful too.</h2></div><p>Clean lines, warm light, calm materials and enough breathing room to make the appointment feel like a break in your day.</p></div>
+    <div class="gallery">
+      <figure class="gal"><img src="https://images.unsplash.com/photo-1781450090585-1a511b7066d9?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=70&w=1500" alt="Modern salon interior" loading="lazy" decoding="async"><figcaption class="gal-note">The styling floor</figcaption></figure>
+      <figure class="gal"><img src="https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=70&w=1400" alt="Facial skincare treatment" loading="lazy" decoding="async"><figcaption class="gal-note">Skin rituals</figcaption></figure>
+      <div class="gal-card"><div class="eyebrow">Designed around you</div><div><b>Fewer chairs.<br>More attention.</b><p>Appointments include breathing room so the next guest never becomes your countdown timer.</p></div></div>
+      <figure class="gal"><img src="https://images.unsplash.com/photo-1634449571010-02389ed0f9b0?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=70&w=1200" alt="Relaxing hair wash treatment" loading="lazy" decoding="async"><figcaption class="gal-note">Wash + repair bar</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="section rituals" id="rituals">
+  <div class="container">
+    <div class="section-head"><div><div class="eyebrow">04 · Signature rituals</div><h2 class="display">Easy to choose.<br>Hard to rush.</h2></div><p>Sample packages show clients the value immediately — a better sales surface than a 40-row price list.</p></div>
+    <div class="ritual-grid">
+      <article class="ritual"><div><div class="tag">75 min · Skin</div><h3>Sunday Skin Reset</h3><p>Double cleanse, gentle resurfacing, sculpting massage, hydration mask and calming scalp ritual.</p></div><div class="ritual-bottom"><div><strong>₹3,900</strong><span>sample price</span></div><button class="btn btn-ghost js-book">Choose</button></div></article>
+      <article class="ritual"><div><div class="tag">120 min · Body + Skin</div><h3>The ÉLANE Escape</h3><p>Aromatherapy massage, express glow facial and a slow scalp ritual designed for full-body decompression.</p></div><div class="ritual-bottom"><div><strong>₹6,800</strong><span>sample price</span></div><button class="btn btn-ghost js-book">Choose</button></div></article>
+      <article class="ritual"><div><div class="tag">150 min · Occasion</div><h3>Event Ready, Slowly</h3><p>Skin prep, polished hair styling and soft-glam makeup — timed so getting ready never feels frantic.</p></div><div class="ritual-bottom"><div><strong>₹8,500</strong><span>sample price</span></div><button class="btn btn-ghost js-book">Choose</button></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container membership">
+    <div class="member-copy"><div class="eyebrow">05 · Membership</div><h2 class="display">For people who<br>actually come back.</h2><p>A simple recurring-care product gives the salon predictable revenue while giving regular clients priority slots and better value.</p></div>
+    <div class="member-card"><div class="monogram">É</div><div><div class="eyebrow" style="color:#e6bcc3">ÉLANE Circle · Sample concept</div><h3>Your monthly reset, already reserved.</h3><p>One core treatment each month, preferred booking windows, complimentary add-ons and member-only event preparation slots.</p></div><div class="perks"><span class="perk">Priority booking</span><span class="perk">Monthly ritual</span><span class="perk">10% product credit</span><span class="perk">Birthday upgrade</span></div></div>
+  </div>
+</section>
+
+<section class="testimonial"><div class="container"><div class="eyebrow">Guest note · sample</div><blockquote>“The kind of salon where you stop checking your phone because someone has finally made the next <em>90 minutes</em> easy.”</blockquote><cite>— Mira S. · Bandra</cite></div></section>
+
+<section class="section visit" id="visit">
+  <div class="container visit-grid">
+    <div class="visit-copy"><div class="eyebrow" style="color:#d7a4ad">06 · Visit ÉLANE</div><h2 class="display">Come in.<br><em>Exhale.</em></h2><p>Fictional sample location and details for this sales demo. A client version can connect directly to Maps, WhatsApp, Fresha, Calendly or a custom booking flow.</p></div>
+    <div class="visit-card"><div class="visit-row"><strong>Location</strong><span>Linking Road, Bandra West · Mumbai</span></div><div class="visit-row"><strong>Monday–Sunday</strong><span>10:00 AM — 9:00 PM</span></div><div class="visit-row"><strong>Quiet hours</strong><span>Weekdays · 11:00 AM — 2:00 PM</span></div><div class="visit-row"><strong>Parking</strong><span>Valet available</span></div><div class="visit-actions"><button class="btn btn-primary js-book">Book appointment</button><a class="btn btn-ghost" href="https://maps.google.com" target="_blank" rel="noopener">Open Maps ↗</a></div></div>
+  </div>
+</section>
+</main>
+
+<footer class="footer"><div class="container footer-inner"><a class="brand" href="#top"><strong>ÉLANE</strong><span style="color:rgba(255,255,255,.5)">Salon & Spa</span></a><small>Sample website concept · All names, prices and details fictional</small><small>Designed for sales demo</small></div></footer>
+
+<div class="mobile-book"><button class="btn btn-primary js-book">Reserve your time ↗</button></div>
+
+<dialog id="bookingDialog" aria-labelledby="bookingTitle">
+  <form class="booking" method="dialog" id="bookingForm">
+    <div class="booking-top"><div><div class="eyebrow">Sample booking flow</div><h3 id="bookingTitle">Reserve your time.</h3><p>This is a demo interaction. A production version can send confirmed details to WhatsApp or a booking platform.</p></div><button class="close" value="cancel" aria-label="Close booking">×</button></div>
+    <div class="fields"><div class="field"><label for="name">Name</label><input id="name" placeholder="Sara Khan"></div><div class="field"><label for="mobile">Mobile</label><input id="mobile" placeholder="+91 98xxxxxx"></div><div class="field full"><label for="treatment">Treatment</label><select id="treatment"><option>Hair Atelier</option><option>Skin Studio</option><option>Spa Ritual</option><option>Occasion Styling</option></select></div><div class="field"><label for="day">Preferred day</label><select id="day"><option>Today</option><option>Tomorrow</option><option>This weekend</option></select></div><div class="field"><label for="time">Preferred time</label><select id="time"><option>Morning</option><option>Afternoon</option><option>Evening</option></select></div></div>
+    <button class="btn btn-primary" value="default">Request appointment ↗</button><div class="sample-note">Demo only — no information is sent.</div>
+  </form>
+</dialog>
+
+<script src="https://cdn.jsdelivr.net/gh/Abuhurerakhan0407/shalcon-intelligence@salon-spa-sample/demos/elane-salon-spa/app.js"></script>
+</body>
+</html>
