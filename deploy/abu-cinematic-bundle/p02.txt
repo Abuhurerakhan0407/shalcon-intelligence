@@ -1,0 +1,247 @@
+
+  </style>
+  <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="film-grain" aria-hidden="true"></div>
+  <div class="bloom" aria-hidden="true"></div>
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+
+  <div class="loader" aria-hidden="true">
+    <div class="loader__frame">
+      <span class="loader__eyebrow">ABU HURERA / PORTFOLIO</span>
+      <div class="loader__word"><span>ABU</span></div>
+      <div class="loader__word loader__word--right"><span>HURERA</span></div>
+      <div class="loader__line"></div>
+      <span class="loader__counter">00</span>
+    </div>
+  </div>
+
+  <header class="site-header" id="siteHeader">
+    <a class="wordmark magnetic" href="#home" aria-label="Abu Hurera home">ABU HURERA</a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="#home" data-section="home">Home</a>
+      <a href="#about" data-section="about">About</a>
+      <a href="#projects" data-section="projects">Projects</a>
+      <a href="#contact" data-section="contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="grain-toggle magnetic" type="button" aria-pressed="true" aria-label="Toggle film grain">
+        <span class="grain-toggle__track"><span class="grain-toggle__thumb"></span></span>
+      </button>
+      <button class="menu-toggle magnetic" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <nav aria-label="Mobile navigation">
+      <a href="#home"><span>01</span>Home</a>
+      <a href="#about"><span>02</span>About</a>
+      <a href="#projects"><span>03</span>Projects</a>
+      <a href="#contact"><span>04</span>Contact</a>
+    </nav>
+    <div class="mobile-menu__meta">
+      <span>Mumbai / India</span>
+      <span>Websites + AI systems</span>
+    </div>
+  </div>
+
+  <div class="cursor" aria-hidden="true"><span></span></div>
+
+  <main id="main">
+    <section class="hero scene" id="home" aria-labelledby="heroTitle">
+      <div class="hero__stage">
+        <h1 class="hero__ghost-title" id="heroTitle" aria-label="Abu Hurera">
+          <span class="hero__ghost-row" data-hero-row><span>ABU</span><span>HURERA</span></span>
+        </h1>
+
+        <div class="hero__portrait-wrap" aria-hidden="true">
+          <div class="hero__portrait-reveal">
+            <div class="hero__portrait-plane">
+              <div class="hero__portrait-motion">
+                <img class="hero__portrait-source" data-portrait src="" alt="" width="1536" height="1152" decoding="async" fetchpriority="high" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="hero__role hero__role--left">AI Workflow Systems Architect</p>
+        <p class="hero__role hero__role--right">Founder, Shalcon Intelligence</p>
+
+        <div class="hero__socials" aria-label="Social links">
+          <a class="icon-link magnetic" href="https://github.com/Abuhurerakhan0407" target="_blank" rel="noreferrer" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .7A11.3 11.3 0 0 0 8.43 22.73c.57.1.78-.25.78-.55v-2.16c-3.18.69-3.85-1.35-3.85-1.35-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.33.96.1-.74.4-1.25.73-1.54-2.54-.29-5.21-1.27-5.21-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.14 1.17A10.9 10.9 0 0 1 12 5.96c.97 0 1.94.13 2.85.38 2.18-1.48 3.14-1.17 3.14-1.17.62 1.57.23 2.73.11 3.02.74.8 1.18 1.82 1.18 3.07 0 4.4-2.68 5.37-5.23 5.65.41.36.78 1.06.78 2.14v3.17c0 .3.2.66.79.55A11.3 11.3 0 0 0 12 .7Z"/></svg>
+          </a>
+          <a class="icon-link magnetic" href="https://www.linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.22 7.39A2.22 2.22 0 1 0 5.2 2.95a2.22 2.22 0 0 0 .02 4.44ZM3.3 21h3.84V9.05H3.3V21Zm6.23 0h3.84v-6.65c0-1.75.33-3.45 2.5-3.45 2.14 0 2.17 2 2.17 3.56V21h3.84v-7.37c0-3.62-.78-6.41-5.02-6.41-2.03 0-3.39 1.12-3.95 2.18h-.05V9.05H9.53V21Z"/></svg>
+          </a>
+        </div>
+
+        <a class="scroll-cue" href="#manifesto" aria-label="Scroll to manifesto">
+          <span>SCROLL</span><i></i>
+        </a>
+
+        <div class="hero__corner hero__corner--tl" aria-hidden="true"></div>
+        <div class="hero__corner hero__corner--br" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section class="manifesto scene" id="manifesto" aria-labelledby="manifestoHeading">
+      <div class="manifesto__pin">
+        <div class="manifesto__meta">
+          <span>01 / MANIFESTO</span>
+          <span>Systems over busywork</span>
+        </div>
+        <h2 class="manifesto__title" id="manifestoHeading">
+          <span class="manifesto__line"><b>I BUILD</b></span>
+          <span class="manifesto__line"><b>SYSTEMS</b></span>
+          <span class="manifesto__line"><b>THAT REMOVE</b></span>
+          <span class="manifesto__line manifesto__line--outline"><b>WORK.</b></span>
+        </h2>
+        <div class="manifesto__support" aria-label="Areas of work">
+          <span>Websites.</span><span>AI automation.</span><span>Digital products.</span><span>Connected workflows.</span>
+        </div>
+        <div class="manifesto__portrait-echo" aria-hidden="true">
+          <img data-portrait src="" alt="" />
+        </div>
+      </div>
+    </section>
+
+    <section class="work-intro scene" id="projects" aria-labelledby="workHeading">
+      <div class="section-kicker"><span>02</span><span>Selected Work</span></div>
+      <h2 id="workHeading">FOUR SYSTEMS.<br><span>ONE WAY OF THINKING.</span></h2>
+      <p>Each project solves a different operational problem. Same principle: remove friction, connect steps, make execution clearer.</p>
+      <div class="work-intro__marquee" aria-hidden="true"><span>SELECTED WORK — SELECTED WORK — SELECTED WORK —</span></div>
+    </section>
+
+    <section class="project project--shalcon" aria-labelledby="project1Title">
+      <div class="project__sticky">
+        <div class="project__number">01</div>
+        <div class="project__backtype" aria-hidden="true"><span>AUTOMATE</span><span>ORCHESTRATE</span><span>QUALIFY</span></div>
+        <div class="project__content">
+          <p class="project__eyebrow">AI automation / Agency system</p>
+          <h3 id="project1Title">SHALCON<br>INTELLIGENCE</h3>
+          <p class="project__summary">AI automation systems for businesses — connecting lead capture, qualification, communication, CRM workflows and operational handoffs.</p>
+          <div class="project__meta-grid"><span>Founder / System design</span><span>n8n · AI APIs · Supabase</span></div>
+          <a class="text-link magnetic" href="#contact">Discuss a system <span>↗</span></a>
+        </div>
+        <div class="pipeline" aria-hidden="true"><i></i><b></b><b></b><b></b><b></b></div>
+      </div>
+    </section>
+
+    <section class="project project--madrasa" aria-labelledby="project2Title">
+      <div class="project__sticky">
+        <div class="project__number">02</div>
+        <div class="ledger-lines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="project__content project__content--right">
+          <p class="project__eyebrow">Education operations / ERP</p>
+          <h3 id="project2Title">MADRASA<br>ERP</h3>
+          <p class="project__summary">A modern management system for educational institutions, bringing attendance, student operations, communication and administration into one controlled workflow.</p>
+          <div class="project__meta-grid"><span>Product / System architecture</span><span>React · Supabase · WhatsApp</span></div>
+          <a class="text-link magnetic" href="#contact">Build an operations layer <span>↗</span></a>
+        </div>
+        <div class="madrasa-index" aria-hidden="true"><span>ATTENDANCE</span><span>STUDENTS</span><span>MESSAGING</span><span>ADMIN</span></div>
+      </div>
+    </section>
+
+    <section class="project project--pagevelope" aria-labelledby="project3Title">
+      <div class="project__sticky">
+        <div class="project__number">03</div>
+        <div class="mail-frame" aria-hidden="true">
+          <div class="mail-frame__top"><span></span><span></span><span></span></div>
+          <div class="mail-frame__canvas"><i></i><i></i><i></i></div>
+        </div>
+        <div class="project__content">
+          <p class="project__eyebrow">Creative software / Email campaigns</p>
+          <h3 id="project3Title">PAGEVELOPE</h3>
+          <p class="project__summary">A visual email campaign creation platform designed around editable layouts, animation controls, compatibility thinking and practical export workflows.</p>
+          <div class="project__meta-grid"><span>Product direction / Frontend</span><span>React · Email HTML · Supabase</span></div>
+          <a class="text-link magnetic" href="#contact">Explore product thinking <span>↗</span></a>
+        </div>
+        <div class="pagevelope-words" aria-hidden="true"><span>DESIGN</span><span>SEND</span><span>EXPORT</span></div>
+      </div>
+    </section>
+
+    <section class="project project--factory" aria-labelledby="project4Title">
+      <div class="project__sticky">
+        <div class="project__number">04</div>
+        <div class="factory-log" aria-hidden="true">
+          <span>01 — SPEC</span><span>02 — PLAN</span><span>03 — BUILD</span><span>04 — TEST</span><span>05 — SHIP</span>
+        </div>
+        <div class="project__content project__content--right">
+          <p class="project__eyebrow">AI development / Production system</p>
+          <h3 id="project4Title">SOFTWARE<br>FACTORY</h3>
+          <p class="project__summary">An AI-driven software production system focused on turning requirements into structured plans, implementation loops, testing and deployment-ready output.</p>
+          <div class="project__meta-grid"><span>Workflow design / AI orchestration</span><span>Agents · GitHub · Vercel</span></div>
+          <a class="text-link magnetic" href="#contact">Turn a brief into a build <span>↗</span></a>
+        </div>
+        <div class="factory-stamp" aria-hidden="true">BUILD</div>
+      </div>
+    </section>
+
+    <section class="capabilities scene" aria-labelledby="capHeading">
+      <div class="section-kicker"><span>03</span><span>Capabilities</span></div>
+      <div class="capabilities__head">
+        <h2 id="capHeading">WHAT I<br>ACTUALLY BUILD.</h2>
+        <p>No menu of vague services. Six areas I can take from idea through implementation.</p>
+      </div>
+      <div class="capabilities__list" role="list">
+        <button type="button" class="capability is-active" data-cap="Systems"><span>01</span><b>AI WORKFLOW SYSTEMS</b><em>Connect tools, decisions and handoffs.</em></button>
+        <button type="button" class="capability" data-cap="Web"><span>02</span><b>WEB EXPERIENCES</b><em>High-quality interfaces built to communicate and convert.</em></button>
+        <button type="button" class="capability" data-cap="Agents"><span>03</span><b>AI AGENTS</b><em>Task-focused agents with clear boundaries and outputs.</em></button>
+        <button type="button" class="capability" data-cap="Automation"><span>04</span><b>BUSINESS AUTOMATION</b><em>Remove repetitive work across sales and operations.</em></button>
+        <button type="button" class="capability" data-cap="Products"><span>05</span><b>PRODUCT DEVELOPMENT</b><em>Prototype, systemize, ship and iterate.</em></button>
+        <button type="button" class="capability" data-cap="Execution"><span>06</span><b>END-TO-END EXECUTION</b><em>One owner from concept through deployment.</em></button>
+      </div>
+      <div class="capabilities__ghost" aria-hidden="true">SYSTEMS</div>
+    </section>
+
+    <section class="about scene" id="about" aria-labelledby="aboutHeading">
+      <div class="about__backtype" aria-hidden="true"><span>ABOUT</span><span>ABU.</span></div>
+      <div class="about__portrait" aria-hidden="true"><img data-portrait src="" alt="" loading="lazy" /></div>
+      <div class="about__copy">
+        <div class="section-kicker"><span>04</span><span>About Abu</span></div>
+        <h2 id="aboutHeading">PRACTICAL SYSTEMS.<br>NOT AI GIMMICKS.</h2>
+        <p>Abu Hurera builds websites, AI automation systems and digital products from concept through implementation. Founder of Shalcon Intelligence.</p>
+        <p>Work starts with one question: where is effort being wasted? Then design, automation and software get used only where they remove that friction.</p>
+        <div class="about__stack" aria-label="Technology stack">
+          <span>React</span><span>Next.js</span><span>JavaScript / TypeScript</span><span>GSAP</span><span>n8n</span><span>AI APIs</span><span>Supabase</span><span>Vercel</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="interlude scene" aria-label="Motion interlude">
+      <div class="interlude__track" aria-hidden="true">
+        <span>THINK</span><span>BUILD</span><span>CONNECT</span><span>REMOVE</span><span>SHIP</span>
+      </div>
+      <div class="interlude__center">
+        <p>Design becomes useful when motion clarifies the idea.</p>
+        <span>05 / BETWEEN SCENES</span>
+      </div>
+    </section>
+
+    <section class="contact scene" id="contact" aria-labelledby="contactHeading">
+      <div class="contact__background" aria-hidden="true">ABU HURERA</div>
+      <div class="contact__content">
+        <span class="contact__kicker">06 / CONTACT</span>
+        <h2 id="contactHeading">HAVE SOMETHING<br><span>WORTH BUILDING?</span></h2>
+        <p>Website, automation, internal system or digital product. Bring the messy version.</p>
+        <div class="contact__actions">
+          <a class="contact-link magnetic" href="https://wa.me/919833001193?text=Hi%20Abu%2C%20I%27d%20like%20to%20discuss%20a%20website%20or%20automation%20project." target="_blank" rel="noreferrer"><span>WhatsApp</span><b>↗</b></a>
+          <a class="contact-link magnetic" href="mailto:iamabuhurerakhan@gmail.com"><span>Email</span><b>↗</b></a>
+          <a class="contact-link magnetic" href="https://calendar.app.google/HMdDM2iUEuwbaMUEA" target="_blank" rel="noreferrer"><span>Discovery Call</span><b>↗</b></a>
+        </div>
+      </div>
+      <footer class="site-footer">
+        <span>ABU HURERA</span>
+        <span>© <span id="year">2026</span></span>
+        <a href="#home">Back to top ↑</a>
+      </footer>
+    </section>
+  </main>
+
+<script>window.__ABU_PORTRAIT="data:image/webp;base64,UklGRphKAgBXRUJQVlA4TItKAgAv/8UfEY1QchtJkCSle5W3ZbbJ/v/gjJqZzYrjHiL6PwH1/5GuKhubbVnqF0mAXXWu67peFWBHxTBc1+t1EdgPr+ti4CIktaPkYqbg+E2F926a9IwAjoP6EbuBzLBMUgrsJglEIev9MPlT7rvJ9iZJamtXkkBCsacEEkLYFQmZ4fN2uCeJfvZkSBJIwPfd5A63aEszSQIhEVtKSIKUpO/bmVmQZNhRArDqLU0ggYTJlkInBEL2hPJxdpU/ZU9E0YfeUPMTSQzJtSXg5ydgArAnQBRkR0ACYIX7ey/AcALXIN1EsQ2A/Ibc1H0ClgLwfdyLRIH3vMBEwZakhOKbuCdMbtN8XlhFCMCXAPnTCVmEE2iXZElJAnwDrySZRCSRAgzMWCdgd1UlkZQvCZMkk/M3CVZOuCae1ZKb1F/QhCwnkSNNzmFmulnI9tjlKvMFrEiUpaQ56cRurlsWTvWXoNwnyRkl0QgyVpiJLc/EtmR/yzBA/hAnUhljOwbpezK2Z5jFRJmQJILxyE4AyjK8HweDIkNElghbkX2dTE1WEOP3+wt0R1pJ8YDkXJftGWdcdRyuUPV+Py36DBL5lZLfX5m5ykRjldW2nZRFP2y41djcI0nBsi7MjDXjsl3lxPLDQERSt1woJJKEpOuyhxm5SrYP+7L8uOhH905UUhbpW5VnYqV1k3z4/qzWGmy7JKPlwdGHjU1iaWFbNo8iko2KkvFI9s2gg5bHM+3loqSHjc2Mq2w7sgopmbGx5XCMP/bLVpl+UttMV73Ksl2L36RsI8vmsHt1V9sPY1xSl21kl0dKWlhSm+uw6k9sPQumPFM+jCTKiX1KtmW3r+uS/1JvHjX2TNuHLdm2Ep/xTWVfl0uSTtfr9VroUR0n9uIuSbaTatk+utv6/HpJPmw/ypIW/cH3dPUxtumy1Z/VOlz9JHtk27pJtiXb7rIPS91VVl2fpON4WMvLw5Yty9KH2CvXZ9s+jme5bPlPZcslL8/F3/rsfzZR2LYNkv9v7xgkEEhxCGMc/VeYtAGTzluwskTy78ESGaBxxHj2BPVAjiRJkZRQ0frrvHDXdfiMiAnwv6Ak83DW0Jmz2TOdmUVnYqwuapuwqNNpczZNlnXSdNF02q56bHY1nU3tsnSa2USbzFmcFrqppInXtHUIwhvaJmmTWCK+0zxCTBMkCXwxQAihjRKhxws8ISFFscS
